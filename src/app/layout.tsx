@@ -15,10 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="px-28">
+      <body>
         <Header />
         <NextUIProvider>
-          {children}
+          <main className="main-class">
+            {children}
+          </main>
         </NextUIProvider>
         <Footer />
         <Toaster toastOptions={{ style: { direction: "ltr" } }} />
