@@ -1,0 +1,30 @@
+import { heroui } from '@heroui/theme';
+import type { Config } from "tailwindcss";
+import { nextui } from "@nextui-org/theme";
+export default {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/components/(autocomplete|badge|button|drawer|select|ripple|spinner|form|input|listbox|divider|popover|scroll-shadow|modal).js",
+    "./node_modules/@heroui/theme/dist/components/(button|ripple|spinner).js"
+  ],
+  theme: {
+    extend: {
+      colors: {
+        "w-100": "#FFFFFF",
+        "w-50": "#808080",
+        "w-80": "#666666",
+        "d-80": "#1A1A1A",
+        "d-60": "#262626",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+      },
+      boxShadow: {
+        "boxDetail": "0px 0px 5px #d2d2d2"
+      },
+
+    },
+  },
+  plugins: [nextui(), heroui()],
+} satisfies Config;
