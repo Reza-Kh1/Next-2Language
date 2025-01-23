@@ -116,7 +116,6 @@ export default function Footer() {
           </Button>
         </div>
         <ImageCustom figureClass='w-full flex justify-center mt-8' src={"/digit-x.png"} alt={"logo footer"} width={600} height={370} />
-
         <span className='absolute left-0 top-0 w-[56%] h-[400px]' style={{ backgroundImage: `url(/dot-left-low.png)` }}></span>
         <span className='absolute right-0 top-0 w-[56%] h-[400px]' style={{ backgroundImage: `url(/dot-right-low.png)` }}></span>
       </div>
