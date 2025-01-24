@@ -74,7 +74,7 @@ a {
 }
 
 .main-class {
-  padding: 0 60px;
+  padding: 0 7rem;
 }
 
 .border-box {
@@ -109,4 +109,30 @@ a {
   border-radius: inherit;
   /* !importanté */
   background: linear-gradient(to right, red, orange);
+}
+
+.table-border ul:first-child li:first-child {
+  border-radius: 8px 0 0 0;
+}
+
+.table-border ul:first-child li:last-child {
+  border-radius: 0 8px 0 0;
+}
+
+.table-border ul:last-child li:first-child {
+  border-radius: 0 0 0 8px;
+}
+
+.table-border ul:last-child li:last-child {
+  border-radius: 0 0 8px 0;
+}
+
+.ul-border li:last-child {
+  border-radius: 0 8px 8px 0;
+
+}
+
+.ul-border li:first-child {
+  border-radius: 8px 0 0 8px;
+
 }

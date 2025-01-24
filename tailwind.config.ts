@@ -7,14 +7,14 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/components/(autocomplete|badge|button|drawer|select|ripple|spinner|form|input|listbox|divider|popover|scroll-shadow|modal).js",
-    "./node_modules/@heroui/theme/dist/components/(button|ripple|spinner).js"
+    "./node_modules/@heroui/theme/dist/components/(accordion|button|divider|ripple|spinner).js"
   ],
   theme: {
     extend: {
       colors: {
         "w-100": "#FFFFFF",
         "w-90":"#ececec",
-        "w-80": "#808080",
+        "w-80": "#a8a8a8",
         "w-50": "#666666",
         "d-80": "#1A1A1A",
         "d-60": "#262626",

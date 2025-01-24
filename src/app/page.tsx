@@ -1,17 +1,11 @@
+import AccordionBox from "@/components/AccordionBox/AccordionBox";
 import CircleBox from "@/components/CircleBox/CircleBox";
+import HeaderTitle from "@/components/HeaderTitle/HeaderTitle";
 import IconBgStar from "@/components/IconBgStar/IconBgStar";
-import ImageCustom from "@/components/ImageCustom/ImageCustom";
 import ShapeBox from "@/components/ShapeBox/ShapeBox";
 import SwipperComments from "@/components/SwipperComments/SwipperComments";
-import { Button } from "@heroui/button";
-import Image from "next/image";
-import { FaArrowRight, FaTwitter } from "react-icons/fa6";
-import { TiArrowSortedDown } from "react-icons/ti";
-type HeaderTitleType = {
-  light: string
-  dark: string
-  text: string
-}
+import TwoImageBox from "@/components/TwoImageBox/TwoImageBox";
+import { FaSearch } from "react-icons/fa";
 const dataFirstIcon = [
   {
     image: "/icons/3star.png"
@@ -89,16 +83,44 @@ const dataOurworks = [
     date: "May 2022",
   },
 ]
+const twoImages = [
+  {
+    img1: "/logo.png",
+    img2: "/flower/logo.png",
+    name: "ABC Tech Solutions",
+    text: "A leading technology firm that trusted DigitX to develop their responsive website, showcasing their cutting-edge products and services."
+  }, {
+    img1: "/logo.png",
+    img2: "/flower/logo2.png",
+    name: "GreenEarth Eco Store",
+    text: "DigitX collaborated with GreenEarth Eco Store to create an engaging e-commerce platform that promotes sustainable living and eco-friendly products."
+  }, {
+    img1: "/logo.png",
+    img2: "/flower/logo3.png",
+    name: "HealthTech Innovations",
+    text: "DigitX developed a user-centric mobile app for HealthTech Innovations, helping them revolutionize the way people track and manage their health."
+  }, {
+    img1: "/logo.png",
+    img2: "/flower/logo4.png",
+    name: "GlobalTech Solutions",
+    text: "GlobalTech Solutions partnered with DigitX for a website redesign, resulting in a modern interface that elevates their online presence."
+  },
+  {
+    img1: "/logo.png",
+    img2: "/flower/logo4.png",
+    name: "TechGuru Inc.",
+    text: "DigitX's digital marketing strategies boosted TechGuru Inc.'s online visibility and customer engagement, driving significant business growth."
+  },
+  {
+    img1: "/logo.png",
+    img2: "/flower/logo4.png",
+    name: "ArtScape Gallery",
+    text: "DigitX brought ArtScape Gallery's artistic vision to life with a visually stunning website, showcasing the work of talented artists."
+  },
+]
 export default function Home() {
-  const HeaderTitle = ({ light, dark, text }: HeaderTitleType) => {
-    return <div className="w-2/3 mx-auto text-center mt-16">
-      <span className='text-w-80 text-6xl font-semibold mb-9'>{dark}</span>
-      <h2 className='text-w-100 text-6xl font-semibold inline-block ml-3 mb-6'>{light}</h2>
-      <p className="text-w-50">{text}</p>
-    </div>
-  }
   return (
-    <>
+    <main className="main-class">
       <div className="w-2/3 mx-auto text-center mt-16">
         <h2 className='text-w-100 text-6xl font-semibold mb-3'>Reasons to Choose DigitX for
         </h2>
@@ -112,7 +134,7 @@ export default function Home() {
         <HeaderTitle light={"Services"} dark={"Our"} text={"Our comprehensive range of services includes web design, mobile app development, SEO, social media marketing, and more. Whether you're a startup or an established enterprise, our experts will craft solutions that drive results."} />
         <div className="grid grid-cols-2 gap-10 mt-16">
           {dataCicleBox.map((row, index) => (
-            <CircleBox name={row.name} key={index} text={row.text} image={row.image} />
+            <CircleBox btnMore name={row.name} key={index} text={row.text} image={row.image} />
           ))}
         </div>
       </div >
@@ -128,6 +150,28 @@ export default function Home() {
           <SwipperComments />
         </div>
       </div>
-    </>
+      <div>
+        <HeaderTitle dark="Frequently" light="Asked Questions" text="Got questions? We've got answers. Check out our frequently asked questions section to find valuable insights into our processes, pricing, and more. Transparency is at the core of our client interactions." />
+        <div className="my-14 flex justify-center">
+          <label htmlFor="" className="relative rounded-full bg-d-80 border w-1/4 mx-auto border-d-60">
+            <input type="text" placeholder="Search" className="w-full pl-10 p-4 rounded-full h-full bg-d-80 text-w-90" />
+            <button type="button" className="absolute left-3 text-w-90 top-1/2 transform -translate-y-1/2">
+              <FaSearch />
+            </button>
+          </label>
+        </div>
+        <div>
+          <AccordionBox />
+        </div>
+      </div>
+      <div>
+        <HeaderTitle dark="Our" light="Partners and Clients" text="We are grateful for the opportunity to work with esteemed partners and clients. Our strong relationships are a testament to our dedication and expertise in the digital realm." />
+        <div className="my-14 grid grid-cols-3 gap-10">
+          {twoImages.map((i, index) => (
+            <TwoImageBox img1={i.img1} img2={i.img2} name={i.name} text={i.text} key={index} />
+          ))}
+        </div>
+      </div>
+    </main>
   );
 }

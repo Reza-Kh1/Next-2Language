@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroui/accordion": "^2.2.8",
     "@heroui/button": "^2.2.10",
+    "@heroui/divider": "^2.2.6",
     "@heroui/system": "^2.4.7",
     "@heroui/theme": "^2.4.6",
     "@nextui-org/react": "^2.6.11",
