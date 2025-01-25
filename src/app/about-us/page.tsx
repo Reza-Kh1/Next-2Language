@@ -3,10 +3,11 @@ import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
 import HeaderTitle from '@/components/HeaderTitle/HeaderTitle'
 import IconBgStar from '@/components/IconBgStar/IconBgStar'
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
+import { Button } from '@heroui/button'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { FaCalendar, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
+import { FaArrowRightLong, FaCalendar, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
 const profile = [
   { name: "Co-Founder & CEO", image: "/profile/man2.png", skill: "Co-Founder & CEO" },
   { name: "Head of Design", image: "/profile/woman.png", skill: "Head of Design" },
@@ -128,7 +129,14 @@ export default function page() {
           <span className='text-w-90 block text-center'>See This Pages</span>
           <div className='mt-6 grid grid-cols-2 gap-10'>
             {last.map((row, index) => (
-              <CircleBox btnMore image={row.image} key={index} name={row.name} text={row.text} />
+              <CircleBox image={row.image} key={index}
+                customText={<><Button className='bg-d-100 p-3  text-w-100 items-center border border-d-60 rounded-full'>
+                  View Page
+                  <i className='bg-d-60 py-1 px-3 rounded-full'>
+                    <FaArrowRightLong />
+                  </i>
+                </Button></>}
+                name={row.name} text={row.text} />
             ))}
           </div>
         </div>

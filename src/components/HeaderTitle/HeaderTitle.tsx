@@ -8,8 +8,8 @@ type HeaderTitleType = {
 export default function HeaderTitle({ light, dark, text, firstLight }: HeaderTitleType) {
     return (
         <div className="w-2/3 mx-auto text-center mt-16">
-            {firstLight ?
-                <h2 className='text-w-100 text-4xl font-semibold inline-block ml-3 mb-6'>{dark}{' '}<span className='text-w-80 text-4xl font-semibold mb-9'>{light}</span></h2>
+            {!firstLight ?
+                <h2 className='text-w-80 text-4xl font-semibold inline-block ml-3 mb-6'>{dark}{' '}<span className='text-w-100 text-4xl font-semibold mb-9'>{light}</span></h2>
                 :
                 <h2 className='text-w-100 text-4xl font-semibold inline-block ml-3 mb-6'>{light}{' '}<span className='text-w-80 text-4xl font-semibold mb-9'>{dark}</span></h2>
             }

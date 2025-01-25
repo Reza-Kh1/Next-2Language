@@ -1,9 +1,12 @@
 import CircleBox from '@/components/CircleBox/CircleBox'
 import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
+import { Button } from '@heroui/button'
 import Link from 'next/link'
 import React from 'react'
-import { FaArrowRightLong, FaPhone } from 'react-icons/fa6'
+import { FaArrowRightLong, FaInstagram, FaLinkedin, FaPhone, FaTwitter } from 'react-icons/fa6'
 import { GoMail } from 'react-icons/go'
+import FormContact from './FormContact'
+import ImageCustom from '@/components/ImageCustom/ImageCustom'
 const dataContact = [
   {
     name: "Contact Us Via Email",
@@ -60,9 +63,69 @@ export default function page() {
         <div className='mt-10'>
           <h3 className='text-w-100 font-semibold text-xl block text-center'>Office Locations</h3>
           <p className='text-w-50 block text-center'>Visit our offices to have a face-to-face discussion with our team. We have locations in</p>
-          <div className='border border-d-60 p-10 grid grid-cols-2 gap-10 mt-12'>
-            <CircleBox image='/icons/bag.png' btnMore name='New York City' text='123 Main Street, Suite 456, New York, NY 10001' />
-            <CircleBox image='/icons/bag.png' btnMore name='New York City' text='123 Main Street, Suite 456, New York, NY 10001' />
+          <div className='border border-d-60 p-10 grid grid-cols-2 gap-10 mt-12 rounded-xl'>
+            <CircleBox image='/icons/fast.png'
+              customText={<><Button className='bg-d-100 p-3  text-w-100 items-center border border-d-60 rounded-full'>
+                Get Direction
+                <i className='bg-d-60 py-1 px-3 rounded-full'>
+                  <FaArrowRightLong />
+                </i>
+              </Button></>}
+              name='New York City' text='123 Main Street, Suite 456, New York, NY 10001' />
+            <CircleBox image='/icons/app.png'
+              customText={<><Button className='bg-d-100 p-3  text-w-100 items-center border border-d-60 rounded-full'>
+                Get Direction
+                <i className='bg-d-60 py-1 px-3 rounded-full'>
+                  <FaArrowRightLong />
+                </i>
+              </Button></>}
+              name='New York City' text='123 Main Street, Suite 456, New York, NY 10001' />
+          </div>
+        </div>
+        <div className='mt-10'>
+          <h3 className='text-w-100 font-semibold text-xl block text-center'>Online Inquiry Form</h3>
+          <p className='text-w-50 block text-center'>Please fill in the following details, and we'll get back to you within 24 hours.</p>
+          <FormContact />
+        </div>
+        <div className='grid grid-cols-2 gap-6 mt-12'>
+          <div className='rounded-xl border border-d-60 p-8' style={{ background: 'linear-gradient(194deg, #5552523b, #00000066)' }}>
+            <div className='flex items-center gap-2 text-w-100'>
+              <i className='p-3 rounded-full' style={{ background: 'linear-gradient(334deg, #000000, #272626b5)' }}>
+                <ImageCustom alt={"clock"} src={"/icons/clock.png"} width={30} height={30} />
+              </i>
+              <span className='text-xl'>Our Response</span>
+            </div>
+            <p className='text-w-50 mt-6'>We understand the importance of timely responses, and our team is committed to addressing your inquiries promptly. Whether you have a specific project in mind, need advice on digital strategies, or want to explore partnership opportunities, we are here to assist you at every step.</p>
+          </div>
+          <div className='rounded-xl border border-d-60 p-8' style={{ background: 'linear-gradient(194deg, #5552523b, #00000066)' }}>
+            <div className='flex items-center gap-2 text-w-100'>
+              <i className='p-3 rounded-full' style={{ background: 'linear-gradient(334deg, #000000, #272626b5)' }}>
+                <ImageCustom alt={"clock"} src={"/icons/fast.png"} width={30} height={30} />
+              </i>
+              <span className='text-xl'>Privacy Assurance</span>
+            </div>
+            <p className='text-w-50 mt-6'>At DigitX, we prioritize your privacy and protect your personal information in compliance with data protection regulations. Rest assured that your details will only be used for the purpose of addressing your inquiries and will not be shared with third parties without your consent</p>
+          </div>
+        </div>
+        <div className='mt-16'>
+          <h3 className='text-w-100 font-semibold text-xl block text-center'>Join Us on Social Media</h3>
+          <p className='text-w-50 block text-center mt-2'>Stay updated with our latest projects, industry insights, and company news by following us on social media</p>
+          <div className='rounded-xl border mt-16 border-d-60 p-8 py-20' style={{ background: 'linear-gradient(194deg, #5552523b, #00000066)' }}>
+            <div className='flex items-center justify-center gap-2 text-w-100'>
+              <i className='p-3 rounded-full text-w-100' style={{ background: 'linear-gradient(334deg, #000000, #272626b5)' }}>
+                <FaTwitter className='text-2xl' />
+              </i>
+              <i className='p-3 rounded-full text-w-100' style={{ background: 'linear-gradient(334deg, #000000, #272626b5)' }}>
+                <FaInstagram className='text-2xl' />
+              </i>
+              <i className='p-3 rounded-full text-w-100' style={{ background: 'linear-gradient(334deg, #000000, #272626b5)' }}>
+                <FaLinkedin className='text-2xl' />
+              </i>
+            </div>
+            <div className='w-2/3 mx-auto mt-8'>
+              <span className='text-center block text-w-100 text-2xl font-semibold'>Thank You!</span>
+              <p className='text-w-50 mt-2 text-center'>For considering DigitX for your digital needs. We look forward to connecting with you and being part of your digital success!</p>
+            </div>
           </div>
         </div>
       </main>

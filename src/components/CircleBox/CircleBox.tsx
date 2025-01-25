@@ -1,6 +1,6 @@
 import { Button } from '@heroui/button'
 import Image from 'next/image'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { FaArrowRight, FaCalendar } from 'react-icons/fa'
 import { FaArrowRightLong } from 'react-icons/fa6'
 type CircleBoxType = {
@@ -11,8 +11,9 @@ type CircleBoxType = {
     date?: string
     why?: string
     btnMore?: boolean
+    customText?: ReactNode
 }
-export default function CircleBox({ date, why, price, name, text, image, btnMore }: CircleBoxType) {
+export default function CircleBox({ date, why, price, name, text, image, btnMore, customText }: CircleBoxType) {
     return (
         <section className="p-12 text-center bor-d-60 rounded-xl bg-no-repeat bg-cover" style={{ backgroundImage: `url(/dot-top.png), linear-gradient(177deg, #50505026, #00000000)` }}>
             <div className="bg-contain bg-no-repeat bg-center mt-6 flex justify-center items-center h-40" style={{ backgroundImage: `url(/circle-icon.png)` }}>
@@ -43,6 +44,7 @@ export default function CircleBox({ date, why, price, name, text, image, btnMore
                     </Button>
                 </div> : null
             }
+            {customText ? customText : null}
             {btnMore ?
                 < Button className="p-5 mt-6 py-6 rounded-full border bg-d-80 text-w-80 border-d-60">
                     Learn More
