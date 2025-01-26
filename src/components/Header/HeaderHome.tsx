@@ -2,6 +2,7 @@ import React from 'react'
 import Navlink from '../Navlink/Navlink'
 import Image from 'next/image'
 import { Button } from '@nextui-org/react'
+import ImageCustom from '../ImageCustom/ImageCustom'
 const linkMenu = [
     {
         name: "Home",
@@ -12,6 +13,9 @@ const linkMenu = [
     }, {
         name: "Projects",
         url: "/projects"
+    }, {
+        name: "Scripts Hub",
+        url: "/scripts-hub"
     }, {
         name: "About Us",
         url: "/about-us"
@@ -29,9 +33,17 @@ const linkMenu = [
 export default function HeaderHome() {
     return (
         <header>
-            <div className='flex'>
-                <div className='w-1/2 gap-10 pt-8 pl-28 flex flex-col' style={{ backgroundImage: `url("/dot-home.png")` }}>
-                    <Image alt='logo' src={"/logo.png"} width={60} height={60} />
+
+            <div className='flex pt-12 px-28 flex-wrap bg-no-repeat' style={{ backgroundImage: `url("/dot-home.png")` }}>
+                <div className='flex w-full justify-between items-center'>
+                    <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={60} height={60} />
+                    <div className='flex items-center justify-end gap-2'>
+                        {linkMenu.map((i, index) => (
+                            <Navlink key={index} name={i.name} url={i.url} />
+                        ))}
+                    </div>
+                </div>
+                <div className='w-1/2 gap-10 flex flex-col'>
                     <div className='flex flex-col gap-4 justify-center p-8 pl-0'>
                         <h1 className='text-w-100 text-6xl font-semibold'>
                             Digital Solutions
@@ -53,14 +65,7 @@ export default function HeaderHome() {
                         </div>
                     </div>
                 </div>
-                <div className='w-1/2 gap-10 pt-8 justify-start items-center  pr-28  flex flex-col'>
-                    <div className='flex items-center justify-end gap-2'>
-                        {
-                            linkMenu.map((i, index) => (
-                                <Navlink key={index} name={i.name} url={i.url} />
-                            ))
-                        }
-                    </div>
+                <div className='w-1/2 gap-10 justify-start items-center flex flex-col'>
                     <figure className=' p-8 flex justify-center items-center'>
                         <Image alt='logo' src={"/logoHome.png"} width={430} height={370} />
                     </figure>

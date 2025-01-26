@@ -11,6 +11,9 @@ const linkMenu = [
         name: "Projects",
         url: "/projects"
     }, {
+        name: "Scripts Hub",
+        url: "/scripts-hub"
+    }, {
         name: "About Us",
         url: "/about-us"
     }, {
@@ -27,8 +30,8 @@ const linkMenu = [
 export default function Header() {
     return (
         <header className="flex justify-between py-8 border-b border-d-60 px-28">
-            <ImageCustom figureClass="w-1/2" alt='logo' src={"/logo.png"} width={60} height={60} />
-            <div className='flex items-center w-1/2 justify-end gap-2'>
+            <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={60} height={60} />
+            <div className='flex items-center justify-end gap-2'>
                 {linkMenu.map((i, index) => (
                     <Navlink key={index} name={i.name} url={i.url} />
                 ))}
