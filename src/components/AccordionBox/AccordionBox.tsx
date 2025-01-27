@@ -2,9 +2,7 @@
 import React, { useState } from "react";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { FaPlus } from "react-icons/fa6";
-import { MdClose } from "react-icons/md";
 import { FaMinus } from "react-icons/fa";
-
 const dataAccordion = [
   {
     num: 1,
@@ -49,7 +47,6 @@ const data2 = [
     text: " adipisicing elit. Debitis ad dolor aut, cumque cum quaerat enim! Perferendis, ex? Suscipit culpa repellat totam doloribus",
   },
 ];
-
 const AccordionBox: React.FC = () => {
   const [openItem, setOpenItem] = useState<number | null>(null);
   const [openItem2, setOpenItem2] = useState<number | null>(null);
@@ -60,11 +57,6 @@ const AccordionBox: React.FC = () => {
   const handleToggle2 = (key: number) => {
     setOpenItem2((prevOpenItem) => (prevOpenItem === key ? null : key));
   };
-
-  const getContentStyle = (key: number) =>
-    openItem === key ? "text-green-50" : "text-white";
-  const getContentStyle2 = (key: number) =>
-    openItem2 === key ? "text-green-50" : "text-white";
   return (
     <div className="flex items-start gap-10">
       <Accordion className="flex flex-wrap p-0">
@@ -74,9 +66,7 @@ const AccordionBox: React.FC = () => {
             key={item.num}
             aria-label={item.name}
             textValue={item.name}
-            startContent={
-              <span className={`${getContentStyle(item.num)} text-sm text-left lg:text-base`}>{item.name}</span>
-            }
+            title={<span className="text-white">{item.name}</span>}
             indicator={() =>
               openItem === item.num ? (
                 <i className="p-3 rounded-full bg-d-80 flex items-center justify-center">
@@ -101,9 +91,7 @@ const AccordionBox: React.FC = () => {
             key={item.num}
             aria-label={item.name}
             textValue={item.name}
-            startContent={
-              <span className={`${getContentStyle2(item.num)} text-xs md:text-sm lg:text-base`}>{item.name}</span>
-            }
+            title={<span className="text-white">{item.name}</span>}
             indicator={() =>
               openItem2 === item.num ? (
                 <i className="p-3 rounded-full bg-d-80 flex items-center justify-center">

@@ -102,7 +102,7 @@ const iconData = [
 ]
 export default function Footer() {
   return (
-    <footer className='main-class mt-20'>
+    <footer className='main-class md:mt-12 xl:mt-20'>
       <div className='relative flex justify-center items-center flex-col gap-4 p-32 text-center shadow-lg border border-d-60 rounded-xl'>
         <h1 className='text-w-100 text-4xl font-semibold'>Ready to Transform Your Digital Presence?</h1>
         <p className='text-w-50'>Take the first step towards digital success with DigitX by your side. Our team of experts is eager to craft tailored solutions that drive growth for your business. Whether you need a stunning website, a powerful mobile app, or a data-driven marketing campaign, we've got you covered. Let's embark on this transformative journey together.</p>
@@ -121,18 +121,20 @@ export default function Footer() {
       </div>
       <div className='mt-10 flex justify-between items-center pb-6 border-d-60 border-b'>
         <div>
-          <ImageCustom src={"/logo.png"} alt={"logo"} width={48} height={48} />
+          <ImageCustom src={"/logo.png"} alt={"logo"} width={50} height={50} />
         </div>
-        <div className='flex items-center justify-end gap-5'>
+        <div className='flex flex-col md:flex-row items-center justify-end gap-5'>
           <span className='text-w-100'>Follow Us On Social Media</span>
-          {iconData.map((row, index) => (
-            <Link href={"#"} key={index} className='border border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
-              {row.icon}
-            </Link>
-          ))}
+          <div className='flex gap-5 justify-center'>
+            {iconData.map((row, index) => (
+              <Link href={"#"} key={index} className='border border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
+                {row.icon}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
-      <div className='mt-12 grid grid-cols-6 justify-between gap-5'>
+      <div className='mt-12 grid grid-cols-2 md:grid-cols-6 justify-between gap-5'>
         {menuFooter.map((i, index) => (
           <section key={index}>
             <h3 className='text-w-100 mb-5 font-semibold'>{i.title}</h3>
@@ -144,12 +146,13 @@ export default function Footer() {
           </section>
         ))}
       </div>
-      <div className='flex justify-between items-center py-8 text-w-50 border-t mt-16 border-d-60'>
+      <div className='flex flex-col md:flex-row gap-4 justify-between items-center md:text-xs xl:text-base py-5 md:py-8 text-w-50 border-t mt-5 md:mt-16 border-d-60'>
         <span>@2023 Digitax. All Rights Reserved.</span>
-        <span>Version 1.0</span>
-        <div className='flex gap-3'>
+        <span className='hidden md:block'>Version 1.0</span>
+        <div className='grid grid-cols-2 md:grid-cols-3 text-center gap-3'>
           <span>Privacy Policy</span>
           <span>Terms & Conditions</span>
+          <span className='md:hidden'>Version 1.0</span>
           <span>Cookie Policy</span>
         </div>
       </div>

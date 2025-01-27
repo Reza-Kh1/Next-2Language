@@ -127,12 +127,12 @@ export default function Home() {
         <span className='text-w-80 text-6xl font-semibold block mb-9'>Your Digital Journey</span>
         <p className="text-w-50">Partnering with DigitX offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success.</p>
       </div>
-      <div className="grid grid-cols-3 mt-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 mt-16">
         <IconBgStar data={dataFirstIcon} />
       </div>
       <div>
         <HeaderTitle light={"Services"} dark={"Our"} text={"Our comprehensive range of services includes web design, mobile app development, SEO, social media marketing, and more. Whether you're a startup or an established enterprise, our experts will craft solutions that drive results."} />
-        <div className="grid grid-cols-2 gap-10 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16">
           {dataCicleBox.map((row, index) => (
             <CircleBox btnMore name={row.name} key={index} text={row.text} image={row.image} />
           ))}
@@ -140,7 +140,7 @@ export default function Home() {
       </div >
       <div>
         <HeaderTitle light={"Works"} dark={"Our"} text={"Witness the brilliance of our previous projects. Our portfolio showcases the successful collaborations we've had with diverse clients across various industries. Let our work speak for itself."} />
-        <div className="grid grid-cols-2 gap-10 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12">
           <ShapeBox data={dataOurworks} />
         </div>
       </div>
@@ -155,7 +155,7 @@ export default function Home() {
         <div className="my-14 flex justify-center">
           <label htmlFor="" className="relative rounded-full bg-d-80 border w-1/4 mx-auto border-d-60">
             <input type="text" placeholder="Search" className="w-full pl-10 p-4 rounded-full h-full bg-d-80 text-w-90" />
-            <button type="button" className="absolute left-3 text-w-90 top-1/2 transform -translate-y-1/2">
+            <button title="search button" type="button" className="absolute left-3 text-w-90 top-1/2 transform -translate-y-1/2">
               <FaSearch />
             </button>
           </label>
@@ -166,7 +166,7 @@ export default function Home() {
       </div>
       <div>
         <HeaderTitle dark="Our" light="Partners and Clients" text="We are grateful for the opportunity to work with esteemed partners and clients. Our strong relationships are a testament to our dedication and expertise in the digital realm." />
-        <div className="my-14 grid grid-cols-3 gap-10">
+        <div className="my-14 grid grid-cols-1 md:grid-cols-3 gap-10">
           {twoImages.map((i, index) => (
             <TwoImageBox img1={i.img1} img2={i.img2} name={i.name} text={i.text} key={index} />
           ))}

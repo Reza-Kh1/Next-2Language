@@ -134,3 +134,15 @@ a {
 .ul-border li:first-child {
   border-radius: 8px 0 0 8px;
 }
+
+@media (max-width: 1280px) {
+  .main-class {
+    padding: 0 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-class {
+    padding: 0 1.5rem;
+  }
+}
