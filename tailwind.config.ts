@@ -13,13 +13,13 @@ export default {
     extend: {
       colors: {
         "w-100": "#FFFFFF",
-        "w-90":"#ececec",
+        "w-90": "#ececec",
         "w-80": "#a8a8a8",
         "w-50": "#666666",
         "d-80": "#1A1A1A",
         "d-60": "#262626",
-        "d-50":"#4e4e4e",
-        "d-100":"#0F0F0F",
+        "d-50": "#4e4e4e",
+        "d-100": "#0F0F0F",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
