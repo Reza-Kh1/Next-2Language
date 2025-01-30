@@ -1,12 +1,17 @@
-import CircleBox from '@/app/components/CircleBox/CircleBox'
-import ContainerHeader from '@/app/components/ContainerHeader/ContainerHeader'
-import HeaderTitle from '@/app/components/HeaderTitle/HeaderTitle'
+import CircleBox from '@/components/CircleBox/CircleBox'
+import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
+import HeaderTitle from '@/components/HeaderTitle/HeaderTitle'
 import React from 'react'
 import CategoriesService from './CategoriesService'
-import ImageCustom from '@/app/components/ImageCustom/ImageCustom'
+import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import Link from 'next/link'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { Button } from '@heroui/button'
+import { Metadata } from 'next'
+export const metadata: Metadata = {
+  title: '...',
+  description: '...',
+}
 const dataCicleBox = [
   {
     name: "Web Development",

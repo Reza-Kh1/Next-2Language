@@ -1,5 +1,5 @@
-import ContainerHeader from '@/app/components/ContainerHeader/ContainerHeader'
-import ImageCustom from '@/app/components/ImageCustom/ImageCustom'
+import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
+import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import Link from 'next/link'
 import React from 'react'
 import { CgArrowTopRight } from 'react-icons/cg'

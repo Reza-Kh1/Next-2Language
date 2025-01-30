@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Button } from '@nextui-org/react'
 import ImageCustom from '../ImageCustom/ImageCustom'
 import HeaderMobile from './HeaderMobile'
+import LanguageBtn from './LanguageBtn'
 const linkMenu = [
     {
         name: "Home",
@@ -33,9 +34,12 @@ const linkMenu = [
 ]
 export default function HeaderHome() {
     return (
-        <header className='flex flex-col md:flex-row md:pt-12 px-6 md:px-10 xl:px-28  flex-wrap bg-no-repeat' style={{ backgroundImage: `url("/dot-home.png")` }}>
+        <header className='flex flex-col md:flex-row md:pt-8 px-6 md:px-10 xl:px-20  flex-wrap bg-no-repeat' style={{ backgroundImage: `url("/dot-home.png")` }}>
             <div className='hidden md:flex w-full justify-between items-center px-8'>
-                <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={60} height={60} />
+                <div className="flex gap-3 items-center">
+                    <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={60} height={60} />
+                    <LanguageBtn />
+                </div>
                 <div className='flex items-center justify-end gap-2'>
                     {linkMenu.map((i, index) => (
                         <Navlink key={index} name={i.name} url={i.url} />

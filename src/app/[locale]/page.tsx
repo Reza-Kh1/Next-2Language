@@ -1,10 +1,10 @@
-import AccordionBox from "@/app/components/AccordionBox/AccordionBox";
-import CircleBox from "@/app/components/CircleBox/CircleBox";
-import HeaderTitle from "@/app/components/HeaderTitle/HeaderTitle";
-import IconBgStar from "@/app/components/IconBgStar/IconBgStar";
-import ShapeBox from "@/app/components/ShapeBox/ShapeBox";
-import SwipperComments from "@/app/components/SwipperComments/SwipperComments";
-import TwoImageBox from "@/app/components/TwoImageBox/TwoImageBox";
+import AccordionBox from "@/components/AccordionBox/AccordionBox";
+import CircleBox from "@/components/CircleBox/CircleBox";
+import HeaderTitle from "@/components/HeaderTitle/HeaderTitle";
+import IconBgStar from "@/components/IconBgStar/IconBgStar";
+import ShapeBox from "@/components/ShapeBox/ShapeBox";
+import SwipperComments from "@/components/SwipperComments/SwipperComments";
+import TwoImageBox from "@/components/TwoImageBox/TwoImageBox";
 import { useTranslations } from "next-intl";
 import { FaSearch } from "react-icons/fa";
 const dataFirstIcon = [
@@ -121,11 +121,18 @@ const twoImages = [
 ]
 export default function Home() {
   const t = useTranslations('HomePage');
+  // const user = await fetchUser();
+  // const t = await getTranslations('ProfilePage');
+  // return (
+  //   <PageLayout title={t('title', {username: user.name})}>
+  //     <UserDetails user={user} />
+  //   </PageLayout>
+  // );
   return (
     <main className="main-class">
       <div className="w-full md:w-2/3 mx-auto text-center mt-16">
         <h2 className='text-w-100 text-3xl md:text-6xl font-semibold mb-3'>
-          {t("title-dark")}
+          {t("title-dark",{koal:"ansdb"})}
           <span className='text-w-80 text-3xl md:text-6xl font-semibold block mb-9'>{t("title-light")}</span>
         </h2>
         <p className="text-w-50">{t("title-text")}</p>

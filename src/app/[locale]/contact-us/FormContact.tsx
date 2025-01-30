@@ -1,5 +1,5 @@
 "use client"
-import SelectCustom from '@/app/components/SelectCustom/SelectCustom'
+import SelectCustom from '@/components/SelectCustom/SelectCustom'
 import { Button } from '@heroui/button'
 import React, { useState } from 'react'
 import { FaArrowRightLong } from 'react-icons/fa6'

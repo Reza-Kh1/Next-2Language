@@ -1,12 +1,12 @@
-import CircleBox from '@/app/components/CircleBox/CircleBox'
-import ContainerHeader from '@/app/components/ContainerHeader/ContainerHeader'
+import CircleBox from '@/components/CircleBox/CircleBox'
+import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
 import { Button } from '@heroui/button'
 import Link from 'next/link'
 import React from 'react'
 import { FaArrowRightLong, FaInstagram, FaLinkedin, FaPhone, FaTwitter } from 'react-icons/fa6'
 import { GoMail } from 'react-icons/go'
 import FormContact from './FormContact'
-import ImageCustom from '@/app/components/ImageCustom/ImageCustom'
+import ImageCustom from '@/components/ImageCustom/ImageCustom'
 const dataContact = [
   {
     name: "Contact Us Via Email",

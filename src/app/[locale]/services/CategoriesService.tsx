@@ -1,5 +1,5 @@
 "use client"
-import ImageCustom from '@/app/components/ImageCustom/ImageCustom'
+import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import { Button } from '@heroui/button'
 import Image from 'next/image'
 import React, { useState } from 'react'

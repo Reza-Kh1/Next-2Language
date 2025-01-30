@@ -5,6 +5,7 @@ import HeaderHome from './HeaderHome'
 import Header from './Header'
 
 export default function LayoutHeader() {
+    
     const path = usePathname()    
     return path === "/en" || path === "/fa" ? <HeaderHome /> : <Header />
 }

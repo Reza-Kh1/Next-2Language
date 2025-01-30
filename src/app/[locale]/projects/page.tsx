@@ -1,8 +1,8 @@
-import ContainerHeader from '@/app/components/ContainerHeader/ContainerHeader'
-import HeaderTitle from '@/app/components/HeaderTitle/HeaderTitle'
-import IconBgStar from '@/app/components/IconBgStar/IconBgStar'
-import ImageCustom from '@/app/components/ImageCustom/ImageCustom'
-import ProjectCards from '@/app/components/ProjectCards/ProjectCards'
+import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
+import HeaderTitle from '@/components/HeaderTitle/HeaderTitle'
+import IconBgStar from '@/components/IconBgStar/IconBgStar'
+import ImageCustom from '@/components/ImageCustom/ImageCustom'
+import ProjectCards from '@/components/ProjectCards/ProjectCards'
 import React from 'react'
 const dataFirstIcon = [
   {
