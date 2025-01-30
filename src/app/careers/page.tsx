@@ -118,31 +118,31 @@ export default function page() {
     <>
       <ContainerHeader dark='in the Digital World' light='Unlock Your Potential' text='At DigitX, we believe in fostering a dynamic and collaborative work environment that empowers our team members to excel in their respective fields. Join us to be part of a passionate and innovative team dedicated to crafting exceptional digital solutions for clients across the globe. We are committed to nurturing talent, encouraging professional growth, and creating a workplace where creativity thrives.' />
       <main className="main-class">
-        <HeaderTitle firstLight light='at DigitX' dark='Job Listings' text='Explore our current job listings to discover exciting career opportunities that match your skill set and interests. We offer positions in various digital disciplines, including web design, mobile app development, digital marketing, project management, and more. Each job listing provides comprehensive details about the role, responsibilities, qualifications, and benefits. Whether you are an experienced professional or a fresh graduate, we welcome talent from all backgrounds to join our team.' />
-        <div className='flex flex-col gap-10'>
+        <HeaderTitle firstLight dark='at DigitX' light='Job Listings' text='Explore our current job listings to discover exciting career opportunities that match your skill set and interests. We offer positions in various digital disciplines, including web design, mobile app development, digital marketing, project management, and more. Each job listing provides comprehensive details about the role, responsibilities, qualifications, and benefits. Whether you are an experienced professional or a fresh graduate, we welcome talent from all backgrounds to join our team.' />
+        <div className='flex flex-col gap-10 mt-10'>
           {dataCareers.map((row, index) => (
             <CareersBox address={row.address} bags={row.bags} image={row.image} price={row.price} skill={row.skill} title={row.title} key={index} />
           ))}
         </div>
         <div>
           <HeaderTitle dark='How to' light='Apply' text='We are excited that you are interested in joining our team at DigitX! To apply for any of our job listings, please follow the simple steps below' />
-          <div className='grid grid-cols-3 gap-6 my-12'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 my-12'>
             {cardBox.map((row, index) => (
               <section key={index}>
-                <div className='rounded-t-xl border border-d-60 h-24 flex overflow-hidden'>
+                <div className='rounded-t-xl border border-d-60 h-16 md:h-24 flex overflow-hidden'>
                   <div className='w-1/2 text-w-100 flex justify-start pl-6 items-center bg-black h-full'>
                     Step {row.number}
                   </div>
                   <div className='w-1/2 bg-d-60 h-full'></div>
                 </div>
-                <div className='p-6'>
+                <div className='p-4 md:p-6'>
                   <span className='block mb-2 text-w-100'>{row.name}</span>
-                  <p className='text-w-50'>{row.text}</p>
+                  <p className='text-w-50 text-sm md:text-base'>{row.text}</p>
                 </div>
               </section>
             ))}
           </div>
-          <div className=' my-12 p-6 rounded-xl border border-d-60 flex flex-col'>
+          <div className='my-12 p-6 rounded-xl border border-d-60 flex flex-col'>
             <div className='flex gap-2 items-center'>
               <div className='p-3 rounded-full' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
                 <ImageCustom src={'/icons/3star.png'} figureClass='w-auto' className='rounded-full' width={25} height={25} alt={"mouse"} />
@@ -154,16 +154,23 @@ export default function page() {
           <HeaderTitle dark='Benefits &' light='Perks' text='At DigitX, we believe in prioritizing the well-being and growth of our team members. We offer a comprehensive range of benefits and perks to ensure our employees feel valued, motivated, and supported in both their personal and professional lives. As a member of the DigitX family, you can enjoy the following benefits' />
           <div className='flex flex-col gap-10 mt-12'>
             {textData.map((row, index) => (
-              <section key={index} className='p-8 relative rounded-xl flex items-center gap-10 justify-between' style={{ background: "linear-gradient(181deg, #9595950d, #0000004d)" }}>
+              <section key={index} className='md:p-8 p-4 relative rounded-xl flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-10 justify-between' style={{ background: "linear-gradient(181deg, #9595950d, #0000004d)" }}>
                 <div className='flex gap-2 items-center'>
                   <i className='rounded-full p-3' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
                     <Image src={row.iamge} alt='icon' width={30} height={30} />
                   </i>
                   <span className='text-xl font-semibold text-w-80'>{row.name}</span>
                 </div>
-                <div className='p-6 rounded-xl border border-d-60 flex flex-col gap-2 w-4/6'>
+                <div className='p-4 md:p-6 rounded-xl border border-d-60 flex flex-col gap-2 w-full md:w-4/6'>
                   {row.arry.map((item, number) => (
-                    <p key={number} className='flex text-w-50 gap-1 items-center'><BsDot />{item}</p>
+                    <div key={number} className='flex text-w-50 gap-1 items-center'>
+                      <i className='w-6'>
+                        <BsDot />
+                      </i>
+                      <p>
+                        {item}
+                      </p>
+                    </div>
                   ))}
                 </div>
                 <span className='absolute left-0 top-0 w-full h-full bg-no-repeat bg-contain' style={{ backgroundImage: "url(/dot-top.png)" }}></span>
@@ -172,49 +179,49 @@ export default function page() {
           </div>
         </div>
         <HeaderTitle dark='Employee' light='Referral Program' text='At DigitX, we believe that our employees are our most valuable asset. We recognize the importance of building a strong and talented team, and we encourage our employees to play an active role in shaping our workforce. Introducing our Employee Referral Program – an opportunity for you to help us find exceptional talent and be rewarded for your contributions.' />
-        <div className='py-10 relative mt-12 text-2xl font-semibold rounded-t-xl text-center text-w-100 border border-d-60'>
+        <div className='py-6 md:py-10 relative mt-12 text-2xl font-semibold rounded-t-xl text-center text-w-100 border border-d-60'>
           How It Works
           <span className='absolute left-1/2 w-1/3 h-full top-1/2 transform -translate-x-1/2 -translate-y-1/2' style={{ backgroundImage: 'url(/dot-top.png)' }}></span>
         </div>
-        <div className='rounded-b-xl  border border-d-60 p-10'>
-          <div className='grid grid-cols-2 gap-6'>
+        <div className='rounded-b-xl  border border-d-60 p-4 md:p-10'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
             {cardBox.map((row, index) => {
               if (index + 1 > 4) return
               return <section key={index}>
-                <div className='rounded-t-xl border bg-center bg-no-repeat h-24 flex overflow-hidden border-d-60' style={{ backgroundImage: 'url(/color-range.png)' }}>
+                <div className='rounded-t-xl border bg-center bg-no-repeat h-16 md:h-24 flex overflow-hidden border-d-60' style={{ backgroundImage: 'url(/color-range.png)' }}>
                   <div className='w-1/2 text-w-100 flex justify-start pl-6 items-center h-full'>
                     Step {row.number}
                   </div>
                   <div className='w-1/2  h-full'></div>
                 </div>
-                <div className='p-6'>
+                <div className='p-3 md:p-6'>
                   <span className='block mb-2 text-w-100'>{row.name}</span>
-                  <p className='text-w-50'>{row.text}</p>
+                  <p className='text-w-50 text-sm md:text-base'>{row.text}</p>
                 </div>
               </section>
             })}
-            <section className='col-span-2'>
+            <section className='col-span-1 md:col-span-2'>
               <div className='rounded-t-xl w-full border bg-center bg-no-repeat h-24 flex overflow-hidden border-d-60' style={{ backgroundImage: 'url(/color-range.png)' }}>
                 <div className='w-1/2 text-w-100 flex justify-start pl-6 items-center h-full'>
                   Step 05
                 </div>
                 <div className='w-1/2  h-full'></div>
               </div>
-              <div className='p-6'>
+              <div className='p-3 md:p-6'>
                 <span className='block mb-2 text-w-100'>Successful Hiring</span>
-                <p className='text-w-50'>If the referred candidate successfully joins DigitX and completes the probation period, you will be eligible for the referral reward.</p>
+                <p className='text-w-50 text-sm md:text-base'> If the referred candidate successfully joins DigitX and completes the probation period, you will be eligible for the referral reward.</p>
               </div>
             </section>
           </div>
         </div>
-        <div className='grid grid-cols-2 gap-7 mt-12'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-7 mt-12'>
           <div className='flex flex-col h-full'>
-            <div className='py-10 relative text-2xl font-semibold rounded-t-xl text-center text-w-100 border border-d-60'>
+            <div className='py-6 md:py-10 relative text-2xl font-semibold rounded-t-xl text-center text-w-100 border border-d-60'>
               Rewards and Recognition
               <span className='absolute left-1/2 w-1/3 h-full top-1/2 transform -translate-x-1/2 -translate-y-1/2' style={{ backgroundImage: 'url(/dot-top.png)' }}></span>
             </div>
-            <div className='p-6 rounded-b-xl border border-d-60 h-full'>
-              <div className='rounded-xl flex flex-col gap-5 border h-full border-d-60 pl-0 p-10'>
+            <div className='p-3 md:p-6 rounded-b-xl border border-d-60 h-full'>
+              <div className='rounded-xl flex flex-col gap-5 border h-full border-d-60 p-4 md:p-10 !pl-0'>
                 <div className='flex text-w-50 gap-1 items-start'><i className='w-1/12 flex justify-end'><BsDot /></i>
                   <p className='w-11/12'>
                     For each successful referral, you will be rewarded with a generous cash bonus or an equivalent value in gift cards.
@@ -234,12 +241,12 @@ export default function page() {
             </div>
           </div>
           <div className='flex flex-col h-full'>
-            <div className='py-10 relative text-2xl font-semibold rounded-t-xl text-center text-w-100 border border-d-60'>
+            <div className='py-6 md:py-10 relative text-2xl font-semibold rounded-t-xl text-center text-w-100 border border-d-60'>
               Program Guidelines
               <span className='absolute left-1/2 w-1/3 h-full top-1/2 transform -translate-x-1/2 -translate-y-1/2' style={{ backgroundImage: 'url(/dot-top.png)' }}></span>
             </div>
-            <div className='p-6 rounded-b-xl border border-d-60'>
-              <div className='rounded-xl flex flex-col gap-3 border border-d-60 p-10 pl-0'>
+            <div className='p-3 md:p-6  rounded-b-xl border border-d-60'>
+              <div className='rounded-xl flex flex-col gap-5 border h-full border-d-60 p-4 md:p-10 !pl-0'>
                 <div className='flex text-w-50 gap-1 items-start'><i className='w-1/12 flex justify-end'><BsDot /></i>
                   <p className='w-11/12'>
                     The Employee Referral Program is open to all current DigitX employees.

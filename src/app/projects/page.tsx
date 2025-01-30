@@ -71,35 +71,35 @@ export default function page() {
       <ContainerHeader firstDark dark='Empowering Your' light='Digital Vision' text='At DigitX, we are committed to empowering your digital vision with innovative solutions tailored to your unique needs. Our team of skilled professionals, coupled with cutting-edge technologies, ensures that we deliver exceptional results that elevate your online presence. Whether its captivating web designs, seamless app development, effective digital marketing, or other digital solutions, we are dedicated to bringing your ideas to life and helping your business thrive in the dynamic digital landscape. Partner with us today, and lets unlock endless possibilities for your digital success!' />
       <main className="main-class">
         <HeaderTitle firstLight light=' of Our Projects' dark='Key Features' text='Partnering with DigitX offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success.' />
-        <div className="grid grid-cols-3 mt-16">
+        <div className="grid grid-cols-1 gap-6 md:gap-0 md:grid-cols-3 mt-10 md:mt-16">
           <IconBgStar data={dataFirstIcon} />
         </div>
         <HeaderTitle firstLight dark='Projects' light='Showcase' text='Witness the brilliance of our previous projects. Our portfolio showcases the successful collaborations weve had with diverse clients across various industries. Let our work speak for itself.' />
-        <div className='my-12 flex flex-col gap-10'>
+        <div className='my-8 md:my-12 flex flex-col gap-10'>
           {products.map((row, index) => (
             <ProjectCards image={row.image} name={row.name} text={row.text} key={index} />
           ))}
         </div>
         <HeaderTitle firstLight light='Upcoming' dark='Projects' text='At DigitX, we are continually working on exciting new projects to push the boundaries of digital innovation and deliver exceptional solutions to our valued clients. While we are thrilled to share our upcoming projects with you, we understand the importance of confidentiality and safeguarding sensitive information. Therefore, we will provide a brief overview of the upcoming projects while keeping specific details concealed.' />
-        <div className='grid grid-cols-2 gap-10 mt-12' >
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-10 md:mt-12' >
           {box.map((row, index) => (
-            <div key={index} className='p-8 rounded-xl flex flex-col gap-7' style={{ backgroundImage: "linear-gradient(31deg, rgb(15 15 15 / 0%), rgb(62 62 62 / 7%))" }}>
+            <div key={index} className='md:p-8 p-4 rounded-xl flex flex-col gap-4 md:gap-7' style={{ backgroundImage: "linear-gradient(31deg, rgb(15 15 15 / 0%), rgb(62 62 62 / 7%))" }}>
               <div className='flex items-center gap-3'>
                 <ImageCustom figureClass='w-auto' src={row.image} width={40} height={40} alt={"icon"} />
-                <h3 className='text-w-100 font-semibold text-xl'>{row.name}</h3>
+                <h3 className='text-w-100 font-semibold md:text-xl'>{row.name}</h3>
               </div>
-              <div className='p-6 border border-d-60 rounded-xl justify-between flex items-center'>
-                <div className='flex flex-col gap-1'>
+              <div className='p-4 md:p-6 border border-d-60 rounded-xl justify-between flex flex-col md:flex-row items-center'>
+                <div className='flex flex-col gap-1 items-start md:w-auto w-full'>
                   <span className='text-w-50 text-sm'>Category</span>
                   <span className='text-w-90'>{row.cat}</span>
                 </div>
                 <div className='w-[1px] border border-d-60 h-full bg-d-60'></div>
-                <div className='flex flex-col gap-1'>
+                <div className='flex flex-col gap-1 items-start md:w-auto w-full'>
                   <span className='text-w-50 text-sm'>Expected Completion</span>
                   <span className='text-w-90'>{row.date}</span>
                 </div>
               </div>
-              <div className='p-6 border border-d-60 rounded-xl'>
+              <div className='p-4 md:p-6 border border-d-60 rounded-xl'>
                 <span className='text-w-90'>Project Description</span>
                 <p className='text-w-50 mt-4'>{row.text}</p>
               </div>

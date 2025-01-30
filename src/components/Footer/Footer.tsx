@@ -102,13 +102,13 @@ const iconData = [
 ]
 export default function Footer() {
   return (
-    <footer className='main-class md:mt-12 xl:mt-20'>
-      <div className='relative flex justify-center items-center flex-col gap-4 p-32 text-center shadow-lg border border-d-60 rounded-xl'>
-        <h1 className='text-w-100 text-4xl font-semibold'>Ready to Transform Your Digital Presence?</h1>
-        <p className='text-w-50'>Take the first step towards digital success with DigitX by your side. Our team of experts is eager to craft tailored solutions that drive growth for your business. Whether you need a stunning website, a powerful mobile app, or a data-driven marketing campaign, we've got you covered. Let's embark on this transformative journey together.</p>
-        <p className='text-w-100 mt-10'>Unlock Your Digital Potential Today</p>
+    <footer className='main-class mt-8 md:mt-12 xl:mt-20'>
+      <div className='relative flex justify-center items-center flex-col gap-4 p-6 md:p-32 text-center shadow-lg border border-d-60 rounded-xl'>
+        <h1 className='text-w-100 text-2xl md:text-4xl font-semibold'>Ready to Transform Your Digital Presence?</h1>
+        <p className='text-w-50 text-sm md:text-base'>Take the first step towards digital success with DigitX by your side. Our team of experts is eager to craft tailored solutions that drive growth for your business. Whether you need a stunning website, a powerful mobile app, or a data-driven marketing campaign, we've got you covered. Let's embark on this transformative journey together.</p>
+        <p className='text-w-100 mt-4 md:mt-10'>Unlock Your Digital Potential Today</p>
         <div className='text-w-100 flex items-center gap-4 z-10'>
-          <Button className='rounded-full p-5'>
+          <Button className='rounded-full p-5 !bg-w-90 !text-d-100'>
             Get Started
           </Button>
           <Button className='rounded-full bg-d-80 text-w-100 border border-d-60 p-5'>
@@ -124,10 +124,10 @@ export default function Footer() {
           <ImageCustom src={"/logo.png"} alt={"logo"} width={50} height={50} />
         </div>
         <div className='flex flex-col md:flex-row items-center justify-end gap-5'>
-          <span className='text-w-100'>Follow Us On Social Media</span>
+          <span className='text-w-100 text-sm md:text-base'>Follow Us On Social Media</span>
           <div className='flex gap-5 justify-center'>
             {iconData.map((row, index) => (
-              <Link href={"#"} key={index} className='border border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
+              <Link href={"#"} key={index} className='border text-sm md:text-base border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
                 {row.icon}
               </Link>
             ))}
@@ -140,13 +140,13 @@ export default function Footer() {
             <h3 className='text-w-100 mb-5 font-semibold'>{i.title}</h3>
             <ul className='flex flex-col text-w-80 gap-4'>
               {i.link.map((item, ind) => (
-                <li key={ind}><Link className='hover:text-w-90' href={"#"}>{item?.name}</Link></li>
+                <li key={ind}><Link className='hover:text-w-90 text-sm md:text-base' href={"#"}>{item?.name}</Link></li>
               ))}
             </ul>
           </section>
         ))}
       </div>
-      <div className='flex flex-col md:flex-row gap-4 justify-between items-center md:text-xs xl:text-base py-5 md:py-8 text-w-50 border-t mt-5 md:mt-16 border-d-60'>
+      <div className='flex flex-col md:flex-row gap-4 justify-between items-center text-sm md:text-xs xl:text-base py-5 md:py-8 text-w-50 border-t mt-5 md:mt-16 border-d-60'>
         <span>@2023 Digitax. All Rights Reserved.</span>
         <span className='hidden md:block'>Version 1.0</span>
         <div className='grid grid-cols-2 md:grid-cols-3 text-center gap-3'>

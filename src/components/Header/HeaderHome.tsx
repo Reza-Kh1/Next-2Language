@@ -3,6 +3,7 @@ import Navlink from '../Navlink/Navlink'
 import Image from 'next/image'
 import { Button } from '@nextui-org/react'
 import ImageCustom from '../ImageCustom/ImageCustom'
+import HeaderMobile from './HeaderMobile'
 const linkMenu = [
     {
         name: "Home",
@@ -32,8 +33,8 @@ const linkMenu = [
 ]
 export default function HeaderHome() {
     return (
-        <header className='flex flex-col md:flex-row pt-12 px-6 md:px-10 xl:px-28  flex-wrap bg-no-repeat' style={{ backgroundImage: `url("/dot-home.png")` }}>
-            <div className='hidden md:flex w-full justify-between items-center'>
+        <header className='flex flex-col md:flex-row md:pt-12 px-6 md:px-10 xl:px-28  flex-wrap bg-no-repeat' style={{ backgroundImage: `url("/dot-home.png")` }}>
+            <div className='hidden md:flex w-full justify-between items-center px-8'>
                 <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={60} height={60} />
                 <div className='flex items-center justify-end gap-2'>
                     {linkMenu.map((i, index) => (
@@ -41,6 +42,7 @@ export default function HeaderHome() {
                     ))}
                 </div>
             </div>
+            <HeaderMobile />
             <div className='w-full md:w-1/2 order-2 md:order-1 gap-10 flex flex-col'>
                 <div className='flex flex-col gap-4 justify-center mt-6 md:mt-0 md:p-8 pl-0'>
                     <h1 className='text-w-100 text-3xl text-center md:text-start md:text-6xl font-semibold'>
@@ -52,8 +54,8 @@ export default function HeaderHome() {
                     <p className='text-w-50 text-center md:text-start'>
                         At DigitX, we believe in the transformative power of digital solutions. Our team of experts is dedicated to helping businesses like yours thrive in the fast-paced digital landscape. From captivating web design to data-driven marketing strategies, we are committed to delivering results that exceed expectations.
                     </p>
-                    <span className='text-w-100 mt-10'>Unlock Your Digital Potential Today</span>
-                    <div className='text-w-100 flex items-center gap-4'>
+                    <span className='text-w-100 mt-10 text-center md:text-start'>Unlock Your Digital Potential Today</span>
+                    <div className='text-w-100 flex items-center justify-center md:justify-start gap-4'>
                         <Button className='rounded-full p-5'>
                             Get Started
                         </Button>

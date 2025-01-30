@@ -66,7 +66,7 @@ const AccordionBox: React.FC = () => {
             key={item.num}
             aria-label={item.name}
             textValue={item.name}
-            title={<span className="text-white">{item.name}</span>}
+            title={<span className="text-white text-sm md:text-base">{item.name}</span>}
             indicator={() =>
               openItem === item.num ? (
                 <i className="p-3 rounded-full bg-d-80 flex items-center justify-center">

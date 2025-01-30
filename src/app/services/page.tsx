@@ -53,7 +53,7 @@ export default function page() {
       <ContainerHeader dark='Digital Solutions' light='Our Comprehensive' text='At DigitX, we offer a comprehensive suite of digital solutions designed to propel your business to new heights in the digital realm. With a team of skilled professionals, cutting-edge technologies, and a passion for innovation, we are committed to delivering exceptional results for every project we undertake. From captivating web design that leaves a lasting impression to seamless web development that ensures optimal functionality, we cover every aspect of your online presence.' />
       <main className="main-class">
         <HeaderTitle dark='Our' light='Services' text='At DigitX, we are committed to providing exceptional digital solutions tailored to suit your unique business needs. Our comprehensive service offerings cover a wide spectrum of digital disciplines, including web design, app development, web development, and marketing.' />
-        <div className='grid grid-cols-2 gap-6 mt-16'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 md:mt-16'>
           {dataCicleBox.map((row, index) => (
             <CircleBox price={row.price} image={row.image} name={row.name} key={index} text={row.text} />
           ))}
@@ -61,14 +61,14 @@ export default function page() {
         <HeaderTitle dark='Categories of' light='Services' text='At DigitX, we are committed to providing exceptional digital solutions tailored to suit your unique business needs. Our comprehensive service offerings cover a wide spectrum of digital disciplines, including web design, app development, web development, and marketing.' />
         <CategoriesService />
         <HeaderTitle dark='Stories' light='Success' text='At DigitX, our success is defined by the achievements of our valued clients. We take immense pride in the transformative impact our digital solutions have had on their businesses. Here are some inspiring success stories that highlight the outcomes of our collaborative efforts' />
-        <div className='flex gap-12'>
+        <div className='flex flex-col md:flex-row gap-6 md:gap-12'>
           {datalastBox.map((row, index) => (
-            <div key={index} className='w-1/2 p-8 rounded-xl mt-12' style={{ backgroundImage: "linear-gradient(48deg, #0f0f0f, #fefefe12)" }}>
+            <div key={index} className='w-full md:w-1/2 p-6 md:p-8 rounded-xl mt-6 md:mt-12' style={{ backgroundImage: "linear-gradient(48deg, #0f0f0f, #fefefe12)" }}>
               <div className='flex items-center gap-3 mb-4'>
                 <ImageCustom alt={"logo"} figureClass='w-auto' src={row.iamge} width={50} height={50} />
                 <h3 className='text-w-100 text-xl font-semibold'>{row.name}</h3>
               </div>
-              <div className='flex items-center gap-3 mb-8'>
+              <div className='flex flex-col md:flex-row items-start  md:items-center gap-3 mb-5 md:mb-8'>
                 <div className='p-1 border rounded-full pr-3 border-d-60 text-w-100 flex items-center gap-2'>
                   <ImageCustom figureClass='p-2 bg-d-60 rounded-full' src={"/icons/chart.png"} alt={"iamge"} width={15} height={15} />
                   <span className='text-sm'>
@@ -97,7 +97,7 @@ export default function page() {
             </div>
           ))}
         </div>
-        <div className='w-full flex justify-center mt-12'>
+        <div className='w-full flex justify-center my-6 md:mt-12'>
           <Button className='py-6 pr-2 pl-4 items-center rounded-full text-w-100 bg-d-100 border border-d-60'>
             View All Projects
             <i className='px-4 py-2 rounded-full bg-d-80'>

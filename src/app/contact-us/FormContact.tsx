@@ -24,8 +24,8 @@ export default function FormContact() {
         </label>
     }
     return (
-        <form className='w-full p-10 border border-d-60 rounded-xl mt-12'>
-            <div className='grid grid-cols-3 gap-6'>
+        <form className='w-full p-6 md:p-10 border border-d-60 rounded-xl mt-8 md:mt-12'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                 <InputCustom label='Name' name='name' placeholder='Enter your Name' />
                 <InputCustom label='Email' name='email' placeholder='Enter your Email' />
                 <InputCustom label='Phone Number' name='phone' placeholder='Enter your Phone Number' />
@@ -35,7 +35,7 @@ export default function FormContact() {
             </div>
             <label htmlFor="" className='flex flex-col gap-2 mb-8 mt-6'>
                 <span className='font-semibold text-w-100'>Message</span>
-                <textarea rows={5} placeholder='Enter your Message' title='Name' className='bg-d-100 border border-d-60 rounded-xl p-3 text-w-80' ></textarea>
+                <textarea rows={5} placeholder='Enter your Message' title='Name' className='bg-d-100 border resize-none border-d-60 rounded-xl p-3 text-w-80' ></textarea>
             </label>
             <Button type='submit' className='bg-d-60/60 mx-auto rounded-full text-w-100 px-4 py-3 flex items-center justify-between'>
                 Send your Inquiry

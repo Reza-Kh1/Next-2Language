@@ -93,25 +93,25 @@ export default function page() {
       <ContainerHeader dark='in the Digital Age' light='Elevating Brands' text='Welcome to DigitX, your trusted partner in the dynamic world of digital solutions. We are a passionate team of creative minds, tech enthusiasts, and digital strategists, dedicated to empowering businesses and individuals in the digital realm. Our mission is to deliver exceptional results that drive success, create meaningful connections, and bring your digital vision to life. With a customer-centric approach and a focus on innovation, we are committed to being at the forefront of the ever-evolving digital landscape.' />
       <main className="main-class">
         <HeaderTitle dark='Our' light='Team Members' text='Partnering with DigitX offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success.' />
-        <div className='mt-12 grid grid-cols-4 gap-10'>
+        <div className='mt-12 grid grid-cols-1  md:grid-cols-4 gap-10'>
           {profile.map((row, index) => (
             <ProfileBox image={row.image} name={row.name} key={index} skill={row.skill} />
           ))}
         </div>
         <HeaderTitle dark='Our' light='Achievements' text='Witness the brilliance of our previous projects. Our portfolio showcases the successful collaborations weve had with diverse clients across various industries. Let our work speak for itself.' />
-        <div className='flex mt-12 flex-col gap-16'>
+        <div className='flex mt-12 flex-col gap-8 md:gap-16'>
           {numbers.map((row, index) => (
-            <section className='flex gap-5' key={index}>
-              <span className='text-7xl font-semibold text-w-100 block'>{row.num}</span>
-              <div className='flex flex-col gap-8'>
-                <div className='flex justify-between items-center mt-5'>
-                  <h3 className='text-lg font-semibold text-w-100'>{row.name}</h3>
+            <section className='flex gap-2 md:gap-5' key={index}>
+              <span className='text-4xl md:text-7xl mt-2 md:mt-0 font-semibold text-w-100 block'>{row.num}</span>
+              <div className='flex flex-col gap-4 md:gap-8'>
+                <div className='flex flex-col md:flex-row gap-2 md:gap-0 justify-between items-start md:items-center mt-5'>
+                  <h3 className='md:text-lg font-semibold text-w-100'>{row.name}</h3>
                   <span className='flex gap-2 items-center py-3 px-5 border text-xs rounded-full border-d-60 text-w-80'>
                     <FaCalendar />
                     {row.date}
                   </span>
                 </div>
-                <div className='p-6 rounded-xl border border-d-60'>
+                <div className='p-4 md:p-6 rounded-xl border border-d-60'>
                   <span className='text-w-90'>Description</span>
                   <p className='text-w-50 mt-1'>{row.text}</p>
                 </div>
@@ -120,22 +120,26 @@ export default function page() {
           ))}
         </div>
         <HeaderTitle dark='Our' light='Awards & Recognitions' text='Witness the brilliance of our previous projects. Our portfolio showcases the successful collaborations weve had with diverse clients across various industries. Let our work speak for itself.' />
-        <div className='mt-12 grid grid-cols-2 gap-10'>
+        <div className='mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10'>
           {circleBoxData.map((row, index) => (
             <CircleBox image='/icons/win.png' key={index} date={row.date} why={row.why} name={row.name} text={row.text} />
           ))}
         </div>
-        <div className='mt-24'>
+        <div className='mt-8 md:mt-24'>
           <span className='text-w-90 block text-center'>See This Pages</span>
-          <div className='mt-6 grid grid-cols-2 gap-10'>
+          <div className='mt-6 grid grid-cols-1 md:grid-cols-2 gap-10'>
             {last.map((row, index) => (
               <CircleBox image={row.image} key={index}
-                customText={<><Button className='bg-d-100 p-3  text-w-100 items-center border border-d-60 rounded-full'>
-                  View Page
-                  <i className='bg-d-60 py-1 px-3 rounded-full'>
-                    <FaArrowRightLong />
-                  </i>
-                </Button></>}
+                customText={<>
+                  <div>
+                    <Button className='bg-d-100 p-3 px-5  text-w-100 items-center border border-d-60 rounded-full'>
+                      View Page
+                      <i className='bg-d-60 py-1 px-3 rounded-full'>
+                        <FaArrowRightLong />
+                      </i>
+                    </Button>
+                  </div>
+                </>}
                 name={row.name} text={row.text} />
             ))}
           </div>

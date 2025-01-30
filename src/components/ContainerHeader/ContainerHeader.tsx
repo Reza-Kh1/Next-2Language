@@ -10,16 +10,16 @@ export default function ContainerHeader({ light, dark, text, firstDark, bgMid }:
     return (
         <section className="w-full relative h-96">
             {!light && !dark && !text ? null :
-                <div className="absolute left-48 w-1/2 top-1/2 transform -translate-y-1/2 z-10">
+                <div className="absolute left-1/2 -translate-x-1/2 md:translate-x-0 md:left-48 w-full md:w-1/2 px-6 md:px-0 text-center md:text-start top-1/2 transform -translate-y-1/2 z-10">
                     {firstDark ?
-                        <h1 className="text-5xl text-w-50 mb-4">
+                        <h1 className="text-3xl md:text-5xl  text-w-50 mb-4">
                             {dark} {" "}
                             <span className="text-w-100">
                                 {light}
                             </span>
                         </h1>
                         :
-                        <h1 className="text-5xl text-w-100 mb-4">
+                        <h1 className="text-3xl md:text-5xl  text-w-100 mb-4">
                             {light} {" "}
                             <span className="text-w-50">
                                 {dark}

@@ -12,10 +12,10 @@ export default function IconBgStar({ data }: { data: IconBgStarType[] }) {
     return data.map((row, index) => {
         return index  === 3 ?
             <>
-                <div className='border-t my-5 border-d-60'></div>
-                <div className='border-t my-5 border-d-60'></div>
-                <div className='border-t my-5 border-d-60'></div>
-                <section key={index} className={`${(index + 1 !== 3 && index + 1 !== 6) ? "border-r" : ""} flex w-full flex-col p-8 border-d-60 justify-center items-center gap-5 text-center`}>
+                <div className='hidden md:block border-t my-5 border-d-60'></div>
+                <div className='hidden md:block border-t my-5 border-d-60'></div>
+                <div className='hidden md:block border-t my-5 border-d-60'></div>
+                <section key={index} className={`${(index + 1 !== 3 && index + 1 !== 6) ? "md:border-r" : ""} flex w-full border-b md:border-b-0 pb-5 md:pb-5 flex-col md:p-8 border-d-60 justify-center items-center gap-5 text-center`}>
                     <div className="p-3 relative border-4 overflow-hidden rounded-full border-d-50" style={{ backgroundImage: `url('/dote.png')` }}>
                         <span className="absolute w-full h-full bg-gradient-to-tl to-[#ffffff26] from-black/90 left-0 top-0 "></span>
                         <ImageCustom alt={"lamp"} src={row.image} width={30} height={30} />
@@ -30,7 +30,7 @@ export default function IconBgStar({ data }: { data: IconBgStarType[] }) {
                     </Button>
                 </section>
             </>
-            : <section key={index} className={`${(index + 1 !== 3 && index + 1 !== 6) ? "border-r" : ""} flex w-full flex-col p-8 border-d-60 justify-center items-center gap-5 text-center`}>
+            : <section key={index} className={`${(index + 1 !== 3 && index + 1 !== 6) ? "md:border-r" : ""} flex w-full border-b md:border-b-0 pb-5 md:pb-5 flex-col md:p-8 border-d-60 justify-center items-center gap-5 text-center`}>
                 <div className="p-3 relative border-4 overflow-hidden rounded-full border-d-50" style={{ backgroundImage: `url('/dote.png')` }}>
                     <span className="absolute w-full h-full bg-gradient-to-tl to-[#ffffff26] from-black/90 left-0 top-0 "></span>
                     <ImageCustom alt={"lamp"} src={row.image} width={30} height={30} />
