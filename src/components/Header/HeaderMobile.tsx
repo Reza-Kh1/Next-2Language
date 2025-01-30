@@ -43,7 +43,7 @@ export default function HeaderMobile() {
     }, [path])
     return (
         <div className='md:hidden'>
-            <div className='flex justify-between items-center pb-4 mb-4 border-b border-d-60 px-6 pt-4'>
+            <div className={`flex ${isOpen ? "!z-0" : "!z-[51]"} justify-between items-center pb-4 mb-4 border-b border-d-60 px-6 pt-4`}>
                 <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={40} height={40} />
                 <Button isIconOnly onPress={() => onOpen()} className='bg-d-80 border border-d-60 p-3 rounded-full text-white'>
                     <HiMenuAlt3 size={23} />
@@ -62,6 +62,6 @@ export default function HeaderMobile() {
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
-        </div>
+        </div >
     )
 }
