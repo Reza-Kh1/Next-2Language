@@ -5,6 +5,7 @@ import IconBgStar from "@/components/IconBgStar/IconBgStar";
 import ShapeBox from "@/components/ShapeBox/ShapeBox";
 import SwipperComments from "@/components/SwipperComments/SwipperComments";
 import TwoImageBox from "@/components/TwoImageBox/TwoImageBox";
+import { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { FaSearch } from "react-icons/fa";
 const dataFirstIcon = [
@@ -119,6 +120,10 @@ const twoImages = [
     text: "DigitX brought ArtScape Gallery's artistic vision to life with a visually stunning website, showcasing the work of talented artists."
   },
 ]
+export const metadata: Metadata = {
+  title: 'Home Page | Site',
+  description: 'Services | Site'
+}
 export default function Home() {
   const t = useTranslations('HomePage');
   // const user = await fetchUser();
@@ -132,7 +137,7 @@ export default function Home() {
     <main className="main-class">
       <div className="w-full md:w-2/3 mx-auto text-center mt-16">
         <h2 className='text-w-100 text-3xl md:text-6xl font-semibold mb-3'>
-          {t("title-dark",{koal:"ansdb"})}
+          {t("title-dark", { koal: "ansdb" })}
           <span className='text-w-80 text-3xl md:text-6xl font-semibold block mb-9'>{t("title-light")}</span>
         </h2>
         <p className="text-w-50">{t("title-text")}</p>

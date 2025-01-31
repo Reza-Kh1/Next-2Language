@@ -1,14 +1,20 @@
 import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
+import { Metadata } from 'next'
+import { useLocale } from 'next-intl'
 import Link from 'next/link'
 import React from 'react'
 import { CgArrowTopRight } from 'react-icons/cg'
 import { FaHtml5, FaInstagram, FaReact } from 'react-icons/fa'
-import { FaArrowRightLong, FaFacebook, FaStar, FaTwitter } from 'react-icons/fa6'
+import { FaArrowLeftLong, FaArrowRightLong, FaFacebook, FaStar, FaTwitter } from 'react-icons/fa6'
 import { HiOutlineMenu } from 'react-icons/hi'
 import { SiTailwindcss } from 'react-icons/si'
-
+export const metadata: Metadata = {
+    title: 'Scripts Hub | Site',
+    description: 'Scripts Hub | Site'
+}
 export default function page() {
+    const local = useLocale()
     return (
         <>
             <ContainerHeader firstDark dark='Hi Im Naufaldi,' light='a special human' text='with some ability to love learning and working on teamwork.' />
@@ -41,7 +47,11 @@ export default function page() {
                         <div className='flex justify-between items-center'>
                             <h2 className='text-w-100 font-semibold text-2xl'>What I do</h2>
                             <Link href={"#"} title='more products' aria-labelledby='more' className='p-3 md:hidden rounded-full border border-d-60' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
-                                <FaArrowRightLong className='text-w-100' />
+                                {local === "fa" ?
+                                    <FaArrowLeftLong className="text-w-100" />
+                                    :
+                                    <FaArrowRightLong className="text-w-100" />
+                                }
                             </Link>
                         </div>
                         <p className='text-w-50 mt-3'>Build and maintain websites, frontend dev also have a mentorship called MOFON. My motto is Beauty and function in equal measure as priority.</p>
@@ -64,7 +74,11 @@ export default function page() {
                     </div>
                     <div className='hidden md:flex items-center'>
                         <Link href={"#"} title='more products' aria-labelledby='more' className='p-3 rounded-full border border-d-60' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
-                            <FaArrowRightLong className='text-w-100' />
+                            {local === "fa" ?
+                                <FaArrowLeftLong className="text-w-100" />
+                                :
+                                <FaArrowRightLong className="text-w-100" />
+                            }
                         </Link>
                     </div>
                 </div>
@@ -258,25 +272,25 @@ export default function page() {
                         <ImageCustom alt={"ex"} src={"/biting.png"} figureClass='w-auto text-center flex justify-center' className='w-52 md:w-72' width={300} height={400} />
                     </div>
                     <div className='md:w-2/3 flex flex-col gap-5'>
-                        <div className='relative flex flex-col mt-8 md:ml-16 p-6 pt-10 md:p-8 md:pl-14 md:pt-8 border border-d-60 rounded-xl'>
+                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
                             <span className='text-w-100 mb-6'>Mentorship 1 : 1</span>
                             <p className='text-w-50'>Video Call 1 : 1 dengan mentor untuk berdiskusi, bertanya dan konsultasi seputar mentorship frontend atau hal lainnya</p>
-                            <div className="p-4 left-1/2 -top-8 -translate-x-1/2 md:translate-x-0 absolute md:-left-9 md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50" style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
+                            <div className={`${local === "fa" ? "right-1/2 md:-right-9" : "left-1/2 md:-left-9"} p-4 -top-8 -translate-x-1/2 md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
                                 <ImageCustom alt={"lamp"} src={"/icons/code.png"} width={30} height={30} />
                             </div>
                         </div>
-                        <div className='relative flex flex-col mt-8 md:ml-16 p-6 pt-10 md:p-8 md:pl-14 md:pt-8 border border-d-60 rounded-xl'>
+                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
                             <span className='text-w-100 mb-6'>Terarah</span>
                             <p className='text-w-50'>Video Call 1 : 1 dengan mentor untuk berdiskusi, bertanya dan konsultasi seputar mentorship frontend atau hal lainnya</p>
-                            <div className="p-4 left-1/2 -top-8 -translate-x-1/2 md:translate-x-0 absolute md:-left-9 md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50" style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
-                                <ImageCustom alt={"lamp"} src={"/icons/chart.png"} width={30} height={30} />
+                            <div className={`${local === "fa" ? "right-1/2 md:-right-9" : "left-1/2 md:-left-9"} p-4 -top-8 -translate-x-1/2 md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
+                                <ImageCustom alt={"lamp"} src={"/icons/code.png"} width={30} height={30} />
                             </div>
                         </div>
-                        <div className='relative flex flex-col mt-8 md:ml-16 p-6 pt-10 md:p-8 md:pl-14 md:pt-8 border border-d-60 rounded-xl'>
+                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
                             <span className='text-w-100 mb-6'>Silabus</span>
                             <p className='text-w-50'>Silabus praktis, fundamental yang bisa diimplementasikan berdasarkan studi kasus</p>
-                            <div className="p-4 left-1/2 -top-8 -translate-x-1/2 md:translate-x-0 absolute md:-left-9 md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50" style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
-                                <ImageCustom alt={"lamp"} src={"/icons/mouse.png"} width={30} height={30} />
+                            <div className={`${local === "fa" ? "right-1/2 md:-right-9" : "left-1/2 md:-left-9"} p-4 -top-8 -translate-x-1/2 md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
+                                <ImageCustom alt={"lamp"} src={"/icons/code.png"} width={30} height={30} />
                             </div>
                         </div>
                     </div>

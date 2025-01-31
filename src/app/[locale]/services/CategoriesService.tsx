@@ -1,9 +1,10 @@
 "use client"
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import { Button } from '@heroui/button'
+import { useLocale } from 'next-intl'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import { FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
 const dataBtn = [
     { name: "Web Design", img: "/icons/mouse.png" },
     { name: "Web Development", img: "/icons/code.png" },
@@ -66,7 +67,9 @@ type BoxComponentType = {
         text: string
     }[]
 }
+
 export default function CategoriesService() {
+    const local = useLocale()
     const [category, setCategory] = useState<string>("Web Design")
     const BoxComponent = ({ data }: { data: BoxComponentType }) => {
         return <div className='p-4 md:p-8 border border-d-60 rounded-xl my-4'>
@@ -119,10 +122,14 @@ export default function CategoriesService() {
                     <div className='flex gap-5 relative'>
                         <ImageCustom alt={"services"} src={"/service1.png"} width={500} height={300} />
                         <ImageCustom alt={"services"} src={"/service2.png"} width={500} height={300} />
-                        <Button className='py-6 pr-2 pl-4 absolute bottom-0 items-center left-1/2 transform -translate-x-1/2 rounded-full text-w-100 bg-d-100 border border-d-60'>
+                        <Button className='py-5 px-2 absolute bottom-0 items-center left-1/2 transform -translate-x-1/2 rounded-full text-w-100 bg-d-100 border border-d-60'>
                             View All Projects
                             <i className='px-4 py-2 rounded-full bg-d-80'>
-                                <FaArrowRightLong />
+                                {local === "fa" ?
+                                    <FaArrowLeftLong className="text-w-100" color="#ffff" />
+                                    :
+                                    <FaArrowRightLong className="text-w-100" color="#ffff" />
+                                }
                             </i>
                         </Button>
                     </div>

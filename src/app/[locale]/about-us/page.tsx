@@ -2,6 +2,7 @@ import CircleBox from '@/components/CircleBox/CircleBox'
 import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
 import HeaderTitle from '@/components/HeaderTitle/HeaderTitle'
 import { Button } from '@heroui/button'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -63,8 +64,11 @@ const last = [
     image: "/icons/phone.png"
   },
 ]
+export const metadata: Metadata = {
+  title: 'About Us | Site',
+  description: 'About Us | Site'
+}
 export default function page() {
-
   const ProfileBox = ({ image, name, skill }: { name: string, image: string, skill: string }) => {
     return <div className='p-3 rounded-xl flex flex-col justify-center items-center' style={{ backgroundImage: 'url(/dot-top.png), linear-gradient(3deg, #00000000, #4141411f)' }} >
       <div className='flex justify-center items-center bg-no-repeat bg-center bg-contain h-[120px] w-2/3' style={{ backgroundImage: 'url(circle-icon.png)' }}>

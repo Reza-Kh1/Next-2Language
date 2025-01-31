@@ -5,12 +5,13 @@ import React from 'react'
 import CategoriesService from './CategoriesService'
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import Link from 'next/link'
-import { FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
 import { Button } from '@heroui/button'
 import { Metadata } from 'next'
+import { useLocale } from 'next-intl'
 export const metadata: Metadata = {
-  title: '...',
-  description: '...',
+  title: 'Services | Site',
+  description: 'Services | Site'
 }
 const dataCicleBox = [
   {
@@ -53,6 +54,7 @@ const datalastBox = [
   },
 ]
 export default function page() {
+  const local = useLocale()
   return (
     <>
       <ContainerHeader dark='Digital Solutions' light='Our Comprehensive' text='At DigitX, we offer a comprehensive suite of digital solutions designed to propel your business to new heights in the digital realm. With a team of skilled professionals, cutting-edge technologies, and a passion for innovation, we are committed to delivering exceptional results for every project we undertake. From captivating web design that leaves a lasting impression to seamless web development that ensures optimal functionality, we cover every aspect of your online presence.' />
@@ -74,13 +76,13 @@ export default function page() {
                 <h3 className='text-w-100 text-xl font-semibold'>{row.name}</h3>
               </div>
               <div className='flex flex-col md:flex-row items-start  md:items-center gap-3 mb-5 md:mb-8'>
-                <div className='p-1 border rounded-full pr-3 border-d-60 text-w-100 flex items-center gap-2'>
+                <div className='p-1 border rounded-full px-2 border-d-60 text-w-100 flex items-center gap-2'>
                   <ImageCustom figureClass='p-2 bg-d-60 rounded-full' src={"/icons/chart.png"} alt={"iamge"} width={15} height={15} />
                   <span className='text-sm'>
                     {row.chart}
                   </span>
                 </div>
-                <div className='p-1 border rounded-full pr-3 border-d-60 text-w-100 flex items-center gap-2'>
+                <div className='p-1 border rounded-full px-2 border-d-60 text-w-100 flex items-center gap-2'>
                   <ImageCustom figureClass='p-2 bg-d-60 rounded-full' src={"/icons/bags.png"} alt={"iamge"} width={15} height={15} />
                   <span className='text-sm'>
                     {row.bags}
@@ -106,7 +108,11 @@ export default function page() {
           <Button className='py-6 pr-2 pl-4 items-center rounded-full text-w-100 bg-d-100 border border-d-60'>
             View All Projects
             <i className='px-4 py-2 rounded-full bg-d-80'>
-              <FaArrowRightLong />
+              {local === "fa" ?
+                <FaArrowLeftLong className="text-w-100" color="#ffff" />
+                :
+                <FaArrowRightLong className="text-w-100" color="#ffff" />
+              }
             </i>
           </Button>
         </div>

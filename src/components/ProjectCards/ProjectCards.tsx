@@ -115,19 +115,19 @@ export default function ProjectCards({ image, name, text }: ProjectCardsType) {
                 </div>
             </div>
             <div className='flex-col md:flex-row flex gap-3 items-start  md:items-center'>
-                <div className='p-1 border rounded-full pr-3 border-d-60 text-w-100 flex items-center gap-2'>
+                <div className='p-1 border rounded-full px-2 border-d-60 text-w-100 flex items-center gap-2'>
                     <ImageCustom figureClass='p-2 bg-d-60 rounded-full' src={"/icons/chart.png"} alt={"iamge"} width={15} height={15} />
                     <span className='text-sm'>
                         E-commerce
                     </span>
                 </div>
-                <div className='p-1 border rounded-full pr-3 border-d-60 text-w-100 flex items-center gap-2'>
+                <div className='p-1 border rounded-full px-2 border-d-60 text-w-100 flex items-center gap-2'>
                     <ImageCustom figureClass='p-2 bg-d-60 rounded-full' src={"/icons/bags.png"} alt={"iamge"} width={15} height={15} />
                     <span className='text-sm'>
                         Web Design & Development
                     </span>
                 </div>
-                <div className='p-1 border rounded-full pr-3 border-d-60 text-w-100 flex items-center gap-2'>
+                <div className='p-1 border rounded-full px-2 border-d-60 text-w-100 flex items-center gap-2'>
                     <ImageCustom figureClass='p-2 bg-d-60 rounded-full' src={"/icons/calender.png"} alt={"iamge"} width={15} height={15} />
                     <span className='text-sm'>
                         Web Design & Development

@@ -3,10 +3,12 @@ import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
 import { Button } from '@heroui/button'
 import Link from 'next/link'
 import React from 'react'
-import { FaArrowRightLong, FaInstagram, FaLinkedin, FaPhone, FaTwitter } from 'react-icons/fa6'
+import { FaArrowLeftLong, FaArrowRightLong, FaInstagram, FaLinkedin, FaPhone, FaTwitter } from 'react-icons/fa6'
 import { GoMail } from 'react-icons/go'
 import FormContact from './FormContact'
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
+import { useLocale } from 'next-intl'
+import { Metadata } from 'next'
 const dataContact = [
   {
     name: "Contact Us Via Email",
@@ -24,7 +26,12 @@ const dataContact = [
     ]
   },
 ]
+export const metadata: Metadata = {
+  title: 'Contact Us | Site',
+  description: 'Contact Us | Site'
+}
 export default function page() {
+  const local = useLocale()
   return (
     <>
       <ContainerHeader bgMid='/bigLogo.png' />
@@ -42,13 +49,17 @@ export default function page() {
               <h3 className='text-w-100 font-semibold text-lg text-center my-4 mt-14 md:mt-16'>{row.name}</h3>
               <section className='p-4 md:p-8 rounded-xl border gap-6 border-d-60 grid grid-cols-1 md:grid-cols-3 items-center'>
                 {row.boxs.map((item, num) => (
-                  <div key={num} className={`${row.boxs.length === num + 1 ? "" : "md:border-r border-d-60 md:pr-6"}`}>
+                  <div key={num} className={`${row.boxs.length === num + 1 ? "" : local === "fa" ? "md:border-l border-d-60 md:pl-6" : "md:border-r border-d-60 md:pr-6"}`}>
                     <span className='text-w-50 block mb-3'>{item.title}</span>
-                    <Link href={"#"} className='flex items-center gap-2 w-full rounded-full border border-d-60 p-2 px-2 pl-4'>
+                    <Link href={"#"} className='flex items-center gap-2 w-full rounded-full border border-d-60 p-2 px-3'>
                       {item.image}
                       <p className='w-full text-w-80'>{item.name}</p>
                       <i className='py-2 px-4 rounded-full bg-d-60'>
-                        <FaArrowRightLong className='text-w-80' />
+                        {local === "fa" ?
+                          <FaArrowLeftLong className="text-w-100" />
+                          :
+                          <FaArrowRightLong className="text-w-100" />
+                        }
                       </i>
                     </Link>
                   </div>
@@ -67,7 +78,11 @@ export default function page() {
                   <Button className='bg-d-100 p-3 px-5 text-w-100 items-center border border-d-60 rounded-full'>
                     Get Direction
                     <i className='bg-d-60 py-1 px-3 rounded-full'>
-                      <FaArrowRightLong />
+                      {local === "fa" ?
+                        <FaArrowLeftLong className="text-w-100" />
+                        :
+                        <FaArrowRightLong className="text-w-100" />
+                      }
                     </i>
                   </Button>
                 </div>
@@ -79,7 +94,11 @@ export default function page() {
                   <Button className='bg-d-100 p-3 px-5 text-w-100 items-center border border-d-60 rounded-full'>
                     Get Direction
                     <i className='bg-d-60 py-1 px-3 rounded-full'>
-                      <FaArrowRightLong />
+                      {local === "fa" ?
+                        <FaArrowLeftLong className="text-w-100" />
+                        :
+                        <FaArrowRightLong className="text-w-100" />
+                      }
                     </i>
                   </Button>
                 </div>

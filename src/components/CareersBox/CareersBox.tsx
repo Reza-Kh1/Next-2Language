@@ -2,13 +2,14 @@
 import React, { useState } from 'react'
 import ImageCustom from '../ImageCustom/ImageCustom'
 import Link from 'next/link'
-import { FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
 import { BsDot, BsStars } from 'react-icons/bs'
 import { IoCardOutline } from 'react-icons/io5'
 import { MdOutlineCardTravel } from 'react-icons/md'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import { Button } from '@heroui/button'
 import { HiOutlineChartBar } from 'react-icons/hi'
+import { useLocale } from 'next-intl'
 type CareersBoxtype = {
     title: string
     image: string
@@ -18,6 +19,7 @@ type CareersBoxtype = {
     bags: string
 }
 export default function CareersBox({ title, image, address, skill, price, bags }: CareersBoxtype) {
+    const local = useLocale()
     const [open, setOpen] = useState<boolean>(false)
     return (
         <section className='p-4 md:p-8 rounded-xl border border-d-60'>
@@ -32,7 +34,13 @@ export default function CareersBox({ title, image, address, skill, price, bags }
                     </div>
                 </div>
                 <Link href={"#"} className='text-w-100 py-2 px-3 rounded-full border flex items-center gap-2 border-d-60 text-xs md:text-base'>Apply Now
-                    <i className='bg-d-60 px-3 py-1 rounded-full'><FaArrowRightLong /></i></Link>
+                    <i className='bg-d-60 px-3 py-1 rounded-full'>
+                        {local === "fa" ?
+                            <FaArrowLeftLong className="text-w-100" />
+                            :
+                            <FaArrowRightLong className="text-w-100" />
+                        }
+                    </i></Link>
             </div>
             <div className='flex flex-col gap-3 mt-6'>
                 <div className='flex items-center gap-2 text-w-100 text-sm md:text-base'>

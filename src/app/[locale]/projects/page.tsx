@@ -3,6 +3,7 @@ import HeaderTitle from '@/components/HeaderTitle/HeaderTitle'
 import IconBgStar from '@/components/IconBgStar/IconBgStar'
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import ProjectCards from '@/components/ProjectCards/ProjectCards'
+import { Metadata } from 'next'
 import React from 'react'
 const dataFirstIcon = [
   {
@@ -65,6 +66,10 @@ const box = [
     , text: "Our team is excited to be part of a community-driven initiative to develop an engagement portal that connects residents with local services, events, and resources. The portal aims to foster community interactions, promote inclusivity, and enhance the quality of life for residents. This project represents our dedication to using technology for positive social impact."
   },
 ]
+export const metadata: Metadata = {
+  title: 'Project | Site',
+  description: 'Project | Site'
+}
 export default function page() {
   return (
     <>

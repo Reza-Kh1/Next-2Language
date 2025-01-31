@@ -1,8 +1,9 @@
 "use client"
 import SelectCustom from '@/components/SelectCustom/SelectCustom'
 import { Button } from '@heroui/button'
+import { useLocale } from 'next-intl'
 import React, { useState } from 'react'
-import { FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
 const dataSelect = [
     "service1",
     "service2",
@@ -15,6 +16,7 @@ type InputCustomType = {
     name: string
 }
 export default function FormContact() {
+    const local = useLocale()
     const [text, setText] = useState<string>("")
     const [text1, setText1] = useState<string>("")
     const InputCustom = ({ label, placeholder, name }: InputCustomType) => {
@@ -39,7 +41,11 @@ export default function FormContact() {
             </label>
             <Button type='submit' className='bg-d-60/60 mx-auto rounded-full text-w-100 px-4 py-3 flex items-center justify-between'>
                 Send your Inquiry
-                <FaArrowRightLong />
+                {local === "fa" ?
+                    <FaArrowLeftLong className="text-w-100" />
+                    :
+                    <FaArrowRightLong className="text-w-100" />
+                }
             </Button>
         </form >
     )

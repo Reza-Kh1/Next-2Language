@@ -6,6 +6,8 @@ import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import Image from 'next/image'
 import { MdOutlineAccessTime } from 'react-icons/md'
 import { FaCalendar } from 'react-icons/fa6'
+import { useLocale } from 'next-intl'
+import { Metadata } from 'next'
 const dataBox = [
   {
     title: "The Art of User-Centric Design",
@@ -35,7 +37,12 @@ const dataBox = [
     text: "Simplicity and elegance take center stage in minimalistic design. Learn the principles of minimalism,..."
   },
 ]
+export const metadata: Metadata = {
+  title: 'Blogs | Site',
+  description: 'Blogs | Site'
+}
 export default function page() {
+  const local = useLocale()
   return (
     <>
       <ContainerHeader light='Digital Journey' dark='Empowering Your' text='At DigitX, we are passionate about sharing our expertise, insights, and latest trends in the digital world. Our blog serves as a knowledge hub, offering valuable information and resources for individuals, businesses, and fellow industry enthusiasts. Whether you are a seasoned professional or a curious learner, our blog covers a wide range of topics related to web design, development, digital marketing, technology, and much more. Join us as we embark on a journey to explore the digital landscape and unlock the potential of the online world.' />
@@ -56,15 +63,15 @@ export default function page() {
             <h2 className='text-w-100 font-semibold text-xl mb-6'>Web Design Trends Shaping 2023</h2>
             <p className='text-w-50'>Stay ahead of the design curve with insights into the latest web design trends. From immersive user experiences to bold color choices, explore the design elements that will dominate the digital landscape in 2023 and beyond Read More... <Link href={"#"} className='text-w-100'>Read More...</Link></p>
             <div className='mt-12 grid grid-cols-1 md:grid-cols-4 items-center gap-3 md:gap-7 justify-between p-4 md:p-6 rounded-xl border border-d-60'>
-              <div className='flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 md:border-r border-d-60'>
+              <div className={`flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 border-d-60 ${local === "fa" ? "md:border-l" : "md:border-r"}`}>
                 <span className='text-sm text-w-50'>Read Time</span>
                 <span className='text-w-100'>6 minutes</span>
               </div>
-              <div className='flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 md:border-r border-d-60'>
+              <div className={`flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 border-d-60 ${local === "fa" ? "md:border-l" : "md:border-r"}`}>
                 <span className='text-sm text-w-50'>Author</span>
                 <span className='text-w-100'>Laura Turner</span>
               </div>
-              <div className='flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 md:border-r border-d-60'>
+              <div className={`flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 border-d-60 ${local === "fa" ? "md:border-l" : "md:border-r"}`}>
                 <span className='text-sm text-w-50'>Published Date</span>
                 <span className='text-w-100'>15 / 01 / 2023</span>
               </div>

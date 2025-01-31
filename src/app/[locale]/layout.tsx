@@ -22,7 +22,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} dir={locale === "fa" ? "rtl" : "ltr"}>
-      <body className={`${fontSahel.variable} dark`}>
+      <body className={`${fontSahel.variable} dark ${locale === "fa" ? "rtl" : "ltr"}`}>
         <NextIntlClientProvider messages={messages}>
           <NextUIProvider>
             <LayoutHeader />

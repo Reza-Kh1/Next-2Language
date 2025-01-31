@@ -32,7 +32,7 @@ const linkMenu = [
 export default function Header() {
     return (
         <header>
-            <div className="hidden md:flex justify-between md:py-4 xl:py-8 border-b border-d-60 md:px-10 xl:px-28 ">
+            <div dir="ltr" className="hidden md:flex justify-between md:py-4 xl:py-8 border-b border-d-60 md:px-10 xl:px-28 ">
                 <div className="flex gap-3 items-center">
                     <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={60} height={60} />
                     <LanguageBtn />

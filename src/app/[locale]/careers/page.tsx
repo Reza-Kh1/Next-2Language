@@ -2,6 +2,8 @@ import CareersBox from '@/components/CareersBox/CareersBox'
 import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
 import HeaderTitle from '@/components/HeaderTitle/HeaderTitle'
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
+import { Metadata } from 'next'
+import { useLocale } from 'next-intl'
 import Image from 'next/image'
 import React from 'react'
 import { BsDot } from 'react-icons/bs'
@@ -113,7 +115,12 @@ const textData = [
     arry: ["Celebrate company milestones, birthdays, and other special occasions together."]
   }
 ]
+export const metadata: Metadata = {
+  title: 'Careers | Site',
+  description: 'Careers | Site'
+}
 export default function page() {
+  const local = useLocale()
   return (
     <>
       <ContainerHeader dark='in the Digital World' light='Unlock Your Potential' text='At DigitX, we believe in fostering a dynamic and collaborative work environment that empowers our team members to excel in their respective fields. Join us to be part of a passionate and innovative team dedicated to crafting exceptional digital solutions for clients across the globe. We are committed to nurturing talent, encouraging professional growth, and creating a workplace where creativity thrives.' />
@@ -130,7 +137,7 @@ export default function page() {
             {cardBox.map((row, index) => (
               <section key={index}>
                 <div className='rounded-t-xl border border-d-60 h-16 md:h-24 flex overflow-hidden'>
-                  <div className='w-1/2 text-w-100 flex justify-start pl-6 items-center bg-black h-full'>
+                  <div className={`${local === "fa" ? "pr-6" : "pl-6"} w-1/2 text-w-100 flex justify-start items-center bg-black h-full`}>
                     Step {row.number}
                   </div>
                   <div className='w-1/2 bg-d-60 h-full'></div>
@@ -173,7 +180,7 @@ export default function page() {
                     </div>
                   ))}
                 </div>
-                <span className='absolute left-0 top-0 w-full h-full bg-no-repeat bg-contain' style={{ backgroundImage: "url(/dot-top.png)" }}></span>
+                <span className={`${local === "fa" ? "right-0 bg-right" : "left-0  bg-left"} absolute top-0 w-1/3 h-full bg-no-repeat bg-contain`} style={{ backgroundImage: "url(/dot-top.png)" }}></span>
               </section>
             ))}
           </div>
@@ -189,7 +196,7 @@ export default function page() {
               if (index + 1 > 4) return
               return <section key={index}>
                 <div className='rounded-t-xl border bg-center bg-no-repeat h-16 md:h-24 flex overflow-hidden border-d-60' style={{ backgroundImage: 'url(/color-range.png)' }}>
-                  <div className='w-1/2 text-w-100 flex justify-start pl-6 items-center h-full'>
+                  <div className={`${local === "fa" ? "pr-6 " : "pl-6 "} w-1/2 text-w-100 flex justify-start items-center h-full`}>
                     Step {row.number}
                   </div>
                   <div className='w-1/2  h-full'></div>
@@ -202,7 +209,7 @@ export default function page() {
             })}
             <section className='col-span-1 md:col-span-2'>
               <div className='rounded-t-xl w-full border bg-center bg-no-repeat h-24 flex overflow-hidden border-d-60' style={{ backgroundImage: 'url(/color-range.png)' }}>
-                <div className='w-1/2 text-w-100 flex justify-start pl-6 items-center h-full'>
+                <div className={`${local === "fa" ? "pr-6 " : "pl-6 "} w-1/2 text-w-100 flex justify-start items-center h-full`}>
                   Step 05
                 </div>
                 <div className='w-1/2  h-full'></div>
@@ -221,18 +228,21 @@ export default function page() {
               <span className='absolute left-1/2 w-1/3 h-full top-1/2 transform -translate-x-1/2 -translate-y-1/2' style={{ backgroundImage: 'url(/dot-top.png)' }}></span>
             </div>
             <div className='p-3 md:p-6 rounded-b-xl border border-d-60 h-full'>
-              <div className='rounded-xl flex flex-col gap-5 border h-full border-d-60 p-4 md:p-10 !pl-0'>
-                <div className='flex text-w-50 gap-1 items-start'><i className='w-1/12 flex justify-end'><BsDot /></i>
+              <div className={`${local==="fa"?"!pr-0":"!pl-0"} rounded-xl flex flex-col gap-5 border h-full border-d-60 p-4 md:p-10`}>
+                <div className='flex text-w-50 gap-1 items-start'>
+                  <i className='w-1/12 flex justify-end'><BsDot /></i>
                   <p className='w-11/12'>
                     For each successful referral, you will be rewarded with a generous cash bonus or an equivalent value in gift cards.
                   </p>
                 </div>
-                <div className='flex text-w-50 gap-1 items-start'><i className='w-1/12 flex justify-end'><BsDot /></i>
+                <div className='flex text-w-50 gap-1 items-start'>
+                  <i className='w-1/12 flex justify-end'><BsDot /></i>
                   <p className='w-11/12'>
                     The value of the reward may vary depending on the level and significance of the role being filled.
                   </p>
                 </div>
-                <div className='flex text-w-50 gap-1 items-start'><i className='w-1/12 flex justify-end'><BsDot /></i>
+                <div className='flex text-w-50 gap-1 items-start'>
+                  <i className='w-1/12 flex justify-end'><BsDot /></i>
                   <p className='w-11/12'>
                     You will be publicly recognized and appreciated for your contribution to the Employee Referral Program during company-wide announcements and events.
                   </p>
@@ -246,7 +256,7 @@ export default function page() {
               <span className='absolute left-1/2 w-1/3 h-full top-1/2 transform -translate-x-1/2 -translate-y-1/2' style={{ backgroundImage: 'url(/dot-top.png)' }}></span>
             </div>
             <div className='p-3 md:p-6  rounded-b-xl border border-d-60'>
-              <div className='rounded-xl flex flex-col gap-5 border h-full border-d-60 p-4 md:p-10 !pl-0'>
+              <div className={`${local==="fa"?"!pr-0":"!pl-0"} rounded-xl flex flex-col gap-5 border h-full border-d-60 p-4 md:p-10`}>
                 <div className='flex text-w-50 gap-1 items-start'><i className='w-1/12 flex justify-end'><BsDot /></i>
                   <p className='w-11/12'>
                     The Employee Referral Program is open to all current DigitX employees.
