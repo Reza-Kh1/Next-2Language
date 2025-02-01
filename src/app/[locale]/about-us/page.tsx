@@ -60,7 +60,7 @@ export default function page() {
                   </span>
                 </div>
                 <div className='p-4 md:p-6 rounded-xl border border-d-60'>
-                  <span className='text-w-90'>Description</span>
+                  <span className='text-w-90'>{local === "fa" ? "توضیحات" : "Description"}</span>
                   <p className='text-w-50 mt-1'>{row.text}</p>
                 </div>
               </div>

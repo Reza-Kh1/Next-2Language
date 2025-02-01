@@ -1,7 +1,7 @@
 import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import { Metadata } from 'next'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
 import React from 'react'
 import { CgArrowTopRight } from 'react-icons/cg'
@@ -15,20 +15,21 @@ export const metadata: Metadata = {
 }
 export default function page() {
     const local = useLocale()
+    const t = useTranslations("Scripts")
     return (
         <>
-            <ContainerHeader firstDark dark='Hi Im Naufaldi,' light='a special human' text='with some ability to love learning and working on teamwork.' />
+            <ContainerHeader firstDark dark={t("header.nameDark")} light={t("header.nameLight")} text={t("header.text")} />
             <main className='main-class'>
                 <div className='flex flex-col text-center md:text-start md:flex-row w-full md:w-2/3 gap-3 my-8 md:my-32 mx-auto items-center'>
                     <div className='w-1/5'>
                         <ImageCustom className='rounded-full border border-d-60' src={'/profile/man.png'} alt={"profile"} width={100} height={100} />
                     </div>
                     <div className='flex flex-col gap-3'>
-                        <span className='text-w-100'>Biography</span>
-                        <p className='text-w-50'>Getting Buff +1 for learning, Buff +2 for documentation and more buff on managing team. Exicited on React, UX Research and Agile.</p>
+                        <span className='text-w-100'>{t("prof.name")}</span>
+                        <p className='text-w-50'>{t("prof.text")}</p>
                     </div>
                     <div className='flex flex-col gap-3 w-2/5   '>
-                        <span className='text-w-80'>Lets connect</span>
+                        <span className='text-w-80'>{local === "fa" ? "راه ارتباطی" : "Lets connect"}</span>
                         <div className='flex gap-2 items-center text-w-80'>
                             <i className='p-3 rounded-full border border-d-60' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
                                 <FaInstagram />
@@ -45,7 +46,7 @@ export default function page() {
                 <div className='flex flex-col md:flex-row gap-14 md:gap-10 my-16 md:my-24'>
                     <div>
                         <div className='flex justify-between items-center'>
-                            <h2 className='text-w-100 font-semibold text-2xl'>What I do</h2>
+                            <h2 className='text-w-100 font-semibold text-2xl'>{t("section-1.name")}</h2>
                             <Link href={"#"} title='more products' aria-labelledby='more' className='p-3 md:hidden rounded-full border border-d-60' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
                                 {local === "fa" ?
                                     <FaArrowLeftLong className="text-w-100" />
@@ -54,24 +55,18 @@ export default function page() {
                                 }
                             </Link>
                         </div>
-                        <p className='text-w-50 mt-3'>Build and maintain websites, frontend dev also have a mentorship called MOFON. My motto is Beauty and function in equal measure as priority.</p>
+                        <p className='text-w-50 mt-3'>{t("section-1.text")}</p>
                     </div>
-                    <div className='text-center relative pt-12 items-center p-6 justify-center rounded-xl border-d-60 border' style={{ backgroundImage: 'linear-gradient(204deg, #ffffff0d, #0202028f)' }}>
-                        <div className="p-3 absolute left-1/2 -top-8 transform -translate-x-1/2 border-4 overflow-hidden rounded-full border-d-50" style={{ backgroundImage: `url('/dote.png')` }}>
-                            <span className="absolute w-full h-full bg-gradient-to-tl to-[#ffffff26] from-black/90 left-0 top-0 "></span>
-                            <ImageCustom alt={"lamp"} src={"/icons/app.png"} width={30} height={30} />
+                    {t.raw("section-1.array").map((row: any, index: number) => (
+                        <div key={index} className='text-center relative pt-12 items-center p-6 justify-center rounded-xl border-d-60 border' style={{ backgroundImage: 'linear-gradient(204deg, #ffffff0d, #0202028f)' }}>
+                            <div className="p-3 absolute left-1/2 -top-8 transform -translate-x-1/2 border-4 overflow-hidden rounded-full border-d-50" style={{ backgroundImage: `url('/dote.png')` }}>
+                                <span className="absolute w-full h-full bg-gradient-to-tl to-[#ffffff26] from-black/90 left-0 top-0 "></span>
+                                <ImageCustom alt={"lamp"} src={row.image} width={30} height={30} />
+                            </div>
+                            <span className='text-w-100'>{row.name}</span>
+                            <p className='text-w-50'>{row.text}</p>
                         </div>
-                        <span className='text-w-100'>Web Development</span>
-                        <p className='text-w-50'>You will receive a customized plan for your fitness journey, and lots of support.</p>
-                    </div>
-                    <div className='text-center relative pt-12 p-6 justify-center rounded-xl border-d-60 border' style={{ backgroundImage: 'linear-gradient(204deg, #ffffff0d, #0202028f)' }}>
-                        <div className="p-3 absolute left-1/2 -top-8 transform -translate-x-1/2 border-4 overflow-hidden rounded-full border-d-50" style={{ backgroundImage: `url('/dote.png')` }}>
-                            <span className="absolute w-full h-full bg-gradient-to-tl to-[#ffffff26] from-black/90 left-0 top-0 "></span>
-                            <ImageCustom alt={"lamp"} src={"/icons/fast.png"} width={30} height={30} />
-                        </div>
-                        <span className='text-w-100'>Web Development</span>
-                        <p className='text-w-50'>You will receive a customized plan for your fitness journey, and lots of support.</p>
-                    </div>
+                    ))}
                     <div className='hidden md:flex items-center'>
                         <Link href={"#"} title='more products' aria-labelledby='more' className='p-3 rounded-full border border-d-60' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
                             {local === "fa" ?
@@ -84,36 +79,25 @@ export default function page() {
                 </div>
                 <div className='flex flex-col my-16 gap-6 md:gap-10'>
                     <h2 className='text-w-100 text-2xl md:text-4xl font-semibold'>Featured Project</h2>
-                    <div className='flex flex-col md:flex-row items-center gap-7'>
-                        <div className='relative md:w-1/2'>
-                            <ImageCustom alt={"product"} src={"/work1.png"} width={700} height={530} />
-                            <Link href={"#"} className='rounded-md bg-d-100 p-2 text-w-100 border border-d-60 absolute right-3 top-3' aria-label='icone more' title='icone more'>
-                                <CgArrowTopRight />
-                            </Link>
+                    {t.raw("section-1.array").map((row: any, index: number) => (
+                        <div key={index} className='flex flex-col md:flex-row items-center gap-7'>
+                            <div className='relative md:w-1/2'>
+                                <ImageCustom alt={"product"} src={"/work1.png"} width={700} height={530} />
+                                <Link href={"#"} className='rounded-md bg-d-100 p-2 text-w-100 border border-d-60 absolute right-3 top-3' aria-label='icone more' title='icone more'>
+                                    <CgArrowTopRight />
+                                </Link>
+                            </div>
+                            <div className='flex flex-col gap-2 md:gap-8 md:w-1/2'>
+                                <span className='text-w-80'>{row.name}</span>
+                                <span className='text-w-100 text-xl md:text-3xl font-semibold'>{row.title}</span>
+                                <p className='text-w-50 text-sm md:text-base'>{row.text}</p>
+                            </div>
                         </div>
-                        <div className='flex flex-col gap-2 md:gap-8 md:w-1/2'>
-                            <span className='text-w-80'>Web Development</span>
-                            <span className='text-w-100 text-xl md:text-3xl font-semibold'>Bolder Landingpage</span>
-                            <p className='text-w-50 text-sm md:text-base'>Serrow restructured and designed core pages, creating interactive elements that put users in control and allowed them to discover the information needed to make a decision.</p>
-                        </div>
-                    </div>
-                    <div className='flex flex-col md:flex-row items-center gap-7'>
-                        <div className='relative md:w-1/2'>
-                            <ImageCustom alt={"product"} src={"/work2.png"} width={700} height={530} />
-                            <Link href={"#"} className='rounded-md bg-d-100 p-2 text-w-100 border border-d-60 absolute right-3 top-3' aria-label='icone more' title='icone more'>
-                                <CgArrowTopRight />
-                            </Link>
-                        </div>
-                        <div className='flex flex-col gap-2 md:gap-8 md:w-1/2'>
-                            <span className='text-w-80'>Web Development</span>
-                            <span className='text-w-100 text-xl md:text-3xl font-semibold'>Kerja Mantul Education Management</span>
-                            <p className='text-w-50 text-sm md:text-base'>Serrow restructured and designed core pages, creating interactive elements that put users in control and allowed them to discover the information needed to make a decision.</p>
-                        </div>
-                    </div>
+                    ))}
                     <div className='flex justify-start'>
                         <Link href={"#"} className='text-w-100 flex items-center gap-4 text-xs md:text-base p-2 md:p-3 px-4 md:px-6 border border-d-60 rounded-full '>
                             <HiOutlineMenu />
-                            See More
+                            {local === "fa" ? "نمایش بیشتر" : "See More"}
                         </Link>
                     </div>
                 </div>

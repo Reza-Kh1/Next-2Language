@@ -7,6 +7,7 @@ import Navlink from '../Navlink/Navlink';
 import { Button } from '@heroui/button';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import LanguageBtn from './LanguageBtn';
 export default function HeaderMobile() {
     const t = useTranslations("Menu")
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
@@ -19,7 +20,10 @@ export default function HeaderMobile() {
     return (
         <div className='md:hidden' dir='ltr'>
             <div className={`flex ${isOpen ? "!z-0" : "!z-[51]"} justify-between items-center pb-4 mb-4 border-b border-d-60 px-6 pt-4`}>
-                <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={40} height={40} />
+                <div className='flex justify-between gap-1 items-center'>
+                    <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={40} height={40} />
+                    <LanguageBtn />
+                </div>
                 <Button isIconOnly onPress={() => onOpen()} className='bg-d-80 border border-d-60 p-3 rounded-full text-white'>
                     <HiMenuAlt3 size={23} />
                 </Button>
