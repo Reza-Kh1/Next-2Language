@@ -1,5 +1,21 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Start
+
+To run the first project:
+
+In the project folder, enter the command ` npm install ` in the terminal.
+
+After the libraries are installed, enter the command ` npm run dev `.
+
+In your browser, enter the address http://localhost:3000/en.
+
+To build the project:
+
+Enter the command ` npm run build `.
+
+Then enter the command ` npm run start `.
+
 ## Description
 
 This project is developed with Next.js 15.1.6 using TypeScript. In this project, we use the following libraries:
