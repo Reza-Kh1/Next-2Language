@@ -1,4 +1,5 @@
 import { Button } from '@heroui/button'
+import { useLocale } from 'next-intl'
 import React, { useState } from 'react'
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6'
 type SelectCustomtType = {
@@ -10,12 +11,13 @@ type SelectCustomtType = {
 }
 export default function SelectCustom({ label, placeholder, arry, setText, text }: SelectCustomtType) {
     const [openSelect, setOpenSelect] = useState<boolean>()
+    const local = useLocale()
     return (
         <label htmlFor="" className='flex flex-col gap-2 relative'>
-            <span className='font-semibold text-w-100'>Select Service</span>
+            <span className='font-semibold text-w-100'>{local === "fa" ? 'سرویس' : 'Select Service'}</span>
             <Button onPress={() => setOpenSelect(prev => !prev)} className='w-full justify-between rounded-full text-w-80 p-5 py-[24px] border border-d-60 bg-d-100'>
                 <span>
-                    {text ? text : "Select your Service"}
+                    {text ? text : local === "fa" ? 'سرویس خود را انتخاب کنید' : 'Select your Service'}
                 </span>
                 <i>
                     {openSelect ? <FaAngleUp /> : <FaAngleDown />}

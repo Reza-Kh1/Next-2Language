@@ -36,11 +36,12 @@ export default function CircleBox({ date, why, price, name, text, image, btnMore
             {price ?
                 < div className='flex w-full justify-between items-center'>
                     <div className='text-w-50 text-start md:text-center text-sm flex flex-col md:flex-row md:text-base'>
-                        Starts at Price:
+                        {local === "fa" ? "شروع قیمت از" : "Starts at Price"}:
                         <span className='text-w-90 font-medium'>${price.toLocaleString()}</span>
                     </div>
                     <Button className='py-4 md:py-5 px-3 text-xs md:text-base rounded-full text-w-100 bg-d-100 border border-d-60'>
-                        Book a Call
+
+                        {local === "fa" ? "تماس بگیرید" : "Book a Call"}:
                         <i className='px-3 py-1 rounded-full bg-d-80'>
                             {local === "fa" ?
                                 <FaArrowLeftLong className="text-w-100" color="#ffff" />
@@ -55,7 +56,7 @@ export default function CircleBox({ date, why, price, name, text, image, btnMore
             {btnMore ?
                 <div>
                     < Button className="p-3 md:p-5 mt-3 md:mt-6 py-4 !text-xs md:!text-base md:py-6 rounded-full border bg-d-80 text-w-80 border-d-60">
-                        Learn More
+                        {local === "fa" ? "نمایش بیشتر" : "Learn More"}
                         {local === "fa" ?
                             <FaArrowLeftLong className="text-w-100" color="#ffff" />
                             :
@@ -66,7 +67,7 @@ export default function CircleBox({ date, why, price, name, text, image, btnMore
             }
             {why ?
                 <div className='w-full p-4 md:p-8 border rounded-xl flex flex-col gap-3 justify-center items-center border-d-60'>
-                    <span className='text-w-90'>why</span>
+                    <span className='text-w-90'>{local === "fa" ? "چرا" : "why"}</span>
                     <p className='text-w-50 text-sm md:text-base'>{why}</p>
                 </div>
                 : null}

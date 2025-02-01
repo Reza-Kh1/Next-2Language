@@ -5,34 +5,9 @@ import { Button } from '@nextui-org/react'
 import ImageCustom from '../ImageCustom/ImageCustom'
 import HeaderMobile from './HeaderMobile'
 import LanguageBtn from './LanguageBtn'
-const linkMenu = [
-    {
-        name: "Home",
-        url: "/"
-    }, {
-        name: "Services",
-        url: "/services"
-    }, {
-        name: "Projects",
-        url: "/projects"
-    }, {
-        name: "Scripts Hub",
-        url: "/scripts-hub"
-    }, {
-        name: "About Us",
-        url: "/about-us"
-    }, {
-        name: "Contact Us",
-        url: "/contact-us"
-    }, {
-        name: "Careers",
-        url: "/careers"
-    }, {
-        name: "Blogs",
-        url: "/blogs"
-    },
-]
+import { useTranslations } from 'next-intl'
 export default function HeaderHome() {
+    const t = useTranslations('Menu');
     return (
         <header className='flex flex-col md:flex-row md:pt-8 px-6 md:px-10 xl:px-20  flex-wrap bg-no-repeat' style={{ backgroundImage: `url("/dot-home.png")` }}>
             <div dir='ltr' className='hidden md:flex w-full justify-between items-center px-8'>
@@ -41,7 +16,7 @@ export default function HeaderHome() {
                     <LanguageBtn />
                 </div>
                 <div className='flex items-center justify-end gap-2'>
-                    {linkMenu.map((i, index) => (
+                    {t.raw("menuArray").map((i: any, index: number) => (
                         <Navlink key={index} name={i.name} url={i.url} />
                     ))}
                 </div>
@@ -50,21 +25,21 @@ export default function HeaderHome() {
             <div className='w-full md:w-1/2 order-2 md:order-1 gap-10 flex flex-col'>
                 <div className='flex flex-col gap-4 justify-center mt-6 md:mt-0 md:p-8 pl-0'>
                     <h1 className='text-w-100 text-3xl text-center md:text-start md:text-6xl font-semibold'>
-                        Digital Solutions
+                        {t("home.nameLight")}{" "}
                         <span className='text-w-80'>
-                            That Drive Success
+                            {t("home.nameDark")}
                         </span>
                     </h1>
                     <p className='text-w-50 text-center md:text-start'>
-                        At DigitX, we believe in the transformative power of digital solutions. Our team of experts is dedicated to helping businesses like yours thrive in the fast-paced digital landscape. From captivating web design to data-driven marketing strategies, we are committed to delivering results that exceed expectations.
+                        {t("home.text")}
                     </p>
-                    <span className='text-w-100 mt-10 text-center md:text-start'>Unlock Your Digital Potential Today</span>
+                    <span className='text-w-100 mt-10 text-center md:text-start'>{t("home.span")}</span>
                     <div className='text-w-100 flex items-center justify-center md:justify-start gap-4'>
                         <Button className='rounded-full p-5'>
-                            Get Started
+                            {t("home.btnLight")}
                         </Button>
                         <Button className='rounded-full bg-d-80 text-w-100 border border-d-60 p-5'>
-                            Free Consultation
+                            {t("home.btnDark")}
                         </Button>
                     </div>
                 </div>

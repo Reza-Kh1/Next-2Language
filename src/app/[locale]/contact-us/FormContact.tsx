@@ -28,19 +28,19 @@ export default function FormContact() {
     return (
         <form className='w-full p-6 md:p-10 border border-d-60 rounded-xl mt-8 md:mt-12'>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-                <InputCustom label='Name' name='name' placeholder='Enter your Name' />
-                <InputCustom label='Email' name='email' placeholder='Enter your Email' />
-                <InputCustom label='Phone Number' name='phone' placeholder='Enter your Phone Number' />
-                <SelectCustom arry={dataSelect} label='Select Service' placeholder='Select your Service' setText={setText} text={text} />
-                <InputCustom label='Company / Organization Name' name='desc' placeholder='Enter Name' />
-                <SelectCustom arry={dataSelect} label='Select Service' placeholder='Select your Service' setText={setText1} text={text1} />
+                <InputCustom label={local === "fa" ? 'نام' : 'Name'} name='name' placeholder={local === "fa" ? 'نام وارد کنید' : 'Enter your Name'} />
+                <InputCustom label={local === "fa" ? 'ایمیل' : 'Email'} name='email' placeholder={local === "fa" ? 'ایمیل وارد کنید' : 'Enter your Email'} />
+                <InputCustom label={local === "fa" ? 'شماره تلفن' : 'Phone Number'} name='phone' placeholder={local === "fa" ? 'شماره تلفن وارد کنید' : 'Enter your Phone Number'} />
+                <SelectCustom arry={dataSelect} label={local === "fa" ? 'سرویس' : 'Select Service'} placeholder={local === "fa" ? 'سرویس خود را انتخاب کنید' : 'Select your Service'} setText={setText} text={text} />
+                <InputCustom label={local === "fa" ? 'شرکت' : 'Company / Organization Name'} name='desc' placeholder='Enter Name' />
+                <SelectCustom arry={dataSelect} label={local === "fa" ? 'سرویس' : 'Select Service'} placeholder={local === "fa" ? 'سرویس خود را انتخاب کنید' : 'Select your Service'} setText={setText1} text={text1} />
             </div>
             <label htmlFor="" className='flex flex-col gap-2 mb-8 mt-6'>
-                <span className='font-semibold text-w-100'>Message</span>
-                <textarea rows={5} placeholder='Enter your Message' title='Name' className='bg-d-100 border resize-none border-d-60 rounded-xl p-3 text-w-80' ></textarea>
+                <span className='font-semibold text-w-100'>{local === "fa" ? 'پیام' : 'Message'}</span>
+                <textarea rows={5} placeholder={local === "fa" ? 'متن پیام خود را وارد کنید' : 'Enter your Message'} title='Name' className='bg-d-100 border resize-none border-d-60 rounded-xl p-3 text-w-80' ></textarea>
             </label>
             <Button type='submit' className='bg-d-60/60 mx-auto rounded-full text-w-100 px-4 py-3 flex items-center justify-between'>
-                Send your Inquiry
+                {local === "fa" ? 'درخواست خود را ارسال کنید' : 'Send your Inquiry'}
                 {local === "fa" ?
                     <FaArrowLeftLong className="text-w-100" />
                     :

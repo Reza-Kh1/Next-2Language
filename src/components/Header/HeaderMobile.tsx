@@ -6,34 +6,9 @@ import { HiMenuAlt3 } from 'react-icons/hi';
 import Navlink from '../Navlink/Navlink';
 import { Button } from '@heroui/button';
 import { usePathname } from 'next/navigation';
-const linkMenu = [
-    {
-        name: "Home",
-        url: "/"
-    }, {
-        name: "Services",
-        url: "/services"
-    }, {
-        name: "Projects",
-        url: "/projects"
-    }, {
-        name: "Scripts Hub",
-        url: "/scripts-hub"
-    }, {
-        name: "About Us",
-        url: "/about-us"
-    }, {
-        name: "Contact Us",
-        url: "/contact-us"
-    }, {
-        name: "Careers",
-        url: "/careers"
-    }, {
-        name: "Blogs",
-        url: "/blogs"
-    },
-]
+import { useTranslations } from 'next-intl';
 export default function HeaderMobile() {
+    const t = useTranslations("Menu")
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const path = usePathname()
     useEffect(() => {
@@ -55,7 +30,7 @@ export default function HeaderMobile() {
                     </DrawerHeader>
                     <DrawerBody>
                         <div className='flex items-center flex-col justify-end gap-2'>
-                            {linkMenu.map((i, index) => (
+                            {t.raw("menuArray").map((i: any, index: number) => (
                                 <Navlink key={index} name={i.name} url={i.url} />
                             ))}
                         </div>

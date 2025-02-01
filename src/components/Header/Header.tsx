@@ -1,35 +1,10 @@
+import { useTranslations } from "next-intl";
 import ImageCustom from "../ImageCustom/ImageCustom";
 import Navlink from "../Navlink/Navlink";
 import HeaderMobile from './HeaderMobile'
 import LanguageBtn from "./LanguageBtn";
-const linkMenu = [
-    {
-        name: "Home",
-        url: "/"
-    }, {
-        name: "Services",
-        url: "/services"
-    }, {
-        name: "Projects",
-        url: "/projects"
-    }, {
-        name: "Scripts Hub",
-        url: "/scripts-hub"
-    }, {
-        name: "About Us",
-        url: "/about-us"
-    }, {
-        name: "Contact Us",
-        url: "/contact-us"
-    }, {
-        name: "Careers",
-        url: "/careers"
-    }, {
-        name: "Blogs",
-        url: "/blogs"
-    },
-]
 export default function Header() {
+    const t = useTranslations("Menu")
     return (
         <header>
             <div dir="ltr" className="hidden md:flex justify-between md:py-4 xl:py-8 border-b border-d-60 md:px-10 xl:px-28 ">
@@ -38,7 +13,7 @@ export default function Header() {
                     <LanguageBtn />
                 </div>
                 <div className='flex items-center justify-end gap-2'>
-                    {linkMenu.map((i, index) => (
+                    {t.raw("menuArray").map((i: any, index: number) => (
                         <Navlink key={index} name={i.name} url={i.url} />
                     ))}
                 </div>
