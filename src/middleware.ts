@@ -7,15 +7,15 @@ export function middleware(req: NextRequest) {
     if (req.nextUrl.pathname.includes("admin")) {
         const protectedPaths = /^\/(fa|en)?\/?admin(\/|$)/;
         const isProtected = protectedPaths.test(req.nextUrl.pathname);
-        if (req.nextUrl.pathname === "/admin/login") {
-            return NextResponse.next();
-        }
-        if (isProtected) {
-            const token = req.cookies.get("token");
-            if (!token) {
-                return NextResponse.redirect(new URL("/admin/login", req.url));
-            }
-        }
+        // if (req.nextUrl.pathname === "/admin/login") {
+        //     return NextResponse.next();
+        // }
+        // if (isProtected) {
+        //     const token = req.cookies.get("token");
+        //     if (!token) {
+        //         return NextResponse.redirect(new URL("/admin/login", req.url));
+        //     }
+        // }
     } else {
         if (req.nextUrl.pathname === "/") {
             return NextResponse.redirect(new URL("/en", req.url));

@@ -46,7 +46,7 @@ export default function HeaderHome() {
             </div>
             <div className='w-full md:w-1/2 order-1 md:order-2 gap-10 justify-center items-center flex flex-col'>
                 <figure className='p-8 flex justify-center items-center'>
-                    <Image alt='logo' src={"/admin-image/login-admin.jpg"} width={430} height={370} />
+                    <Image alt='logo' src={"/big-logo.png"} width={430} height={370} />
                 </figure>
             </div>
         </header>
