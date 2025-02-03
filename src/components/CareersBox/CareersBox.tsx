@@ -60,7 +60,7 @@ export default function CareersBox({ title, image, address, skill, price, bags }
                 <>
                     <div className='p-4 md:p-8 mt-6 rounded-xl border border-d-60'>
                         <span className='text-w-100 text-xl mb-4 block'>Job Description</span>
-                        <p className='text-w-50 mb-5'>As a Web Designer at DigitX, you will be responsible for creating visually stunning and user-friendly website designs. Working closely with our development and marketing teams, you will turn creative concepts into functional web interfaces that deliver exceptional user experiences. This role offers an opportunity to showcase your design expertise and contribute to a wide range of exciting projects for diverse clients.</p>
+                        <p className='text-w-50 mb-5'>As a Web Designer at, you will be responsible for creating visually stunning and user-friendly website designs. Working closely with our development and marketing teams, you will turn creative concepts into functional web interfaces that deliver exceptional user experiences. This role offers an opportunity to showcase your design expertise and contribute to a wide range of exciting projects for diverse clients.</p>
                         <span className='flex items-center gap-3 border rounded-xl border-d-60 p-2 px-3 text-w-80'>
                             <HiOutlineChartBar className='md:w-5' size={25} /> Application Deadline: 30th September 2025
                         </span>

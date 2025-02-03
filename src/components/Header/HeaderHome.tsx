@@ -12,7 +12,7 @@ export default function HeaderHome() {
         <header className='flex flex-col md:flex-row md:pt-8 px-6 md:px-10 xl:px-20  flex-wrap bg-no-repeat' style={{ backgroundImage: `url("/dot-home.png")` }}>
             <div dir='ltr' className='hidden md:flex w-full justify-between items-center px-8'>
                 <div className="flex gap-3 items-center">
-                    <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={60} height={60} />
+                    <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.webp"} width={100} height={60} />
                     <LanguageBtn />
                 </div>
                 <div className='flex items-center justify-end gap-2'>
@@ -44,9 +44,9 @@ export default function HeaderHome() {
                     </div>
                 </div>
             </div>
-            <div className='w-full md:w-1/2 order-1 md:order-2 gap-10 justify-center md:justify-start items-center flex flex-col'>
+            <div className='w-full md:w-1/2 order-1 md:order-2 gap-10 justify-center items-center flex flex-col'>
                 <figure className='p-8 flex justify-center items-center'>
-                    <Image alt='logo' src={"/logoHome.png"} width={430} height={370} />
+                    <Image alt='logo' src={"/big-logo.png"} width={430} height={370} />
                 </figure>
             </div>
         </header>

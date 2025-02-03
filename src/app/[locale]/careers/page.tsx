@@ -100,18 +100,6 @@ export default function page() {
                 </div>
               </section>
             })}
-            {/* <section className='col-span-1 md:col-span-2'>
-              <div className='rounded-t-xl w-full border bg-center bg-no-repeat h-24 flex overflow-hidden border-d-60' style={{ backgroundImage: 'url(/color-range.png)' }}>
-                <div className={`${local === "fa" ? "pr-6 " : "pl-6 "} w-1/2 text-w-100 flex justify-start items-center h-full`}>
-                  Step 05
-                </div>
-                <div className='w-1/2  h-full'></div>
-              </div>
-              <div className='p-3 md:p-6'>
-                <span className='block mb-2 text-w-100'>Successful Hiring</span>
-                <p className='text-w-50 text-sm md:text-base'> If the referred candidate successfully joins DigitX and completes the probation period, you will be eligible for the referral reward.</p>
-              </div>
-            </section> */}
           </div>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-7 mt-12'>

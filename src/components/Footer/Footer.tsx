@@ -26,13 +26,13 @@ export default function Footer() {
             {t("container.btnDark")}
           </Button>
         </div>
-        <ImageCustom figureClass='w-full flex justify-center mt-8' src={"/digit-x.png"} alt={"logo footer"} width={600} height={370} />
+        <ImageCustom figureClass='w-full flex justify-center mt-8' src={"/big-logo.png"} alt={"logo footer"} width={600} height={370} />
         <span className='absolute left-0 top-0 w-[56%] h-[400px]' style={{ backgroundImage: `url(/dot-left-low.png)` }}></span>
         <span className='absolute right-0 top-0 w-[56%] h-[400px]' style={{ backgroundImage: `url(/dot-right-low.png)` }}></span>
       </div>
       <div className='mt-10 flex justify-between items-center pb-6 border-d-60 border-b'>
         <div>
-          <ImageCustom src={"/logo.png"} alt={"logo"} width={50} height={50} />
+          <ImageCustom src={"/logo.webp"} alt={"logo"} width={100} height={60} />
         </div>
         <div className='flex flex-col md:flex-row items-center justify-end gap-5'>
           <span className='text-w-100 text-sm md:text-base'>{local === "fa" ? "ما را در شبکه های اجتماعی دنبال کنید" : "Follow Us On Social Media"}</span>

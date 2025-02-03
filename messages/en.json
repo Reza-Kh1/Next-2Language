@@ -1,9 +1,9 @@
 {
   "HomePage": {
     "headerPage": {
-      "title-dark": "Reasons to Choose DigitX for",
+      "title-dark": "Reasons to Choose  for",
       "title-light": "Your Digital Journey",
-      "title-text": "Partnering with DigitX offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success."
+      "title-text": "Partnering with  offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success."
     },
     "containerBox": [
       {
@@ -46,7 +46,7 @@
       "circleBox": [
         {
           "name": "Web Development",
-          "text": "Unlock Your Online Potential In today's digital age, a powerful web presence is essential for any business. At DigitX, our web development services empower you to stand out in the crowded online landscape. We create responsive and dynamic websites tailored to your unique needs, ensuring seamless user experiences across all devices. From e-commerce platforms to interactive web applications, our expert developers bring your vision to life, making your online journey a resounding success.",
+          "text": "Unlock Your Online Potential In today's digital age, a powerful web presence is essential for any business. At , our web development services empower you to stand out in the crowded online landscape. We create responsive and dynamic websites tailored to your unique needs, ensuring seamless user experiences across all devices. From e-commerce platforms to interactive web applications, our expert developers bring your vision to life, making your online journey a resounding success.",
           "image": "/icons/code.png"
         },
         {
@@ -56,7 +56,7 @@
         },
         {
           "name": "Web Design",
-          "text": "Elevate Your Brand Aesthetics Your website's design is a reflection of your brand's identity and values. DigitX's web design services focus on creating visually striking and user-friendly interfaces that leave a lasting impact. Our creative team blends aesthetics with functionality, delivering a captivating user experience that keeps visitors coming back for more. Let us transform your online presence into an immersive journey that showcases your brand's true essence.",
+          "text": "Elevate Your Brand Aesthetics Your website's design is a reflection of your brand's identity and values. 's web design services focus on creating visually striking and user-friendly interfaces that leave a lasting impact. Our creative team blends aesthetics with functionality, delivering a captivating user experience that keeps visitors coming back for more. Let us transform your online presence into an immersive journey that showcases your brand's true essence.",
           "image": "/icons/mouse.png"
         },
         {
@@ -107,37 +107,37 @@
       "header": {
         "dark": "Testimonials",
         "light": "Our",
-        "text": "Don't just take our word for it; hear what our satisfied clients have to say about their experience with DigitX. We take pride in building lasting relationships and delivering exceptional results."
+        "text": "Don't just take our word for it; hear what our satisfied clients have to say about their experience with . We take pride in building lasting relationships and delivering exceptional results."
       },
       "arrayBox": [
         {
           "name": "Mark Roberts",
           "subject": "Founder of GreenEarth Eco Store",
-          "text": "Working with DigitX was a pleasure. Their web design team created a stunning website that perfectly captured our brand's essence. The feedback from our customers has been overwhelmingly positive.",
+          "text": "Working with  was a pleasure. Their web design team created a stunning website that perfectly captured our brand's essence. The feedback from our customers has been overwhelmingly positive.",
           "image": "/profile/man.png"
         },
         {
           "name": "Sara Ahmadi",
           "subject": "CEO of Future Technology Company",
-          "text": "The DigitX team helped us build an efficient and user-friendly digital platform. Their professional services and excellent support exceeded our expectations.",
+          "text": "The  team helped us build an efficient and user-friendly digital platform. Their professional services and excellent support exceeded our expectations.",
           "image": "/profile/woman.png"
         },
         {
           "name": "Ali Rezaei",
           "subject": "Marketing Manager at ParsWeb Company",
-          "text": "Since our new website was designed by DigitX, our conversion rate has significantly increased. The attractive design and excellent user experience have had a great impact on our success.",
+          "text": "Since our new website was designed by , our conversion rate has significantly increased. The attractive design and excellent user experience have had a great impact on our success.",
           "image": "/profile/man2.png"
         },
         {
           "name": "John Smith",
           "subject": "Project Manager at NextGen Software Company",
-          "text": "DigitX has a creative and professional team that always delivers innovative solutions. Working with them meant improving the quality of our services.",
+          "text": " has a creative and professional team that always delivers innovative solutions. Working with them meant improving the quality of our services.",
           "image": "/profile/man.png"
         },
         {
           "name": "Leila Mousavi",
           "subject": "Founder of Digital Health Startup",
-          "text": "With the help of DigitX, our health app was developed with a professional design and high performance. Our users are very satisfied with its functionality.",
+          "text": "With the help of , our health app was developed with a professional design and high performance. Our users are very satisfied with its functionality.",
           "image": "/profile/woman2.png"
         }
       ]
@@ -202,37 +202,37 @@
           "img1": "/logo.png",
           "img2": "/flower/logo.png",
           "name": "ABC Tech Solutions",
-          "text": "A leading technology firm that trusted DigitX to develop their responsive website, showcasing their cutting-edge products and services."
+          "text": "A leading technology firm that trusted  to develop their responsive website, showcasing their cutting-edge products and services."
         },
         {
           "img1": "/logo.png",
           "img2": "/flower/logo2.png",
           "name": "GreenEarth Eco Store",
-          "text": "DigitX collaborated with GreenEarth Eco Store to create an engaging e-commerce platform that promotes sustainable living and eco-friendly products."
+          "text": " collaborated with GreenEarth Eco Store to create an engaging e-commerce platform that promotes sustainable living and eco-friendly products."
         },
         {
           "img1": "/logo.png",
           "img2": "/flower/logo3.png",
           "name": "HealthTech Innovations",
-          "text": "DigitX developed a user-centric mobile app for HealthTech Innovations, helping them revolutionize the way people track and manage their health."
+          "text": " developed a user-centric mobile app for HealthTech Innovations, helping them revolutionize the way people track and manage their health."
         },
         {
           "img1": "/logo.png",
           "img2": "/flower/logo4.png",
           "name": "GlobalTech Solutions",
-          "text": "GlobalTech Solutions partnered with DigitX for a website redesign, resulting in a modern interface that elevates their online presence."
+          "text": "GlobalTech Solutions partnered with  for a website redesign, resulting in a modern interface that elevates their online presence."
         },
         {
           "img1": "/logo.png",
           "img2": "/flower/logo4.png",
           "name": "TechGuru Inc.",
-          "text": "DigitX's digital marketing strategies boosted TechGuru Inc.'s online visibility and customer engagement, driving significant business growth."
+          "text": "'s digital marketing strategies boosted TechGuru Inc.'s online visibility and customer engagement, driving significant business growth."
         },
         {
           "img1": "/logo.png",
           "img2": "/flower/logo4.png",
           "name": "ArtScape Gallery",
-          "text": "DigitX brought ArtScape Gallery's artistic vision to life with a visually stunning website, showcasing the work of talented artists."
+          "text": " brought ArtScape Gallery's artistic vision to life with a visually stunning website, showcasing the work of talented artists."
         }
       ]
     }
@@ -241,7 +241,7 @@
     "home": {
       "nameDark": "That Drive Success",
       "nameLight": "Digital Solutions",
-      "text": "At DigitX, we believe in the transformative power of digital solutions. Our team of experts is dedicated to helping businesses like yours thrive in the fast-paced digital landscape. From captivating web design to data-driven marketing strategies, we are committed to delivering results that exceed expectations.",
+      "text": "At , we believe in the transformative power of digital solutions. Our team of experts is dedicated to helping businesses like yours thrive in the fast-paced digital landscape. From captivating web design to data-driven marketing strategies, we are committed to delivering results that exceed expectations.",
       "span": "Unlock Your Digital Potential Today",
       "btnDark": "Free Consultation",
       "btnLight": "Get Started"
@@ -284,7 +284,7 @@
   "Footer": {
     "container": {
       "name": "Ready to Transform Your Digital Presence?",
-      "text": "Take the first step towards digital success with DigitX by your side. Our team of experts is eager to craft tailored solutions that drive growth for your business. Whether you need a stunning website, a powerful mobile app, or a data-driven marketing campaign, we've got you covered. Let's embark on this transformative journey together.",
+      "text": "Take the first step towards digital success with  by your side. Our team of experts is eager to craft tailored solutions that drive growth for your business. Whether you need a stunning website, a powerful mobile app, or a data-driven marketing campaign, we've got you covered. Let's embark on this transformative journey together.",
       "span": "Unlock Your Digital Potential Today",
       "btnDark": "Free Consultation",
       "btnLight": "Get Started"
@@ -409,18 +409,18 @@
     "header": {
       "nameLight": "Our Comprehensive",
       "nameDark": "Digital Solutions",
-      "text": "At DigitX, we offer a comprehensive suite of digital solutions designed to propel your business to new heights in the digital realm. With a team of skilled professionals, cutting-edge technologies, and a passion for innovation, we are committed to delivering exceptional results for every project we undertake. From captivating web design that leaves a lasting impression to seamless web development that ensures optimal functionality, we cover every aspect of your online presence."
+      "text": "At , we offer a comprehensive suite of digital solutions designed to propel your business to new heights in the digital realm. With a team of skilled professionals, cutting-edge technologies, and a passion for innovation, we are committed to delivering exceptional results for every project we undertake. From captivating web design that leaves a lasting impression to seamless web development that ensures optimal functionality, we cover every aspect of your online presence."
     },
     "section-1": {
       "header": {
         "nameLight": "",
         "nameDark": "",
-        "text": "At DigitX, we are committed to providing exceptional digital solutions tailored to suit your unique business needs. Our comprehensive service offerings cover a wide spectrum of digital disciplines, including web design, app development, web development, and marketing."
+        "text": "At , we are committed to providing exceptional digital solutions tailored to suit your unique business needs. Our comprehensive service offerings cover a wide spectrum of digital disciplines, including web design, app development, web development, and marketing."
       },
       "arrayBox": [
         {
           "name": "Web Development",
-          "text": "Unlock Your Online Potential In today's digital age, a powerful web presence is essential for any business. At DigitX, our web development services empower you to stand out in the crowded online landscape. We create responsive and dynamic websites tailored to your unique needs, ensuring seamless user experiences across all devices. From e-commerce platforms to interactive web applications, our expert developers bring your vision to life, making your online journey a resounding success.",
+          "text": "Unlock Your Online Potential In today's digital age, a powerful web presence is essential for any business. At , our web development services empower you to stand out in the crowded online landscape. We create responsive and dynamic websites tailored to your unique needs, ensuring seamless user experiences across all devices. From e-commerce platforms to interactive web applications, our expert developers bring your vision to life, making your online journey a resounding success.",
           "image": "/icons/code.png",
           "price": 1500
         },
@@ -432,7 +432,7 @@
         },
         {
           "name": "Web Design",
-          "text": "Elevate Your Brand Aesthetics Your website's design is a reflection of your brand's identity and values. DigitX's web design services focus on creating visually striking and user-friendly interfaces that leave a lasting impact. Our creative team blends aesthetics with functionality, delivering a captivating user experience that keeps visitors coming back for more. Let us transform your online presence into an immersive journey that showcases your brand's true essence.",
+          "text": "Elevate Your Brand Aesthetics Your website's design is a reflection of your brand's identity and values. 's web design services focus on creating visually striking and user-friendly interfaces that leave a lasting impact. Our creative team blends aesthetics with functionality, delivering a captivating user experience that keeps visitors coming back for more. Let us transform your online presence into an immersive journey that showcases your brand's true essence.",
           "image": "/icons/mouse.png",
           "price": 2500
         },
@@ -448,10 +448,10 @@
       "header": {
         "nameLight": "Services",
         "nameDark": "Categories of",
-        "text": "At DigitX, we are committed to providing exceptional digital solutions tailored to suit your unique business needs. Our comprehensive service offerings cover a wide spectrum of digital disciplines, including web design, app development, web development, and marketing."
+        "text": "At , we are committed to providing exceptional digital solutions tailored to suit your unique business needs. Our comprehensive service offerings cover a wide spectrum of digital disciplines, including web design, app development, web development, and marketing."
       },
       "name": "Web Design",
-      "text": "Web Design is the art and science of creating visually appealing and user-friendly websites that reflect your brand identity and resonate with your target audience. At DigitX, our web design process involves a careful blend of creativity, user experience (UX) design, and cutting-edge technologies. We take the time to understand your business goals, target market, and unique selling points to create a website that not only looks great but also drives results.",
+      "text": "Web Design is the art and science of creating visually appealing and user-friendly websites that reflect your brand identity and resonate with your target audience. At , our web design process involves a careful blend of creativity, user experience (UX) design, and cutting-edge technologies. We take the time to understand your business goals, target market, and unique selling points to create a website that not only looks great but also drives results.",
       "arrayCategory": [
         {
           "name": "Web Design",
@@ -522,7 +522,7 @@
       },
       "box-3": {
         "name": "Our Web Design Competed Projects",
-        "text": "At DigitX, we are dedicated to creating transformative mobile apps that empower your business and enrich your users' experiences.",
+        "text": "At , we are dedicated to creating transformative mobile apps that empower your business and enrich your users' experiences.",
         "array": [
           {
             "name": "GlobalTech Solutions",
@@ -546,7 +546,7 @@
       "header": {
         "nameLight": "Success",
         "nameDark": "Stories",
-        "text": "At DigitX, our success is defined by the achievements of our valued clients. We take immense pride in the transformative impact our digital solutions have had on their businesses. Here are some inspiring success stories that highlight the outcomes of our collaborative efforts"
+        "text": "At , our success is defined by the achievements of our valued clients. We take immense pride in the transformative impact our digital solutions have had on their businesses. Here are some inspiring success stories that highlight the outcomes of our collaborative efforts"
       },
       "array": [
         {
@@ -572,13 +572,13 @@
     "header": {
       "nameLight": "Digital Vision",
       "nameDark": "Empowering Your",
-      "text": "At DigitX, we are committed to empowering your digital vision with innovative solutions tailored to your unique needs. Our team of skilled professionals, coupled with cutting-edge technologies, ensures that we deliver exceptional results that elevate your online presence. Whether its captivating web designs, seamless app development, effective digital marketing, or other digital solutions, we are dedicated to bringing your ideas to life and helping your business thrive in the dynamic digital landscape. Partner with us today, and lets unlock endless possibilities for your digital success! "
+      "text": "At , we are committed to empowering your digital vision with innovative solutions tailored to your unique needs. Our team of skilled professionals, coupled with cutting-edge technologies, ensures that we deliver exceptional results that elevate your online presence. Whether its captivating web designs, seamless app development, effective digital marketing, or other digital solutions, we are dedicated to bringing your ideas to life and helping your business thrive in the dynamic digital landscape. Partner with us today, and lets unlock endless possibilities for your digital success! "
     },
     "section-1": {
       "header": {
         "nameLight": "Key Features",
         "nameDark": "of Our Projects",
-        "text": "Partnering with DigitX offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success."
+        "text": "Partnering with  offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success."
       },
       "array": []
     },
@@ -625,7 +625,7 @@
       "header": {
         "nameLight": "Upcoming",
         "nameDark": "Projects",
-        "text": "At DigitX, we are continually working on exciting new projects to push the boundaries of digital innovation and deliver exceptional solutions to our valued clients. While we are thrilled to share our upcoming projects with you, we understand the importance of confidentiality and safeguarding sensitive information. Therefore, we will provide a brief overview of the upcoming projects while keeping specific details concealed."
+        "text": "At , we are continually working on exciting new projects to push the boundaries of digital innovation and deliver exceptional solutions to our valued clients. While we are thrilled to share our upcoming projects with you, we understand the importance of confidentiality and safeguarding sensitive information. Therefore, we will provide a brief overview of the upcoming projects while keeping specific details concealed."
       },
       "array": [
         {
@@ -663,13 +663,13 @@
     "header": {
       "nameLight": "Elevating Brands",
       "nameDark": " in the Digital Age",
-      "text": "Welcome to DigitX, your trusted partner in the dynamic world of digital solutions. We are a passionate team of creative minds, tech enthusiasts, and digital strategists, dedicated to empowering businesses and individuals in the digital realm. Our mission is to deliver exceptional results that drive success, create meaningful connections, and bring your digital vision to life. With a customer-centric approach and a focus on innovation, we are committed to being at the forefront of the ever-evolving digital landscape."
+      "text": "Welcome to , your trusted partner in the dynamic world of digital solutions. We are a passionate team of creative minds, tech enthusiasts, and digital strategists, dedicated to empowering businesses and individuals in the digital realm. Our mission is to deliver exceptional results that drive success, create meaningful connections, and bring your digital vision to life. With a customer-centric approach and a focus on innovation, we are committed to being at the forefront of the ever-evolving digital landscape."
     },
     "section-1": {
       "header": {
         "nameLight": "Team Members",
         "nameDark": "Our ",
-        "text": "Partnering with DigitX offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success."
+        "text": "Partnering with  offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success."
       },
       "array": [
         {
@@ -724,7 +724,7 @@
         {
           "num": "01",
           "date": "October 2017",
-          "name": "Foundation of DigitX",
+          "name": "Foundation of ",
           "text": "Recognition for outstanding contributions to the digital industry, celebrating our ability to deliver exceptional web design and development solutions that push the boundaries of creativity and functionality."
         },
         {
@@ -742,8 +742,8 @@
         {
           "num": "04",
           "date": "March 2021",
-          "name": "DigitX Innovation Lab Inauguration",
-          "text": "To foster creativity and innovation, we inaugurated the DigitX Innovation Lab. This state-of-the-art facility served as a hub for our team to ideate, experiment, and explore emerging technologies."
+          "name": " Innovation Lab Inauguration",
+          "text": "To foster creativity and innovation, we inaugurated the  Innovation Lab. This state-of-the-art facility served as a hub for our team to ideate, experiment, and explore emerging technologies."
         },
         {
           "num": "05",
@@ -792,13 +792,13 @@
     },
     "section-4": [
       {
-        "name": "Careers At DigitX",
-        "text": "At DigitX, we believe in fostering a dynamic and collaborative work environment that empowers our team members to excel in their respective fields. Join us to be part of a passionate and innovative team dedicated to crafting exceptional digital solutions for clients across the globe. We are committed to nurturing talent, encouraging professional growth, and creating a workplace where creativity thrives.",
+        "name": "Careers At ",
+        "text": "At , we believe in fostering a dynamic and collaborative work environment that empowers our team members to excel in their respective fields. Join us to be part of a passionate and innovative team dedicated to crafting exceptional digital solutions for clients across the globe. We are committed to nurturing talent, encouraging professional growth, and creating a workplace where creativity thrives.",
         "image": "/icons/bags.png"
       },
       {
         "name": "Contact Us",
-        "text": "At DigitX, we value your inquiries, feedback, and collaborations. Whether you are interested in our digital services, have questions about our projects, or want to explore potential partnerships, we encourage you to reach out to our dedicated team. Connect with us through any of the channels below, and we'll be delighted to assist you on your digital journey.",
+        "text": "At , we value your inquiries, feedback, and collaborations. Whether you are interested in our digital services, have questions about our projects, or want to explore potential partnerships, we encourage you to reach out to our dedicated team. Connect with us through any of the channels below, and we'll be delighted to assist you on your digital journey.",
         "image": "/icons/phone.png"
       }
     ]
@@ -807,7 +807,7 @@
     "header": {
       "nameLight": "Touch with Us Today",
       "nameDark": "Get in",
-      "text": "At DigitX, we value your inquiries, feedback, and collaborations. Whether you are interested in our digital services, have questions about our projects, or want to explore potential partnerships, we encourage you to reach out to our dedicated team. Connect with us through any of the channels below, and we'll be delighted to assist you on your digital journey.",
+      "text": "At , we value your inquiries, feedback, and collaborations. Whether you are interested in our digital services, have questions about our projects, or want to explore potential partnerships, we encourage you to reach out to our dedicated team. Connect with us through any of the channels below, and we'll be delighted to assist you on your digital journey.",
       "hover": "Feel free to contact us through any of the following channels"
     },
     "section-1": {
@@ -838,17 +838,17 @@
           "name": "Contact Us Via Email",
           "boxs": [
             {
-              "name": "info@digitx.com",
+              "name": "info@.com",
               "image": "gmail",
               "title": "For General Inquiries"
             },
             {
-              "name": "partnerships@digitx.com",
+              "name": "partnerships@.com",
               "image": "gmail",
               "title": "For Business Collaborations"
             },
             {
-              "name": "careers@digitx.com",
+              "name": "careers@.com",
               "image": "gmail",
               "title": "For Job Opportunities"
             }
@@ -884,7 +884,7 @@
       },
       {
         "name": "Privacy Assurance",
-        "text": "At DigitX, we prioritize your privacy and protect your personal information in compliance with data protection regulations. Rest assured that your details will only be used for the purpose of addressing your inquiries and will not be shared with third parties without your consent",
+        "text": "At , we prioritize your privacy and protect your personal information in compliance with data protection regulations. Rest assured that your details will only be used for the purpose of addressing your inquiries and will not be shared with third parties without your consent",
         "image": "/icons/fast.png"
       }
     ],
@@ -894,19 +894,19 @@
         "text": "Stay updated with our latest projects, industry insights, and company news by following us on social media"
       },
       "name": "Thank You!",
-      "text": "For considering DigitX for your digital needs. We look forward to connecting with you and being part of your digital success!"
+      "text": "For considering  for your digital needs. We look forward to connecting with you and being part of your digital success!"
     }
   },
   "Carrees": {
     "header": {
       "nameLight": "Unlock Your Potential",
       "nameDark": "in the Digital World",
-      "text": "At DigitX, we believe in fostering a dynamic and collaborative work environment that empowers our team members to excel in their respective fields. Join us to be part of a passionate and innovative team dedicated to crafting exceptional digital solutions for clients across the globe. We are committed to nurturing talent, encouraging professional growth, and creating a workplace where creativity thrives."
+      "text": "At , we believe in fostering a dynamic and collaborative work environment that empowers our team members to excel in their respective fields. Join us to be part of a passionate and innovative team dedicated to crafting exceptional digital solutions for clients across the globe. We are committed to nurturing talent, encouraging professional growth, and creating a workplace where creativity thrives."
     },
     "section-1": {
       "header": {
         "nameLight": "Job Listings",
-        "nameDark": "at DigitX",
+        "nameDark": "at ",
         "text": "Explore our current job listings to discover exciting career opportunities that match your skill set and interests. We offer positions in various digital disciplines, including web design, mobile app development, digital marketing, project management, and more. Each job listing provides comprehensive details about the role, responsibilities, qualifications, and benefits. Whether you are an experienced professional or a fresh graduate, we welcome talent from all backgrounds to join our team."
       },
       "array": [
@@ -948,7 +948,7 @@
       "header": {
         "nameLight": "Apply",
         "nameDark": "How to",
-        "text": "We are excited that you are interested in joining our team at DigitX! To apply for any of our job listings, please follow the simple steps below"
+        "text": "We are excited that you are interested in joining our team at ! To apply for any of our job listings, please follow the simple steps below"
       },
       "array": [
         {
@@ -987,7 +987,7 @@
       "header": {
         "nameLight": "Perks",
         "nameDark": "Benefits &",
-        "text": "At DigitX, we believe in prioritizing the well-being and growth of our team members. We offer a comprehensive range of benefits and perks to ensure our employees feel valued, motivated, and supported in both their personal and professional lives. As a member of the DigitX family, you can enjoy the following benefits"
+        "text": "At , we believe in prioritizing the well-being and growth of our team members. We offer a comprehensive range of benefits and perks to ensure our employees feel valued, motivated, and supported in both their personal and professional lives. As a member of the  family, you can enjoy the following benefits"
       },
       "array": [
         {
@@ -1035,7 +1035,7 @@
           "image": "/icons/lamp.png",
           "name": "Employee Referral Program",
           "arry": [
-            "Incentives for referring qualified candidates to open positions at DigitX."
+            "Incentives for referring qualified candidates to open positions at ."
           ]
         },
         {
@@ -1062,12 +1062,12 @@
       ]
     },
     "section-4": {
-      "name": "We value your interest in DigitX",
-      "text": "We value your interest in DigitX and appreciate the time and effort you put into your application. Our team looks forward to reviewing your application and finding the best talent to join our vibrant and innovative team. Apply now and take the next step towards an exciting and fulfilling career with DigitX!",
+      "name": "We value your interest in ",
+      "text": "We value your interest in  and appreciate the time and effort you put into your application. Our team looks forward to reviewing your application and finding the best talent to join our vibrant and innovative team. Apply now and take the next step towards an exciting and fulfilling career with !",
       "header": {
         "nameLight": "Referral Program",
         "nameDark": "Employee ",
-        "text": "At DigitX, we believe that our employees are our most valuable asset. We recognize the importance of building a strong and talented team, and we encourage our employees to play an active role in shaping our workforce. Introducing our Employee Referral Program – an opportunity for you to help us find exceptional talent and be rewarded for your contributions."
+        "text": "At , we believe that our employees are our most valuable asset. We recognize the importance of building a strong and talented team, and we encourage our employees to play an active role in shaping our workforce. Introducing our Employee Referral Program – an opportunity for you to help us find exceptional talent and be rewarded for your contributions."
       },
       "array": [
         {
@@ -1081,9 +1081,9 @@
         {
           "name": "Program Guidelines",
           "boxs": [
-            "The Employee Referral Program is open to all current DigitX employees.",
-            "Referred candidates must not have previously applied for a position at DigitX within the last six months.",
-            "The referred candidate must not be an existing or former employee of DigitX.",
+            "The Employee Referral Program is open to all current  employees.",
+            "Referred candidates must not have previously applied for a position at  within the last six months.",
+            "The referred candidate must not be an existing or former employee of .",
             "To be eligible for the reward, the referred candidate must successfully complete the probationary period.",
             "In the event that multiple employees refer the same candidate, the referral reward will be given to the first referrer mentioned by the candidate during the application process."
           ]
@@ -1095,7 +1095,7 @@
     "header": {
       "nameLight": "Digital Journey",
       "nameDark": "Empowering Your",
-      "text": "At DigitX, we are passionate about sharing our expertise, insights, and latest trends in the digital world. Our blog serves as a knowledge hub, offering valuable information and resources for individuals, businesses, and fellow industry enthusiasts. Whether you are a seasoned professional or a curious learner, our blog covers a wide range of topics related to web design, development, digital marketing, technology, and much more. Join us as we embark on a journey to explore the digital landscape and unlock the potential of the online world."
+      "text": "At , we are passionate about sharing our expertise, insights, and latest trends in the digital world. Our blog serves as a knowledge hub, offering valuable information and resources for individuals, businesses, and fellow industry enthusiasts. Whether you are a seasoned professional or a curious learner, our blog covers a wide range of topics related to web design, development, digital marketing, technology, and much more. Join us as we embark on a journey to explore the digital landscape and unlock the potential of the online world."
     },
     "section-1": {
       "name": "Web Design Trends Shaping 2023",
