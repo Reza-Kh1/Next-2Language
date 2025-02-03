@@ -256,24 +256,24 @@ export default function page() {
                         <ImageCustom alt={"ex"} src={"/biting.png"} figureClass='w-auto text-center flex justify-center' className='w-52 md:w-72' width={300} height={400} />
                     </div>
                     <div className='md:w-2/3 flex flex-col gap-5'>
-                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
+                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8 p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
                             <span className='text-w-100 mb-6'>Mentorship 1 : 1</span>
                             <p className='text-w-50'>Video Call 1 : 1 dengan mentor untuk berdiskusi, bertanya dan konsultasi seputar mentorship frontend atau hal lainnya</p>
-                            <div className={`${local === "fa" ? "right-1/2 md:-right-9" : "left-1/2 md:-left-9"} p-4 -top-8 -translate-x-1/2 md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
+                            <div className={`${local === "fa" ? "right-1/2 translate-x-1/2 md:-right-9" : "left-1/2 md:-left-9 -translate-x-1/2"} p-4 -top-8 md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
                                 <ImageCustom alt={"lamp"} src={"/icons/code.png"} width={30} height={30} />
                             </div>
                         </div>
-                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
+                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8 p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
                             <span className='text-w-100 mb-6'>Terarah</span>
                             <p className='text-w-50'>Video Call 1 : 1 dengan mentor untuk berdiskusi, bertanya dan konsultasi seputar mentorship frontend atau hal lainnya</p>
-                            <div className={`${local === "fa" ? "right-1/2 md:-right-9" : "left-1/2 md:-left-9"} p-4 -top-8 -translate-x-1/2 md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
+                            <div className={`${local === "fa" ? "right-1/2 md:-right-9 translate-x-1/2" : "left-1/2 md:-left-9 -translate-x-1/2"} p-4 -top-8  md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
                                 <ImageCustom alt={"lamp"} src={"/icons/code.png"} width={30} height={30} />
                             </div>
                         </div>
-                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
+                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8 p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
                             <span className='text-w-100 mb-6'>Silabus</span>
                             <p className='text-w-50'>Silabus praktis, fundamental yang bisa diimplementasikan berdasarkan studi kasus</p>
-                            <div className={`${local === "fa" ? "right-1/2 md:-right-9" : "left-1/2 md:-left-9"} p-4 -top-8 -translate-x-1/2 md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
+                            <div className={`${local === "fa" ? "right-1/2 md:-right-9 translate-x-1/2" : "left-1/2 md:-left-9 -translate-x-1/2"} p-4 -top-8  md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
                                 <ImageCustom alt={"lamp"} src={"/icons/code.png"} width={30} height={30} />
                             </div>
                         </div>

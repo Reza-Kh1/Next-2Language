@@ -2,7 +2,7 @@ import { Button } from '@heroui/button'
 import React from 'react'
 import ImageCustom from '../ImageCustom/ImageCustom'
 import { FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { useLocale, useTranslations } from 'next-intl'
 const iconData = [
   { icon: <FaTwitter /> },
@@ -32,7 +32,9 @@ export default function Footer() {
       </div>
       <div className='mt-10 flex justify-between items-center pb-6 border-d-60 border-b'>
         <div>
-          <ImageCustom src={"/logo.webp"} alt={"logo"} width={100} height={60} />
+          <Link href={"/"}>
+            <ImageCustom src={"/logo.webp"} alt={"logo"} width={100} height={60} />
+          </Link>
         </div>
         <div className='flex flex-col md:flex-row items-center justify-end gap-5'>
           <span className='text-w-100 text-sm md:text-base'>{local === "fa" ? "ما را در شبکه های اجتماعی دنبال کنید" : "Follow Us On Social Media"}</span>
