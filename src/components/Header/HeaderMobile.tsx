@@ -19,9 +19,9 @@ export default function HeaderMobile() {
     }, [path])
     return (
         <div className='md:hidden' dir='ltr'>
-            <div className={`flex ${isOpen ? "!z-0" : "!z-[51]"} justify-between items-center pb-4 mb-4 border-b border-d-60 px-6 pt-4`}>
+            <div className={`flex ${isOpen ? "!z-0" : "!z-[51]"} justify-between items-center pb-4 mb-4 border-b border-d-60 px-0 pt-4`}>
                 <div className='flex justify-between gap-1 items-center'>
-                    <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={40} height={40} />
+                    <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.webp"} width={80} height={40} />
                     <LanguageBtn />
                 </div>
                 <Button isIconOnly onPress={() => onOpen()} className='bg-d-80 border border-d-60 p-3 rounded-full text-white'>
