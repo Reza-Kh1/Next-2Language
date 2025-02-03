@@ -18,7 +18,7 @@ export default function page() {
   const t = useTranslations("Contact-us")
   return (
     <>
-      <ContainerHeader bgMid='/bigLogo.png' />
+      <ContainerHeader bgMid='/big-logo.png' />
       <main className="main-class">
         <div className='border my-6 md:my-12 relative  bg-center bg-no-repeat border-d-60 rounded-xl p-6 md:p-12 py-12 md:py-24' style={{ backgroundImage: "url(/dot-top.png)" }}>
           <div className='mx-auto w-full md:w-2/3 text-center'>

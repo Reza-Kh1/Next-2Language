@@ -29,7 +29,7 @@ export default function page() {
         </div>
         <div className='flex flex-col md:flex-row items-center gap-10'>
           <div className='p-8 w-full md:w-5/12 rounded-xl border border-d-60' style={{ backgroundImage: "url(/dot-top.png)" }}>
-            <ImageCustom src={"/bigLogo.png"} alt={"logo"} width={596} height={419} />
+            <ImageCustom src={"/big-logo.png"} alt={"logo"} width={596} height={419} />
           </div>
           <div className='w-full md:w-7/12'>
             <h2 className='text-w-100 font-semibold text-xl mb-6'>{t("section-1.name")}</h2>
