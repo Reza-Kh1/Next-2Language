@@ -15,6 +15,7 @@ export default {
       colors: {
         "o-80": "#f97316",
         "o-60": "#f97316",
+        "b-70": "#0da8e6",
         "b-btn": "#0ca9e3",
         "d-btn": "#252528",
         "w-100": "#FFFFFF",

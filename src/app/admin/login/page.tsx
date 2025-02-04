@@ -1,20 +1,24 @@
 "use client"
-import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import { Button } from '@heroui/button'
 import { Checkbox, Input } from '@nextui-org/react'
+import Cookies from "js-cookie"
+import axios from "axios"
 import React, { useState } from 'react'
 export default function Page() {
     const [isLogin, setIsLogin] = useState<boolean>(false)
     const [isRemember, setIsRemember] = useState<boolean>(false)
     const submitHandler = (form: FormData) => {
         const body = {
-            name: form.get("name"),
-            email: form.get("email"),
             password: form.get("password"),
-            save: isRemember
+            username: form.get("name"),
         }
-        console.log(body);
+        axios.post("login", body).then((data) => {
 
+            // Cookies.set('authToken', data.token, { expires: 7, secure: true });
+            console.log(data);
+        }).catch((err) => {
+            console.log(err)
+        })
     }
     return (
         <div className='w-full items-start mb-80 flex justify-center h-[500px] bg-slate-400 bg-no-repeat bg-center bg-cover rounded-xl shadow-md before:bg-black/40 before:w-full before:h-full relative before:absolute before:top-0 before:left-0 before:rounded-xl' style={{ backgroundImage: "url(/admin-image/login-admin.jpg)" }}>
@@ -34,24 +38,22 @@ export default function Page() {
                 <span className='font-semibold text-3xl '>
                     {isLogin ? "Register" : "Log in"}
                 </span>
-                {isLogin ?
-                    <Input
-                        name='name'
-                        label="Name"
-                        type="text"
-                        variant="bordered"
-                        labelPlacement='outside'
-                        placeholder='Name'
-                    />
-                    : null}
                 <Input
+                    name='name'
+                    label="Name"
+                    type="text"
+                    variant="bordered"
+                    labelPlacement='outside'
+                    placeholder='Name'
+                />
+                {/* <Input
                     name='email'
                     label="Email"
                     type="email"
                     labelPlacement='outside'
                     placeholder='Email'
                     variant="bordered"
-                />
+                /> */}
                 <Input
                     name='password'
                     label="Password"

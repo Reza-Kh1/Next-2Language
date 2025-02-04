@@ -1,23 +1,63 @@
-"use client"
-import { NextUIProvider } from '@nextui-org/react';
-import localFont from 'next/font/local'
-const fontSahel = localFont({ src: "../../fonts/Sahel.woff", variable: "--sahel-font" })
-import "./globals.css"
-import SideBar from '@/components/Admin/SideBar/SideBar';
-import { usePathname } from 'next/navigation';
-export default function LocaleLayout({ children }: { children: React.ReactNode }) {
-    const path = usePathname()
+"use client";
+
+import { NextUIProvider } from "@nextui-org/react";
+import localFont from "next/font/local";
+import { QueryClient, QueryCache, QueryClientProvider } from "@tanstack/react-query";
+import { toast, Toaster } from "react-hot-toast";
+import { usePathname } from "next/navigation";
+import { useMemo } from "react";
+
+import SideBar from "@/components/Admin/SideBar/SideBar";
+import Navbar from "@/components/Admin/Navbar/Navbar";
+import LoadingFetch from "@/components/Admin/LoadingFetch/LoadingFetch";
+
+import "./globals.css";
+import axios from "axios";
+
+const fontSahel = localFont({
+    src: "../../fonts/Sahel.woff",
+    variable: "--sahel-font",
+});
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_URL_API;
+// axios.defaults.withCredentials = true;
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+    const path = usePathname();
+    const isAdminPage = path !== "/admin/login";
+
+    const queryClient = useMemo(
+        () =>
+            new QueryClient({
+                queryCache: new QueryCache({
+                    onError: (err: any) => {
+                        console.log(err?.response?.status);
+                        if (err?.response?.status === 403) {
+                            toast.error("شما اجازه این کار را ندارید!");
+                            localStorage.setItem("user", "");
+                            window.location.href = "/";
+                        } else {
+                            toast.error("در ارتباط با دیتابیس با خطا روبرو شدیم");
+                        }
+                    },
+                }),
+            }),
+        []
+    );
     return (
-        <html lang={"en"} dir="ltr">
-            <body className={`${fontSahel.variable}`}>
-                <NextUIProvider>
-                    <main className='w-full p-5 flex min-h-screen gap-10 bg-[#f4f4f5]'>
-                        {path !== "/admin/login" ? <SideBar /> : null}
-                        <div className={`${path === "/admin/login" ? "w-full" : "w-10/12"}`}>
-                            {children}
-                        </div>
-                    </main>
-                </NextUIProvider>
+        <html lang="en" dir="ltr">
+            <body className={`w-full p-5 min-h-screen bg-[#f4f4f5] ${fontSahel.variable}`}>
+                <QueryClientProvider client={queryClient}>
+                    <NextUIProvider>
+                        <main className="flex gap-10">
+                            {isAdminPage && <SideBar />}
+                            <div className={isAdminPage ? "w-10/12" : "w-full"}>
+                                <Navbar />
+                                {children}
+                            </div>
+                            <LoadingFetch />
+                            <Toaster />
+                        </main>
+                    </NextUIProvider>
+                </QueryClientProvider>
             </body>
         </html>
     );
