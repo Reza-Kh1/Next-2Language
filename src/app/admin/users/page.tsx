@@ -1,13 +1,87 @@
 "use client"
 import { Button } from '@heroui/button'
 import { Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Pagination, Select, SelectItem, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, useDisclosure } from '@nextui-org/react'
-import React, { useState } from 'react'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import { FaAngleDown, FaAngleUp, FaPen } from 'react-icons/fa6'
 import { MdOutlineDataSaverOn } from 'react-icons/md'
-
+import Cookies from "js-cookie"
+const getData = () => {
+  return axios.get("users")
+}
 export default function page() {
   const [create, setCreate] = useState<boolean>(false)
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [password, setPassword] = useState<string>("")
+  const [username, setUserName] = useState<string>("")
+  const query = useQueryClient();
+  const async = () => {
+    const token = Cookies.get('authToken')
+
+    axios.get("/user", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    }).then(({ data }) => {
+      console.log(data);
+    }).catch((err) => {
+      console.log(err);
+
+    })
+  }
+  // const { data } = useQuery({
+  //   queryKey: ["getUsers"],
+  //   queryFn: getData,
+  //   staleTime: 1000 * 60 * 60 * 24,
+  //   gcTime: 1000 * 60 * 60 * 24,
+  // });
+  const { mutate: updateUser } = useMutation({
+    mutationFn: () => {
+      const body = {
+        usePass: password,
+        username
+      }
+      const token = Cookies.get('authToken')
+      return axios.put("login", body, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+    },
+    onSuccess: ({ data }) => {
+      toast("User was Updated")
+      query.invalidateQueries({ queryKey: 'getUsers' });
+    },
+    onError: ({ response }: any) => {
+      toast.error(response?.data?.message);
+    },
+  });
+  const { mutate: createUser } = useMutation({
+    mutationFn: () => {
+      const body = {
+        usePass: password,
+        username
+      }
+      const token = Cookies.get('authToken')
+      return axios.post("login", body, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+    },
+    onSuccess: ({ data }) => {
+      query.invalidateQueries({ queryKey: 'getUsers' });
+      toast("User was created")
+    },
+    onError: ({ response }: any) => {
+      toast.error(response?.data?.message);
+    },
+  });
+  useEffect(() => {
+    async()
+  }, [])
   return (
     <div className='flex flex-col gap-5'>
       <div className='flex flex-col gap-5 p-3 rounded-xl bg-white shadow-md'>
@@ -28,10 +102,13 @@ export default function page() {
           </Button>
         </div>
         {create && (
-          <form action="" className='flex flex-col gap-2'>
+          <div className='flex flex-col gap-2'>
             <div className='grid grid-cols-2 gap-3'>
               <Input
-                name='name'
+                onChange={({ target }) => {
+                  setUserName(target.value)
+                }}
+                value={username}
                 label="Name"
                 type="text"
                 labelPlacement='outside'
@@ -39,7 +116,10 @@ export default function page() {
                 variant="bordered"
               />
               <Input
-                name='password'
+                onChange={({ target }) => {
+                  setPassword(target.value)
+                }}
+                value={password}
                 label="Password"
                 type="text"
                 labelPlacement='outside'
@@ -69,12 +149,12 @@ export default function page() {
               </Select> */}
             </div>
             <div>
-              <Button type='submit' className='bg-white rounded-md shadow-md text-b-70 border border-b-70'>
+              <Button onPress={() => createUser()} className='bg-white rounded-md shadow-md text-b-70 border border-b-70'>
                 Create User
                 <MdOutlineDataSaverOn />
               </Button>
             </div>
-          </form>
+          </div>
         )}
       </div>
       <Table aria-label="Example static collection table">
@@ -106,36 +186,43 @@ export default function page() {
         <Pagination classNames={{ cursor: "bg-o-60" }} onChange={(value) => console.log(value)
         } initialPage={3} boundaries={1} total={20} siblings={2} />
       </div>
-      <Modal size='md' isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal size='lg' isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
               <ModalBody>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
-                  risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
-                  quam.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
-                  risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
-                  quam.
-                </p>
-                <p>
-                  Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor
-                  adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit
-                  officia eiusmod Lorem aliqua enim laboris do dolor eiusmod. Et mollit incididunt
-                  nisi consectetur esse laborum eiusmod pariatur proident Lorem eiusmod et. Culpa
-                  deserunt nostrud ad veniam.
-                </p>
+                <div className='grid grid-cols-2 gap-3'>
+                  <Input
+                    onChange={({ target }) => {
+                      setUserName(target.value)
+                    }}
+                    value={username}
+                    label="Name"
+                    type="text"
+                    labelPlacement='outside'
+                    placeholder='name'
+                    variant="bordered"
+                  />
+                  <Input
+                    onChange={({ target }) => {
+                      setPassword(target.value)
+                    }}
+                    value={password}
+                    label="Password"
+                    type="text"
+                    labelPlacement='outside'
+                    placeholder='password'
+                    variant="bordered"
+                  />
+                </div>
               </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
+              <ModalFooter className='flex justify-between items-center'>
+                <Button color="danger" variant="bordered" className='rounded-md' onPress={onClose}>
                   Close
                 </Button>
-                <Button color="primary" onPress={onClose}>
-                  Action
+                <Button className='border border-b-70 bg-white text-black rounded-md' onPress={() => updateUser()}>
+                  Update
                 </Button>
               </ModalFooter>
             </>

@@ -47,7 +47,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className='mt-12 grid grid-cols-2 md:grid-cols-6 justify-between gap-5'>
+      {/* <div className='mt-12 grid grid-cols-2 md:grid-cols-6 justify-between gap-5'>
         {t.raw("linkMenu").map((i: any, index: number) => (
           <section key={index}>
             <h3 className='text-w-100 mb-5 font-semibold'>{i.title}</h3>
@@ -58,8 +58,8 @@ export default function Footer() {
             </ul>
           </section>
         ))}
-      </div>
-      <div className='flex flex-col md:flex-row gap-4 justify-between items-center text-sm md:text-xs xl:text-base py-5 md:py-8 text-w-50 border-t mt-5 md:mt-16 border-d-60'>
+      </div> */}
+      <div className='flex flex-col md:flex-row gap-4 justify-between items-center text-sm md:text-xs xl:text-base py-5 md:py-8 text-w-50  mt-5 border-d-60'>
         <span>{t("menuBot.val-1")}</span>
         <span className='hidden md:block'>{t("menuBot.val-2")}</span>
         <div className='grid grid-cols-2 md:grid-cols-3 text-center gap-3'>

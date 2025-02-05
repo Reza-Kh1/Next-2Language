@@ -4,18 +4,23 @@ import { Checkbox, Input } from '@nextui-org/react'
 import Cookies from "js-cookie"
 import axios from "axios"
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
 export default function Page() {
     const [isLogin, setIsLogin] = useState<boolean>(false)
     const [isRemember, setIsRemember] = useState<boolean>(false)
+    const navigate = useRouter()
     const submitHandler = (form: FormData) => {
         const body = {
             password: form.get("password"),
             username: form.get("name"),
         }
-        axios.post("login", body).then((data) => {
-
-            // Cookies.set('authToken', data.token, { expires: 7, secure: true });
-            console.log(data);
+        axios.post("login", body).then(({ data }) => {
+            if (isRemember) {
+                Cookies.set('authToken', data, { expires: 7, secure: true });
+            } else {
+                Cookies.set('authToken', data, { expires: 1, secure: true });
+            }
+            navigate.replace("/admin")
         }).catch((err) => {
             console.log(err)
         })
@@ -39,6 +44,7 @@ export default function Page() {
                     {isLogin ? "Register" : "Log in"}
                 </span>
                 <Input
+                    required
                     name='name'
                     label="Name"
                     type="text"
@@ -55,6 +61,7 @@ export default function Page() {
                     variant="bordered"
                 /> */}
                 <Input
+                    required
                     name='password'
                     label="Password"
                     type="password"

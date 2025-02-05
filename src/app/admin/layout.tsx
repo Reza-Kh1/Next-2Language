@@ -31,11 +31,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     onError: (err: any) => {
                         console.log(err?.response?.status);
                         if (err?.response?.status === 403) {
-                            toast.error("شما اجازه این کار را ندارید!");
+                            toast.error("You are not allowed to do this");
                             localStorage.setItem("user", "");
                             window.location.href = "/";
                         } else {
-                            toast.error("در ارتباط با دیتابیس با خطا روبرو شدیم");
+                            toast.error("We encountered an error in connection with the database");
                         }
                     },
                 }),

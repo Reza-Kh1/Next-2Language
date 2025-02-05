@@ -11,7 +11,7 @@ export function middleware(req: NextRequest) {
         //     return NextResponse.next();
         // }
         // if (isProtected) {
-        //     const token = req.cookies.get("token");
+        //     const token = req.cookies.get("authToken");
         //     if (!token) {
         //         return NextResponse.redirect(new URL("/admin/login", req.url));
         //     }

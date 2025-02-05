@@ -72,14 +72,14 @@ export default function Home() {
           <AccordionBox />
         </div>
       </div>
-      <div>
+      {/* <div>
         <HeaderTitle dark={t("lastBox.header.dark")} light={t("lastBox.header.light")} text={t("lastBox.header.text")} />
         <div className="my-10 md:my-14 grid grid-cols-1 md:grid-cols-3 gap-10">
           {t.raw("lastBox.arrayBox").map((i: any, index: number) => (
             <TwoImageBox img1={i.img1} img2={i.img2} name={i.name} text={i.text} key={index} />
           ))}
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }

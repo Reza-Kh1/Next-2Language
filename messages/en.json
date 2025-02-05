@@ -1,67 +1,72 @@
 {
   "HomePage": {
     "headerPage": {
-      "title-dark": "Reasons to Choose  for",
+      "title-dark": "Reasons to Choose ShLabs for ",
       "title-light": "Your Digital Journey",
-      "title-text": "Partnering with  offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success."
+      "title-text": "Partnering with ShLabs offers a multitude of advantages. Experience enhanced brand visibility, improved customer engagement, and optimized workflows. Our custom-tailored solutions are designed to meet your unique business needs, ensuring long-term success."
     },
     "containerBox": [
       {
         "image": "/icons/3star.png",
         "name": "Expertise That Drives Results",
-        "text": "Our team of seasoned professionals brings years of experience and expertise to the table."
+        "text": "Our team of experienced professionals brings cutting-edge innovation and expertise to every project."
       },
       {
         "image": "/icons/lamp.png",
-        "name": "Tailored Business Solutions ",
-        "text": "We understand that every business is unique. That's why our solutions are customized."
+        "name": "Tailored Business Solutions",
+        "text": "We understand that every business is unique. That’s why our solutions are fully customized."
       },
       {
         "image": "/icons/mouse.png",
-        "name": "Cutting-Edge Web Design",
-        "text": "Leave a lasting impression on your audience with our top-notch web design services."
+        "name": "Next-Gen Software Development",
+        "text": "Develop high-performance applications that redefine user experience and efficiency."
       },
       {
         "image": "/icons/phone.png",
-        "name": "Mobile-First Approach",
-        "text": "In today's mobile-centric world, we prioritize mobile-first design to ensure your website."
+        "name": "AI & Automation Solutions",
+        "text": "Leverage artificial intelligence and automation to streamline business operations."
       },
       {
         "image": "/icons/fast.png",
-        "name": "Marketing Strategies",
-        "text": "Our data-driven marketing strategies allow us to target the right audience with precision"
-      },
-      {
-        "image": "/icons/app.png",
-        "name": "Search Engine Optimization",
-        "text": "(SEO) Mastery Boost your online visibility with our expert SEO techniques."
+        "name": "Search Engine Optimization (SEO) Mastery",
+        "text": "Boost your online presence and reach the right audience with our expert SEO techniques."
       }
     ],
     "serviceBox": {
       "header": {
         "dark": "Our",
         "light": "Services",
-        "text": "Our comprehensive range of services includes web design, mobile app development, SEO, social media marketing, and more. Whether you're a startup or an established enterprise, our experts will craft solutions that drive results."
+        "text": "We offer a comprehensive range of services, including:"
       },
       "circleBox": [
         {
           "name": "Web Development",
-          "text": "Unlock Your Online Potential In today's digital age, a powerful web presence is essential for any business. At , our web development services empower you to stand out in the crowded online landscape. We create responsive and dynamic websites tailored to your unique needs, ensuring seamless user experiences across all devices. From e-commerce platforms to interactive web applications, our expert developers bring your vision to life, making your online journey a resounding success.",
+          "text": "",
           "image": "/icons/code.png"
         },
         {
           "name": "Mobile App Development",
-          "text": "Embrace Mobility with Confidence Mobile devices have revolutionized the way we interact with the world. Our mobile app development services enable you to harness this mobility to your advantage. We design and build intuitive and high-performance mobile applications that captivate your audience and boost engagement. Whether it's iOS, Android, or cross-platform development, we ensure that your app delivers a seamless experience, leaving a lasting impression on your users.",
+          "text": "",
           "image": "/icons/phone.png"
         },
         {
-          "name": "Web Design",
-          "text": "Elevate Your Brand Aesthetics Your website's design is a reflection of your brand's identity and values. 's web design services focus on creating visually striking and user-friendly interfaces that leave a lasting impact. Our creative team blends aesthetics with functionality, delivering a captivating user experience that keeps visitors coming back for more. Let us transform your online presence into an immersive journey that showcases your brand's true essence.",
+          "name": "AI & Automation Solutions",
+          "text": "",
           "image": "/icons/mouse.png"
         },
         {
-          "name": "Digital Marketing",
-          "text": "Drive Your Business Forward In the vast digital landscape, standing out from the competition is crucial. Our digital marketing services help you rise above the noise and connect with your target audience effectively. From search engine optimization (SEO) to social media marketing and pay-per-click (PPC) campaigns, our data-driven strategies ensure that your message reaches the right people at the right time.",
+          "text": "",
+          "name": "Cloud Computing",
+          "image": "/icons/fast.png"
+        },
+        {
+          "text": "",
+          "name": "Cybersecurity",
+          "image": "/icons/fast.png"
+        },
+        {
+          "text": "",
+          "name": "Digital Marketing & SEO",
           "image": "/icons/fast.png"
         }
       ]
@@ -70,34 +75,34 @@
       "header": {
         "dark": "Our",
         "light": "Works",
-        "text": "Witness the brilliance of our previous projects. Our portfolio showcases the successful collaborations we've had with diverse clients across various industries. Let our work speak for itself."
+        "text": "Explore some of our successful projects:"
       },
       "arrayBox": [
         {
           "image": "/shape/shape-1.png",
           "name": "Innovative E-commerce Platform",
-          "text": "Witness our groundbreaking e-commerce platform that seamlessly connects buyers and sellers worldwide. With an intuitive user interface and secure payment gateways, this project revolutionizes online shopping.",
-          "date": "January 2022",
-          "category": "Category: Web Development."
+          "text": "A dynamic and intuitive e-commerce platform with seamless global connectivity.",
+          "date": "",
+          "category": ""
         },
         {
           "image": "/shape/shape-2.png",
-          "name": "Mobile App for Enhanced Fitness",
-          "text": "Our fitness app helps users stay fit and motivated with personalized workout plans and progress tracking. Its user-friendly design and comprehensive features make staying healthy an enjoyable experience.",
+          "name": "AI-Powered Health Monitoring App",
+          "text": "A cutting-edge health tracking app that provides personalized insights and real-time analytics.",
           "category": "Category: Mobile App Development.",
           "date": "March 2022"
         },
         {
           "image": "/shape/shape-3.png",
-          "name": "Modern Corporate Website",
-          "text": "Check out our sleek and modern corporate website that showcases the client's brand and services. Its responsive design ensures a consistent experience across devices. ",
+          "name": "Corporate Website Revamp",
+          "text": "A sleek and modern corporate website designed for a leading enterprise.",
           "category": "Category: Web Design.",
           "date": "April 2022"
         },
         {
           "image": "/shape/shape-4.png",
-          "name": "Digital Marketing Success Story",
-          "text": "Discover how our data-driven digital marketing strategies boosted a client's online presence, resulting in a significant increase in website traffic and leads.",
+          "name": "Data-Driven Digital Marketing Strategy",
+          "text": "A case study on how our tailored strategies boosted client engagement and conversion rates.",
           "category": "Category: Digital Marketing.",
           "date": "May 2022"
         }
@@ -105,40 +110,16 @@
     },
     "commentBox": {
       "header": {
-        "dark": "Testimonials",
-        "light": "Our",
-        "text": "Don't just take our word for it; hear what our satisfied clients have to say about their experience with . We take pride in building lasting relationships and delivering exceptional results."
+        "dark": "",
+        "light": "Testimonials",
+        "text": "ShLabs transformed our vision into a high-performance software solution that exceeded our expectations."
       },
       "arrayBox": [
         {
           "name": "Mark Roberts",
-          "subject": "Founder of GreenEarth Eco Store",
-          "text": "Working with  was a pleasure. Their web design team created a stunning website that perfectly captured our brand's essence. The feedback from our customers has been overwhelmingly positive.",
+          "subject": "CEO, Tech Innovators Inc.",
+          "text": "Their AI-driven automation tools helped us scale operations efficiently and improve productivity.",
           "image": "/profile/man.png"
-        },
-        {
-          "name": "Sara Ahmadi",
-          "subject": "CEO of Future Technology Company",
-          "text": "The  team helped us build an efficient and user-friendly digital platform. Their professional services and excellent support exceeded our expectations.",
-          "image": "/profile/woman.png"
-        },
-        {
-          "name": "Ali Rezaei",
-          "subject": "Marketing Manager at ParsWeb Company",
-          "text": "Since our new website was designed by , our conversion rate has significantly increased. The attractive design and excellent user experience have had a great impact on our success.",
-          "image": "/profile/man2.png"
-        },
-        {
-          "name": "John Smith",
-          "subject": "Project Manager at NextGen Software Company",
-          "text": " has a creative and professional team that always delivers innovative solutions. Working with them meant improving the quality of our services.",
-          "image": "/profile/man.png"
-        },
-        {
-          "name": "Leila Mousavi",
-          "subject": "Founder of Digital Health Startup",
-          "text": "With the help of , our health app was developed with a professional design and high performance. Our users are very satisfied with its functionality.",
-          "image": "/profile/woman2.png"
         }
       ]
     },
@@ -146,93 +127,18 @@
       "header": {
         "dark": "Frequently ",
         "light": "Asked Questions",
-        "text": "Got questions? We've got answers. Check out our frequently asked questions section to find valuable insights into our processes, pricing, and more. Transparency is at the core of our client interactions."
+        "text": "Have questions? Our FAQ section provides insights into our services, pricing, and more."
       },
       "arrayBox": [
         {
           "num": 1,
-          "name": "What services does SquareUp provide?",
-          "text": "SquareUp offers a range of services including design, engineering,and project management. We specialize in user experience design,web development, mobile app development, custom software development, branding and identity, and more."
+          "name": "Our Partners and Clients",
+          "text": "We have collaborated with industry leaders and innovative startups worldwide. Our partnerships reflect our commitment to delivering excellence in technology."
         },
         {
           "num": 2,
-          "name": "How can SquareUp help my business?",
-          "text": "SquareUp offers a range of services including design, engineering,and project management. We specialize in user"
-        },
-        {
-          "num": 3,
-          "name": "What industries does SquareUp work with?",
-          "text": " ex? Suscipit culpa repellat totam doloribus est natus possimus reiciendis temporibus ipsum ratione."
-        },
-        {
-          "num": 4,
-          "name": "How long does it take to complete a project with SquareUp?",
-          "text": " ex? Suscipit culpa repellat totam doloribus est natus possimus reiciendis temporibus ipsum ratione."
-        },
-        {
-          "num": 5,
-          "name": "Do you offer ongoing support and completed?",
-          "text": "r adipisicing elit. Debitis ad dolor aut, cumque cum quaerat enim! Perferendis, ex? "
-        },
-        {
-          "num": 6,
-          "name": "Can you work with existing design or development frameworks?",
-          "text": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ad dolor aut, cumque cum quaerat enim!"
-        },
-        {
-          "num": 7,
-          "name": "How involved will I be in the project development process?",
-          "text": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ad dolor aut, cumque cum quaerat enim! Perferendis, ex? Suscipit culpa repellat totam doloribus est natus possimus"
-        },
-        {
-          "num": 8,
-          "name": "Can you help with website or app maintenance and updates?",
-          "text": " adipisicing elit. Debitis ad dolor aut, cumque cum quaerat enim! Perferendis, ex? Suscipit culpa repellat totam doloribus"
-        }
-      ]
-    },
-    "lastBox": {
-      "header": {
-        "dark": "Our ",
-        "light": "Partners and Clients",
-        "text": "We are grateful for the opportunity to work with esteemed partners and clients. Our strong relationships are a testament to our dedication and expertise in the digital realm."
-      },
-      "arrayBox": [
-        {
-          "img1": "/logo.webp",
-          "img2": "/flower/Logo.png",
-          "name": "ABC Tech Solutions",
-          "text": "A leading technology firm that trusted  to develop their responsive website, showcasing their cutting-edge products and services."
-        },
-        {
-          "img1": "/logo.webp",
-          "img2": "/flower/Logo2.png",
-          "name": "GreenEarth Eco Store",
-          "text": " collaborated with GreenEarth Eco Store to create an engaging e-commerce platform that promotes sustainable living and eco-friendly products."
-        },
-        {
-          "img1": "/logo.webp",
-          "img2": "/flower/Logo3.png",
-          "name": "HealthTech Innovations",
-          "text": " developed a user-centric mobile app for HealthTech Innovations, helping them revolutionize the way people track and manage their health."
-        },
-        {
-          "img1": "/logo.webp",
-          "img2": "/flower/Logo4.png",
-          "name": "GlobalTech Solutions",
-          "text": "GlobalTech Solutions partnered with  for a website redesign, resulting in a modern interface that elevates their online presence."
-        },
-        {
-          "img1": "/logo.webp",
-          "img2": "/flower/Logo4.png",
-          "name": "TechGuru Inc.",
-          "text": "'s digital marketing strategies boosted TechGuru Inc.'s online visibility and customer engagement, driving significant business growth."
-        },
-        {
-          "img1": "/logo.webp",
-          "img2": "/flower/Logo4.png",
-          "name": "ArtScape Gallery",
-          "text": " brought ArtScape Gallery's artistic vision to life with a visually stunning website, showcasing the work of talented artists."
+          "name": "Ready to Transform Your Digital Presence?",
+          "text": "Take the first step towards digital success with ShLabs. Whether you need a cutting-edge website, a next-gen mobile app, or AI-driven solutions, our team is here to deliver. Let’s innovate together."
         }
       ]
     }
@@ -241,7 +147,7 @@
     "home": {
       "nameDark": "That Drive Success",
       "nameLight": "Digital Solutions",
-      "text": "At , we believe in the transformative power of digital solutions. Our team of experts is dedicated to helping businesses like yours thrive in the fast-paced digital landscape. From captivating web design to data-driven marketing strategies, we are committed to delivering results that exceed expectations.",
+      "text": "At ShLabs, we believe in the transformative power of digital solutions. Our team of experts is dedicated to helping businesses thrive in the fast-paced digital landscape. From cutting-edge software development to AI-driven automation, we craft solutions that elevate your business beyond expectations.",
       "span": "Unlock Your Digital Potential Today",
       "btnDark": "Free Consultation",
       "btnLight": "Get Started"
@@ -289,116 +195,8 @@
       "btnDark": "Free Consultation",
       "btnLight": "Get Started"
     },
-    "linkMenu": [
-      {
-        "title": "Home",
-        "link": [
-          {
-            "name": "Benefits",
-            "url": "#"
-          },
-          {
-            "name": "Our Testimonials",
-            "url": "#"
-          },
-          {
-            "name": "Partners",
-            "url": "#"
-          }
-        ]
-      },
-      {
-        "title": "Services",
-        "link": [
-          {
-            "name": "Web Design",
-            "url": "#"
-          },
-          {
-            "name": "Website Development",
-            "url": "#"
-          },
-          {
-            "name": "App Development",
-            "url": "#"
-          },
-          {
-            "name": "Digital Marketing",
-            "url": "#"
-          }
-        ]
-      },
-      {
-        "title": "Projects",
-        "link": [
-          {
-            "name": "ABC Tech Solutions",
-            "url": "#"
-          },
-          {
-            "name": "GreenEarth Eco Store",
-            "url": "#"
-          },
-          {
-            "name": "HealthTech Innovations",
-            "url": "#"
-          },
-          {
-            "name": "GlobalTech Solutions",
-            "url": "#"
-          },
-          {
-            "name": "TechGuru Inc.",
-            "url": "#"
-          }
-        ]
-      },
-      {
-        "title": "About Us",
-        "link": [
-          {
-            "name": "Our Team",
-            "url": "#"
-          },
-          {
-            "name": "Achievements",
-            "url": "#"
-          },
-          {
-            "name": "Awards",
-            "url": "#"
-          }
-        ]
-      },
-      {
-        "title": "Careers",
-        "link": [
-          {
-            "name": "Job Openings",
-            "url": "#"
-          },
-          {
-            "name": "Benefits & Perks",
-            "url": "#"
-          },
-          {
-            "name": "Employee Refral",
-            "url": "#"
-          }
-        ]
-      },
-      {
-        "title": "Blogs",
-        "link": [
-          {
-            "name": "Our Blogs",
-            "url": "#"
-          }
-        ]
-      }
-    ],
     "menuBot": {
-      "val-1": "@2023 Digitax. All Rights Reserved.",
+      "val-1": "@2025 ShLabs. All Rights Reserved.",
       "val-2": "Version 1.0",
       "val-3": "Privacy Policy",
       "val-4": "Terms & Conditions",
@@ -1172,6 +970,185 @@
         "name": "Web Development",
         "title": "Kerja Mantul Education Management",
         "text": "Serrow restructured and designed core pages, creating interactive elements that put users in control and allowed them to discover the information needed to make a decision."
+      }
+    ]
+  },
+  "comments:": [
+    {
+      "name": "Sara Ahmadi",
+      "subject": "CTO, Future Enterprises",
+      "text": "Frequently Asked Questions.",
+      "image": "/profile/woman.png"
+    },
+    {
+      "name": "Ali Rezaei",
+      "subject": "Marketing Manager at ParsWeb Company",
+      "text": "Since our new website was designed by , our conversion rate has significantly increased. The attractive design and excellent user experience have had a great impact on our success.",
+      "image": "/profile/man2.png"
+    },
+    {
+      "name": "John Smith",
+      "subject": "Project Manager at NextGen Software Company",
+      "text": " has a creative and professional team that always delivers innovative solutions. Working with them meant improving the quality of our services.",
+      "image": "/profile/man.png"
+    },
+    {
+      "name": "Leila Mousavi",
+      "subject": "Founder of Digital Health Startup",
+      "text": "With the help of , our health app was developed with a professional design and high performance. Our users are very satisfied with its functionality.",
+      "image": "/profile/woman2.png"
+    }
+  ],
+  "linkMenu": [
+    {
+      "title": "Home",
+      "link": [
+        {
+          "name": "Benefits",
+          "url": "#"
+        },
+        {
+          "name": "Our Testimonials",
+          "url": "#"
+        },
+        {
+          "name": "Partners",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "title": "Services",
+      "link": [
+        {
+          "name": "Web Design",
+          "url": "#"
+        },
+        {
+          "name": "Website Development",
+          "url": "#"
+        },
+        {
+          "name": "App Development",
+          "url": "#"
+        },
+        {
+          "name": "Digital Marketing",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "title": "Projects",
+      "link": [
+        {
+          "name": "ABC Tech Solutions",
+          "url": "#"
+        },
+        {
+          "name": "GreenEarth Eco Store",
+          "url": "#"
+        },
+        {
+          "name": "HealthTech Innovations",
+          "url": "#"
+        },
+        {
+          "name": "GlobalTech Solutions",
+          "url": "#"
+        },
+        {
+          "name": "TechGuru Inc.",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "title": "About Us",
+      "link": [
+        {
+          "name": "Our Team",
+          "url": "#"
+        },
+        {
+          "name": "Achievements",
+          "url": "#"
+        },
+        {
+          "name": "Awards",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "title": "Careers",
+      "link": [
+        {
+          "name": "Job Openings",
+          "url": "#"
+        },
+        {
+          "name": "Benefits & Perks",
+          "url": "#"
+        },
+        {
+          "name": "Employee Refral",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "title": "Blogs",
+      "link": [
+        {
+          "name": "Our Blogs",
+          "url": "#"
+        }
+      ]
+    }
+  ],
+  "lastBox": {
+    "header": {
+      "dark": "Our ",
+      "light": "Partners and Clients",
+      "text": "We are grateful for the opportunity to work with esteemed partners and clients. Our strong relationships are a testament to our dedication and expertise in the digital realm."
+    },
+    "arrayBox": [
+      {
+        "img1": "/logo.webp",
+        "img2": "/flower/Logo.png",
+        "name": "ABC Tech Solutions",
+        "text": "A leading technology firm that trusted  to develop their responsive website, showcasing their cutting-edge products and services."
+      },
+      {
+        "img1": "/logo.webp",
+        "img2": "/flower/Logo2.png",
+        "name": "GreenEarth Eco Store",
+        "text": " collaborated with GreenEarth Eco Store to create an engaging e-commerce platform that promotes sustainable living and eco-friendly products."
+      },
+      {
+        "img1": "/logo.webp",
+        "img2": "/flower/Logo3.png",
+        "name": "HealthTech Innovations",
+        "text": " developed a user-centric mobile app for HealthTech Innovations, helping them revolutionize the way people track and manage their health."
+      },
+      {
+        "img1": "/logo.webp",
+        "img2": "/flower/Logo4.png",
+        "name": "GlobalTech Solutions",
+        "text": "GlobalTech Solutions partnered with  for a website redesign, resulting in a modern interface that elevates their online presence."
+      },
+      {
+        "img1": "/logo.webp",
+        "img2": "/flower/Logo4.png",
+        "name": "TechGuru Inc.",
+        "text": "'s digital marketing strategies boosted TechGuru Inc.'s online visibility and customer engagement, driving significant business growth."
+      },
+      {
+        "img1": "/logo.webp",
+        "img2": "/flower/Logo4.png",
+        "name": "ArtScape Gallery",
+        "text": " brought ArtScape Gallery's artistic vision to life with a visually stunning website, showcasing the work of talented artists."
       }
     ]
   }
