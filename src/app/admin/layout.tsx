@@ -1,7 +1,6 @@
 "use client";
 
 import { NextUIProvider } from "@nextui-org/react";
-import localFont from "next/font/local";
 import { QueryClient, QueryCache, QueryClientProvider } from "@tanstack/react-query";
 import { toast, Toaster } from "react-hot-toast";
 import { usePathname } from "next/navigation";
@@ -13,11 +12,8 @@ import LoadingFetch from "@/components/Admin/LoadingFetch/LoadingFetch";
 
 import "./globals.css";
 import axios from "axios";
-
-const fontSahel = localFont({
-    src: "../../fonts/Sahel.woff",
-    variable: "--sahel-font",
-});
+import { Josefin_Sans } from 'next/font/google'
+const josefinSans = Josefin_Sans({ subsets: ['latin'], display: 'swap' })
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_URL_API;
 // axios.defaults.withCredentials = true;
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -44,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     );
     return (
         <html lang="en" dir="ltr">
-            <body className={`w-full p-5 min-h-screen bg-[#f4f4f5] ${fontSahel.variable}`}>
+            <body className={`w-full p-5 min-h-screen bg-[#f4f4f5] ${josefinSans.className}`}>
                 <QueryClientProvider client={queryClient}>
                     <NextUIProvider>
                         <main className="flex gap-10">

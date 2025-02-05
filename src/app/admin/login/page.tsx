@@ -20,7 +20,7 @@ export default function Page() {
             } else {
                 Cookies.set('authToken', data, { expires: 1, secure: true });
             }
-            navigate.replace("/admin")
+            navigate.replace("/admin/dashboard")
         }).catch((err) => {
             console.log(err)
         })

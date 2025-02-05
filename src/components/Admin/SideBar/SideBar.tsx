@@ -22,7 +22,7 @@ export default function SideBar() {
         <h1 className='font-semibold text-d-100 text-xl'>Shlabs</h1>
       </div>
       <div className='h-[calc(100vh-110px)] pr-2 overflow-y-auto custom-scroll flex flex-col gap-1'>
-        <NavlinkAdmin href='/admin' icon={<MdDashboard />} name='Dashboard' />
+        <NavlinkAdmin href='/admin/dashboard' icon={<MdDashboard />} name='Dashboard' />
         {/* <NavlinkAdmin href='/admin/pages' icon={<IoIosCube />} name='Pages' /> */}
         <NavlinkAdmin href='/admin/products' icon={<FaCartPlus />} name='Products' />
         {/* <NavlinkAdmin href='/admin/blogs' icon={<RiArticleLine />} name='Blogs' /> */}

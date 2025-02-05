@@ -1,6 +1,6 @@
 import axios from "axios";
 const getProducts = async () => {
-    const { data } = await axios.get("products")
+    const { data } = await axios.get("products")    
     return data
 }
 

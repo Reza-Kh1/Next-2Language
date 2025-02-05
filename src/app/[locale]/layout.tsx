@@ -6,7 +6,9 @@ import Footer from '@/components/Footer/Footer';
 import LayoutHeader from '@/components/Header/LayoutHeader';
 import { NextUIProvider } from '@nextui-org/react';
 import localFont from 'next/font/local'
-const fontSahel = localFont({ src: "../../fonts/Sahel.woff", variable: "--sahel-font" })
+import { Josefin_Sans } from 'next/font/google'
+const vazirFonr = localFont({ src: "../../fonts/Vazir.ttf", variable: "--vazir-font" })
+const josefinSans = Josefin_Sans({ subsets: ['latin'], display: 'swap' })
 import "./globals.css"
 export default async function LocaleLayout({
   children,
@@ -20,9 +22,10 @@ export default async function LocaleLayout({
     notFound();
   }
   const messages = await getMessages();
+  const isLang = locale === "fa" ? true : false
   return (
-    <html lang={locale} dir={locale === "fa" ? "rtl" : "ltr"}>
-      <body className={`${fontSahel.variable} dark ${locale === "fa" ? "rtl" : "ltr"}`}>
+    <html lang={locale} dir={isLang ? "rtl" : "ltr"}>
+      <body className={`${isLang ? vazirFonr.variable : josefinSans.className} dark ${isLang ? "rtl" : "ltr"}`}>
         <NextIntlClientProvider messages={messages}>
           <NextUIProvider>
             <LayoutHeader />

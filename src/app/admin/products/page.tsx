@@ -38,7 +38,6 @@ export default function page() {
       toast.error(response?.data?.message);
     },
   });
-
   return (
     <div className='flex flex-col gap-5'>
       <div className='flex flex-col gap-5 p-3 rounded-xl bg-white shadow-md'>

@@ -9,10 +9,12 @@ import { FaHtml5, FaInstagram, FaReact } from 'react-icons/fa'
 import { FaArrowLeftLong, FaArrowRightLong, FaFacebook, FaStar, FaTwitter } from 'react-icons/fa6'
 import { HiOutlineMenu } from 'react-icons/hi'
 import { SiTailwindcss } from 'react-icons/si'
+import Products from './Products'
 export const metadata: Metadata = {
     title: 'Scripts Hub | Site',
     description: 'Scripts Hub | Site'
 }
+
 export default function page() {
     const local = useLocale()
     const t = useTranslations("Scripts")
@@ -104,94 +106,7 @@ export default function page() {
                 <div>
                     <h2 className='text-w-100 text-2xl md:text-4xl font-semibold mb-12'>Code Snippet</h2>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10'>
-                        <div className='p-4 gap-3 md:p-8 flex justify-between flex-col rounded-xl border border-d-60' style={{ backgroundImage: 'linear-gradient(204deg, #ffffff0d, #0202028f)' }}>
-                            <div>
-                                <span className='text-xl md:text-2xl text-w-100 font-semibold'>Nextjs Starter</span>
-                                <p className='text-w-50 text-sm md:text-base mt-4'>A dead simple for nextjs project.</p>
-                            </div>
-                            <div className='flex items-center justify-between'>
-                                <div className='flex gap-4'>
-                                    <i className='p-2 rounded-full bg-d-80 border border-d-60 text-w-100'>
-                                        <SiTailwindcss />
-                                    </i>
-                                </div>
-                                <div className='flex gap-1 items-center'>
-                                    <FaStar className='text-yellow-400' />
-                                    <span className='text-w-80'>
-                                        8 Stars
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='p-4 gap-3 md:p-8 flex  justify-between flex-col rounded-xl border border-d-60' style={{ backgroundImage: 'linear-gradient(204deg, #ffffff0d, #0202028f)' }}>
-                            <div>
-                                <span className='text-xl md:text-2xl text-w-100 font-semibold'>Frontend Starter Kit</span>
-                                <p className='text-w-50 text-sm md:text-base mt-4'>AA dead simple for html 5 boilerplate project. Included setup dead simple for html 5 boilerplate project. Included setup for minify css, html minify, SEO setting.</p>
-                            </div>
-                            <div className='flex items-center justify-between'>
-                                <div className='flex gap-4'>
-                                    <i className='p-2 rounded-full bg-d-80 border border-d-60 text-w-100'>
-                                        <FaReact />
-                                    </i>
-                                    <i className='p-2 rounded-full bg-d-80 border border-d-60 text-w-100'>
-                                        <FaHtml5 />
-                                    </i>
-                                    <i className='p-2 rounded-full bg-d-80 border border-d-60 text-w-100'>
-                                        <SiTailwindcss />
-                                    </i>
-                                </div>
-                                <div className='flex gap-1 items-center'>
-                                    <FaStar className='text-yellow-400' />
-                                    <span className='text-w-80'>
-                                        12 Stars
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='p-4 gap-3 md:p-8 flex justify-between flex-col rounded-xl border border-d-60' style={{ backgroundImage: 'linear-gradient(204deg, #ffffff0d, #0202028f)' }}>
-                            <div>
-                                <span className='text-xl md:text-2xl text-w-100 font-semibold'>Nextjs Starter</span>
-                                <p className='text-w-50 text-sm md:text-base mt-4'>A dead simple for nextjs project.</p>
-                            </div>
-                            <div className='flex items-center justify-between'>
-                                <div className='flex gap-4'>
-                                    <i className='p-2 rounded-full bg-d-80 border border-d-60 text-w-100'>
-                                        <SiTailwindcss />
-                                    </i>
-                                </div>
-                                <div className='flex gap-1 items-center'>
-                                    <FaStar className='text-yellow-400' />
-                                    <span className='text-w-80'>
-                                        8 Stars
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='p-4 gap-3 md:p-8 flex justify-between flex-col rounded-xl border border-d-60' style={{ backgroundImage: 'linear-gradient(204deg, #ffffff0d, #0202028f)' }}>
-                            <div>
-                                <span className='text-xl md:text-2xl text-w-100 font-semibold'>Frontend Starter Kit</span>
-                                <p className='text-w-50 text-sm md:text-base mt-4'>AA dead simple for html 5 boilerplate project. Included setup dead simple for html 5 boilerplate project. Included setup for minify css, html minify, SEO setting.</p>
-                            </div>
-                            <div className='flex items-center justify-between'>
-                                <div className='flex gap-4'>
-                                    <i className='p-2 rounded-full bg-d-80 border border-d-60 text-w-100'>
-                                        <FaReact />
-                                    </i>
-                                    <i className='p-2 rounded-full bg-d-80 border border-d-60 text-w-100'>
-                                        <FaHtml5 />
-                                    </i>
-                                    <i className='p-2 rounded-full bg-d-80 border border-d-60 text-w-100'>
-                                        <SiTailwindcss />
-                                    </i>
-                                </div>
-                                <div className='flex gap-1 items-center'>
-                                    <FaStar className='text-yellow-400' />
-                                    <span className='text-w-80'>
-                                        12 Stars
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                        <Products />
                     </div>
                     <div className='flex justify-start mt-4 md:mt-8'>
                         <Link href={"#"} className='text-w-100 flex text-xs md:text-base items-center gap-4 p-2 md:p-3 px-4 md:px-6 border border-d-60 rounded-full '>
