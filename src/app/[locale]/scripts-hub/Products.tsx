@@ -45,7 +45,7 @@ export default function Products() {
             </div>
             <div className='flex items-center justify-between'>
                 <div className='flex gap-1 items-center'>
-                    <FaDollarSign className='text-yellow-400' />
+                    {/* <FaDollarSign className='text-yellow-400' /> */}
                     <span className='text-w-80'>
                         price : {row.price}$
                     </span>

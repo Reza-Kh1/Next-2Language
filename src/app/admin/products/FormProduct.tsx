@@ -96,7 +96,7 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
     }, [data])
     return (
         <form onSubmit={action} className='flex flex-col gap-2'>
-            <div className='grid grid-cols-2 gap-3'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
                 <Input
                     label="Name"
                     type="text"

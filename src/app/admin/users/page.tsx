@@ -19,7 +19,6 @@ export default function page() {
   const query = useQueryClient();
   const async = () => {
     const token = Cookies.get('authToken')
-
     axios.get("/user", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -184,7 +183,7 @@ export default function page() {
       </Table>
       <div className='bg-white p-3 shadow-md rounded-xl flex items-center justify-center'>
         <Pagination classNames={{ cursor: "bg-o-60" }} onChange={(value) => console.log(value)
-        } initialPage={3} boundaries={1} total={20} siblings={2} />
+        } initialPage={3} boundaries={1} total={20} />
       </div>
       <Modal size='lg' isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>

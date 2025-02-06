@@ -39,7 +39,7 @@ export default function Page() {
                     </>
                 }
             </div>
-            <form action={submitHandler} className='text-center flex flex-col gap-7 z-10 w-1/3 p-8 bg-slate-50 shadow-md border rounded-xl absolute bottom-10 left-1/2 transform -translate-x-1/2 translate-y-1/2'>
+            <form action={submitHandler} className='text-center flex flex-col gap-4 md:gap-7 z-10 w-11/12 md:w-1/3 p-4 md:p-8 bg-slate-50 shadow-md border rounded-xl absolute bottom-10 left-1/2 transform -translate-x-1/2 translate-y-1/2'>
                 <span className='font-semibold text-3xl '>
                     {isLogin ? "Register" : "Log in"}
                 </span>

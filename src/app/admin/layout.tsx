@@ -19,7 +19,6 @@ axios.defaults.baseURL = process.env.NEXT_PUBLIC_URL_API;
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     const path = usePathname();
     const isAdminPage = path !== "/admin/login";
-
     const queryClient = useMemo(
         () =>
             new QueryClient({
@@ -40,12 +39,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     );
     return (
         <html lang="en" dir="ltr">
-            <body className={`w-full p-5 min-h-screen bg-[#f4f4f5] ${josefinSans.className}`}>
+            <body className={`w-full p-3 md:p-5 min-h-screen bg-[#f4f4f5] ${josefinSans.className}`}>
                 <QueryClientProvider client={queryClient}>
                     <NextUIProvider>
                         <main className="flex gap-10">
                             {isAdminPage && <SideBar />}
-                            <div className={isAdminPage ? "w-10/12" : "w-full"}>
+                            <div className={isAdminPage ? "w-full md:w-10/12" : "w-full"}>
                                 <Navbar />
                                 {children}
                             </div>

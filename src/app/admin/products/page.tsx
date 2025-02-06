@@ -38,6 +38,8 @@ export default function page() {
       toast.error(response?.data?.message);
     },
   });
+  console.log(data);
+  
   return (
     <div className='flex flex-col gap-5'>
       <div className='flex flex-col gap-5 p-3 rounded-xl bg-white shadow-md'>
@@ -61,7 +63,7 @@ export default function page() {
           <FormProduct submitHandler={(value) => mutate(value)} />
         )}
       </div>
-      <div className='grid grid-cols-3 gap-5 p-3 rounded-xl bg-white shadow-md'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-5 p-3 rounded-xl bg-white shadow-md'>
         {data?.data?.map((row: any, index: number) => (
           <Link key={index} href={`/admin/products/${row.id}`} className='border rounded-xl shadow-md p-4 flex flex-col gap-2 cursor-pointer'>
             <ImageCustom src={"/service1.png"} alt={"image"} className='w-full' height={180} width={200} />
@@ -83,7 +85,7 @@ export default function page() {
       </div>
       <div className='bg-white p-3 shadow-md rounded-xl flex items-center justify-center'>
         <Pagination classNames={{ cursor: "bg-o-60" }} onChange={(value) => console.log(value)
-        } initialPage={3} boundaries={1} total={20} siblings={2} />
+        } initialPage={3} boundaries={1} total={1} />
       </div>
     </div>
   )
