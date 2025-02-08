@@ -79,30 +79,6 @@ export default function page() {
                         </Link>
                     </div>
                 </div>
-                <div className='flex flex-col my-16 gap-6 md:gap-10'>
-                    <h2 className='text-w-100 text-2xl md:text-4xl font-semibold'>Featured Project</h2>
-                    {t.raw("section-1.array").map((row: any, index: number) => (
-                        <div key={index} className='flex flex-col md:flex-row items-center gap-7'>
-                            <div className='relative md:w-1/2'>
-                                <ImageCustom alt={"product"} src={"/work1.png"} width={700} height={530} />
-                                <Link href={"#"} className='rounded-md bg-d-100 p-2 text-w-100 border border-d-60 absolute right-3 top-3' aria-label='icone more' title='icone more'>
-                                    <CgArrowTopRight />
-                                </Link>
-                            </div>
-                            <div className='flex flex-col gap-2 md:gap-8 md:w-1/2'>
-                                <span className='text-w-80'>{row.name}</span>
-                                <span className='text-w-100 text-xl md:text-3xl font-semibold'>{row.title}</span>
-                                <p className='text-w-50 text-sm md:text-base'>{row.text}</p>
-                            </div>
-                        </div>
-                    ))}
-                    <div className='flex justify-start'>
-                        <Link href={"#"} className='text-w-100 flex items-center gap-4 text-xs md:text-base p-2 md:p-3 px-4 md:px-6 border border-d-60 rounded-full '>
-                            <HiOutlineMenu />
-                            {local === "fa" ? "نمایش بیشتر" : "See More"}
-                        </Link>
-                    </div>
-                </div>
                 <div>
                     <h2 className='text-w-100 text-2xl md:text-4xl font-semibold mb-12'>Code Snippet</h2>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10'>

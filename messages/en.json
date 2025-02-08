@@ -1151,5 +1151,103 @@
         "text": " brought ArtScape Gallery's artistic vision to life with a visually stunning website, showcasing the work of talented artists."
       }
     ]
+  },
+  "Payment": {
+    "terms": "Terms and Conditions",
+    "textTerms": {
+      "create": "Last Updated: [Update Date]",
+      "name": "Please read the following terms and conditions carefully before using this website. Accessing, using, or purchasing from this website constitutes acceptance of all the terms outlined below.",
+      "array": [
+        {
+          "name": "1. Nature of the Website and User Responsibilities",
+          "texts": [
+            "1. This website is a digital product marketplace that sells scripts and pre-made code files for professionals in web development and programming.",
+            "2. The files available on this site may be:",
+            "• Ready-made scripts sourced from various platforms.",
+            "• Fully developed by our team.",
+            "• Modified and optimized by us.",
+            "3. Buyers make purchases with full awareness and acknowledge that they understand the nature and features of the product.",
+            "4. The buyer is solely responsible for the use of the purchased files, and the website assumes no responsibility for any potential issues arising from their usage.",
+            "5. Users must carefully review the product details before purchasing, as all sales are final, and refunds or exchanges are not available."
+          ]
+        },
+        {
+          "name": "2. Purchasing and Downloading Products",
+          "texts": [
+            "1. Payments on the site are processed through official and secure payment gateways.",
+            "2. Once the payment is completed, the download link will be provided to the buyer.",
+            "3. Some products may have a limited number of downloads. The allowed number of downloads is specified on the product page, and once exceeded, the product cannot be re-downloaded.",
+            "4. Buyers must download and store their purchased files immediately after purchase. If a file is lost, the website holds no responsibility for reissuing it."
+          ]
+        },
+        {
+          "name": "3. Product Support Policy",
+          "texts": [
+            "1. Not all products come with support. Support is only available if explicitly stated in the product details.",
+            "2. The support period (if provided) is clearly mentioned during the purchase, and after this period expires, no further support will be available.",
+            "3. Support (if available) only includes guidance on how to use the product. It does not cover customizations, modifications, or issues caused by user alterations."
+          ]
+        },
+        {
+          "name": "4. No Refund Policy",
+          "texts": [
+            "1. Due to the digital nature of the products, all sales are final, and no refunds will be issued after purchase.",
+            "2. Users are responsible for reviewing product details before making a purchase.",
+            "3. If a file has a technical issue, a corrected version may be provided upon verification, but refunds are still not an option."
+          ]
+        },
+        {
+          "name": "5. Intellectual Property Rights",
+          "texts": [
+            "1. All intellectual property rights of this website are reserved. Redistributing, reselling, or sharing purchased products without permission is strictly prohibited and will result in legal action.",
+            "2. Users agree to use purchased files only for personal use and not to distribute them publicly."
+          ]
+        },
+        {
+          "name": "6. No User Registration",
+          "texts": [
+            "1. This website does not provide user accounts or registration options.",
+            "2. All purchases and downloads are processed without user registration."
+          ]
+        },
+        {
+          "name": "7. Copyright and Content Usage Restrictions",
+          "texts": [
+            "1. All website content, including product descriptions, text, images, and scripts, is protected under intellectual property laws. Unauthorized copying, redistribution, or resale is strictly prohibited.",
+            "2. If a purchased product is found being distributed on other websites or platforms, we reserve the right to take legal action."
+          ]
+        },
+        {
+          "name": "8. Changes to Terms and Conditions",
+          "texts": [
+            "1. This website reserves the right to change these terms and conditions at any time without prior notice.",
+            "2. Users must check this page periodically to stay updated on any modifications."
+          ]
+        },
+        {
+          "name": "9. No Liability for Product Issues",
+          "texts": [
+            "1. All products are sold “as-is”, and the website provides no guarantees regarding their performance, compatibility, or error-free functionality.",
+            "2. The buyer is solely responsible for proper installation, execution, and usage of the purchased files."
+          ]
+        },
+        {
+          "name": "10. Buyer’s Legal Responsibilities",
+          "texts": [
+            "1. Buyers must ensure that their use of purchased products complies with the laws of their respective countries.",
+            "2. If a product is used in violation of legal regulations, causes harm, or results in legal liability, the buyer assumes full responsibility, and the website is not accountable.",
+            "3. If a user is found using products illegally, the website has the right to restrict their access and take legal action if necessary."
+          ]
+        },
+        {
+          "name": "11. Right to Discontinue Services",
+          "texts": [
+            "1. The website reserves the right to discontinue or remove any product or service at any time without prior notice.",
+            "2. If a product is removed from the website, previous buyers will not be entitled to future downloads or replacements."
+          ]
+        }
+      ],
+      "lastText": "- By purchasing from this website, the user acknowledges that they have read, understood, and accepted all the above terms without objection."
+    }
   }
 }

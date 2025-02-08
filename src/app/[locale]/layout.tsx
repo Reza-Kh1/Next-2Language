@@ -7,9 +7,10 @@ import LayoutHeader from '@/components/Header/LayoutHeader';
 import { NextUIProvider } from '@nextui-org/react';
 import localFont from 'next/font/local'
 import { Josefin_Sans } from 'next/font/google'
-const vazirFonr = localFont({ src: "../../fonts/Vazir.ttf", variable: "--vazir-font" })
+const iranSans = localFont({ src: "../../fonts/iRANSansWeb_Medium.ttf", variable: "--iran-font" })
 const josefinSans = Josefin_Sans({ subsets: ['latin'], display: 'swap' })
 import "./globals.css"
+import { Toaster } from 'react-hot-toast';
 export default async function LocaleLayout({
   children,
   params
@@ -25,12 +26,13 @@ export default async function LocaleLayout({
   const isLang = locale === "fa" ? true : false
   return (
     <html lang={locale} dir={isLang ? "rtl" : "ltr"}>
-      <body className={`${isLang ? vazirFonr.variable : josefinSans.className} dark ${isLang ? "rtl" : "ltr"}`}>
+      <body className={`${isLang ? iranSans.variable : josefinSans.className} dark ${isLang ? "rtl" : "ltr"}`}>
         <NextIntlClientProvider messages={messages}>
           <NextUIProvider>
             <LayoutHeader />
             {children}
             <Footer />
+            <Toaster />
           </NextUIProvider>
         </NextIntlClientProvider>
       </body>

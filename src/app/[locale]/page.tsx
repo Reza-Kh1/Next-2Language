@@ -3,8 +3,6 @@ import CircleBox from "@/components/CircleBox/CircleBox";
 import HeaderTitle from "@/components/HeaderTitle/HeaderTitle";
 import IconBgStar from "@/components/IconBgStar/IconBgStar";
 import ShapeBox from "@/components/ShapeBox/ShapeBox";
-import SwipperComments from "@/components/SwipperComments/SwipperComments";
-import TwoImageBox from "@/components/TwoImageBox/TwoImageBox";
 import { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
 import { FaSearch } from "react-icons/fa";
@@ -50,12 +48,6 @@ export default function Home() {
           {t.raw("WorksBox.arrayBox").map((row: any, index: number) => (
             <ShapeBox category={row.category} date={row.date} image={row.image} name={row.name} text={row.text} key={index} />
           ))}
-        </div>
-      </div>
-      <div>
-        <HeaderTitle light={t("commentBox.header.light")} dark={t("commentBox.header.dark")} text={t("commentBox.header.text")} />
-        <div className="mt-12">
-          <SwipperComments />
         </div>
       </div>
       <div>
