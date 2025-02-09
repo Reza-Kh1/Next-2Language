@@ -2,6 +2,7 @@ import AccordionBox from "@/components/AccordionBox/AccordionBox";
 import CircleBox from "@/components/CircleBox/CircleBox";
 import HeaderTitle from "@/components/HeaderTitle/HeaderTitle";
 import IconBgStar from "@/components/IconBgStar/IconBgStar";
+import LoadingPage from "@/components/LoadingPage/LoadingPage";
 import ShapeBox from "@/components/ShapeBox/ShapeBox";
 import { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
