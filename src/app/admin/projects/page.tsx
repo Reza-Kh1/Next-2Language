@@ -37,7 +37,7 @@ export default function page() {
                                 <span className='text-w-50'>
                                     Show More
                                 </span>
-                                <Link href={"/projects/1"} className='border mx-2 border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
+                                <Link href={"/admin/projects/1"} className='border mx-2 border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
                                     <FaChevronDown />
                                 </Link>
                             </div>

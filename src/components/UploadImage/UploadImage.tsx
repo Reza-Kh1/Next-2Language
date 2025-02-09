@@ -18,6 +18,8 @@ export default function UploadImage({ imageUrl, setImageUrl, height, width }: Up
     const [progres, setProgres] = useState<number>(0)
 
     const uploadFilel = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        setImageUrl("/work1.png")
+        return
         setLoading(true);
         const token = Cookies.get('authToken')
         const newFile = event.target.files;

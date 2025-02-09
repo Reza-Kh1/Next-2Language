@@ -1,9 +1,7 @@
 "use client";
-
 import { CalendarDate, DateInput, Input, Select, SelectItem, Textarea } from "@nextui-org/react";
-import Image from "next/image";
 import React, { useState } from "react";
-import { FaImage, FaNodeJs, FaPhp, FaPlus, FaPython, FaReact, FaTrash } from "react-icons/fa6";
+import { FaNodeJs, FaPhp, FaPlus, FaPython, FaReact, FaTrash } from "react-icons/fa6";
 import { SiNextdotjs } from "react-icons/si";
 import Cookies from 'js-cookie'
 import axios from "axios";
@@ -22,6 +20,7 @@ export default function Page() {
     const [skills, setSkills] = useState<string[]>([]);
     const [image, setImage] = useState<string>("")
     const [team, setTeam] = useState<TeamType[]>([])
+    const [formTeam, setFormTeam] = useState<TeamType>()
     const [dataProject, setDataProject] = useState({
         name: "",
         desc: "",
@@ -55,17 +54,31 @@ export default function Page() {
 
     };
     const craeteTableTeam = () => {
-        const body = {
-            name: "",
-            position: "",
-            profile: ""
+        if (team.length) {
+            const some = team.some((row) => !row.name || !row.position || !row.profile)
+            if (!some) {
+                const body = {
+                    name: "",
+                    position: "",
+                    profile: ""
+                }
+                setTeam([...team, body])
+            } else {
+                toast.error("Fill in all the fields")
+            }
+        } else {
+            const body = {
+                name: "",
+                position: "",
+                profile: ""
+            }
+            setTeam([...team, body])
         }
-        setTeam([...team, body])
-    }
 
+    }
     return (
         <form onSubmit={handleSubmit} className="flex flex-col p-3 rounded-xl bg-white shadow-md">
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <Input
                     label="Name"
                     type="text"
@@ -163,16 +176,6 @@ export default function Page() {
                     onChange={({ target }) => setDataProject({ ...dataProject, desc: target.value })}
                     placeholder="Full description of the Projects"
                 />
-                <Textarea
-                    variant='bordered'
-                    isRequired
-                    label="Description"
-                    labelPlacement="outside"
-                    value={dataProject.desc}
-                    onChange={({ target }) => setDataProject({ ...dataProject, desc: target.value })}
-                    placeholder="Full description of the Projects"
-                />
-
             </div>
             <div className='w-full my-4' onClick={(event) => { event.stopPropagation() }}>
                 <UploadImage height={150} width={300} setImageUrl={setImage} imageUrl={image} />
@@ -187,13 +190,10 @@ export default function Page() {
                         </Button>
                     </div>
                     {team.length ? team?.map((row, index) => (
-                        <div key={index} className="flex w-full items-center justify-center gap-5">
-                            <div>
+                        <div key={index} className="flex flex-wrap md:flex-row justify-start w-full p-5 rounded-xl border border-d-50 shadow-md items-center gap-5">
+                            <div className=" w-1/12">
                                 <Button
-                                    onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-                                        event.stopPropagation(); // جلوگیری از propagation
-                                        setTeam(team.filter((row, num) => num !== index));
-                                    }}
+                                    onPress={() => setTeam(team.filter((i, num) => num !== index))}
                                     isIconOnly
                                     className="bg-black/20 shadow-md hover:bg-black hover:text-white rounded-full p-3"
                                 >
@@ -217,11 +217,11 @@ export default function Page() {
                                 isRequired
                                 placeholder='name'
                                 variant="bordered"
-                                className="w-4/12"
+                                className="w-9/12 md:w-4/12"
                             />
                             <Input
-                                className="w-4/12"
-                                label="Category"
+                                className="w-full md:w-4/12"
+                                label="Position"
                                 type="text"
                                 value={row.position}
                                 onChange={({ target }) => {
@@ -235,10 +235,10 @@ export default function Page() {
                                 }}
                                 labelPlacement='outside'
                                 isRequired
-                                placeholder='Category'
+                                placeholder='Position'
                                 variant="bordered"
                             />
-                            <div className="w-3/12" onClick={(event) => { event.stopPropagation() }}>
+                            <div className="w-1/2 md:w-2/12" onClick={(event) => { event.stopPropagation() }}>
                                 <UploadImage
                                     height={70}
                                     width={70}
@@ -256,7 +256,7 @@ export default function Page() {
             </div>
             <div>
                 <Button type='submit' className='bg-white rounded-md shadow-md text-b-70 border border-b-70'>
-                    Save Product
+                    Save Projects
                     <MdOutlineDataSaverOn />
                 </Button>
             </div>

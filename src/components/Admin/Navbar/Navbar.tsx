@@ -3,9 +3,9 @@ import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import { Button } from '@heroui/button'
 import { Drawer, DrawerBody, DrawerContent, DrawerHeader, useDisclosure } from '@nextui-org/react'
 import React, { useEffect } from 'react'
-import { RiMenu3Fill } from "react-icons/ri";
+import { RiArticleLine, RiMenu3Fill } from "react-icons/ri";
 import NavlinkAdmin from '../NavlinkAdmin/NavlinkAdmin'
-import { MdDashboard, MdDoorBack, MdOutlineEmail } from 'react-icons/md'
+import { MdAddChart, MdDashboard, MdDoorBack, MdOutlineEmail } from 'react-icons/md'
 import { FaCartPlus, FaFileInvoiceDollar, FaUsers } from 'react-icons/fa6'
 import Cookies from "js-cookie"
 import { usePathname, useRouter } from 'next/navigation'
@@ -44,7 +44,9 @@ export default function Navbar() {
                             <DrawerBody>
                                 <div className='pr-2 overflow-y-auto custom-scroll flex flex-col gap-1'>
                                     <NavlinkAdmin href='/admin/dashboard' icon={<MdDashboard />} name='Dashboard' />
+                                    <NavlinkAdmin href='/admin/projects' icon={<MdAddChart />} name='Projects' />
                                     <NavlinkAdmin href='/admin/products' icon={<FaCartPlus />} name='Products' />
+                                    <NavlinkAdmin href='/admin/blogs' icon={<RiArticleLine />} name='Blogs' />
                                     <NavlinkAdmin href='/admin/users' icon={<FaUsers />} name='Users' />
                                     <NavlinkAdmin href='/admin/comments' icon={<MdOutlineEmail />} name='Comments' />
                                     <NavlinkAdmin href='/admin/payment' icon={<FaFileInvoiceDollar />} name='Payments' />
