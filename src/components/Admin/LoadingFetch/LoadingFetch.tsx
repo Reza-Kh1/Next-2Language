@@ -1,3 +1,4 @@
+"use client"
 import { useIsFetching } from "@tanstack/react-query";
 import "./style.css";
 export default function LoadingFetch() {

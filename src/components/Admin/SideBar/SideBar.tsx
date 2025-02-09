@@ -1,17 +1,22 @@
+"use client"
 import React from 'react'
 import NavlinkAdmin from '../NavlinkAdmin/NavlinkAdmin'
-import { MdDashboard, MdDoorBack, MdOutlineEmail } from 'react-icons/md'
+import { MdAddChart, MdDashboard, MdDoorBack, MdOutlineEmail } from 'react-icons/md'
 import { FaCartPlus, FaFileInvoiceDollar, FaUsers } from 'react-icons/fa6'
 import Cookies from "js-cookie"
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { RiArticleLine } from 'react-icons/ri'
 
 export default function SideBar() {
   const route = useRouter()
+  const path = usePathname();
   const logout = () => {
     Cookies.remove('authToken');
     route.replace("/admin/login")
   }
+  const isAdminPage = path !== "/admin/login";
+  if (!isAdminPage) return
   return (
     <>
       <div className='hidden md:flex w-2/12 sticky left-0 top-5 h-full flex-col gap-2'>
@@ -21,9 +26,10 @@ export default function SideBar() {
         </div>
         <div className='h-[calc(100vh-110px)] pr-2 overflow-y-auto custom-scroll flex flex-col gap-1'>
           <NavlinkAdmin href='/admin/dashboard' icon={<MdDashboard />} name='Dashboard' />
+          <NavlinkAdmin href='/admin/projects' icon={<MdAddChart />} name='Projects' />
           {/* <NavlinkAdmin href='/admin/pages' icon={<IoIosCube />} name='Pages' /> */}
           <NavlinkAdmin href='/admin/products' icon={<FaCartPlus />} name='Products' />
-          {/* <NavlinkAdmin href='/admin/blogs' icon={<RiArticleLine />} name='Blogs' /> */}
+          <NavlinkAdmin href='/admin/blogs' icon={<RiArticleLine />} name='Blogs' />
           <NavlinkAdmin href='/admin/users' icon={<FaUsers />} name='Users' />
           {/* <NavlinkAdmin href='/admin/category' icon={<MdOutlineCategory />} name='Category' /> */}
           <NavlinkAdmin href='/admin/comments' icon={<MdOutlineEmail />} name='Comments' />

@@ -1,5 +1,4 @@
 import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
-import Link from 'next/link'
 import React from 'react'
 import NavLink from './NavLink'
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
@@ -8,6 +7,7 @@ import { MdOutlineAccessTime } from 'react-icons/md'
 import { FaCalendar } from 'react-icons/fa6'
 import { useLocale, useTranslations } from 'next-intl'
 import { Metadata } from 'next'
+import { Link } from '@/i18n/routing'
 export const metadata: Metadata = {
   title: 'Blogs | Site',
   description: 'Blogs | Site'
@@ -62,7 +62,7 @@ export default function page() {
               </div>
               <div className='flex flex-col md:flex-row items-start gap-4 md:gap-0 md:items-center justify-between'>
                 <div className='flex gap-2 items-center'>
-                  <Image src={row.image} alt='profile' width={40} height={40} />
+                  <Image src={"/profile-auth.jpg"} alt='profile'className='rounded-full' width={40} height={40} />
                   <span className='text-w-100'>{row.name}</span>
                 </div>
                 <div className='flex gap-2 text-w-80'>
@@ -75,7 +75,7 @@ export default function page() {
                 <p className='text-w-50 mt-2'>{row.text}</p>
               </div>
               <div className='flex justify-center'>
-                <Link className='text-w-100 bg-d-60 text-xs md:text-base px-5 py-2 rounded-full border border-d-50' href={"#"}>
+                <Link className='text-w-100 bg-d-60 text-xs md:text-base px-5 py-2 rounded-full border border-d-50' href={"/blogs/1"}>
                   {local === "fa" ? "مطالعه بیشتر" : "Read More"}
                 </Link>
               </div>

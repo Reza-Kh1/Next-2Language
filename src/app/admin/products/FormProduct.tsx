@@ -1,6 +1,6 @@
 "use client"
 import { Button } from '@heroui/button'
-import { Input, Progress, Textarea } from '@nextui-org/react'
+import { Input, Progress, Select, SelectItem, Textarea } from '@nextui-org/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { GiCloudUpload } from 'react-icons/gi'
@@ -8,7 +8,11 @@ import { MdOutlineDataSaverOn } from 'react-icons/md'
 import Cookies from 'js-cookie'
 import { ProducrtType } from '@/app/type'
 import { IoEye } from 'react-icons/io5'
-import { FaTrash } from 'react-icons/fa6'
+import { FaImage, FaNodeJs, FaPhp, FaPython, FaReact, FaTrash } from 'react-icons/fa6'
+import toast from 'react-hot-toast'
+import Image from 'next/image'
+import { SiNextdotjs } from 'react-icons/si'
+import UploadImage from '@/components/UploadImage/UploadImage'
 type submitHandlerType = {
     submitHandler: (value: any) => void
     data?: ProducrtType
@@ -22,9 +26,9 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
     const [short, setShort] = useState<string>("")
     const [count, setCount] = useState<string>("")
     const [price, setPrice] = useState<string>("")
+    const [image, setImage] = useState<string>("")
     const action = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const url = urlFile ? `https://shlabs.ir/storage/app/${urlFile}` : ""
         const body = {
             name,
             short_description: short,
@@ -32,10 +36,10 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
             price: price,
             download_count: count,
             creator_id: 1,
-            download_url: url
+            download_url: urlFile
         }
         console.log(body);
-        
+
         submitHandler(body)
     }
     // apiFiles/KAJK4vGGOL68hnB6M6Nz8Q5zSEjFGmUj4Ln6MJ0c.jpg
@@ -60,8 +64,9 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                 Authorization: `Bearer ${token}`,
             }
         });
+        const url = data?.path ? process.env.NEXT_PUBLIC_URL_FILE + data.path : ""
         setLoading(false)
-        setUrlFile(data.path)
+        setUrlFile(url)
     }
     const handleDownload = async (url: string, filename: string) => {
         try {
@@ -117,23 +122,15 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                     placeholder='price'
                     variant="bordered"
                 />
-                <Textarea
+                {/* <Textarea
                     variant='bordered'
                     isRequired
                     value={short}
                     onChange={({ target }) => setShort(target.value)} label="Short description"
                     labelPlacement="outside"
                     placeholder="Short description of the product"
-                />
-                <Textarea
-                    variant='bordered'
-                    isRequired
-                    label="Description"
-                    labelPlacement="outside"
-                    value={desc}
-                    onChange={({ target }) => setDesc(target.value)}
-                    placeholder="Full description of the product"
-                />
+                /> */}
+
                 <Input
                     value={count}
                     onChange={({ target }) => setCount(target.value)}
@@ -142,6 +139,16 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                     isRequired
                     labelPlacement='outside'
                     placeholder='How Much'
+                    variant="bordered"
+                />
+                <Input
+                    value={count}
+                    onChange={({ target }) => setCount(target.value)}
+                    label="Support duration"
+                    type="number"
+                    isRequired
+                    labelPlacement='outside'
+                    placeholder='days...'
                     variant="bordered"
                 />
                 <div className='w-1/2'>
@@ -159,7 +166,7 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                             </div>
                             :
                             <label htmlFor="upload" className={`transition-all group p-3 shadow-md border-black flex items-center justify-center rounded-md border-dashed border h-32 w-full ${!loading ? "cursor-pointer" : ""}`}>
-                                <input onChange={uploadFilel} accept='image/*' type="file" hidden id='upload' disabled={loading} />
+                                <input onChange={uploadFilel} type="file" hidden id='upload' disabled={loading} />
                                 {loading ?
                                     <Progress
                                         classNames={{
@@ -181,6 +188,57 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                             </label>
                     }
                 </div>
+                <div className='w-1/2'>
+                    <UploadImage setImageUrl={setImage} imageUrl={image} />
+                </div>
+                <Textarea
+                    variant='bordered'
+                    isRequired
+                    label="Description"
+                    labelPlacement="outside"
+                    value={desc}
+                    onChange={({ target }) => setDesc(target.value)}
+                    placeholder="Full description of the product"
+                />
+                <Select
+                    labelPlacement="outside"
+                    variant='bordered'
+                    className="max-w-xs"
+                    label="Favorite Technology"
+                    placeholder="Select Technology"
+                    selectionMode="multiple"
+                >
+                    <SelectItem key={"react"} textValue='react'>
+                        <div className='flex w-full items-center justify-between'>
+                            <span>React</span>
+                            <i><FaReact /></i>
+                        </div>
+                    </SelectItem>
+                    <SelectItem key={"Node"} textValue='Node js'>
+                        <div className='flex w-full items-center justify-between'>
+                            <span>Node js</span>
+                            <i><FaNodeJs /></i>
+                        </div>
+                    </SelectItem>
+                    <SelectItem key={"Next"} textValue='Next js'>
+                        <div className='flex w-full items-center justify-between'>
+                            <span>Next js</span>
+                            <i><SiNextdotjs /></i>
+                        </div>
+                    </SelectItem>
+                    <SelectItem key={"PHP"} textValue='PHP'>
+                        <div className='flex w-full items-center justify-between'>
+                            <span>PHP</span>
+                            <i><FaPhp /></i>
+                        </div>
+                    </SelectItem>
+                    <SelectItem key={"Python"} textValue='Python'>
+                        <div className='flex w-full items-center justify-between'>
+                            <span>Python</span>
+                            <i><FaPython /></i>
+                        </div>
+                    </SelectItem>
+                </Select>
             </div>
             <div>
                 <Button type='submit' className='bg-white rounded-md shadow-md text-b-70 border border-b-70'>
