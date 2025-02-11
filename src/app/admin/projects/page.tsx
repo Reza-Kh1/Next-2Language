@@ -20,7 +20,7 @@ export default function page() {
         <div className='flex flex-col gap-5'>
             <div className='flex justify-between items-center p-3 rounded-xl bg-white shadow-md'>
                 <span>Create Projects</span>
-                <Link href={"/admin/projects/create"} className='flex items-center gap-2'>
+                <Link href={"/admin/projects/create-project"} className='flex items-center gap-2'>
                     New Project
                     <i className='border mx-2 border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
                         <IoCreateOutline />

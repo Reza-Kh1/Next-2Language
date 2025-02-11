@@ -1,7 +1,7 @@
 "use client";
 import { CalendarDate, DateInput, Input, Select, SelectItem, Textarea } from "@nextui-org/react";
-import React, { useState } from "react";
-import { FaNodeJs, FaPhp, FaPlus, FaPython, FaReact, FaTrash } from "react-icons/fa6";
+import React, { useEffect, useState } from "react";
+import { FaNodeJs, FaPhp, FaPlus, FaPython, FaReact } from "react-icons/fa6";
 import { SiNextdotjs } from "react-icons/si";
 import Cookies from 'js-cookie'
 import axios from "axios";
@@ -9,12 +9,27 @@ import toast from "react-hot-toast";
 import { Button } from "@heroui/button";
 import { MdClose, MdOutlineDataSaverOn } from "react-icons/md";
 import UploadImage from "@/components/UploadImage/UploadImage";
+import { useParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { getSingleProject } from "@/action/admin";
+import { ProjectType } from "@/app/type";
 type TeamType = {
     name: string,
     position: string,
     profile: string
 }
 export default function Page() {
+    const { slug } = useParams()
+    let data: ProjectType | null = null
+    if (slug !== "create-project") {
+        const { data: all } = useQuery<{ data: ProjectType }>({
+            queryKey: ["SibgleProject", slug],
+            queryFn: () => getSingleProject(slug as string),
+            staleTime: 1000 * 60 * 60 * 24,
+            gcTime: 1000 * 60 * 60 * 24,
+        });
+        data = all?.data || null
+    }
     const [startDate, setStartDate] = useState<CalendarDate | null>(null);
     const [endDate, setEndDate] = useState<CalendarDate | null>(null);
     const [skills, setSkills] = useState<string[]>([]);
@@ -23,36 +38,12 @@ export default function Page() {
     const [formTeam, setFormTeam] = useState<TeamType>()
     const [dataProject, setDataProject] = useState({
         name: "",
+        nameFa: "",
         desc: "",
+        descFa: "",
         category: "",
         time: ""
     })
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log("click");
-        const token = Cookies.get('authToken')
-        const body = {
-            name: dataProject.name,
-            category: dataProject.category,
-            time: dataProject.time,
-            description: dataProject.desc,
-            startDate: startDate?.toString(),
-            endDate: endDate?.toString(),
-            image: image,
-            skill: skills
-        }
-        console.log(body);
-        return
-        axios.post("", body, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-        }).then(() => { }).catch((err) => {
-
-            toast.error("Error in DataBase")
-        })
-
-    };
     const craeteTableTeam = () => {
         if (team.length) {
             const some = team.some((row) => !row.name || !row.position || !row.profile)
@@ -76,17 +67,86 @@ export default function Page() {
         }
 
     }
+    const action = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const token = Cookies.get('authToken')
+        const body = {
+            fa_title: dataProject.nameFa,
+            en_title: dataProject.nameFa,
+            fa_description: dataProject.descFa,
+            en_description: dataProject.desc,
+            picture: image,
+            categories: dataProject.category,
+            time_to_do: dataProject.time,
+            technologies: skills,
+            // technology_icons: string,
+            // programmer_rules: string,
+            start_date: startDate,
+            end_date: endDate,
+        }
+        console.log(body);
+        return
+        if (data) {
+            axios.post("", body, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }).then(() => { }).catch((err) => {
+
+                toast.error("Error in DataBase")
+            })
+        } else {
+            axios.post("", body, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }).then(() => { }).catch((err) => {
+
+                toast.error("Error in DataBase")
+            })
+        }
+    }
+    const syncData = () => {
+        if (data) {
+            setDataProject({
+                category: data.categories,
+                desc: data.en_description,
+                descFa: data.fa_description,
+                name: data.en_title,
+                nameFa: data.fa_title,
+                time: data.time_to_do
+            })
+            setEndDate(data.end_date)
+            setStartDate(data.start_date)
+            setSkills(data?.technologies.length ? data.technologies : [])
+            // setFormTeam()
+            setImage(data.picture || "");
+        }
+    }
+    useEffect(() => {
+        syncData()
+    }, [data])
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col p-3 rounded-xl bg-white shadow-md">
+        <form onSubmit={action} className="flex flex-col p-3 rounded-xl bg-white shadow-md">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <Input
-                    label="Name"
+                    label="Name(En)"
                     type="text"
                     value={dataProject.name}
                     onChange={({ target }) => setDataProject({ ...dataProject, name: target.value })}
                     labelPlacement='outside'
                     isRequired
-                    placeholder='name'
+                    placeholder='name(En)'
+                    variant="bordered"
+                />
+                <Input
+                    label="Name(Fa)"
+                    type="text"
+                    value={dataProject.nameFa}
+                    onChange={({ target }) => setDataProject({ ...dataProject, name: target.value })}
+                    labelPlacement='outside'
+                    isRequired
+                    placeholder='name(Fa)'
                     variant="bordered"
                 />
                 <Input
@@ -170,9 +230,18 @@ export default function Page() {
                 <Textarea
                     variant='bordered'
                     isRequired
-                    label="Description"
+                    label="Description(En)"
                     labelPlacement="outside"
                     value={dataProject.desc}
+                    onChange={({ target }) => setDataProject({ ...dataProject, desc: target.value })}
+                    placeholder="Full description of the Projects"
+                />
+                <Textarea
+                    variant='bordered'
+                    isRequired
+                    label="Description(Fa)"
+                    labelPlacement="outside"
+                    value={dataProject.descFa}
                     onChange={({ target }) => setDataProject({ ...dataProject, desc: target.value })}
                     placeholder="Full description of the Projects"
                 />

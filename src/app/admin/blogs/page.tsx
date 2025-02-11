@@ -22,7 +22,7 @@ export default function page() {
     <div className='flex flex-col gap-5'>
       <div className='flex justify-between items-center p-3 rounded-xl bg-white shadow-md'>
         <span>Create Blogs</span>
-        <Link href={"/admin/projects/create"} className='flex items-center gap-2'>
+        <Link href={"/admin/blogs/create-blog"} className='flex items-center gap-2'>
           New Blogs
           <i className='border mx-2 border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
             <IoCreateOutline />
