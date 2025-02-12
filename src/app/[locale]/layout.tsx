@@ -26,6 +26,14 @@ export default async function LocaleLayout({
   const isLang = locale === "fa" ? true : false
   return (
     <html lang={locale} dir={isLang ? "rtl" : "ltr"}>
+      <head>
+        <head>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+          />
+        </head>
+      </head>
       <body className={`${isLang ? iranSans.variable : josefinSans.className} dark ${isLang ? "rtl" : "ltr"}`}>
         <NextIntlClientProvider messages={messages}>
           <NextUIProvider>

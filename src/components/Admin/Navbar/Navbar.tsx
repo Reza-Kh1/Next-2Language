@@ -23,10 +23,14 @@ export default function Navbar() {
             onClose()
         }
     }, [path])
+    if (path === "/admin/login") return null
     return (
         <div className='w-full mb-5 flex justify-between items-center bg-white shadow-md p-3 rounded-xl'>
             <div>
                 {new Date().toISOString().split('T')[0]}
+            </div>
+            <div>
+
             </div>
             <Button isIconOnly variant='light' className='md:hidden' onPress={onOpen}>
                 <RiMenu3Fill />

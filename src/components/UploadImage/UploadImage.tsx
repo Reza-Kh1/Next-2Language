@@ -5,7 +5,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { GiCloudUpload } from 'react-icons/gi'
 import Cookies from 'js-cookie'
-import { FaTrash } from 'react-icons/fa6'
+import { FaImage, FaTrash } from 'react-icons/fa6'
 type UploadImageType = {
     imageUrl: string
     setImageUrl: (value: string) => void
@@ -16,7 +16,6 @@ type UploadImageType = {
 export default function UploadImage({ imageUrl, setImageUrl, height, width }: UploadImageType) {
     const [loading, setLoading] = useState<boolean>(false)
     const [progres, setProgres] = useState<number>(0)
-
     const uploadFilel = async (event: React.ChangeEvent<HTMLInputElement>) => {
         setLoading(true);
         const token = Cookies.get('authToken')
@@ -26,30 +25,29 @@ export default function UploadImage({ imageUrl, setImageUrl, height, width }: Up
         for (let file of newFile) {
             formData.append("file", file);
         }
-        const { data } = await axios.post("upload-file", formData, {
-            onUploadProgress: (event) => {
-                if (event.lengthComputable && event.total) {
-                    const percentComplete = Math.round((event.loaded * 100) / event.total);
-                    setProgres(percentComplete)
-                }
-            },
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-        });
-        const url = data?.path ? process.env.NEXT_PUBLIC_URL_FILE + data.path : ""
+        // const { data } = await axios.post("upload-file", formData, {
+        //     onUploadProgress: (event) => {
+        //         if (event.lengthComputable && event.total) {
+        //             const percentComplete = Math.round((event.loaded * 100) / event.total);
+        //             setProgres(percentComplete)
+        //         }
+        //     },
+        //     headers: {
+        //         Authorization: `Bearer ${token}`,
+        //     }
+        // });
+        // const url = data?.path ? process.env.NEXT_PUBLIC_URL_FILE + data.path : ""
+        const url = "https://shlabs.ir/storage/app/apiFiles/Tb4g8MoFK8ptf9YoyzpSiHkUgti6FXgHxQlLlVDl.jpg"
         setLoading(false)
         setImageUrl(url)
     }
-
     const style = { height: height ? height + "px" : "224px", width: width ? width + "px" : "300px" }
-
     return (
-        <div>
-            <span>Upload Image</span>
+        <div onClick={(event) => { event.stopPropagation() }}>
+            <span onClick={(event) => { event.stopPropagation() }}>Upload Image</span>
             {
                 imageUrl ?
-                    <div className='flex gap-3 items-center relative'>
+                    <div onClick={(event) => { event.stopPropagation() }} className='flex gap-3 items-center relative'>
                         <Image
                             src={imageUrl}
                             alt='image'
@@ -60,7 +58,7 @@ export default function UploadImage({ imageUrl, setImageUrl, height, width }: Up
                         />
                         <i
                             onClick={(event) => {
-                                event.stopPropagation(); // جلوگیری از propagation
+                                event.stopPropagation();
                                 setImageUrl("");
                             }}
                             className='absolute left-1 top-1 bg-black/30 cursor-pointer hover:bg-black text-white p-3 rounded-full'
@@ -71,7 +69,7 @@ export default function UploadImage({ imageUrl, setImageUrl, height, width }: Up
                     :
                     <label
                         onClick={(event) => { event.stopPropagation() }}
-                        htmlFor="upload"
+                        htmlFor="uploadImage"
                         className={`transition-all group p-3 shadow-md border-black flex items-center justify-center rounded-md border-dashed border ${!loading ? "cursor-pointer" : ""}`}
                         style={style}
                     >
@@ -80,7 +78,7 @@ export default function UploadImage({ imageUrl, setImageUrl, height, width }: Up
                             onChange={(event) => uploadFilel(event)}
                             type="file"
                             hidden
-                            id='upload'
+                            id='uploadImage'
                             disabled={loading}
                         />
                         {loading ?
@@ -99,7 +97,7 @@ export default function UploadImage({ imageUrl, setImageUrl, height, width }: Up
                                 value={progres}
                             />
                             :
-                            <i className='text-3xl text-b-70 '><GiCloudUpload /></i>
+                            <i className='text-3xl text-b-70 '><FaImage /></i>
                         }
                     </label>
             }

@@ -1,11 +1,12 @@
 "use client"
 import { ProducrtType } from '@/app/type'
-import { Link } from '@/i18n/routing'
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import { FaDollarSign, FaHtml5, FaReact } from 'react-icons/fa6'
+import { FaHtml5, FaReact } from 'react-icons/fa6'
 import { SiTailwindcss } from 'react-icons/si'
 export default function Products() {
+    const t = useTranslations
     const [dataProduct, setDataProduct] = useState<ProducrtType[]>([])
     const route = useRouter()
     const getData = async () => {
@@ -39,9 +40,9 @@ export default function Products() {
     return dataProduct.map((row, index) => (
         <div onClick={() => payment(row)} key={index} className='p-4 cursor-pointer gap-3 md:p-8 flex justify-between flex-col rounded-xl border border-d-60' style={{ backgroundImage: 'linear-gradient(204deg, #ffffff0d, #0202028f)' }}>
             <div>
-                <span className='text-xl md:text-2xl text-w-100 font-semibold'>{row.name}</span>
-                <p className='text-w-50 text-sm md:text-base mt-4'>{row.short_description}</p>
-                <p className='text-w-50 text-sm md:text-base mt-4'>{row.description}</p>
+                <span className='text-xl md:text-2xl text-w-100 font-semibold'>{row.en_name}</span>
+                <p className='text-w-50 text-sm md:text-base mt-4'>{row.en_description}</p>
+                <p className='text-w-50 text-sm md:text-base mt-4'>{row.fa_description}</p>
             </div>
             <div className='flex items-center justify-between'>
                 <div className='flex gap-1 items-center'>

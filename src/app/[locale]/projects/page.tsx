@@ -1,19 +1,24 @@
+import { fetchApi } from '@/action/fetchApi'
 import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
 import HeaderTitle from '@/components/HeaderTitle/HeaderTitle'
 import IconBgStar from '@/components/IconBgStar/IconBgStar'
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import ProjectCards from '@/components/ProjectCards/ProjectCards'
 import { Metadata } from 'next'
-import { useLocale, useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import React from 'react'
 export const metadata: Metadata = {
   title: 'Project | Site',
   description: 'Project | Site'
 }
-export default function page() {
-  const local = useLocale()
-  const t = useTranslations('HomePage');
-  const p = useTranslations('Projects');
+const getData = () => {
+  return fetchApi({ url: "projects" })
+}
+export default async function page({ params }: { params: { locale: string } }) {
+  const { locale } = params
+  const data = await getData()
+  const t = await getTranslations('HomePage');
+  const p = await getTranslations('Projects');
   return (
     <>
       <ContainerHeader firstDark dark={p("header.nameDark")} light={p("header.nameLight")} text={p("header.text")} />
@@ -40,17 +45,17 @@ export default function page() {
               </div>
               <div className='p-4 md:p-6 border border-d-60 rounded-xl justify-between flex flex-col md:flex-row items-center'>
                 <div className='flex flex-col gap-1 items-start md:w-auto w-full'>
-                  <span className='text-w-50 text-sm'>{local === "fa" ? "دسته" : 'Category'}</span>
+                  <span className='text-w-50 text-sm'>{locale === "fa" ? "دسته" : 'Category'}</span>
                   <span className='text-w-90'>{row.cat}</span>
                 </div>
                 <div className='w-[1px] border border-d-60 h-full bg-d-60'></div>
                 <div className='flex flex-col gap-1 items-start md:w-auto w-full'>
-                  <span className='text-w-50 text-sm'>{local === "fa" ? "زمان تکمیل" : "Expected Completion"}</span>
+                  <span className='text-w-50 text-sm'>{locale === "fa" ? "زمان تکمیل" : "Expected Completion"}</span>
                   <span className='text-w-90'>{row.date}</span>
                 </div>
               </div>
               <div className='p-4 md:p-6 border border-d-60 rounded-xl'>
-                <span className='text-w-90'>{local === "fa" ? "توضیحات پروژه " : "Project Description"}</span>
+                <span className='text-w-90'>{locale === "fa" ? "توضیحات پروژه " : "Project Description"}</span>
                 <p className='text-w-50 mt-4'>{row.text}</p>
               </div>
             </div>

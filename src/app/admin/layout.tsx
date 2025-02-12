@@ -10,6 +10,12 @@ import "./globals.css";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" dir="ltr">
+            <head>
+                <link
+                    rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+                />
+            </head>
             <body className={`w-full p-3 md:p-5 min-h-screen bg-[#f4f4f5] ${josefinSans.className}`}>
                 <LayoutProvider>
                     <NextUIProvider>

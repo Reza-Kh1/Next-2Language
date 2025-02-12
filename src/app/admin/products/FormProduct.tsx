@@ -1,15 +1,13 @@
 "use client"
 import { Button } from '@heroui/button'
 import { Input, Progress, Select, SelectItem, Textarea } from '@nextui-org/react'
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { GiCloudUpload } from 'react-icons/gi'
 import { MdOutlineDataSaverOn } from 'react-icons/md'
 import Cookies from 'js-cookie'
 import { ProducrtType } from '@/app/type'
 import { IoEye } from 'react-icons/io5'
-import { FaImage, FaNodeJs, FaPhp, FaPython, FaReact, FaTrash } from 'react-icons/fa6'
-import { SiNextdotjs } from 'react-icons/si'
+import { FaTrash } from 'react-icons/fa6'
 import UploadImage from '@/components/UploadImage/UploadImage'
 type submitHandlerType = {
     submitHandler: (value: any) => void
@@ -19,6 +17,8 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
     const [loading, setLoading] = useState<boolean>(false)
     const [urlFile, setUrlFile] = useState<string>(data?.download_url || "")
     const [progres, setProgres] = useState<number>(0)
+    const [selectIcons, setSelectIcons] = useState<string[]>([])
+    const [icons, setIcons] = useState<{ name: string, icon: string }[]>([])
     const [dataForm, setDataForm] = useState({
         fa_name: "",
         en_name: "",
@@ -32,15 +32,16 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
     const [image, setImage] = useState<string>("")
     const action = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const iconsUrl = icons.filter((row) => selectIcons.includes(row.name))
         const body = {
             fa_name: dataForm.fa_name,
             en_name: dataForm.en_name,
-            fa_short_description: data?.fa_short_description,
-            en_short_description: data?.en_short_description,
+            fa_short_description: "fa_short_description",
+            en_short_description: "en_short_description",
             fa_description: dataForm.fa_description,
             en_description: dataForm.en_description,
-            technologies: [],
-            technologies_url: [],
+            technologies: selectIcons,
+            technologies_url: iconsUrl.map((i) => i.icon),
             picture: image,
             support_time: dataForm.support_time,
             support_type: dataForm.support_type,
@@ -51,10 +52,10 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
             download_url: urlFile,
         }
         console.log(body);
-        submitHandler(body)
+        // submitHandler(body)
     }
     // apiFiles/KAJK4vGGOL68hnB6M6Nz8Q5zSEjFGmUj4Ln6MJ0c.jpg
-    // apiFiles/aVMQxCpCxp36LWBxgOwrG7l9J6gbErUk3yp2K8Xa.webp
+    // https://shlabs.ir/storage/app/apiFiles/Tb4g8MoFK8ptf9YoyzpSiHkUgti6FXgHxQlLlVDl.jpg
     const uploadFilel = async (event: React.ChangeEvent<HTMLInputElement>) => {
         setLoading(true);
         const token = Cookies.get('authToken')
@@ -64,18 +65,19 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
         for (let file of newFile) {
             formData.append("file", file);
         }
-        const { data } = await axios.post("upload-file", formData, {
-            onUploadProgress: (event) => {
-                if (event.lengthComputable && event.total) {
-                    const percentComplete = Math.round((event.loaded * 100) / event.total);
-                    setProgres(percentComplete)
-                }
-            },
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-        });
-        const url = data?.path ? process.env.NEXT_PUBLIC_URL_FILE + data.path : ""
+        // const { data } = await axios.post("upload-file", formData, {
+        //     onUploadProgress: (event) => {
+        //         if (event.lengthComputable && event.total) {
+        //             const percentComplete = Math.round((event.loaded * 100) / event.total);
+        //             setProgres(percentComplete)
+        //         }
+        //     },
+        //     headers: {
+        //         Authorization: `Bearer ${token}`,
+        //     }
+        // });
+        // const url = data?.path ? process.env.NEXT_PUBLIC_URL_FILE + data.path : ""
+        const url = "https://shlabs.ir/storage/app/apiFiles/Tb4g8MoFK8ptf9YoyzpSiHkUgti6FXgHxQlLlVDl.jpg"
         setLoading(false)
         setUrlFile(url)
     }
@@ -115,6 +117,16 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
     useEffect(() => {
         syncData()
     }, [data])
+    useEffect(() => {
+        import("@/data/icons.json")
+            .then((module) => {
+                const data = module.default;
+                setIcons(data)
+            })
+            .catch((err) => {
+                console.error("Error loading JSON", err);
+            });
+    }, []);
     return (
         <form onSubmit={action} className='flex flex-col gap-2'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
@@ -168,45 +180,28 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                     placeholder='days...'
                     variant="bordered"
                 />
-                <Select
-                    labelPlacement="outside"
-                    variant='bordered'
-                    className="max-w-xs"
-                    label="Favorite Technology"
-                    placeholder="Select Technology"
-                    selectionMode="multiple"
-                >
-                    <SelectItem key={"react"} textValue='react'>
-                        <div className='flex w-full items-center justify-between'>
-                            <span>React</span>
-                            <i><FaReact /></i>
-                        </div>
-                    </SelectItem>
-                    <SelectItem key={"Node"} textValue='Node js'>
-                        <div className='flex w-full items-center justify-between'>
-                            <span>Node js</span>
-                            <i><FaNodeJs /></i>
-                        </div>
-                    </SelectItem>
-                    <SelectItem key={"Next"} textValue='Next js'>
-                        <div className='flex w-full items-center justify-between'>
-                            <span>Next js</span>
-                            <i><SiNextdotjs /></i>
-                        </div>
-                    </SelectItem>
-                    <SelectItem key={"PHP"} textValue='PHP'>
-                        <div className='flex w-full items-center justify-between'>
-                            <span>PHP</span>
-                            <i><FaPhp /></i>
-                        </div>
-                    </SelectItem>
-                    <SelectItem key={"Python"} textValue='Python'>
-                        <div className='flex w-full items-center justify-between'>
-                            <span>Python</span>
-                            <i><FaPython /></i>
-                        </div>
-                    </SelectItem>
-                </Select>
+                {icons.length ?
+                    <Select
+                        selectedKeys={selectIcons}
+                        onChange={({ target }) => {
+                            setSelectIcons(target.value.split(","))
+                        }}
+                        labelPlacement="outside"
+                        variant='bordered'
+                        label="Favorite Technology"
+                        placeholder="Select Technology"
+                        selectionMode="multiple"
+                    >
+                        {icons.map((row, index) => (
+                            <SelectItem key={row.name} textValue={row.name}>
+                                <div className='flex w-full items-center justify-between'>
+                                    <span>{row.name}</span>
+                                    <i className={`devicon-${row.name}-${row.icon}`}></i>
+                                </div>
+                            </SelectItem>
+                        ))}
+                    </Select>
+                    : null}
                 <Textarea
                     variant='bordered'
                     isRequired

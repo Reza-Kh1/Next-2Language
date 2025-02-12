@@ -1,5 +1,40 @@
 import { CalendarDate } from "@nextui-org/react";
-
+type OptionsGetAllMeta = {
+  meta: {
+    current_page: number;
+    from: null;
+    last_page: number;
+    links: [
+      {
+        url: null;
+        label: string;
+        active: boolean;
+      },
+      {
+        url: string;
+        label: string;
+        active: boolean;
+      },
+      {
+        url: null;
+        label: string;
+        active: boolean;
+      }
+    ];
+    path: string;
+    per_page: number;
+    to: null | number;
+    total: number;
+  };
+}
+type OptionsGetAllLinks = {
+  links: {
+    first: string;
+    last: string;
+    prev: number | null;
+    next: number | null;
+  };
+}
 type ProducrtType = {
   // created_at: Date;
   // creator: CreaterType;
@@ -53,39 +88,9 @@ type BlogType = {
   tags: string[];
 };
 type AllBlogType = {
-  data: BlogType[];
-  links: {
-    first: string;
-    last: string;
-    prev: number | null;
-    next: number | null;
-  };
-  meta: {
-    current_page: number;
-    from: null;
-    last_page: number;
-    links: [
-      {
-        url: null;
-        label: string;
-        active: boolean;
-      },
-      {
-        url: string;
-        label: string;
-        active: boolean;
-      },
-      {
-        url: null;
-        label: string;
-        active: boolean;
-      }
-    ];
-    path: string;
-    per_page: number;
-    to: null | number;
-    total: number;
-  };
+  data: BlogType[]
+  meta: OptionsGetAllMeta
+  links: OptionsGetAllLinks
 };
 type ProjectType = {
   fa_title: string;
@@ -101,5 +106,6 @@ type ProjectType = {
   start_date: CalendarDate | null;
   end_date: CalendarDate | null;
 };
+
 type AllProjectType = {};
 export type { ProducrtType, CreaterType, BlogType, AllBlogType, ProjectType };

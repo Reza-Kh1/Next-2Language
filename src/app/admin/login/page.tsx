@@ -1,33 +1,43 @@
 "use client"
 import { Button } from '@heroui/button'
-import { Checkbox, Input } from '@nextui-org/react'
+import { Checkbox, Input, Spinner } from '@nextui-org/react'
 import Cookies from "js-cookie"
 import axios from "axios"
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 export default function Page() {
     const [isLogin, setIsLogin] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(false)
     const [isRemember, setIsRemember] = useState<boolean>(false)
     const navigate = useRouter()
     const submitHandler = (form: FormData) => {
+        setLoading(true)
         const body = {
             password: form.get("password"),
             username: form.get("name"),
         }
         axios.post("login", body).then(({ data }) => {
             if (isRemember) {
-                Cookies.set('authToken', data, { expires: 7, secure: true });
+                Cookies.set('authToken', data, { expires: 15, secure: true });
             } else {
                 Cookies.set('authToken', data, { expires: 1, secure: true });
             }
-            navigate.replace("/admin/dashboard")
+            axios.get("https://shlabs.ir/api/user", {
+                headers: {
+                    Authorization: `Bearer ${data}`,
+                }
+            }).then(({ data }) => {
+                localStorage.setItem("shlabs", JSON.stringify(data))
+                navigate.replace("/admin/dashboard")
+            }).catch((err) => console.log(err)).finally(() => setLoading(false))
         }).catch((err) => {
             console.log(err)
+            setLoading(false)
         })
     }
     return (
         <div className='w-full items-start mb-80 flex justify-center h-[500px] bg-slate-400 bg-no-repeat bg-center bg-cover rounded-xl shadow-md before:bg-black/40 before:w-full before:h-full relative before:absolute before:top-0 before:left-0 before:rounded-xl' style={{ backgroundImage: "url(/admin-image/login-admin.jpg)" }}>
-            <div className='w-1/2 z-10 text-center mt-16'>
+            <div className='w-2/3 md:w-1/2 z-10 text-center mt-16'>
                 {isLogin ?
                     <>
                         <h1 className='font-semibold text-5xl text-w-100'>Welcome back</h1>
@@ -52,14 +62,6 @@ export default function Page() {
                     labelPlacement='outside'
                     placeholder='Name'
                 />
-                {/* <Input
-                    name='email'
-                    label="Email"
-                    type="email"
-                    labelPlacement='outside'
-                    placeholder='Email'
-                    variant="bordered"
-                /> */}
                 <Input
                     required
                     name='password'
@@ -81,8 +83,9 @@ export default function Page() {
                 {
                     !isLogin ?
                         <>
-                            <Button type='submit' className='bg-d-btn text-w-100 w-full rounded-md font-semibold p-5'>
+                            <Button type='submit' disabled={loading} className={`${loading ? "bg-d-btn/70" : "bg-d-btn"} text-w-100 w-full rounded-md font-semibold p-5`}>
                                 Sign in
+                                {loading && <Spinner size='sm' color="default" labelColor="foreground" />}
                             </Button>
                             <span>Don't have an account?
                                 <button type='button' className='font-semibold text-b-btn ml-2' onClick={() => setIsLogin(prev => !prev)}>Sign up</button>
@@ -90,8 +93,9 @@ export default function Page() {
                         </>
                         :
                         <>
-                            <Button type='submit' className='bg-d-btn text-w-100 w-full rounded-md font-semibold p-5'>
+                            <Button type='submit' disabled={loading} className={`${loading ? "bg-d-btn/70" : "bg-d-btn"} text-w-100 w-full rounded-md font-semibold p-5`}>
                                 Sign up
+                                {loading && <Spinner size='sm' color="default" labelColor="foreground" />}
                             </Button>
                             <span>Already have an account?
                                 <button type='button' className='font-semibold text-b-btn ml-2' onClick={() => setIsLogin(prev => !prev)}>Sign in</button>

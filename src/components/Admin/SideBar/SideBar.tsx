@@ -7,6 +7,7 @@ import Cookies from "js-cookie"
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import { usePathname, useRouter } from 'next/navigation'
 import { RiArticleLine } from 'react-icons/ri'
+import { CgProfile } from 'react-icons/cg'
 
 export default function SideBar() {
   const route = useRouter()
@@ -26,8 +27,8 @@ export default function SideBar() {
         </div>
         <div className='h-[calc(100vh-110px)] pr-2 overflow-y-auto custom-scroll flex flex-col gap-1'>
           <NavlinkAdmin href='/admin/dashboard' icon={<MdDashboard />} name='Dashboard' />
+          <NavlinkAdmin href='/admin/profile' icon={<CgProfile />} name='Profile' />
           <NavlinkAdmin href='/admin/projects' icon={<MdAddChart />} name='Projects' />
-          {/* <NavlinkAdmin href='/admin/pages' icon={<IoIosCube />} name='Pages' /> */}
           <NavlinkAdmin href='/admin/products' icon={<FaCartPlus />} name='Products' />
           <NavlinkAdmin href='/admin/blogs' icon={<RiArticleLine />} name='Blogs' />
           <NavlinkAdmin href='/admin/users' icon={<FaUsers />} name='Users' />

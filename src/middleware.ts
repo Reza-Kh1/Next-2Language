@@ -10,12 +10,12 @@ export function middleware(req: NextRequest) {
         if (req.nextUrl.pathname === "/admin/login") {
             return NextResponse.next();
         }
-        // if (isProtected) {
-        //     const token = req.cookies.get("authToken");
-        //     if (!token) {
-        //         return NextResponse.redirect(new URL("/admin/login", req.url));
-        //     }
-        // }
+        if (isProtected) {
+            const token = req.cookies.get("authToken");
+            if (!token) {
+                return NextResponse.redirect(new URL("/admin/login", req.url));
+            }
+        }
     } else {
         if (req.nextUrl.pathname === "/") {
             return NextResponse.redirect(new URL("/en", req.url));
