@@ -9,6 +9,10 @@ import { ProducrtType } from '@/app/type'
 import { IoEye } from 'react-icons/io5'
 import { FaTrash } from 'react-icons/fa6'
 import UploadImage from '@/components/UploadImage/UploadImage'
+import axios from 'axios'
+import { useQueryClient } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
+import DeleteModal from '@/components/DeleteModal/DeleteModal'
 type submitHandlerType = {
     submitHandler: (value: any) => void
     data?: ProducrtType
@@ -19,6 +23,8 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
     const [progres, setProgres] = useState<number>(0)
     const [selectIcons, setSelectIcons] = useState<string[]>([])
     const [icons, setIcons] = useState<{ name: string, icon: string }[]>([])
+    const queryClient = useQueryClient();
+    const route = useRouter()
     const [dataForm, setDataForm] = useState({
         fa_name: "",
         en_name: "",
@@ -30,9 +36,18 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
         download_count: "",
     })
     const [image, setImage] = useState<string>("")
+    const deleteProduct = () => {
+        axios.delete(`products/${data?.id}`).then(() => {
+            queryClient.invalidateQueries({ queryKey: ["getProducts"] });
+            route.replace("/admin/products")
+        }).catch((err) => console.log(err))
+    }
     const action = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const iconsUrl = icons.filter((row) => selectIcons.includes(row.name))
+        const iconsArry = icons.filter((row) => selectIcons.includes(row.name))
+        const localData = localStorage.getItem("shlabs")
+        if (!localData) return
+        const jsonLocal = JSON.parse(localData)
         const body = {
             fa_name: dataForm.fa_name,
             en_name: dataForm.en_name,
@@ -40,22 +55,19 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
             en_short_description: "en_short_description",
             fa_description: dataForm.fa_description,
             en_description: dataForm.en_description,
-            technologies: selectIcons,
-            technologies_url: iconsUrl.map((i) => i.icon),
+            technologies: JSON.stringify(iconsArry),
+            technologies_url: "test",
             picture: image,
             support_time: dataForm.support_time,
             support_type: dataForm.support_type,
             price: dataForm.price,
             download_count: dataForm.download_count,
-            creator_id: "",
-            creator: "",
+            creator_id: jsonLocal?.id,
+            creator: jsonLocal?.username,
             download_url: urlFile,
         }
-        console.log(body);
-        // submitHandler(body)
+        submitHandler(body)
     }
-    // apiFiles/KAJK4vGGOL68hnB6M6Nz8Q5zSEjFGmUj4Ln6MJ0c.jpg
-    // https://shlabs.ir/storage/app/apiFiles/Tb4g8MoFK8ptf9YoyzpSiHkUgti6FXgHxQlLlVDl.jpg
     const uploadFilel = async (event: React.ChangeEvent<HTMLInputElement>) => {
         setLoading(true);
         const token = Cookies.get('authToken')
@@ -111,7 +123,10 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
             })
             setImage(data.picture)
             setUrlFile(data?.download_url || "")
-            console.log(data);
+            const iconBox = JSON.parse(data.technologies)
+            if (iconBox && iconBox?.length) {
+                setSelectIcons(iconBox.map((row: any) => row.name))
+            }
         }
     }
     useEffect(() => {
@@ -152,7 +167,7 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                 />
                 <Input
                     isRequired
-                    label="Price"
+                    label="Price (Toman)"
                     type="number"
                     value={dataForm.price}
                     onChange={({ target }) => setDataForm({ ...dataForm, price: target.value })}
@@ -180,6 +195,15 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                     placeholder='days...'
                     variant="bordered"
                 />
+                <Input
+                    value={dataForm.support_type}
+                    onChange={({ target }) => setDataForm({ ...dataForm, support_type: target.value })}
+                    label="Support Type"
+                    isRequired
+                    labelPlacement='outside'
+                    placeholder='Support Type'
+                    variant="bordered"
+                />
                 {icons.length ?
                     <Select
                         selectedKeys={selectIcons}
@@ -188,6 +212,7 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                         }}
                         labelPlacement="outside"
                         variant='bordered'
+                        className='col-span-2'
                         label="Favorite Technology"
                         placeholder="Select Technology"
                         selectionMode="multiple"
@@ -262,11 +287,16 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                     <UploadImage height={150} width={200} setImageUrl={setImage} imageUrl={image} />
                 </div>
             </div>
-            <div>
+            <div className='flex justify-between'>
                 <Button type='submit' className='bg-white rounded-md shadow-md text-b-70 border border-b-70'>
                     Save Product
                     <MdOutlineDataSaverOn />
                 </Button>
+                {
+                    data?.id ?
+                        <DeleteModal id={data?.id} onSubmit={deleteProduct} />
+                        : null
+                }
             </div>
         </form>
     )

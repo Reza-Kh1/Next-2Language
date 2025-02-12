@@ -22,11 +22,7 @@ export default function Page() {
             } else {
                 Cookies.set('authToken', data, { expires: 1, secure: true });
             }
-            axios.get("https://shlabs.ir/api/user", {
-                headers: {
-                    Authorization: `Bearer ${data}`,
-                }
-            }).then(({ data }) => {
+            axios.get("https://shlabs.ir/api/user").then(({ data }) => {
                 localStorage.setItem("shlabs", JSON.stringify(data))
                 navigate.replace("/admin/dashboard")
             }).catch((err) => console.log(err)).finally(() => setLoading(false))

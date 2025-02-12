@@ -26,7 +26,7 @@ type OptionsGetAllMeta = {
     to: null | number;
     total: number;
   };
-}
+};
 type OptionsGetAllLinks = {
   links: {
     first: string;
@@ -34,20 +34,18 @@ type OptionsGetAllLinks = {
     prev: number | null;
     next: number | null;
   };
-}
+};
+type UserType = {
+  created_at: Date;
+  id: number;
+  remember_token: string | null;
+  token: string | null;
+  updated_at: Date;
+  user_type: "admin" | "normal";
+  username: string;
+  name: string;
+};
 type ProducrtType = {
-  // created_at: Date;
-  // creator: CreaterType;
-  // creator_id: string;
-  // description: string;
-  // download_count: string;
-  // download_url: string;
-  // id: 1;
-  // name: string;
-  // price: string;
-  // rank: string;
-  // short_description: string;
-  // updated_at: Date;
   fa_name: string;
   en_name: string;
   fa_short_description: string;
@@ -77,6 +75,8 @@ type CreaterType = {
   username: string;
 };
 type BlogType = {
+  author: AuthorType;
+  id: number;
   picture: string;
   fa_title: string;
   en_title: string;
@@ -85,12 +85,13 @@ type BlogType = {
   categories: string;
   read_time: string;
   author_id: string;
-  tags: string[];
+  tags: string;
+  updated_at:Date
 };
 type AllBlogType = {
-  data: BlogType[]
-  meta: OptionsGetAllMeta
-  links: OptionsGetAllLinks
+  data: BlogType[];
+  meta: OptionsGetAllMeta;
+  links: OptionsGetAllLinks;
 };
 type ProjectType = {
   fa_title: string;
@@ -106,6 +107,23 @@ type ProjectType = {
   start_date: CalendarDate | null;
   end_date: CalendarDate | null;
 };
-
+type AuthorType = {
+  created_at: Date;
+  id: number;
+  remember_token: string | null;
+  token: string | null;
+  updated_at: Date;
+  user_type: string;
+  username: string;
+};
 type AllProjectType = {};
-export type { ProducrtType, CreaterType, BlogType, AllBlogType, ProjectType };
+export type {
+  ProducrtType,
+  CreaterType,
+  BlogType,
+  AllBlogType,
+  ProjectType,
+  UserType,
+  OptionsGetAllMeta,
+  OptionsGetAllLinks,
+};

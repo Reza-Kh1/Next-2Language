@@ -17,12 +17,7 @@ export default function page() {
     const jsonLocal = JSON.parse(local)
 
     const updateUSer = (body: any) => {
-        const token = Cookies.get('authToken')
-        axios.post("updateUser", body, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-        }).then(() => {
+        axios.post("updateUser", body).then(() => {
             if (local) {
                 const newBody = {
                     ...jsonLocal,

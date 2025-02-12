@@ -1,5 +1,6 @@
 "use client"
 import { getBlogs } from '@/action/admin';
+import { BlogType, OptionsGetAllLinks, OptionsGetAllMeta } from '@/app/type';
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import { Pagination } from '@nextui-org/react';
 import { useQuery } from '@tanstack/react-query';
@@ -11,13 +12,16 @@ import { IoCreateOutline } from 'react-icons/io5';
 import { MdOutlineAccessTime } from 'react-icons/md';
 
 export default function page() {
-  const { data } = useQuery({
-    queryKey: ["getBlogs"],
+  const { data } = useQuery<{
+    data: BlogType[],
+    links: OptionsGetAllLinks,
+    meta: OptionsGetAllMeta
+  }>({
+    queryKey: ["GetAllBlogs"],
     queryFn: getBlogs,
     staleTime: 1000 * 60 * 60 * 24,
     gcTime: 1000 * 60 * 60 * 24,
   });
-  console.log(data);
   return (
     <div className='flex flex-col gap-5'>
       <div className='flex justify-between items-center p-3 rounded-xl bg-white shadow-md'>
@@ -32,7 +36,7 @@ export default function page() {
       {data?.data?.length ?
         <>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-5 p-3 rounded-xl bg-white shadow-md'>
-            {data?.data?.map((row: any, index: number) => (
+            {data?.data?.map((row, index: number) => (
               <section key={index} className='flex justify-between flex-col gap-6'>
                 <div className='p-4 rounded-xl border border-d-60' style={{ backgroundImage: "url(/dot-top.png)" }}>
                   <ImageCustom className='w-full' alt={"work"} src={"/work1.png"} height={350} width={500} />
@@ -40,16 +44,16 @@ export default function page() {
                 <div className='flex flex-col md:flex-row items-start gap-4 md:gap-0 md:items-center justify-between'>
                   <div className='flex gap-2 items-center'>
                     <Image src={"/profile-auth.jpg"} alt='profile' className='rounded-full' width={40} height={40} />
-                    <span>name</span>
+                    <span>{row.author?.username}</span>
                   </div>
                   <div className='flex gap-2 text-w-50'>
-                    <span className='py-2 px-3 border rounded-full flex items-center gap-1 text-xs border-d-60'><MdOutlineAccessTime /> 6 min read</span>
-                    <span className='py-2 px-3 border rounded-full flex items-center gap-1 text-xs border-d-60'><FaCalendar /> March 2019</span>
+                    <span className='py-2 px-3 border rounded-full flex items-center gap-1 text-xs border-d-60'><MdOutlineAccessTime />{row?.read_time} min read</span>
+                    <span className='py-2 px-3 border rounded-full flex items-center gap-1 text-xs border-d-60'><FaCalendar />{new Date(row.updated_at).toLocaleDateString("en")}</span>
                   </div>
                 </div>
                 <div>
-                  <h3 className='text-lg'>title</h3>
-                  <p className='text-w-50 mt-2'>text</p>
+                  <h3 className='text-lg'>{row.en_title}</h3>
+                  <p className='text-w-50 mt-2'>{row.categories}</p>
                 </div>
                 <div className='flex justify-center'>
                   <Link className='text-w-100 bg-d-60 text-xs md:text-base px-5 py-2 rounded-full border border-d-50' href={"/admin/blogs/1"}>

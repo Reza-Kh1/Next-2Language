@@ -29,9 +29,6 @@ export default function Navbar() {
             <div>
                 {new Date().toISOString().split('T')[0]}
             </div>
-            <div>
-
-            </div>
             <Button isIconOnly variant='light' className='md:hidden' onPress={onOpen}>
                 <RiMenu3Fill />
             </Button>

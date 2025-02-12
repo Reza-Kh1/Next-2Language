@@ -1,28 +1,29 @@
 import axios from "axios";
 const getProducts = async () => {
   const { data } = await axios.get("products");
-  console.log(data);
   return data;
 };
-
+const getAllUsers = async () => {
+  return axios.get("getusers");
+};
 const getSingleProduct = async (slug?: string) => {
   const { data } = await axios.get(`products/${slug}`);
   return data;
 };
 const getProjects = async () => {
-  const { data } = await axios.get("products");
+  const { data } = await axios.get("projects");
   return data;
 };
 const getSingleProject = async (slug?: string) => {
-  const { data } = await axios.get(`products/${slug}`);
+  const { data } = await axios.get(`projects/${slug}`);
   return data;
 };
 const getBlogs = async () => {
-  const { data } = await axios.get("products");
+  const { data } = await axios.get("blogs");
   return data;
 };
 const getSingleBlog = async (slug?: string) => {
-  const { data } = await axios.get(`products/${slug}`);
+  const { data } = await axios.get(`blogs/${slug}`);
   return data;
 };
 export {
@@ -32,4 +33,5 @@ export {
   getSingleProject,
   getBlogs,
   getSingleBlog,
+  getAllUsers,
 };

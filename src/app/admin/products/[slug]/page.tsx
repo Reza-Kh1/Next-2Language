@@ -25,10 +25,9 @@ export default function page() {
                 }
             });
         },
-        onSuccess: ({ data }) => {
-            console.log(data);
-            toast.success("its good");
-            query.invalidateQueries({ queryKey: ['getProducts', slug] });
+        onSuccess: () => {
+            toast.success("product has been updated");
+            query.invalidateQueries({ queryKey: ["singleProduct", slug] });
             query.invalidateQueries({ queryKey: ['getProducts'] });
         },
         onError: (err) => {

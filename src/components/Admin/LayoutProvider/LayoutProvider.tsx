@@ -4,7 +4,11 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useMemo } from 'react'
 import toast from 'react-hot-toast';
+import Cookies from "js-cookie"
+const token = Cookies.get('authToken')
+
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_URL_API;
+axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 // axios.defaults.withCredentials = true;
 
 export default function LayoutProvider({ children }: { children: React.ReactNode }) {
