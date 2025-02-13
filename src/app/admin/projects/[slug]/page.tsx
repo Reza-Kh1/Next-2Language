@@ -1,33 +1,34 @@
 "use client";
 import { CalendarDate, DateInput, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Select, SelectItem, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Textarea, useDisclosure } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
-import { FaNodeJs, FaPhp, FaPlus, FaPython, FaReact, FaUserPlus } from "react-icons/fa6";
-import { SiNextdotjs } from "react-icons/si";
-import Cookies from 'js-cookie'
+import {  FaUserPlus } from "react-icons/fa6";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Button } from "@heroui/button";
 import { MdClose, MdOutlineDataSaverOn } from "react-icons/md";
 import UploadImage from "@/components/UploadImage/UploadImage";
 import { useParams, useRouter } from "next/navigation";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getAllUsers, getSingleProject } from "@/action/admin";
 import { OptionsGetAllLinks, OptionsGetAllMeta, ProjectType, UserType } from "@/app/type";
 import DeleteModal from "@/components/DeleteModal/DeleteModal";
+import PaginationAdmin from "@/components/Admin/PaginationAdmin/PaginationAdmin";
 export default function Page() {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const route = useRouter()
-    const { data: dataAlluser } = useQuery<{
-        data: {
-            data: UserType[],
-            links: OptionsGetAllLinks,
-            meta: OptionsGetAllMeta
-        }
+    const [searchQuery, setSearchQuery] = useState<any>();
+
+    const { data: dataAllUser } = useInfiniteQuery<{
+        data: UserType[],
+        links: OptionsGetAllLinks,
+        meta: OptionsGetAllMeta
     }>({
-        queryKey: ["GetAllUsers"],
-        queryFn: getAllUsers,
+        queryKey: ["GetAllUsers", searchQuery],
+        queryFn: () => getAllUsers(searchQuery),
         staleTime: 1000 * 60 * 60 * 24,
         gcTime: 1000 * 60 * 60 * 24,
+        getNextPageParam: (lastPage) => lastPage.links.next || undefined,
+        initialPageParam: "",
     });
     const { slug } = useParams()
     const queryClient = useQueryClient();
@@ -82,14 +83,12 @@ export default function Page() {
             technologies: JSON.stringify(iconsArry),
             technology_icons: "test",
             programmer_rules: newTeam,
-            start_date: startDate,
-            end_date: endDate,
+            start_date: startDate?.toString(),
+            end_date: endDate?.toString(),
             author_id: jsonData?.id,
-            en_content: "1",
-            read_time: "1",
-            tags: "1",
-            fa_content: "1"
         }
+        console.log(body);
+
         if (data?.data) {
             axios.patch(`projects/${data.data.id}`, body).then(() => {
                 toast.success("Projects Was Updated")
@@ -121,12 +120,10 @@ export default function Page() {
             })
             setEndDate(data.data.end_date)
             setStartDate(data.data.start_date)
-            // const iconBox = JSON.parse(data.data.technologies)
-            // if (iconBox && iconBox?.length) {
-            //     setSelectIcons(iconBox.map((row: any) => row.name))
-            // }
-            console.log(data.data);
-
+            const iconBox = JSON.parse(data.data.technologies)
+            if (iconBox && iconBox?.length) {
+                setSelectIcons(iconBox.map((row: any) => row.name))
+            }
             setImage(data.data.picture || "");
         }
     }
@@ -269,7 +266,7 @@ export default function Page() {
                         ))}
                     </div>
                     <div className="flex flex-col gap-5">
-                        {dataAlluser?.data.data.length ?
+                        {dataAllUser?.pages[0]?.data?.length ?
                             <Table
                                 selectionMode="none"
                                 aria-label="Example static collection table"
@@ -282,7 +279,7 @@ export default function Page() {
                                     <TableColumn>Button</TableColumn>
                                 </TableHeader>
                                 <TableBody>
-                                    {dataAlluser?.data.data.map((row) => (
+                                    {dataAllUser?.pages[0]?.data.map((row) => (
                                         <TableRow key={row.id} className={projectTeam.some((item) => item.id === row.id) ? "bg-slate-300 shadow-md" : ""}>
                                             < TableCell > {row.username}</TableCell>
                                             <TableCell>{row.user_type}</TableCell>
@@ -306,6 +303,7 @@ export default function Page() {
                             </Table>
                             : null}
                     </div>
+                    <PaginationAdmin search={searchQuery} setSearch={setSearchQuery} meta={dataAllUser?.pages[0].meta} />
                 </div >
                 <div>
                     <Button type='submit' className='bg-white rounded-md shadow-md text-b-70 border border-b-70'>

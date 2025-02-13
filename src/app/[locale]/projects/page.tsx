@@ -4,6 +4,7 @@ import HeaderTitle from '@/components/HeaderTitle/HeaderTitle'
 import IconBgStar from '@/components/IconBgStar/IconBgStar'
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import ProjectCards from '@/components/ProjectCards/ProjectCards'
+import pageCache from '@/data/cache'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import React from 'react'
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
   description: 'Project | Site'
 }
 const getData = () => {
-  return fetchApi({ url: "projects" })
+  return fetchApi({ url: "projects", next: pageCache.projects.cache, tags: [pageCache.projects.tag] })
 }
-export default async function page({ params }: { params: { locale: string } }) {
+export default async function page({ params }: any) {
   const { locale } = params
   const data = await getData()
   const t = await getTranslations('HomePage');

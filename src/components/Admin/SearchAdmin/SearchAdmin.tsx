@@ -25,7 +25,7 @@ export default function SearchAdmin({ name, setSearch }: SearchAdmin) {
                 <Input
                     key={index}
                     name={row}
-                    label="Search Status"
+                    label={"Search " + row}
                     type="text"
                     labelPlacement='outside'
                     placeholder='Search...'

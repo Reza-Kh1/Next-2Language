@@ -13,6 +13,8 @@ import { FaPlus } from 'react-icons/fa6';
 import { MdClose, MdOutlineDataSaverOn } from 'react-icons/md';
 import toast from 'react-hot-toast';
 import DeleteModal from '@/components/DeleteModal/DeleteModal';
+import deleteCache from '@/action/deleteCache';
+import pageCache from '@/data/cache';
 
 export default function page() {
   const { slug } = useParams()
@@ -68,12 +70,15 @@ export default function page() {
       axios.patch(`blogs/${data?.data?.id}`, body).then(() => {
         toast.success("Blog is Updated")
         queryClient.invalidateQueries({ queryKey: ["SingleBlog", slug], });
+        deleteCache({ tag: pageCache.blogs.tag })
+        deleteCache({ tag: `${[pageCache.blogs.tag, data.data.id]}` })
       }).catch((err) => {
         toast.error("Error in DataBase")
       })
     } else {
       axios.post("blogs", body).then(() => {
         toast.success("Blog is Created")
+        deleteCache({ tag: pageCache.blogs.tag })
       }).catch((err) => {
         toast.error("Error in DataBase")
       })

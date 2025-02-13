@@ -1,5 +1,5 @@
 "use client"
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { PiArrowsCounterClockwiseLight } from "react-icons/pi";
 import axios from 'axios';
 import React, { useState } from 'react'
@@ -13,18 +13,23 @@ import FormProduct from './FormProduct';
 import Link from 'next/link';
 import { getProducts } from '@/action/admin';
 import { OptionsGetAllLinks, OptionsGetAllMeta, ProducrtType } from '@/app/type';
+import PaginationAdmin from '@/components/Admin/PaginationAdmin/PaginationAdmin';
+import SearchAdmin from '@/components/Admin/SearchAdmin/SearchAdmin';
 export default function page() {
   const [create, setCreate] = useState<boolean>(false)
   const queryClient = useQueryClient();
-  const { data } = useQuery<{
+  const [searchQuery, setSearchQuery] = useState<any>();
+  const { data } = useInfiniteQuery<{
     data: ProducrtType[],
     links: OptionsGetAllLinks,
     meta: OptionsGetAllMeta
   }>({
-    queryKey: ["getProducts"],
-    queryFn: getProducts,
+    queryKey: ["GetAllBlogs", searchQuery],
+    queryFn: () => getProducts(searchQuery),
     staleTime: 1000 * 60 * 60 * 24,
     gcTime: 1000 * 60 * 60 * 24,
+    getNextPageParam: (lastPage) => lastPage.links.next || undefined,
+    initialPageParam: "",
   });
   const { mutate } = useMutation({
     mutationFn: (body: any) => {
@@ -41,6 +46,7 @@ export default function page() {
   });
   return (
     <div className='flex flex-col gap-5'>
+      <SearchAdmin name={["en_name", "en_description"]} setSearch={setSearchQuery} />
       <div className='flex flex-col gap-5 p-3 rounded-xl bg-white shadow-md'>
         <div className='flex justify-between items-center'>
           <span>Create Product</span>
@@ -62,10 +68,10 @@ export default function page() {
           <FormProduct submitHandler={(value) => mutate(value)} />
         )}
       </div>
-      {data?.data?.length ?
+      {data?.pages[0]?.data?.length ?
         <>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-5 p-3 rounded-xl bg-white shadow-md'>
-            {data?.data?.map((row: ProducrtType, index: number) => (
+            {data?.pages[0]?.data?.map((row: ProducrtType, index: number) => (
               <Link key={index} href={`/admin/products/${row.id}`} className='border rounded-xl shadow-md p-4 flex flex-col gap-2 cursor-pointer'>
                 <ImageCustom src={"/service1.png"} alt={"image"} className='w-full' height={180} width={200} />
                 <div className='flex justify-between items-center'>
@@ -85,10 +91,7 @@ export default function page() {
               </Link>
             ))}
           </div>
-          <div className='bg-white p-3 shadow-md rounded-xl flex items-center justify-center'>
-            <Pagination classNames={{ cursor: "bg-o-60" }} onChange={(value) => console.log(value)
-            } initialPage={3} boundaries={1} total={1} />
-          </div>
+          <PaginationAdmin search={searchQuery} setSearch={setSearchQuery} meta={data?.pages[0].meta} />
         </> :
         "No data available."}
     </div>

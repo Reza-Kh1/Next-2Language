@@ -42,7 +42,7 @@ export default function FormUsers({ data, onSubmit, isUpdate }: FormUsersType) {
     }, [])
     return (
         <form onSubmit={action} className='flex flex-col gap-2'>
-            <div className={`grid ${isUpdate ? "grid-cols-1" : "grid-cols-2"} gap-3`}>
+            <div className={`grid ${isUpdate ? "grid-cols-1" : "md:grid-cols-2"} gap-3`}>
                 <Input
                     onChange={({ target }) => setDataForm({ ...dataForm, name: target.value })}
                     value={dataForm.name}

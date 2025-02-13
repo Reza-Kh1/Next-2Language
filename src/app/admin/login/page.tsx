@@ -24,7 +24,7 @@ export default function Page() {
             }
             axios.get("https://shlabs.ir/api/user").then(({ data }) => {
                 localStorage.setItem("shlabs", JSON.stringify(data))
-                navigate.replace("/admin/dashboard")
+                navigate.replace("/admin/blogs")
             }).catch((err) => console.log(err)).finally(() => setLoading(false))
         }).catch((err) => {
             console.log(err)

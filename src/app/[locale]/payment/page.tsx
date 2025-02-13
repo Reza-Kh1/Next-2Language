@@ -3,10 +3,10 @@ import { ProducrtType } from '@/app/type'
 import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
 import { Button } from '@heroui/button'
 import React, { useEffect, useState } from 'react'
-import { MdClose, MdDownload } from 'react-icons/md'
+import { MdClose } from 'react-icons/md'
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 import Image from 'next/image'
-import { Checkbox, InputOtp, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@nextui-org/react'
+import { Checkbox, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@nextui-org/react'
 import { Link } from '@/i18n/routing'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
@@ -47,7 +47,7 @@ export default function page() {
             const blobUrl = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = blobUrl;
-            link.setAttribute("download", data?.name);
+            link.setAttribute("download", data?.download_url);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -72,7 +72,7 @@ export default function page() {
                     <div className='w-full md:w-4/12 pb-5 md:pr-5 border-b md:border-b-0 md:border-r border-d-60 flex flex-col items-center justify-center text-center gap-6'>
                         <h1 className='text-white text-3xl font-semibold'>{local === "fa" ? "خلاصه سفارس" : "Order Summery"}</h1>
                         <div className='border p-6 w-full bg-d-80 rounded-xl flex justify-between text-white items-center relative border-d-60'>
-                            <span className='font-semibold'>{data?.name}</span>
+                            <span className='font-semibold'>{data?.en_name}</span>
                             <span>{data?.price} T</span>
                             <span onClick={cancelHandler} className='absolute cursor-pointer top-1 right-1 text-white'>
                                 <MdClose size={20} />
@@ -130,10 +130,10 @@ export default function page() {
                                 <div className='flex flex-col gap-4 justify-evenly'>
                                     <div className='w-full'>
                                         <div className='flex gap-2 items-center'>
-                                            <ImageCustom src={"/service2.png"} alt={data?.name || ""} width={300} height={280} figureClass='w-auto' />
+                                            <ImageCustom src={"/service2.png"} alt={data?.en_name || ""} width={300} height={280} figureClass='w-auto' />
                                             <div>
                                                 <span className='text-white font-semibold mb-5 block'>
-                                                    {data?.name || ""}
+                                                    {data?.en_name || ""}
                                                 </span>
                                                 <div className='flex gap-4'>
                                                     <i className='p-2 rounded-full bg-d-80 border border-d-60 text-w-100'>

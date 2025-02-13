@@ -15,10 +15,10 @@ export default async function page({ params }: any) {
     console.log(data);
     return (
         <>
-            <ContainerHeader firstDark dark={""} light={data.name} text={data.short_description} />
+            <ContainerHeader firstDark dark={""} light={data.en_name} text={data.en_short_description} />
             <main className='main-class'>
                 <h1 className='text-white text-2xl font-semibold'>
-                    {data.name}
+                    {data.en_name}
                 </h1>
                 <section className='p-4 gap-3 md:p-8 flex justify-between flex-col rounded-xl border border-d-60' style={{ backgroundImage: 'linear-gradient(204deg, #ffffff0d, #0202028f)' }}>
                     <div className='flex flex-col justify-between'>
@@ -31,12 +31,11 @@ export default async function page({ params }: any) {
                             </div>
                             <i className='text-w-80 flex gap-1 items-center'>
                                 <SlCalender className='text-yellow-400' />
-                                {new Date(data.created_at).toLocaleDateString()}
+                                {new Date(data.updated_at).toLocaleDateString()}
                             </i>
                         </div>
-                        <p className='text-w-90'>{data.short_description}</p>
                     </div>
-                    <p className='text-w-90'>{data.description}</p>
+                    <p className='text-w-90'>{data.en_short_description}</p>
                 </section>
             </main>
         </>

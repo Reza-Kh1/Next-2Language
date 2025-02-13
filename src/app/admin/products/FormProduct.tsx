@@ -212,7 +212,7 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                         }}
                         labelPlacement="outside"
                         variant='bordered'
-                        className='col-span-2'
+                        className='md:col-span-2'
                         label="Favorite Technology"
                         placeholder="Select Technology"
                         selectionMode="multiple"

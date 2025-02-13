@@ -5,26 +5,33 @@ import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import Image from 'next/image'
 import { MdOutlineAccessTime } from 'react-icons/md'
 import { FaCalendar } from 'react-icons/fa6'
-import { useLocale, useTranslations } from 'next-intl'
 import { Metadata } from 'next'
 import { Link } from '@/i18n/routing'
+import { getTranslations } from 'next-intl/server'
+import { fetchApi } from '@/action/fetchApi'
+import pageCache from '@/data/cache'
+import { BlogType } from '@/app/type'
 export const metadata: Metadata = {
   title: 'Blogs | Site',
   description: 'Blogs | Site'
 }
-export default function page() {
-  const local = useLocale()
-  const t = useTranslations("Blog")
+const getData = () => {
+  return fetchApi({ url: "blogs", next: pageCache.blogs.cache, tags: [pageCache.blogs.tag] })
+}
+export default async function Page({ params }: any) {
+  const { locale } = params
+  const { data }: { data: BlogType[] } = await getData()
+  const t = await getTranslations("Blog")
   return (
     <>
       <ContainerHeader light={t("header.nameLight")} dark={t("header.nameDark")} text={t("header.text")} />
       <main className="main-class">
         <div className='my-8 md:my-16 flex'>
           <div className='bg-d-80 mx-auto p-2 px-3 overflow-auto  text-w-100 rounded-full flex gap-2 items-center border-d-50 border'>
-            <NavLink url={local === "fa" ? "همه" : "All"} />
-            <NavLink url={local === "fa" ? "بیزینس" : "Business"} />
-            <NavLink url={local === "fa" ? "طراحی" : "Design"} />
-            <NavLink url={local === "fa" ? "توسعه دهنده" : "Development"} />
+            <NavLink url={locale === "fa" ? "همه" : "All"} />
+            <NavLink url={locale === "fa" ? "بیزینس" : "Business"} />
+            <NavLink url={locale === "fa" ? "طراحی" : "Design"} />
+            <NavLink url={locale === "fa" ? "توسعه دهنده" : "Development"} />
           </div>
         </div>
         <div className='flex flex-col md:flex-row items-center gap-10'>
@@ -33,36 +40,64 @@ export default function page() {
           </div>
           <div className='w-full md:w-7/12'>
             <h2 className='text-w-100 font-semibold text-xl mb-6'>{t("section-1.name")}</h2>
-            <p className='text-w-50'>{t("section-1.text")}<Link href={"#"} className='text-w-100'>{local === "fa" ? "مطالعه بیشتر..." : "Read More..."}</Link></p>
+            <p className='text-w-50'>{t("section-1.text")}<Link href={"#"} className='text-w-100'>{locale === "fa" ? "مطالعه بیشتر..." : "Read More..."}</Link></p>
             <div className='mt-12 grid grid-cols-1 md:grid-cols-4 items-center gap-3 md:gap-7 justify-between p-4 md:p-6 rounded-xl border border-d-60'>
-              <div className={`flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 border-d-60 ${local === "fa" ? "md:border-l" : "md:border-r"}`}>
-                <span className='text-sm text-w-50'>{local === "fa" ? "زمان مطالعه" : "Read Time"}</span>
+              <div className={`flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 border-d-60 ${locale === "fa" ? "md:border-l" : "md:border-r"}`}>
+                <span className='text-sm text-w-50'>{locale === "fa" ? "زمان مطالعه" : "Read Time"}</span>
                 <span className='text-w-100'>{t("section-1.time")}</span>
               </div>
-              <div className={`flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 border-d-60 ${local === "fa" ? "md:border-l" : "md:border-r"}`}>
-                <span className='text-sm text-w-50'>{local === "fa" ? "نویسنده" : "Author"}</span>
+              <div className={`flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 border-d-60 ${locale === "fa" ? "md:border-l" : "md:border-r"}`}>
+                <span className='text-sm text-w-50'>{locale === "fa" ? "نویسنده" : "Author"}</span>
                 <span className='text-w-100'>{t("section-1.author")}</span>
               </div>
-              <div className={`flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 border-d-60 ${local === "fa" ? "md:border-l" : "md:border-r"}`}>
-                <span className='text-sm text-w-50'>{local === "fa" ? "تاریخ انتشار" : "Published Date"}</span>
+              <div className={`flex flex-col gap-2 border-b md:border-b-0 pb-3 md:pb-0 border-d-60 ${locale === "fa" ? "md:border-l" : "md:border-r"}`}>
+                <span className='text-sm text-w-50'>{locale === "fa" ? "تاریخ انتشار" : "Published Date"}</span>
                 <span className='text-w-100'>{t("section-1.published")}</span>
               </div>
               <div className='flex flex-col gap-2'>
-                <span className='text-sm text-w-50'>{local === "fa" ? "دسته" : "Category"}</span>
+                <span className='text-sm text-w-50'>{locale === "fa" ? "دسته" : "Category"}</span>
                 <span className='text-w-100'>{t("section-1.category")}</span>
               </div>
             </div>
           </div>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-10 mt-12'>
-          {t.raw("section-1.array").map((row: any, index: number) => (
+          {
+            data.map((row, index) => (
+              <section key={index} className='flex justify-between flex-col gap-6'>
+                <div className='p-4 rounded-xl border border-d-60' style={{ backgroundImage: "url(/dot-top.png)" }}>
+                  <ImageCustom className='w-full' alt={row.en_title} src={row.picture} height={350} width={500} />
+                </div>
+                <div className='flex flex-col md:flex-row items-start gap-4 md:gap-0 md:items-center justify-between'>
+                  <div className='flex gap-2 items-center'>
+                    <Image src={"/profile-auth.jpg"} alt='profile' className='rounded-full' width={40} height={40} />
+                    <span className='text-w-100'>{row?.author?.username}</span>
+                  </div>
+                  <div className='flex gap-2 text-w-80'>
+                    <span className='py-2 px-3 border rounded-full flex items-center gap-1 text-xs border-d-60'><MdOutlineAccessTime /> {row.read_time} {locale === "fa" ? "دقیقه مطالعه" : "min read"}</span>
+                    <span className='py-2 px-3 border rounded-full flex items-center gap-1 text-xs border-d-60'><FaCalendar />{new Date(row.updated_at).toLocaleDateString(locale === "fa" ? "fa" : "en")}</span>
+                  </div>
+                </div>
+                <div>
+                  <h3 className='text-w-100 text-lg'>{locale === "fa" ? row.fa_title : row.en_title}</h3>
+                  <p className='text-w-50 mt-2'>{locale === "fa" ? row.fa_content : row.en_content}</p>
+                </div>
+                <div className='flex justify-center'>
+                  <Link className='text-w-100 bg-d-60 text-xs md:text-base px-5 py-2 rounded-full border border-d-50' href={`/blogs/${row.id}`}>
+                    {locale === "fa" ? "مطالعه بیشتر" : "Read More"}
+                  </Link>
+                </div>
+              </section>
+            ))
+          }
+          {/* {t.raw("section-1.array").map((row: any, index: number) => (
             <section key={index} className='flex justify-between flex-col gap-6'>
               <div className='p-4 rounded-xl border border-d-60' style={{ backgroundImage: "url(/dot-top.png)" }}>
                 <ImageCustom className='w-full' alt={"work"} src={row.banner} height={350} width={500} />
               </div>
               <div className='flex flex-col md:flex-row items-start gap-4 md:gap-0 md:items-center justify-between'>
                 <div className='flex gap-2 items-center'>
-                  <Image src={"/profile-auth.jpg"} alt='profile'className='rounded-full' width={40} height={40} />
+                  <Image src={"/profile-auth.jpg"} alt='profile' className='rounded-full' width={40} height={40} />
                   <span className='text-w-100'>{row.name}</span>
                 </div>
                 <div className='flex gap-2 text-w-80'>
@@ -76,11 +111,11 @@ export default function page() {
               </div>
               <div className='flex justify-center'>
                 <Link className='text-w-100 bg-d-60 text-xs md:text-base px-5 py-2 rounded-full border border-d-50' href={"/blogs/1"}>
-                  {local === "fa" ? "مطالعه بیشتر" : "Read More"}
+                  {locale === "fa" ? "مطالعه بیشتر" : "Read More"}
                 </Link>
               </div>
             </section>
-          ))}
+          ))} */}
         </div>
       </main>
     </>

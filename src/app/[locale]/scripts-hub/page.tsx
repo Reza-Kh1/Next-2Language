@@ -1,23 +1,27 @@
 import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
 import { Metadata } from 'next'
-import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
 import React from 'react'
-import { CgArrowTopRight } from 'react-icons/cg'
-import { FaHtml5, FaInstagram, FaReact } from 'react-icons/fa'
-import { FaArrowLeftLong, FaArrowRightLong, FaFacebook, FaStar, FaTwitter } from 'react-icons/fa6'
+import { FaInstagram } from 'react-icons/fa'
+import { FaArrowLeftLong, FaArrowRightLong, FaFacebook, FaTwitter } from 'react-icons/fa6'
 import { HiOutlineMenu } from 'react-icons/hi'
-import { SiTailwindcss } from 'react-icons/si'
 import Products from './Products'
+import { getTranslations } from 'next-intl/server'
+import { fetchApi } from '@/action/fetchApi'
+import pageCache from '@/data/cache'
+import { ProducrtType } from '@/app/type'
 export const metadata: Metadata = {
     title: 'Scripts Hub | Site',
     description: 'Scripts Hub | Site'
 }
-
-export default function page() {
-    const local = useLocale()
-    const t = useTranslations("Scripts")
+const getData = () => {
+    return fetchApi({ url: "products", next: pageCache.products.cache, tags: [pageCache.products.tag] })
+}
+export default async function page({ params }: any) {
+    const { locale } = params
+    const { data }: { data: ProducrtType[] } = await getData()
+    const t = await getTranslations("Scripts")
     return (
         <>
             <ContainerHeader firstDark dark={t("header.nameDark")} light={t("header.nameLight")} text={t("header.text")} />
@@ -31,7 +35,7 @@ export default function page() {
                         <p className='text-w-50'>{t("prof.text")}</p>
                     </div>
                     <div className='flex flex-col gap-3 w-2/5   '>
-                        <span className='text-w-80'>{local === "fa" ? "راه ارتباطی" : "Lets connect"}</span>
+                        <span className='text-w-80'>{locale === "fa" ? "راه ارتباطی" : "Lets connect"}</span>
                         <div className='flex gap-2 items-center text-w-80'>
                             <i className='p-3 rounded-full border border-d-60' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
                                 <FaInstagram />
@@ -50,7 +54,7 @@ export default function page() {
                         <div className='flex justify-between items-center'>
                             <h2 className='text-w-100 font-semibold text-2xl'>{t("section-1.name")}</h2>
                             <Link href={"#"} title='more products' aria-labelledby='more' className='p-3 md:hidden rounded-full border border-d-60' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
-                                {local === "fa" ?
+                                {locale === "fa" ?
                                     <FaArrowLeftLong className="text-w-100" />
                                     :
                                     <FaArrowRightLong className="text-w-100" />
@@ -71,7 +75,7 @@ export default function page() {
                     ))}
                     <div className='hidden md:flex items-center'>
                         <Link href={"#"} title='more products' aria-labelledby='more' className='p-3 rounded-full border border-d-60' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
-                            {local === "fa" ?
+                            {locale === "fa" ?
                                 <FaArrowLeftLong className="text-w-100" />
                                 :
                                 <FaArrowRightLong className="text-w-100" />
@@ -82,7 +86,27 @@ export default function page() {
                 <div>
                     <h2 className='text-w-100 text-2xl md:text-4xl font-semibold mb-12'>Code Snippet</h2>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10'>
-                        <Products />
+                        {data.map((item, index) => (
+                            <Products key={index} row={item}>
+                                <div>
+                                    <span className='text-xl md:text-2xl text-w-100 font-semibold'>{locale === "fa" ? item.fa_name : item.en_name}</span>
+                                    <p className='text-w-50 text-sm md:text-base mt-4'>{locale === "fa" ? item.fa_description : item.en_description}</p>
+                                </div>
+                                <div className='flex items-center justify-between'>
+                                    <div className='flex gap-1 items-center'>
+                                        <span className='text-w-80'>
+                                            {locale === "fa" ? "قیمت" : "price"} : {Number(item.price).toLocaleString()} T
+                                        </span>
+                                    </div>
+                                    <div className='flex gap-4'>
+                                        {JSON.parse(item.technologies).map((icon: any) => (
+                                            <i key={icon?.name} className={`p-2 rounded-full bg-d-80 border border-d-60 text-w-100 devicon-${icon.name}-${icon.icon}`}>
+                                            </i>
+                                        ))}
+                                    </div>
+                                </div>
+                            </Products>
+                        ))}
                     </div>
                     <div className='flex justify-start mt-4 md:mt-8'>
                         <Link href={"#"} className='text-w-100 flex text-xs md:text-base items-center gap-4 p-2 md:p-3 px-4 md:px-6 border border-d-60 rounded-full '>
@@ -147,24 +171,24 @@ export default function page() {
                         <ImageCustom alt={"ex"} src={"/biting.png"} figureClass='w-auto text-center flex justify-center' className='w-52 md:w-72' width={300} height={400} />
                     </div>
                     <div className='md:w-2/3 flex flex-col gap-5'>
-                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8 p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
+                        <div className={`${locale === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8 p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
                             <span className='text-w-100 mb-6'>Mentorship 1 : 1</span>
                             <p className='text-w-50'>Video Call 1 : 1 dengan mentor untuk berdiskusi, bertanya dan konsultasi seputar mentorship frontend atau hal lainnya</p>
-                            <div className={`${local === "fa" ? "right-1/2 translate-x-1/2 md:-right-9" : "left-1/2 md:-left-9 -translate-x-1/2"} p-4 -top-8 md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
+                            <div className={`${locale === "fa" ? "right-1/2 translate-x-1/2 md:-right-9" : "left-1/2 md:-left-9 -translate-x-1/2"} p-4 -top-8 md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
                                 <ImageCustom alt={"lamp"} src={"/icons/code.png"} width={30} height={30} />
                             </div>
                         </div>
-                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8 p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
+                        <div className={`${locale === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8 p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
                             <span className='text-w-100 mb-6'>Terarah</span>
                             <p className='text-w-50'>Video Call 1 : 1 dengan mentor untuk berdiskusi, bertanya dan konsultasi seputar mentorship frontend atau hal lainnya</p>
-                            <div className={`${local === "fa" ? "right-1/2 md:-right-9 translate-x-1/2" : "left-1/2 md:-left-9 -translate-x-1/2"} p-4 -top-8  md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
+                            <div className={`${locale === "fa" ? "right-1/2 md:-right-9 translate-x-1/2" : "left-1/2 md:-left-9 -translate-x-1/2"} p-4 -top-8  md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
                                 <ImageCustom alt={"lamp"} src={"/icons/code.png"} width={30} height={30} />
                             </div>
                         </div>
-                        <div className={`${local === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8 p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
+                        <div className={`${locale === "fa" ? "md:mr-16  md:pr-14" : "md:ml-16  md:pl-14"} relative flex flex-col mt-8 p-6 pt-10 md:p-8 md:pt-8 border border-d-60 rounded-xl`}>
                             <span className='text-w-100 mb-6'>Silabus</span>
                             <p className='text-w-50'>Silabus praktis, fundamental yang bisa diimplementasikan berdasarkan studi kasus</p>
-                            <div className={`${local === "fa" ? "right-1/2 md:-right-9 translate-x-1/2" : "left-1/2 md:-left-9 -translate-x-1/2"} p-4 -top-8  md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
+                            <div className={`${locale === "fa" ? "right-1/2 md:-right-9 translate-x-1/2" : "left-1/2 md:-left-9 -translate-x-1/2"} p-4 -top-8  md:translate-x-0 absolute md:top-1/2 transform md:-translate-y-1/2 border-1 overflow-hidden rounded-full border-d-50`} style={{ background: 'linear-gradient(134deg, #3a3838e6, #000000ed)' }}>
                                 <ImageCustom alt={"lamp"} src={"/icons/code.png"} width={30} height={30} />
                             </div>
                         </div>

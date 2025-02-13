@@ -1,29 +1,34 @@
 "use client"
 import { getBlogs } from '@/action/admin';
 import { BlogType, OptionsGetAllLinks, OptionsGetAllMeta } from '@/app/type';
+import PaginationAdmin from '@/components/Admin/PaginationAdmin/PaginationAdmin';
+import SearchAdmin from '@/components/Admin/SearchAdmin/SearchAdmin';
 import ImageCustom from '@/components/ImageCustom/ImageCustom'
-import { Pagination } from '@nextui-org/react';
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import Image from 'next/image'
 import Link from 'next/link';
-import React from 'react'
+import React, { useState } from 'react'
 import { FaCalendar } from 'react-icons/fa6';
 import { IoCreateOutline } from 'react-icons/io5';
 import { MdOutlineAccessTime } from 'react-icons/md';
 
 export default function page() {
-  const { data } = useQuery<{
+  const [searchQuery, setSearchQuery] = useState<any>();
+  const { data } = useInfiniteQuery<{
     data: BlogType[],
     links: OptionsGetAllLinks,
     meta: OptionsGetAllMeta
   }>({
-    queryKey: ["GetAllBlogs"],
-    queryFn: getBlogs,
+    queryKey: ["GetAllBlogs", searchQuery],
+    queryFn: () => getBlogs(searchQuery),
     staleTime: 1000 * 60 * 60 * 24,
     gcTime: 1000 * 60 * 60 * 24,
+    getNextPageParam: (lastPage) => lastPage.links.next || undefined,
+    initialPageParam: "",
   });
   return (
     <div className='flex flex-col gap-5'>
+      <SearchAdmin name={["en_title", "categories"]} setSearch={setSearchQuery} />
       <div className='flex justify-between items-center p-3 rounded-xl bg-white shadow-md'>
         <span>Create Blogs</span>
         <Link href={"/admin/blogs/create-blog"} className='flex items-center gap-2'>
@@ -33,10 +38,10 @@ export default function page() {
           </i>
         </Link>
       </div>
-      {data?.data?.length ?
+      {data?.pages[0]?.data?.length ?
         <>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-5 p-3 rounded-xl bg-white shadow-md'>
-            {data?.data?.map((row, index: number) => (
+            {data?.pages[0]?.data?.map((row, index: number) => (
               <section key={index} className='flex justify-between flex-col gap-6'>
                 <div className='p-4 rounded-xl border border-d-60' style={{ backgroundImage: "url(/dot-top.png)" }}>
                   <ImageCustom className='w-full' alt={"work"} src={"/work1.png"} height={350} width={500} />
@@ -56,17 +61,14 @@ export default function page() {
                   <p className='text-w-50 mt-2'>{row.categories}</p>
                 </div>
                 <div className='flex justify-center'>
-                  <Link className='text-w-100 bg-d-60 text-xs md:text-base px-5 py-2 rounded-full border border-d-50' href={"/admin/blogs/1"}>
+                  <Link className='text-w-100 bg-d-60 text-xs md:text-base px-5 py-2 rounded-full border border-d-50' href={`/admin/blogs/${row.id}`}>
                     Read More
                   </Link>
                 </div>
               </section>
             ))}
           </div>
-          <div className='bg-white p-3 shadow-md rounded-xl flex items-center justify-center'>
-            <Pagination classNames={{ cursor: "bg-o-60" }} onChange={(value) => console.log(value)
-            } initialPage={3} boundaries={1} total={1} />
-          </div>
+          <PaginationAdmin search={searchQuery} setSearch={setSearchQuery} meta={data?.pages[0].meta} />
         </> : "No data available"}
     </div>
   )

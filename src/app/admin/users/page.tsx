@@ -10,7 +10,6 @@ import FormUsers from './FormUsers'
 import { OptionsGetAllLinks, OptionsGetAllMeta, UserType } from '@/app/type'
 import DeleteModal from '@/components/DeleteModal/DeleteModal'
 import { getAllUsers } from '@/action/admin'
-import SearchAdmin from '@/components/Admin/SearchAdmin/SearchAdmin'
 import PaginationAdmin from '@/components/Admin/PaginationAdmin/PaginationAdmin'
 export default function page() {
   const [create, setCreate] = useState<boolean>(false)
@@ -44,8 +43,6 @@ export default function page() {
       onClose()
     },
     onError: ({ response }: any) => {
-      console.log(response);
-
       toast.error(response?.data?.message);
     },
   });
@@ -75,7 +72,6 @@ export default function page() {
   });
   return (
     <div className='flex flex-col gap-5'>
-      <SearchAdmin name={["status", "comment"]} setSearch={setSearchQuery} />
       <div className='flex flex-col gap-5 p-3 rounded-xl bg-white shadow-md'>
         <div className='flex justify-between items-center'>
           <span>Create User</span>

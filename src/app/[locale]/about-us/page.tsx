@@ -3,7 +3,7 @@ import ContainerHeader from '@/components/ContainerHeader/ContainerHeader'
 import HeaderTitle from '@/components/HeaderTitle/HeaderTitle'
 import { Button } from '@heroui/button'
 import { Metadata } from 'next'
-import { useLocale, useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   title: 'About Us | Site',
   description: 'About Us | Site'
 }
-export default function page() {
-  const local = useLocale()
-  const t = useTranslations("About-us")
+export default async function page({ params }: any) {
+  const { locale } = params
+  const t = await getTranslations("About-us")
   const ProfileBox = ({ image, name, skill }: { name: string, image: string, skill: string }) => {
     return <div className='p-3 rounded-xl flex flex-col justify-center items-center' style={{ backgroundImage: 'url(/dot-top.png), linear-gradient(3deg, #00000000, #4141411f)' }} >
       <div className='flex justify-center items-center bg-no-repeat bg-center bg-contain h-[120px] w-2/3' style={{ backgroundImage: 'url(/circle-icon.png)' }}>
@@ -60,7 +60,7 @@ export default function page() {
                   </span>
                 </div>
                 <div className='p-4 md:p-6 rounded-xl border border-d-60'>
-                  <span className='text-w-90'>{local === "fa" ? "توضیحات" : "Description"}</span>
+                  <span className='text-w-90'>{locale === "fa" ? "توضیحات" : "Description"}</span>
                   <p className='text-w-50 mt-1'>{row.text}</p>
                 </div>
               </div>
@@ -81,13 +81,13 @@ export default function page() {
                 customText={<>
                   <div>
                     <Button className='bg-d-100 p-3 px-3  text-w-100 items-center border border-d-60 rounded-full'>
-                      {local === "fa" ?
+                      {locale === "fa" ?
                         "نمایش صفحه"
                         :
                         "View Page"
                       }
                       <i className='bg-d-60 py-1 px-3 rounded-full'>
-                        {local === "fa" ?
+                        {locale === "fa" ?
                           <FaArrowLeftLong />
                           :
                           <FaArrowRightLong />

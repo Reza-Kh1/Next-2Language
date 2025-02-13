@@ -29,6 +29,14 @@ a {
   text-decoration: none;
 }
 
+.text-blog p {
+  color: #666666;
+}
+
+.text-blog h {
+  color: #ffffff;
+}
+
 .custom-scroll::-webkit-scrollbar {
   width: 6px;
   /* عرض اسکرول‌بار */
