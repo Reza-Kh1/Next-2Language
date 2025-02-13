@@ -1,39 +1,35 @@
 import { CalendarDate } from "@nextui-org/react";
 type OptionsGetAllMeta = {
-  meta: {
-    current_page: number;
-    from: null;
-    last_page: number;
-    links: [
-      {
-        url: null;
-        label: string;
-        active: boolean;
-      },
-      {
-        url: string;
-        label: string;
-        active: boolean;
-      },
-      {
-        url: null;
-        label: string;
-        active: boolean;
-      }
-    ];
-    path: string;
-    per_page: number;
-    to: null | number;
-    total: number;
-  };
+  current_page: number;
+  from: null;
+  last_page: number;
+  links: [
+    {
+      url: null;
+      label: string;
+      active: boolean;
+    },
+    {
+      url: string;
+      label: string;
+      active: boolean;
+    },
+    {
+      url: null;
+      label: string;
+      active: boolean;
+    }
+  ];
+  path: string;
+  per_page: number;
+  to: null | number;
+  total: number;
 };
 type OptionsGetAllLinks = {
-  links: {
-    first: string;
-    last: string;
-    prev: number | null;
-    next: number | null;
-  };
+  first: string;
+  last: string;
+  prev: number | null;
+  next: number | null;
 };
 type UserType = {
   created_at: Date;
@@ -86,7 +82,7 @@ type BlogType = {
   read_time: string;
   author_id: string;
   tags: string;
-  updated_at:Date
+  updated_at: Date
 };
 type AllBlogType = {
   data: BlogType[];
@@ -94,6 +90,7 @@ type AllBlogType = {
   links: OptionsGetAllLinks;
 };
 type ProjectType = {
+  author: AuthorType;
   fa_title: string;
   en_title: string;
   fa_description: string;
@@ -101,11 +98,12 @@ type ProjectType = {
   picture: string;
   categories: string;
   time_to_do: string;
-  technologies: string[];
+  technologies: string;
   technology_icons: string;
   programmer_rules: string;
   start_date: CalendarDate | null;
   end_date: CalendarDate | null;
+  id: number
 };
 type AuthorType = {
   created_at: Date;
@@ -116,7 +114,16 @@ type AuthorType = {
   user_type: string;
   username: string;
 };
-type AllProjectType = {};
+type CommentType = {
+  comment: string
+  created_at: Date
+  id: number
+  product: null | string
+  product_id: string
+  rank: string
+  status: string
+  updated_at: Date
+}
 export type {
   ProducrtType,
   CreaterType,
@@ -126,4 +133,5 @@ export type {
   UserType,
   OptionsGetAllMeta,
   OptionsGetAllLinks,
+  CommentType
 };

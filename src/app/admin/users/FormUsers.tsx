@@ -8,8 +8,8 @@ type FormUsersType = {
     data?: {
         name: string
         username: string
-        password: string
-        profile: string
+        password?: string
+        profile?: string
         user_type: string
     }
     isUpdate?: boolean
@@ -25,15 +25,14 @@ export default function FormUsers({ data, onSubmit, isUpdate }: FormUsersType) {
     })
     const action = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(dataForm);
         onSubmit(dataForm)
     }
     const syncData = () => {
         if (!data) return
         setDataForm({
             name: data?.name,
-            password: data?.password,
-            profile: data?.profile,
+            password: data?.password || "",
+            profile: data?.profile || "",
             user_type: data?.user_type,
             username: data?.username
         })
@@ -56,7 +55,7 @@ export default function FormUsers({ data, onSubmit, isUpdate }: FormUsersType) {
                 <Input
                     onChange={({ target }) => setDataForm({ ...dataForm, username: target.value })}
                     value={dataForm.username}
-                    label="User Name"
+                    label="User Name (uniq)"
                     type="text"
                     labelPlacement='outside'
                     placeholder='User Name'

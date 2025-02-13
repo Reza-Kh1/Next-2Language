@@ -9,14 +9,14 @@ import toast from "react-hot-toast";
 import { Button } from "@heroui/button";
 import { MdClose, MdOutlineDataSaverOn } from "react-icons/md";
 import UploadImage from "@/components/UploadImage/UploadImage";
-import { useParams } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
+import { useParams, useRouter } from "next/navigation";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getAllUsers, getSingleProject } from "@/action/admin";
 import { OptionsGetAllLinks, OptionsGetAllMeta, ProjectType, UserType } from "@/app/type";
-
-type ProjectTeamType = Record<number, string>
+import DeleteModal from "@/components/DeleteModal/DeleteModal";
 export default function Page() {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+    const route = useRouter()
     const { data: dataAlluser } = useQuery<{
         data: {
             data: UserType[],
@@ -29,17 +29,15 @@ export default function Page() {
         staleTime: 1000 * 60 * 60 * 24,
         gcTime: 1000 * 60 * 60 * 24,
     });
-    // const { slug } = useParams()
-    // let data: ProjectType | null = null
-    // if (slug !== "create-project") {
-    //     const { data: all } = useQuery<{ data: ProjectType }>({
-    //         queryKey: ["SingleProject", slug],
-    //         queryFn: () => getSingleProject(slug as string),
-    //         staleTime: 1000 * 60 * 60 * 24,
-    //         gcTime: 1000 * 60 * 60 * 24,
-    //     });
-    //     data = all?.data || null
-    // }
+    const { slug } = useParams()
+    const queryClient = useQueryClient();
+    const { data } = useQuery<{ data: ProjectType }>({
+        queryKey: ["SingleProject", slug],
+        queryFn: () => getSingleProject(slug as string),
+        staleTime: 1000 * 60 * 60 * 24,
+        gcTime: 1000 * 60 * 60 * 24,
+        enabled: slug === "create-project" ? false : true
+    });
     const [textTeam, setTextTeam] = useState({ id: 0, value: "", name: "" })
     const [icons, setIcons] = useState<{ name: string, icon: string }[]>([])
     const [startDate, setStartDate] = useState<CalendarDate | null>(null);
@@ -55,6 +53,12 @@ export default function Page() {
         category: "",
         time: ""
     })
+    const deleteProject = () => {
+        axios.delete(`projects/${data?.data.id}`).then(() => {
+            queryClient.invalidateQueries({ queryKey: ["GetAllBlogs"] });
+            route.replace("/admin/projects")
+        }).catch((err) => console.log(err))
+    }
     const addUserTeam = () => {
         setProjectTeam([...projectTeam, textTeam])
         setTextTeam({ id: 0, name: "", value: "" })
@@ -64,10 +68,12 @@ export default function Page() {
         event.preventDefault();
         const iconsArry = icons.filter((row) => selectIcons.includes(row.name))
         const localData = localStorage.getItem("shlabs")
+        const newTeam = projectTeam.map(item => ({ [item.id]: item.value }));
         if (!localData) return
+        const jsonData = JSON.parse(localData)
         const body = {
             fa_title: dataProject.nameFa,
-            en_title: dataProject.nameFa,
+            en_title: dataProject.name,
             fa_description: dataProject.descFa,
             en_description: dataProject.desc,
             picture: image,
@@ -75,51 +81,58 @@ export default function Page() {
             time_to_do: dataProject.time,
             technologies: JSON.stringify(iconsArry),
             technology_icons: "test",
-            // programmer_rules: string,
+            programmer_rules: newTeam,
             start_date: startDate,
             end_date: endDate,
+            author_id: jsonData?.id,
+            en_content: "1",
+            read_time: "1",
+            tags: "1",
+            fa_content: "1"
         }
-        console.log(body);
-        return
-        if (data) {
-            axios.post("", body).then(() => { }).catch((err) => {
-
+        if (data?.data) {
+            axios.patch(`projects/${data.data.id}`, body).then(() => {
+                toast.success("Projects Was Updated")
+                queryClient.invalidateQueries({ queryKey: ["GetAllBlogs"] });
+                queryClient.invalidateQueries({ queryKey: ["SingleProject", slug] });
+            }).catch((err) => {
                 toast.error("Error in DataBase")
             })
         } else {
-            axios.post("", body, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                }
-            }).then(() => { }).catch((err) => {
-
+            axios.post("projects", body
+            ).then(() => {
+                queryClient.invalidateQueries({ queryKey: ["GetAllBlogs"] });
+                toast.success("Projects Was Created")
+            }).catch((err) => {
+                console.log(err);
                 toast.error("Error in DataBase")
             })
         }
     }
     const syncData = () => {
-        if (data) {
+        if (data?.data) {
             setDataProject({
-                category: data.categories,
-                desc: data.en_description,
-                descFa: data.fa_description,
-                name: data.en_title,
-                nameFa: data.fa_title,
-                time: data.time_to_do
+                category: data.data.categories,
+                desc: data.data.en_description,
+                descFa: data.data.fa_description,
+                name: data.data.en_title,
+                nameFa: data.data.fa_title,
+                time: data.data.time_to_do
             })
-            setEndDate(data.end_date)
-            setStartDate(data.start_date)
-            const iconBox = JSON.parse(data.technologies)
-            if (iconBox && iconBox?.length) {
-                setSelectIcons(iconBox.map((row: any) => row.name))
-            }
-            // setFormTeam()
-            setImage(data.picture || "");
+            setEndDate(data.data.end_date)
+            setStartDate(data.data.start_date)
+            // const iconBox = JSON.parse(data.data.technologies)
+            // if (iconBox && iconBox?.length) {
+            //     setSelectIcons(iconBox.map((row: any) => row.name))
+            // }
+            console.log(data.data);
+
+            setImage(data.data.picture || "");
         }
     }
-    // useEffect(() => {
-    //     syncData()
-    // }, [data])
+    useEffect(() => {
+        syncData()
+    }, [data?.data])
     useEffect(() => {
         import("@/data/icons.json")
             .then((module) => {
@@ -148,7 +161,7 @@ export default function Page() {
                         label="Name(Fa)"
                         type="text"
                         value={dataProject.nameFa}
-                        onChange={({ target }) => setDataProject({ ...dataProject, name: target.value })}
+                        onChange={({ target }) => setDataProject({ ...dataProject, nameFa: target.value })}
                         labelPlacement='outside'
                         isRequired
                         placeholder='name(Fa)'
@@ -228,7 +241,7 @@ export default function Page() {
                         label="Description(Fa)"
                         labelPlacement="outside"
                         value={dataProject.descFa}
-                        onChange={({ target }) => setDataProject({ ...dataProject, desc: target.value })}
+                        onChange={({ target }) => setDataProject({ ...dataProject, descFa: target.value })}
                         placeholder="Full description of the Projects"
                     />
                 </div>
@@ -299,6 +312,9 @@ export default function Page() {
                         Save Projects
                         <MdOutlineDataSaverOn />
                     </Button>
+                    {data?.data.id ?
+                        <DeleteModal id={data?.data.id} onSubmit={deleteProject} />
+                        : null}
                 </div>
             </form >
             <Modal size='lg' isOpen={isOpen} onOpenChange={onOpenChange}>

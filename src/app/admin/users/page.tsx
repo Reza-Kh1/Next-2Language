@@ -1,7 +1,7 @@
 "use client"
 import { Button } from '@heroui/button'
-import { Modal, ModalBody, ModalContent, ModalHeader, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, useDisclosure } from '@nextui-org/react'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { Modal, ModalBody, ModalContent, ModalHeader, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, useDisclosure } from '@nextui-org/react'
+import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
@@ -10,34 +10,38 @@ import FormUsers from './FormUsers'
 import { OptionsGetAllLinks, OptionsGetAllMeta, UserType } from '@/app/type'
 import DeleteModal from '@/components/DeleteModal/DeleteModal'
 import { getAllUsers } from '@/action/admin'
+import SearchAdmin from '@/components/Admin/SearchAdmin/SearchAdmin'
+import PaginationAdmin from '@/components/Admin/PaginationAdmin/PaginationAdmin'
 export default function page() {
   const [create, setCreate] = useState<boolean>(false)
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [edit, setEdit] = useState<UserType>()
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+  const [editData, setEditData] = useState<UserType>()
+  const [searchQuery, setSearchQuery] = useState<any>();
   const query = useQueryClient();
-  const { data } = useQuery<{
-    data: {
-      data: UserType[],
-      links: OptionsGetAllLinks,
-      meta: OptionsGetAllMeta
-    }
+  const { data } = useInfiniteQuery<{
+    data: UserType[],
+    links: OptionsGetAllLinks,
+    meta: OptionsGetAllMeta
   }>({
-    queryKey: ["GetAllUsers"],
-    queryFn: getAllUsers,
+    queryKey: ["GetAllUsers", searchQuery],
+    queryFn: () => getAllUsers(searchQuery),
     staleTime: 1000 * 60 * 60 * 24,
     gcTime: 1000 * 60 * 60 * 24,
+    getNextPageParam: (lastPage) => lastPage.links.next || undefined,
+    initialPageParam: "",
   });
   const { mutate: updateUser } = useMutation({
     mutationFn: (value: any) => {
       const body = {
         ...value,
-        user_id: edit?.id
+        user_id: editData?.id
       }
       return axios.post("updateAnotherUser", body);
     },
-    onSuccess: ({ data }) => {
+    onSuccess: () => {
       toast.success("User was Updated")
       query.invalidateQueries({ queryKey: ['GetAllUsers'] });
+      onClose()
     },
     onError: ({ response }: any) => {
       console.log(response);
@@ -69,16 +73,9 @@ export default function page() {
       toast.error(response?.data?.message);
     },
   });
-  const openModal = (id: number) => {
-    axios.get(`users?id[eq]=${id}`).then(({ data }) => {
-      onOpen()
-      console.log(data);
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
   return (
     <div className='flex flex-col gap-5'>
+      <SearchAdmin name={["status", "comment"]} setSearch={setSearchQuery} />
       <div className='flex flex-col gap-5 p-3 rounded-xl bg-white shadow-md'>
         <div className='flex justify-between items-center'>
           <span>Create User</span>
@@ -100,7 +97,7 @@ export default function page() {
           <FormUsers onSubmit={(value) => createUser(value)} />
         )}
       </div>
-      {data?.data?.data.length ?
+      {data?.pages[0]?.data?.length ?
         <Table aria-label="Example static collection table">
           <TableHeader>
             <TableColumn>#</TableColumn>
@@ -110,14 +107,14 @@ export default function page() {
             <TableColumn>EDit</TableColumn>
           </TableHeader>
           <TableBody>
-            {data?.data?.data.map((item, index) => (
+            {data?.pages[0].data.map((item, index) => (
               <TableRow key={index}>
                 <TableCell>{Number(index) + 1}</TableCell>
                 <TableCell>{item.username}</TableCell>
                 <TableCell>{item.user_type}</TableCell>
                 <TableCell>{new Date(item.created_at).toLocaleDateString("en")}</TableCell>
                 <TableCell>
-                  <Button onPress={() => openModal(item.id)} variant='bordered' className='bg-d-btn rounded-md text-white'>
+                  <Button onPress={() => { setEditData(item), onOpen() }} variant='bordered' className='bg-d-btn rounded-md text-white'>
                     <FaPen />
                     Edit
                   </Button>
@@ -128,15 +125,14 @@ export default function page() {
           </TableBody>
         </Table>
         : null}
-      <div className='bg-white p-3 shadow-md rounded-xl flex items-center justify-center'>
-        <Pagination classNames={{ cursor: "bg-o-60" }} onChange={(value) => console.log(value)
-        } initialPage={3} boundaries={1} total={20} />
-      </div>
+      <PaginationAdmin meta={data?.pages[0].meta} search={searchQuery} setSearch={setSearchQuery} />
       <Modal size='lg' isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           <ModalHeader className="flex flex-col gap-1">Modal Update</ModalHeader>
           <ModalBody>
-            <FormUsers isUpdate onSubmit={(value) => updateUser(value)} />
+            {editData &&
+              <FormUsers isUpdate data={editData} onSubmit={(value) => updateUser(value)} />
+            }
           </ModalBody>
         </ModalContent>
       </Modal>

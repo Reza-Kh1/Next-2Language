@@ -3,8 +3,10 @@ const getProducts = async () => {
   const { data } = await axios.get("products");
   return data;
 };
-const getAllUsers = async () => {
-  return axios.get("getusers");
+const getAllUsers = async (query: string) => {
+  const url = new URLSearchParams(query);
+  const { data } = await axios.get(`getusers?${url}`);
+  return data
 };
 const getSingleProduct = async (slug?: string) => {
   const { data } = await axios.get(`products/${slug}`);
@@ -25,6 +27,11 @@ const getBlogs = async () => {
 const getSingleBlog = async (slug?: string) => {
   const { data } = await axios.get(`blogs/${slug}`);
   return data;
+}
+const getComments = async (query: string) => {
+  const url = new URLSearchParams(query);
+  const { data } = await axios.get(`comments?${url}`);
+  return data;
 };
 export {
   getProducts,
@@ -34,4 +41,5 @@ export {
   getBlogs,
   getSingleBlog,
   getAllUsers,
+  getComments
 };
