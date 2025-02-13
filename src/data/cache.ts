@@ -1,19 +1,19 @@
 const pageCache = {
   blogs: {
     cache: 60 * 60 * 24 * 1,
-    tag: "Blog",
+    tag: "blog",
   },
   singleBlog: {
     cache: 60 * 60 * 24 * 1,
-    tag: "SingleBlog",
+    tag: "singleBlog",
   },
   products: {
     cache: 60 * 60 * 24 * 1,
-    tag: "Products",
+    tag: "products",
   },
   projects: {
     cache: 60 * 60 * 24 * 1,
-    tag: "SingleBlog",
+    tag: "singleBlog",
   },
 };
 export default pageCache;
