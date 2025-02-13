@@ -10,17 +10,19 @@ import { Link } from '@/i18n/routing'
 import { getTranslations } from 'next-intl/server'
 import { fetchApi } from '@/action/fetchApi'
 import pageCache from '@/data/cache'
-import { BlogType } from '@/app/type'
+import { BlogType, OptionsGetAllMeta } from '@/app/type'
+import PaginationSeo from '@/components/PaginationSeo/PaginationSeo'
 export const metadata: Metadata = {
   title: 'Blogs | Site',
   description: 'Blogs | Site'
 }
-const getData = () => {
-  return fetchApi({ url: "blogs", next: pageCache.blogs.cache, tags: [pageCache.blogs.tag] })
+const getData = (page: string) => {
+  return fetchApi({ url: `blogs?page=${page}`, next: pageCache.blogs.cache, tags: [pageCache.blogs.tag] })
 }
-export default async function Page({ params }: any) {
-  const { locale } = params
-  const { data }: { data: BlogType[] } = await getData()
+export default async function Page({ params, searchParams }: any) {
+  const { locale } = await params
+  const { page = 1 } = await searchParams
+  const { data, meta }: { data: BlogType[], meta: OptionsGetAllMeta } = await getData(page)
   const t = await getTranslations("Blog")
   return (
     <>
@@ -117,6 +119,7 @@ export default async function Page({ params }: any) {
             </section>
           ))} */}
         </div>
+        <PaginationSeo meta={meta} />
       </main>
     </>
   )

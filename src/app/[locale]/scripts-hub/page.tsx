@@ -10,17 +10,19 @@ import Products from './Products'
 import { getTranslations } from 'next-intl/server'
 import { fetchApi } from '@/action/fetchApi'
 import pageCache from '@/data/cache'
-import { ProducrtType } from '@/app/type'
+import { OptionsGetAllMeta, ProducrtType } from '@/app/type'
+import PaginationSeo from '@/components/PaginationSeo/PaginationSeo'
 export const metadata: Metadata = {
     title: 'Scripts Hub | Site',
     description: 'Scripts Hub | Site'
 }
-const getData = () => {
-    return fetchApi({ url: "products", next: pageCache.products.cache, tags: [pageCache.products.tag] })
+const getData = (page: string) => {
+    return fetchApi({ url: `products?page=${page}`, next: pageCache.products.cache, tags: [pageCache.products.tag] })
 }
-export default async function page({ params }: any) {
-    const { locale } = params
-    const { data }: { data: ProducrtType[] } = await getData()
+export default async function page({ params, searchParams }: any) {
+    const { locale } = await params
+    const { page = 1 } = await searchParams
+    const { data, meta }: { data: ProducrtType[], meta: OptionsGetAllMeta } = await getData(page)
     const t = await getTranslations("Scripts")
     return (
         <>
@@ -108,12 +110,13 @@ export default async function page({ params }: any) {
                             </Products>
                         ))}
                     </div>
-                    <div className='flex justify-start mt-4 md:mt-8'>
+                    <PaginationSeo meta={meta} />
+                    {/* <div className='flex justify-start mt-4 md:mt-8'>
                         <Link href={"#"} className='text-w-100 flex text-xs md:text-base items-center gap-4 p-2 md:p-3 px-4 md:px-6 border border-d-60 rounded-full '>
                             <HiOutlineMenu />
                             See More
                         </Link>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='my-12 md:my-24'>
                     <h2 className='text-w-100 text-2xl md:text-4xl font-semibold mb-6'>Mentorship</h2>

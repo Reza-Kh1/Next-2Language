@@ -9,7 +9,6 @@ import { MdArrowOutward, MdOutlineAccessTime } from 'react-icons/md';
 import { BlogType } from '@/app/type';
 import { Metadata } from 'next';
 import parse from "html-react-parser";
-
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import ImageCustom from '@/components/ImageCustom/ImageCustom';
@@ -56,9 +55,8 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
     };
 }
 export default async function page({ params }: any) {
-    const { slug, locale } = params
+    const { slug, locale } = await params
     const { data, dataCategory } = await getData(slug)
-    console.log("blog", dataCategory);
     const jsonld = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",

@@ -12,7 +12,6 @@ const getData = async (slug: string) => {
 export default async function page({ params }: any) {
     const id = await params
     const data = await getData(id?.slug) as ProducrtType
-    console.log(data);
     return (
         <>
             <ContainerHeader firstDark dark={""} light={data.en_name} text={data.en_short_description} />
