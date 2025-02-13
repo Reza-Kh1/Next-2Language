@@ -13,15 +13,11 @@ import parse from "html-react-parser";
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import ImageCustom from '@/components/ImageCustom/ImageCustom';
-type SingleBlogType = {
-    slug: string,
-    locale: string
-}
 const getData = async (slug: string) => {
-    const { data }: { data: BlogType[] } = await fetchApi({ url: "blogs", next: pageCache.singleBlog.cache, tags: [pageCache.singleBlog.tag, slug] })
+    const { data }: { data: BlogType } = await fetchApi({ url: `blogs/${slug}`, next: pageCache.singleBlog.cache, tags: [pageCache.singleBlog.tag, slug] })
     if (!data) return notFound()
-    const { data: dataCategory }: { data: BlogType[] } = await fetchApi({ url: `blogs?categories%5Blike%5D=%25${data[0].categories}%25`, next: pageCache.singleBlog.cache, tags: [pageCache.singleBlog.tag, slug] })
-    return { data: data[0], dataCategory }
+    const { data: dataCategory }: { data: BlogType[] } = await fetchApi({ url: `blogs?categories%5Blike%5D=%25${data.categories}%25`, next: pageCache.singleBlog.cache, tags: [pageCache.singleBlog.tag, slug] })
+    return { data: data, dataCategory }
 }
 export async function generateMetadata({ params }: any): Promise<Metadata> {
     const { data }: { data: BlogType } = await getData(params.slug);
