@@ -15,6 +15,8 @@ import { getProducts } from '@/action/admin';
 import { OptionsGetAllLinks, OptionsGetAllMeta, ProducrtType } from '@/app/type';
 import PaginationAdmin from '@/components/Admin/PaginationAdmin/PaginationAdmin';
 import SearchAdmin from '@/components/Admin/SearchAdmin/SearchAdmin';
+import deleteCache from '@/action/deleteCache';
+import pageCache from '@/data/cache';
 export default function page() {
   const [create, setCreate] = useState<boolean>(false)
   const queryClient = useQueryClient();
@@ -38,6 +40,7 @@ export default function page() {
     onSuccess: () => {
       toast.success("Product was Created");
       queryClient.invalidateQueries({ queryKey: ["getProducts"] });
+      deleteCache({ tag: pageCache.products.tag })
     },
     onError: ({ response }: any) => {
       console.log(response);
@@ -73,7 +76,7 @@ export default function page() {
           <div className='grid grid-cols-1 md:grid-cols-3 gap-5 p-3 rounded-xl bg-white shadow-md'>
             {data?.pages[0]?.data?.map((row: ProducrtType, index: number) => (
               <Link key={index} href={`/admin/products/${row.id}`} className='border rounded-xl shadow-md p-4 flex flex-col gap-2 cursor-pointer'>
-                <ImageCustom src={"/service1.png"} alt={"image"} className='w-full' height={180} width={200} />
+                <ImageCustom src={row.picture} alt={"image"} className='w-full' height={180} width={200} />
                 <div className='flex justify-between items-center'>
                   <span className='text-xl font-semibold text-b-70'>
                     {row.en_name}

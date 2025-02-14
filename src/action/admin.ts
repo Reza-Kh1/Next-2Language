@@ -36,6 +36,11 @@ const getComments = async (query: string) => {
   const { data } = await axios.get(`comments?${url}`);
   return data;
 };
+const getAllTransaction =async (query: string) => {
+  const url = new URLSearchParams(query);
+  const { data } = await axios.get(`transactions?${url}`);
+  return data;
+};
 export {
   getProducts,
   getSingleProduct,
@@ -44,5 +49,5 @@ export {
   getBlogs,
   getSingleBlog,
   getAllUsers,
-  getComments,
+  getComments,getAllTransaction
 };

@@ -1,7 +1,7 @@
 "use client";
 import { CalendarDate, DateInput, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Select, SelectItem, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Textarea, useDisclosure } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
-import {  FaUserPlus } from "react-icons/fa6";
+import { FaUserPlus } from "react-icons/fa6";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Button } from "@heroui/button";
@@ -13,6 +13,8 @@ import { getAllUsers, getSingleProject } from "@/action/admin";
 import { OptionsGetAllLinks, OptionsGetAllMeta, ProjectType, UserType } from "@/app/type";
 import DeleteModal from "@/components/DeleteModal/DeleteModal";
 import PaginationAdmin from "@/components/Admin/PaginationAdmin/PaginationAdmin";
+import pageCache from "@/data/cache";
+import deleteCache from "@/action/deleteCache";
 export default function Page() {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const route = useRouter()
@@ -88,12 +90,13 @@ export default function Page() {
             author_id: jsonData?.id,
         }
         console.log(body);
-
         if (data?.data) {
             axios.patch(`projects/${data.data.id}`, body).then(() => {
                 toast.success("Projects Was Updated")
                 queryClient.invalidateQueries({ queryKey: ["GetAllBlogs"] });
                 queryClient.invalidateQueries({ queryKey: ["SingleProject", slug] });
+                deleteCache({ tag: pageCache.projects.tag })
+                deleteCache({ tag: `${[pageCache.projects.tag, data.data.id]}` })
             }).catch((err) => {
                 toast.error("Error in DataBase")
             })
@@ -102,6 +105,7 @@ export default function Page() {
             ).then(() => {
                 queryClient.invalidateQueries({ queryKey: ["GetAllBlogs"] });
                 toast.success("Projects Was Created")
+                deleteCache({ tag: pageCache.projects.tag })
             }).catch((err) => {
                 console.log(err);
                 toast.error("Error in DataBase")

@@ -44,7 +44,7 @@ export default function page() {
             {data?.pages[0]?.data?.map((row, index: number) => (
               <section key={index} className='flex justify-between flex-col gap-6'>
                 <div className='p-4 rounded-xl border border-d-60' style={{ backgroundImage: "url(/dot-top.png)" }}>
-                  <ImageCustom className='w-full' alt={"work"} src={"/work1.png"} height={350} width={500} />
+                  <ImageCustom className='w-full' alt={"work"} src={row.picture} height={350} width={500} />
                 </div>
                 <div className='flex flex-col md:flex-row items-start gap-4 md:gap-0 md:items-center justify-between'>
                   <div className='flex gap-2 items-center'>

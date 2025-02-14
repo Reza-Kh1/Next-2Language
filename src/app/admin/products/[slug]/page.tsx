@@ -7,6 +7,8 @@ import FormProduct from '../FormProduct';
 import toast from 'react-hot-toast';
 import Cookies from "js-cookie"
 import { getSingleProduct } from '@/action/admin';
+import pageCache from '@/data/cache';
+import deleteCache from '@/action/deleteCache';
 export default function page() {
     const { slug } = useParams()
     const query = useQueryClient();
@@ -29,6 +31,8 @@ export default function page() {
             toast.success("product has been updated");
             query.invalidateQueries({ queryKey: ["singleProduct", slug] });
             query.invalidateQueries({ queryKey: ['getProducts'] });
+            deleteCache({ tag: pageCache.products.tag })
+            deleteCache({ tag: `${[pageCache.products.tag, data.data.id]}` })
         },
         onError: (err) => {
             console.log(err);

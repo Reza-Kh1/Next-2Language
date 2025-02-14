@@ -48,6 +48,7 @@ export default function page() {
     axios.delete(`blogs/${data?.data.id}`).then(() => {
       queryClient.invalidateQueries({ queryKey: ["GetAllBlogs"] });
       route.replace("/admin/blogs")
+      deleteCache({ tag: pageCache.blogs.tag })
     }).catch((err) => console.log(err))
   }
   const action = (event: React.FormEvent<HTMLFormElement>) => {

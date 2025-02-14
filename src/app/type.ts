@@ -82,7 +82,7 @@ type BlogType = {
   read_time: string;
   author_id: string;
   tags: string;
-  updated_at: Date
+  updated_at: Date;
 };
 type AllBlogType = {
   data: BlogType[];
@@ -103,7 +103,7 @@ type ProjectType = {
   programmer_rules: string;
   start_date: CalendarDate | null;
   end_date: CalendarDate | null;
-  id: number
+  id: number;
 };
 type AuthorType = {
   created_at: Date;
@@ -115,15 +115,25 @@ type AuthorType = {
   username: string;
 };
 type CommentType = {
-  comment: string
-  created_at: Date
-  id: number
-  product: null | string
-  product_id: string
-  rank: string
-  status: string
-  updated_at: Date
-}
+  comment: string;
+  created_at: Date;
+  id: number;
+  product: null | string;
+  product_id: string;
+  rank: string;
+  status: string;
+  updated_at: Date;
+};
+type TransactionType = {
+  created_at: Date;
+  downloaded_count: string;
+  id: number;
+  product: ProducrtType;
+  product_id: string;
+  ref_code: string;
+  status: string;
+  updated_at: Date;
+};
 export type {
   ProducrtType,
   CreaterType,
@@ -133,5 +143,6 @@ export type {
   UserType,
   OptionsGetAllMeta,
   OptionsGetAllLinks,
-  CommentType
+  CommentType,
+  TransactionType,
 };

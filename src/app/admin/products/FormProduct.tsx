@@ -13,6 +13,8 @@ import axios from 'axios'
 import { useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import DeleteModal from '@/components/DeleteModal/DeleteModal'
+import pageCache from '@/data/cache'
+import deleteCache from '@/action/deleteCache'
 type submitHandlerType = {
     submitHandler: (value: any) => void
     data?: ProducrtType
@@ -40,6 +42,7 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
         axios.delete(`products/${data?.id}`).then(() => {
             queryClient.invalidateQueries({ queryKey: ["getProducts"] });
             route.replace("/admin/products")
+            deleteCache({ tag: pageCache.products.tag })
         }).catch((err) => console.log(err))
     }
     const action = (event: React.FormEvent<HTMLFormElement>) => {
@@ -77,19 +80,19 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
         for (let file of newFile) {
             formData.append("file", file);
         }
-        // const { data } = await axios.post("upload-file", formData, {
-        //     onUploadProgress: (event) => {
-        //         if (event.lengthComputable && event.total) {
-        //             const percentComplete = Math.round((event.loaded * 100) / event.total);
-        //             setProgres(percentComplete)
-        //         }
-        //     },
-        //     headers: {
-        //         Authorization: `Bearer ${token}`,
-        //     }
-        // });
-        // const url = data?.path ? process.env.NEXT_PUBLIC_URL_FILE + data.path : ""
-        const url = "https://shlabs.ir/storage/app/apiFiles/Tb4g8MoFK8ptf9YoyzpSiHkUgti6FXgHxQlLlVDl.jpg"
+        const { data } = await axios.post("upload-file", formData, {
+            onUploadProgress: (event) => {
+                if (event.lengthComputable && event.total) {
+                    const percentComplete = Math.round((event.loaded * 100) / event.total);
+                    setProgres(percentComplete)
+                }
+            },
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
+        const url = data?.path ? process.env.NEXT_PUBLIC_URL_FILE + data.path : ""
+        // const url = "https://shlabs.ir/storage/app/apiFiles/Tb4g8MoFK8ptf9YoyzpSiHkUgti6FXgHxQlLlVDl.jpg"
         setLoading(false)
         setUrlFile(url)
     }

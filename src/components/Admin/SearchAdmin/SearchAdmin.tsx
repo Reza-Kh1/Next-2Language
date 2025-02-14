@@ -20,7 +20,7 @@ export default function SearchAdmin({ name, setSearch }: SearchAdmin) {
         setSearch(query.toString())
     }
     return (
-        <form onSubmit={search} className='bg-white p-3 shadow-md rounded-xl grid grid-cols-2 gap-5'>
+        <form onSubmit={search} className='bg-white p-3 shadow-md rounded-xl grid grid-cols-1 md:grid-cols-2 gap-5'>
             {name.map((row, index) => (
                 <Input
                     key={index}

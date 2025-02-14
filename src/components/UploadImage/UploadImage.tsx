@@ -25,19 +25,19 @@ export default function UploadImage({ imageUrl, setImageUrl, height, width }: Up
         for (let file of newFile) {
             formData.append("file", file);
         }
-        // const { data } = await axios.post("upload-file", formData, {
-        //     onUploadProgress: (event) => {
-        //         if (event.lengthComputable && event.total) {
-        //             const percentComplete = Math.round((event.loaded * 100) / event.total);
-        //             setProgres(percentComplete)
-        //         }
-        //     },
-        //     headers: {
-        //         Authorization: `Bearer ${token}`,
-        //     }
-        // });
-        // const url = data?.path ? process.env.NEXT_PUBLIC_URL_FILE + data.path : ""
-        const url = "https://shlabs.ir/storage/app/apiFiles/Tb4g8MoFK8ptf9YoyzpSiHkUgti6FXgHxQlLlVDl.jpg"
+        const { data } = await axios.post("upload-file", formData, {
+            onUploadProgress: (event) => {
+                if (event.lengthComputable && event.total) {
+                    const percentComplete = Math.round((event.loaded * 100) / event.total);
+                    setProgres(percentComplete)
+                }
+            },
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
+        const url = data?.path ? process.env.NEXT_PUBLIC_URL_FILE + data.path : ""
+        // const url = "https://shlabs.ir/storage/app/apiFiles/Tb4g8MoFK8ptf9YoyzpSiHkUgti6FXgHxQlLlVDl.jpg"
         setLoading(false)
         setImageUrl(url)
     }
