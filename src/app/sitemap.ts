@@ -1,16 +1,16 @@
-import {MetadataRoute} from 'next';
-import {routing, getPathname} from '@/i18n/routing';
- 
-// Adapt this as necessary
-const host = 'https://localhost:3000';
- 
+import { MetadataRoute } from 'next';
+import { routing, getPathname } from '@/i18n/routing';
+
+const host = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
+
+const staticRoutes = ['/', '/users', '/projects', '/blog', '/about']; // مسیرهای ثابت
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Adapt this as necessary
-  return [getEntry('/'), getEntry('/users')];
+  return staticRoutes.map(getEntry);
 }
- 
+
 type Href = Parameters<typeof getPathname>[0]['href'];
- 
+
 function getEntry(href: Href) {
   return {
     url: getUrl(href, routing.defaultLocale),
@@ -21,8 +21,8 @@ function getEntry(href: Href) {
     }
   };
 }
- 
+
 function getUrl(href: Href, locale: (typeof routing.locales)[number]) {
-  const pathname = getPathname({locale, href});
+  const pathname = getPathname({ locale, href });
   return host + pathname;
 }

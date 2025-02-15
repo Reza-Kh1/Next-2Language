@@ -1,5 +1,5 @@
 "use client";
-import { CalendarDate, DateInput, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Select, SelectItem, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Textarea, useDisclosure } from "@nextui-org/react";
+import { DateInput, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Select, SelectItem, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Textarea, useDisclosure } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import { FaUserPlus } from "react-icons/fa6";
 import axios from "axios";
@@ -15,11 +15,11 @@ import DeleteModal from "@/components/DeleteModal/DeleteModal";
 import PaginationAdmin from "@/components/Admin/PaginationAdmin/PaginationAdmin";
 import pageCache from "@/data/cache";
 import deleteCache from "@/action/deleteCache";
+import { parseDate } from "@internationalized/date";
 export default function Page() {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const route = useRouter()
     const [searchQuery, setSearchQuery] = useState<any>();
-
     const { data: dataAllUser } = useInfiniteQuery<{
         data: UserType[],
         links: OptionsGetAllLinks,
@@ -43,8 +43,8 @@ export default function Page() {
     });
     const [textTeam, setTextTeam] = useState({ id: 0, value: "", name: "" })
     const [icons, setIcons] = useState<{ name: string, icon: string }[]>([])
-    const [startDate, setStartDate] = useState<CalendarDate | null>(null);
-    const [endDate, setEndDate] = useState<CalendarDate | null>(null);
+    const [startDate, setStartDate] = useState<any>();
+    const [endDate, setEndDate] = useState<any>();
     const [image, setImage] = useState<string>("")
     const [selectIcons, setSelectIcons] = useState<string[]>([])
     const [projectTeam, setProjectTeam] = useState<{ id: number, value: string, name: string }[]>([])
@@ -58,7 +58,7 @@ export default function Page() {
     })
     const deleteProject = () => {
         axios.delete(`projects/${data?.data.id}`).then(() => {
-            queryClient.invalidateQueries({ queryKey: ["GetAllBlogs"] });
+            queryClient.invalidateQueries({ queryKey: ["getProjects"] });
             route.replace("/admin/projects")
         }).catch((err) => console.log(err))
     }
@@ -84,16 +84,15 @@ export default function Page() {
             time_to_do: dataProject.time,
             technologies: JSON.stringify(iconsArry),
             technology_icons: "test",
-            programmer_rules: JSON.stringify([{"7":"front"},{"3":"back"}]),
-            start_date: startDate,
-            end_date: endDate,
+            programmer_rules: JSON.stringify(newTeam),
+            start_date: startDate?.toString(),
+            end_date: endDate?.toString(),
             author_id: jsonData?.id,
         }
-        console.log(body);
         if (data?.data) {
             axios.patch(`projects/${data.data.id}`, body).then(() => {
                 toast.success("Projects Was Updated")
-                queryClient.invalidateQueries({ queryKey: ["GetAllBlogs"] });
+                queryClient.invalidateQueries({ queryKey: ["getProjects"] });
                 queryClient.invalidateQueries({ queryKey: ["SingleProject", slug] });
                 deleteCache({ tag: pageCache.projects.tag })
                 deleteCache({ tag: `${[pageCache.projects.tag, data.data.id]}` })
@@ -103,7 +102,7 @@ export default function Page() {
         } else {
             axios.post("projects", body
             ).then(() => {
-                queryClient.invalidateQueries({ queryKey: ["GetAllBlogs"] });
+                queryClient.invalidateQueries({ queryKey: ["getProjects"] });
                 toast.success("Projects Was Created")
                 deleteCache({ tag: pageCache.projects.tag })
             }).catch((err) => {
@@ -122,13 +121,25 @@ export default function Page() {
                 nameFa: data.data.fa_title,
                 time: data.data.time_to_do
             })
-            setEndDate(data.data.end_date)
-            setStartDate(data.data.start_date)
+            setEndDate(parseDate(data.data.end_date.split(" ")[0]))
+            setStartDate(parseDate(data.data.start_date.split(" ")[0]))
             const iconBox = JSON.parse(data.data.technologies)
             if (iconBox && iconBox?.length) {
                 setSelectIcons(iconBox.map((row: any) => row.name))
             }
             setImage(data.data.picture || "");
+            const newTeam = JSON.parse(data.data.programmer_rules)
+            if (newTeam?.length) {
+                const kireAkhar = newTeam.map((row: any) => {
+                    const [[id, value]] = Object.entries(row);
+                    return {
+                        name: "",
+                        id: Number(id),
+                        value: value
+                    };
+                })
+                setProjectTeam(kireAkhar)
+            }
         }
     }
     useEffect(() => {
@@ -309,7 +320,7 @@ export default function Page() {
                     </div>
                     <PaginationAdmin search={searchQuery} setSearch={setSearchQuery} meta={dataAllUser?.pages[0].meta} />
                 </div >
-                <div>
+                <div className="flex justify-between items-center">
                     <Button type='submit' className='bg-white rounded-md shadow-md text-b-70 border border-b-70'>
                         Save Projects
                         <MdOutlineDataSaverOn />

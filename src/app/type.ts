@@ -1,4 +1,3 @@
-import { CalendarDate } from "@nextui-org/react";
 type OptionsGetAllMeta = {
   current_page: number;
   from: null;
@@ -101,8 +100,8 @@ type ProjectType = {
   technologies: string;
   technology_icons: string;
   programmer_rules: string;
-  start_date: CalendarDate | null;
-  end_date: CalendarDate | null;
+  start_date: string;
+  end_date: string;
   id: number;
 };
 type AuthorType = {

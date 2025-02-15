@@ -5,7 +5,6 @@ import PaginationAdmin from '@/components/Admin/PaginationAdmin/PaginationAdmin'
 import SearchAdmin from '@/components/Admin/SearchAdmin/SearchAdmin';
 import ImageCustom from '@/components/ImageCustom/ImageCustom';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react'
 import { FaChevronDown } from 'react-icons/fa6';
@@ -25,8 +24,7 @@ export default function page() {
         getNextPageParam: (lastPage) => lastPage.links.next || undefined,
         initialPageParam: "",
     });
-    console.log(data);
-
+    console.log(data?.pages[0]);
     return (
         <div className='flex flex-col gap-5'>
             <SearchAdmin name={["categories", "en_title"]} setSearch={setSearchQuery} />
@@ -43,8 +41,8 @@ export default function page() {
                 <>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-5 p-3 rounded-xl bg-white shadow-md'>
                         {data?.pages[0]?.data?.map((row, index: number) => (
-                            <section key={index} className='w-full shadow-md flex flex-col gap-6 md:gap-8 mx-auto p-3 md:p-6 border border-w-90 rounded-xl'>
-                                <ImageCustom src={"/work1.png"} alt={"project"} width={1000} height={600} />
+                            <section key={index} className='w-full shadow-md flex flex-col gap-2 md:gap-4 mx-auto p-2 md:p-4 border border-w-90 rounded-xl'>
+                                <ImageCustom src={row.picture} alt={"project"} width={1000} height={600} />
                                 <div className='flex justify-between flex-col gap-3 md:flex-row md:gap-0'>
                                     <h3 className='order-2 md:order-1 font-semibold text-xl'>{row.en_title}</h3>
                                     <div className='order-1 md:order-2 text-center flex justify-start items-center gap-2'>
@@ -63,11 +61,7 @@ export default function page() {
                                         </span>
                                     </div>
                                 </div>
-                                <div className='flex gap-2 items-center'>
-                                    <Image src={"/profile-auth.jpg"} alt='profile' className='rounded-full' width={40} height={40} />
-                                    <span>{row.author?.username}</span>
-                                </div>
-                                <div className='p-2 md:p-4 rounded-xl'>
+                                <div className='p-1 md:p-2 rounded-xl'>
                                     <span className=' block'>Project Description</span>
                                     <p className='text-w-50'>
                                         {row.en_description}
