@@ -12,7 +12,6 @@ const nextConfig: NextConfig = {
     ],
   },
   crossOrigin: "anonymous",
-  productionBrowserSourceMaps: false,
   async headers() {
     return [
       {

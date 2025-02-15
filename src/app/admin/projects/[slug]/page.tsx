@@ -71,7 +71,7 @@ export default function Page() {
         event.preventDefault();
         const iconsArry = icons.filter((row) => selectIcons.includes(row.name))
         const localData = localStorage.getItem("shlabs")
-        const newTeam = projectTeam.map(item => ({ [item.id]: item.value }));
+        const newTeam = projectTeam.map(item => ({ [item.id.toString()]: item.value }));
         if (!localData) return
         const jsonData = JSON.parse(localData)
         const body = {
@@ -84,9 +84,9 @@ export default function Page() {
             time_to_do: dataProject.time,
             technologies: JSON.stringify(iconsArry),
             technology_icons: "test",
-            programmer_rules: newTeam,
-            start_date: startDate?.toString(),
-            end_date: endDate?.toString(),
+            programmer_rules: JSON.stringify([{"7":"front"},{"3":"back"}]),
+            start_date: startDate,
+            end_date: endDate,
             author_id: jsonData?.id,
         }
         console.log(body);

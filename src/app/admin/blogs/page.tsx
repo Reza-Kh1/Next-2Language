@@ -26,6 +26,8 @@ export default function page() {
     getNextPageParam: (lastPage) => lastPage.links.next || undefined,
     initialPageParam: "",
   });
+  console.log(data?.pages[0]);
+  
   return (
     <div className='flex flex-col gap-5'>
       <SearchAdmin name={["en_title", "categories"]} setSearch={setSearchQuery} />
@@ -42,9 +44,9 @@ export default function page() {
         <>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-5 p-3 rounded-xl bg-white shadow-md'>
             {data?.pages[0]?.data?.map((row, index: number) => (
-              <section key={index} className='flex justify-between flex-col gap-6'>
+              <section key={index} className='flex p-3 justify-between flex-col gap-6'>
                 <div className='p-4 rounded-xl border border-d-60' style={{ backgroundImage: "url(/dot-top.png)" }}>
-                  <ImageCustom className='w-full' alt={"work"} src={row.picture} height={350} width={500} />
+                  <ImageCustom className='w-full h-[350px]' alt={"work"} src={row.picture} height={350} width={250} />
                 </div>
                 <div className='flex flex-col md:flex-row items-start gap-4 md:gap-0 md:items-center justify-between'>
                   <div className='flex gap-2 items-center'>

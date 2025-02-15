@@ -5,9 +5,9 @@ import { FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
 import { Link } from '@/i18n/routing'
 import { useLocale, useTranslations } from 'next-intl'
 const iconData = [
-  { icon: <FaTwitter /> },
-  { icon: <FaLinkedin className='text-w-100' /> },
-  { icon: <FaInstagram className='text-w-100' /> },
+  { icon: <FaTwitter />, name: "twitter" },
+  { icon: <FaLinkedin className='text-w-100' />, name: "linkedin" },
+  { icon: <FaInstagram className='text-w-100' />, name: "instagram" },
 ]
 export default function Footer() {
   const t = useTranslations("Footer")
@@ -33,15 +33,18 @@ export default function Footer() {
       <div className='mt-10 flex justify-between items-center pb-6 border-d-60 border-b'>
         <div>
           <Link href={"/"}>
-            <ImageCustom src={"/logo.webp"} alt={"logo"} width={100} height={60} />
+            <ImageCustom src={"/logo.webp"} alt={"logo"} width={100} height={37} />
           </Link>
         </div>
         <div className='flex flex-col md:flex-row items-center justify-end gap-5'>
           <span className='text-w-100 text-sm md:text-base'>{local === "fa" ? "ما را در شبکه های اجتماعی دنبال کنید" : "Follow Us On Social Media"}</span>
           <div className='flex gap-5 justify-center'>
             {iconData.map((row, index) => (
-              <Link href={"#"} key={index} className='border text-sm md:text-base border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
+              <Link href={"#"} aria-label={row.name} title={row.name} key={index} className='border text-sm md:text-base border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
                 {row.icon}
+                <span className='screen-reader-text'>
+                  {row.name}
+                </span>
               </Link>
             ))}
           </div>
