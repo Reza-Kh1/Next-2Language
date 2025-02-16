@@ -33,7 +33,7 @@ export default function Footer() {
       <div className='mt-10 flex justify-between items-center pb-6 border-d-60 border-b'>
         <div>
           <Link href={"/"}>
-            <ImageCustom src={"/logo.webp"} alt={"logo"} width={100} height={37} />
+            <ImageCustom src={"/logo.png"} alt={"logo"} width={100} height={37} />
           </Link>
         </div>
         <div className='flex flex-col md:flex-row items-center justify-end gap-5'>

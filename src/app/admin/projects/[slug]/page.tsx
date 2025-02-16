@@ -47,7 +47,7 @@ export default function Page() {
     const [endDate, setEndDate] = useState<any>();
     const [image, setImage] = useState<string>("")
     const [selectIcons, setSelectIcons] = useState<string[]>([])
-    const [projectTeam, setProjectTeam] = useState<{ id: number, value: string, name: string }[]>([])
+    const [projectTeam, setProjectTeam] = useState<{ id: number, value: string, name: string }[]>([])    
     const [dataProject, setDataProject] = useState({
         name: "",
         nameFa: "",

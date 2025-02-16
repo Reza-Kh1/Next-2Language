@@ -23,7 +23,7 @@ export default function ProjectCards({ image, name, text, children, category }: 
                     <span className='text-w-50'>
                         {showMore ? local === "fa" ? "بستن جزئیات" : "Show Less" : local === "fa" ? "نمایش جزئیات" : "Show More"}
                     </span>
-                    <Button onPress={() => setShowMore(prev => !prev)} isIconOnly className='border mx-2 border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
+                    <Button title='button more' aria-label='button more' onPress={() => setShowMore(prev => !prev)} isIconOnly className='border mx-2 border-d-60 p-3 rounded-full text-w-100 bg-gradient-to-b to-d-100 from-gray-700/90'>
                         {showMore ?
                             <FaChevronUp />
                             :

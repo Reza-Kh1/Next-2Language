@@ -11,7 +11,7 @@ export default function Header() {
             <div dir="ltr" className="hidden md:flex justify-between md:py-4 xl:py-8 border-b border-d-60 md:px-10 xl:px-28 ">
                 <div className="flex gap-3 items-center">
                     <Link href={"/"}>
-                        <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.webp"} width={100} height={60} />
+                        <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={100} height={37} />
                     </Link>
                     <LanguageBtn />
                 </div>

@@ -114,7 +114,7 @@ export default function CareersBox({ title, image, address, skill, price, bags }
                 <span className='text-w-50'>
                     {open ? "Show Less" : "Show More"}
                 </span>
-                <Button onPress={() => setOpen(prev => !prev)} isIconOnly className='border border-d-60 min-w-0 rounded-full text-w-100' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
+                <Button title='button more' aria-label='button more' onPress={() => setOpen(prev => !prev)} isIconOnly className='border border-d-60 min-w-0 rounded-full text-w-100' style={{ background: "linear-gradient(180deg, #7f7d7d29, #000000c4)" }}>
                     {open ?
                         <FaChevronUp className='w-4' />
                         :

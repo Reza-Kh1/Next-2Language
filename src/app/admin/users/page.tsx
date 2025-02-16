@@ -55,16 +55,20 @@ export default function page() {
       toast.success("User was created")
     },
     onError: ({ response }: any) => {
+      console.log(response);
+      
       toast.error(response?.data?.message);
     },
   });
   const { mutate: deleteUser } = useMutation({
     mutationFn: (id: number) => {
-      return axios.delete(`users/${id}`);
+      return axios.post(`deleteUserWithId`, {
+        user_id: id
+      });
     },
     onSuccess: () => {
       query.invalidateQueries({ queryKey: ['GetAllUsers'] });
-      toast("User was created")
+      toast.success("User was Deleted")
     },
     onError: ({ response }: any) => {
       toast.error(response?.data?.message);

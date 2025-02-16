@@ -37,6 +37,8 @@ export default function page() {
     nameFa: "",
     category: "",
     time: "",
+    fa_description: "",
+    en_description: "",
     author: "",
   })
   const createTags = () => {
@@ -65,6 +67,8 @@ export default function page() {
       categories: dataBlogs.category,
       read_time: dataBlogs.time,
       author_id: dataLocal?.id,
+      en_description: dataBlogs.en_description,
+      fa_description: dataBlogs.fa_description,
       tags: JSON.stringify(tags)
     }
     if (data?.data) {
@@ -74,6 +78,7 @@ export default function page() {
         deleteCache({ tag: pageCache.blogs.tag })
         deleteCache({ tag: `${[pageCache.blogs.tag, data.data.id]}` })
       }).catch((err) => {
+        console.log(err);
         toast.error("Error in DataBase")
       })
     } else {
@@ -81,6 +86,7 @@ export default function page() {
         toast.success("Blog is Created")
         deleteCache({ tag: pageCache.blogs.tag })
       }).catch((err) => {
+        console.log(err);
         toast.error("Error in DataBase")
       })
     }
@@ -92,6 +98,8 @@ export default function page() {
       category: data?.data.categories || "",
       time: data?.data.read_time || "",
       author: data?.data.author_id || "",
+      en_description: data?.data.en_description || "",
+      fa_description: data?.data.fa_description || ""
     });
     setEditor(data?.data.en_content || "");
     setEditorFa(data?.data.fa_content || "");
@@ -147,6 +155,24 @@ export default function page() {
           labelPlacement='outside'
           isRequired
           placeholder='in minutes'
+          variant="bordered"
+        />
+        <Input
+          label="Description (fa)"
+          value={dataBlogs.fa_description}
+          onChange={({ target }) => setDataBlogs({ ...dataBlogs, fa_description: target.value })}
+          labelPlacement='outside'
+          isRequired
+          placeholder='Description (fa)'
+          variant="bordered"
+        />
+        <Input
+          label="Description (en)"
+          value={dataBlogs.en_description}
+          onChange={({ target }) => setDataBlogs({ ...dataBlogs, en_description: target.value })}
+          labelPlacement='outside'
+          isRequired
+          placeholder='Description (en)'
           variant="bordered"
         />
         <div className='md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-5 justify-evenly items-center'>

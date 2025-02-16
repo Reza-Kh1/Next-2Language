@@ -27,7 +27,7 @@ export default function page() {
     initialPageParam: "",
   });
   console.log(data?.pages[0]);
-  
+
   return (
     <div className='flex flex-col gap-5'>
       <SearchAdmin name={["en_title", "categories"]} setSearch={setSearchQuery} />
@@ -60,7 +60,7 @@ export default function page() {
                 </div>
                 <div>
                   <h3 className='text-lg'>{row.en_title}</h3>
-                  <p className='text-w-50 mt-2'>{row.categories}</p>
+                  <p className='text-w-50 mt-2'>{row.en_description}</p>
                 </div>
                 <div className='flex justify-center'>
                   <Link className='text-w-100 bg-d-60 text-xs md:text-base px-5 py-2 rounded-full border border-d-50' href={`/admin/blogs/${row.id}`}>

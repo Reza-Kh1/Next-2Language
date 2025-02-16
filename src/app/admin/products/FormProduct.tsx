@@ -1,6 +1,6 @@
 "use client"
 import { Button } from '@heroui/button'
-import { Input, Progress, Select, SelectItem, Textarea } from '@nextui-org/react'
+import { Input, Link, Progress, Select, SelectItem, Textarea } from '@nextui-org/react'
 import React, { useEffect, useState } from 'react'
 import { GiCloudUpload } from 'react-icons/gi'
 import { MdOutlineDataSaverOn } from 'react-icons/md'
@@ -254,10 +254,10 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                     {
                         urlFile ?
                             <div className='flex gap-3 items-center'>
-                                <Button onPress={() => handleDownload(urlFile, dataForm.en_name)} className='bg-d-btn text-white flex justify-center gap-2' variant='bordered'>
+                                <Link className='bg-d-btn p-3 rounded-md shadow-md text-white flex justify-center gap-2'>
                                     Download File
                                     <IoEye />
-                                </Button>
+                                </Link>
                                 <Button isIconOnly onPress={() => setUrlFile("")} color='danger'>
                                     <FaTrash />
                                 </Button>

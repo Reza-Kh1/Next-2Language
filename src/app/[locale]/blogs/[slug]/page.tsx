@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
     return {
         metadataBase: new URL(process.env.NEXT_PUBLIC_URL || "http://localhost:3000"),
         title: `${local ? data.fa_title : data.en_title} | shlabs`,
-        description: ``,
+        description: local ? data.fa_description : data.en_description,
         keywords: JSON.parse(data.tags),
         robots: "index, follow",
         openGraph: {
@@ -62,7 +62,7 @@ export default async function page({ params }: any) {
         "@type": "BlogPosting",
         headline: locale === "fa" ? data?.fa_title : data?.en_title || "عنوان مقاله",
         image: data?.picture || "آدرس تصویر",
-        description: locale === "fa" ? data?.fa_title : data?.en_title || "توضیحات مقاله",
+        description: locale === "fa" ? data?.fa_description : data?.en_description || "توضیحات مقاله",
         author: {
             "@type": "Person",
             name: data?.author.username || "نام نویسنده",

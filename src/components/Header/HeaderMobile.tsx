@@ -23,7 +23,7 @@ export default function HeaderMobile() {
             <div className={`flex ${isOpen ? "!z-0" : "!z-[51]"} justify-between items-center pb-4 mb-4 border-b border-d-60 px-0 pt-4`}>
                 <div className='flex justify-between gap-1 items-center'>
                     <Link href={"/"}>
-                        <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.webp"} width={80} height={40} />
+                        <ImageCustom figureClass="w-auto" alt='logo' src={"/logo.png"} width={100} height={37} />
                     </Link>
                     <LanguageBtn />
                 </div>

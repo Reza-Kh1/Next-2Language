@@ -80,6 +80,8 @@ type BlogType = {
   categories: string;
   read_time: string;
   author_id: string;
+  fa_description: string
+  en_description: string
   tags: string;
   updated_at: Date;
 };
@@ -131,6 +133,8 @@ type TransactionType = {
   product_id: string;
   ref_code: string;
   status: string;
+  phone: string
+  shopping_details: string
   updated_at: Date;
 };
 export type {

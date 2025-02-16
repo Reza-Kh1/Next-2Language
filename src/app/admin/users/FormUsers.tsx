@@ -51,6 +51,7 @@ export default function FormUsers({ data, onSubmit, isUpdate }: FormUsersType) {
                     labelPlacement='outside'
                     placeholder='name'
                     variant="bordered"
+                    required
                 />
                 <Input
                     onChange={({ target }) => setDataForm({ ...dataForm, username: target.value })}
@@ -60,8 +61,9 @@ export default function FormUsers({ data, onSubmit, isUpdate }: FormUsersType) {
                     labelPlacement='outside'
                     placeholder='User Name'
                     variant="bordered"
+                    required
                 />
-                <Input
+                {data ? <Input
                     onChange={({ target }) => setDataForm({ ...dataForm, user_type: target.value })}
                     value={dataForm.user_type}
                     label="User Type"
@@ -69,7 +71,8 @@ export default function FormUsers({ data, onSubmit, isUpdate }: FormUsersType) {
                     labelPlacement='outside'
                     placeholder='User Type'
                     variant="bordered"
-                />
+                /> : null
+                }
                 <Input
                     onChange={({ target }) => setDataForm({ ...dataForm, password: target.value })}
                     value={dataForm.password}
@@ -78,6 +81,7 @@ export default function FormUsers({ data, onSubmit, isUpdate }: FormUsersType) {
                     labelPlacement='outside'
                     placeholder='password'
                     variant="bordered"
+                    required
                 />
                 <UploadImage imageUrl={dataForm.profile} setImageUrl={(value) => setDataForm({ ...dataForm, profile: value })} height={100} width={100} />
             </div>

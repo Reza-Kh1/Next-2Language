@@ -83,7 +83,7 @@ export default async function Page({ params, searchParams }: any) {
                 </div>
                 <div>
                   <h3 className='text-w-100 text-lg'>{locale === "fa" ? row.fa_title : row.en_title}</h3>
-                  <p className='text-w-80 mt-2'>{locale === "fa" ? row.fa_content : row.en_content}</p>
+                  <p className='text-w-80 mt-2'>{locale === "fa" ? row.fa_description : row.en_description}</p>
                 </div>
                 <div className='flex justify-center'>
                   <Link className='text-w-100 bg-d-60 text-xs md:text-base px-5 py-2 rounded-full border border-d-50' href={`/blogs/${row.id}`}>
