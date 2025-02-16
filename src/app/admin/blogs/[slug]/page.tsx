@@ -25,6 +25,8 @@ export default function page() {
     enabled: slug === "create-blog" ? false : true,
     gcTime: 1000 * 60 * 60 * 24,
   });
+  const [listEn, setListEn] = useState<string[]>([])
+  const [listFa, setListFa] = useState<string[]>([])
   const [editor, setEditor] = useState<string>("")
   const [editorFa, setEditorFa] = useState<string>("")
   const [tags, setTags] = useState<string[]>([])
@@ -40,6 +42,8 @@ export default function page() {
     fa_description: "",
     en_description: "",
     author: "",
+    en_list: "",
+    fa_list: ""
   })
   const createTags = () => {
     if (!textTag) return
@@ -69,8 +73,10 @@ export default function page() {
       author_id: dataLocal?.id,
       en_description: dataBlogs.en_description,
       fa_description: dataBlogs.fa_description,
-      tags: JSON.stringify(tags)
-    }
+      tags: JSON.stringify(tags),
+      fa_list_content: JSON.stringify(listFa),
+      en_list_content: JSON.stringify(listEn)
+    }    
     if (data?.data) {
       axios.patch(`blogs/${data?.data?.id}`, body).then(() => {
         toast.success("Blog is Updated")
@@ -99,13 +105,20 @@ export default function page() {
       time: data?.data.read_time || "",
       author: data?.data.author_id || "",
       en_description: data?.data.en_description || "",
-      fa_description: data?.data.fa_description || ""
+      fa_description: data?.data.fa_description || "",
+      en_list: "",
+      fa_list: ""
     });
+    if (data?.data.en_list_content) {
+      setListEn(JSON.parse(data?.data.en_list_content))
+    }
+    if (data?.data.fa_list_content) {
+      setListFa(JSON.parse(data?.data.fa_list_content))
+    }
     setEditor(data?.data.en_content || "");
     setEditorFa(data?.data.fa_content || "");
-    const newTags = JSON.parse(data?.data.tags as string)
-    if (newTags?.length) {
-      setTags(newTags);
+    if (data?.data.tags) {
+      setTags(JSON.parse(data?.data.tags as string));
     }
     setImage(data?.data.picture || "");
   }
@@ -183,11 +196,6 @@ export default function page() {
             variant="bordered"
             value={textTag}
             onChange={({ target }) => setTextTag(target.value)}
-            onKeyDown={(key) => {
-              if (key.code === "Enter") {
-                createTags()
-              }
-            }}
             endContent={
               <i className='cursor-pointer' onClick={createTags}>
                 <FaPlus />
@@ -205,6 +213,73 @@ export default function page() {
             )) : null}
           </div>
         </div>
+        <div className='flex md:col-span-2 items-start gap-5'>
+          <div className='w-1/2 gap-5 flex flex-col'>
+            <Input
+              label="List Title (En)"
+              labelPlacement='outside'
+              placeholder='List Title'
+              variant="bordered"
+              value={dataBlogs.en_list}
+              onChange={({ target }) => setDataBlogs({ ...dataBlogs, en_list: target.value })}
+              endContent={
+                <i className='cursor-pointer' onClick={() => {
+                  if (!dataBlogs.en_list) return
+                  setListEn([...listEn, dataBlogs.en_list])
+                  setDataBlogs({ ...dataBlogs, en_list: "" })
+                }}>
+                  <FaPlus />
+                </i>
+              }
+            />
+            <div className='flex flex-col gap-2'>
+              {listEn.length ? listEn?.map((row, index) => (
+                <span className='flex justify-between items-center gap-1 p-2 shdaow-md rounded-md border border-d-60' key={index}>
+                  <div>
+                    <span>{index + 1}_</span>
+                    <span>{row}</span>
+                  </div>
+                  <i className='cursor-pointer' onClick={() => setListEn(listEn.filter((item) => item !== row))}>
+                    <MdClose />
+                  </i>
+                </span>
+              )) : null}
+            </div>
+          </div>
+          <div className='w-1/2 gap-5 flex flex-col'>
+            <Input
+              label="List Title (Fa)"
+              labelPlacement='outside'
+              placeholder='List Title'
+              variant="bordered"
+              value={dataBlogs.fa_list}
+              onChange={({ target }) => setDataBlogs({ ...dataBlogs, fa_list: target.value })}
+              endContent={
+                <i className='cursor-pointer' onClick={() => {
+                  if (!dataBlogs.fa_list) return
+                  setListFa([...listFa, dataBlogs.fa_list])
+                  setDataBlogs({ ...dataBlogs, fa_list: "" })
+                }}>
+                  <FaPlus />
+                </i>
+              }
+            />
+            <div className='flex flex-col gap-2'>
+              {listFa.length ? listFa?.map((row, index) => (
+                <span className='flex justify-between items-center gap-1 p-2 shdaow-md rounded-md border border-d-60' key={index}>
+                  <div>
+                    <span>{index + 1}_</span>
+                    <span>{row}</span>
+                  </div>
+                  <i className='cursor-pointer' onClick={() => setListFa(listFa.filter((item) => item !== row))}>
+                    <MdClose />
+                  </i>
+                </span>
+              )) : null}
+            </div>
+          </div>
+        </div>
+
         <div>
           <UploadImage imageUrl={image} setImageUrl={setImage} />
         </div>

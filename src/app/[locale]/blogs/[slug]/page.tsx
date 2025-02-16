@@ -21,7 +21,7 @@ const getData = async (slug: string) => {
 export async function generateMetadata({ params }: any): Promise<Metadata> {
     const { data }: { data: BlogType } = await getData(params.slug);
     if (!data) return notFound()
-    const local = params.locale === "fa" ? true : false
+    const local = await params.locale === "fa" ? true : false
     return {
         metadataBase: new URL(process.env.NEXT_PUBLIC_URL || "http://localhost:3000"),
         title: `${local ? data.fa_title : data.en_title} | shlabs`,
@@ -65,7 +65,7 @@ export default async function page({ params }: any) {
         description: locale === "fa" ? data?.fa_description : data?.en_description || "توضیحات مقاله",
         author: {
             "@type": "Person",
-            name: data?.author.username || "نام نویسنده",
+            name: data?.author?.username || "نام نویسنده",
         },
         datePublished: data?.updated_at || "تاریخ انتشار",
         articleBody: locale === "fa" ? data?.fa_content : data?.en_content || "متن مقاله",
@@ -75,6 +75,8 @@ export default async function page({ params }: any) {
             `${process.env.NEXTAUTH_URL}/blog/${data.id}` ||
             "آدرس مقاله",
     };
+    console.log(data);
+
     return (
         <>
             <Script
@@ -113,40 +115,27 @@ export default async function page({ params }: any) {
                             </section>
                             <section className='flex flex-col gap-2'>
                                 <span className='text-w-80 text-sm'>{locale === "fa" ? "نام نویسنده" : "Author Name"}</span>
-                                <span className='text-white'>{data.author.username}</span>
+                                <span className='text-white'>{data.author?.username}</span>
                             </section>
                         </div>
                         <div className='flex flex-col gap-2 mt- md:mt-10'>
                             <span className='text-w-80 text-sm'>{locale === "fa" ? "فهرست مطالب" : "Table of Contents"}</span>
                             <div className='flex p-6 bg-d-80 flex-col gap-2 rounded-xl'>
-                                <div className='flex items-start gap-1'>
-                                    <i><GoDotFill className='text-w-100' /></i>
-                                    <span className='text-w-100'>Introduction</span>
-                                </div>
-                                <div className='flex items-start gap-1'>
-                                    <i><GoDotFill className='text-w-100' /></i>
-                                    <span className='text-w-100'>AI in Diagnostic Imaging</span>
-                                </div>
-                                <div className='flex items-start gap-1'>
-                                    <i><GoDotFill className='text-w-100' /></i>
-                                    <span className='text-w-100'>Predictive Analytics and Disease Prevention</span>
-                                </div>
-                                <div className='flex items-start gap-1'>
-                                    <i><GoDotFill className='text-w-100' /></i>
-                                    <span className='text-w-100'>AI in Telemedicine</span>
-                                </div>
-                                <div className='flex items-start gap-1'>
-                                    <i><GoDotFill className='text-w-100' /></i>
-                                    <span className='text-w-100'>Ethical Considerations</span>
-                                </div>
-                                <div className='flex items-start gap-1'>
-                                    <i><GoDotFill className='text-w-100' /></i>
-                                    <span className='text-w-100'>The Future of AI in Healthcare</span>
-                                </div>
-                                <div className='flex items-start gap-1'>
-                                    <i><GoDotFill className='text-w-100' /></i>
-                                    <span className='text-w-100'>Conclusion</span>
-                                </div>
+                                {locale === "fa" ?
+                                    data.fa_list_content ? JSON.parse(data.fa_list_content).map((row: string, index: number) => (
+                                        <div key={index} className='flex items-start gap-1'>
+                                            <i><GoDotFill className='text-w-100' /></i>
+                                            <span className='text-w-100'>{row}</span>
+                                        </div>))
+                                        : null
+                                    :
+                                    data.en_list_content ? JSON.parse(data.en_list_content).map((row: string, index: number) => (
+                                        <div key={index} className='flex items-start gap-1'>
+                                            <i><GoDotFill className='text-w-100' /></i>
+                                            <span className='text-w-100'>{row}</span>
+                                        </div>))
+                                        : null
+                                }
                             </div>
                         </div>
                     </div>

@@ -47,7 +47,7 @@ export default function Page() {
     const [endDate, setEndDate] = useState<any>();
     const [image, setImage] = useState<string>("")
     const [selectIcons, setSelectIcons] = useState<string[]>([])
-    const [projectTeam, setProjectTeam] = useState<{ id: number, value: string, name: string }[]>([])    
+    const [projectTeam, setProjectTeam] = useState<{ id: number, value: string, name: string }[]>([])
     const [dataProject, setDataProject] = useState({
         name: "",
         nameFa: "",
@@ -128,17 +128,14 @@ export default function Page() {
                 setSelectIcons(iconBox.map((row: any) => row.name))
             }
             setImage(data.data.picture || "");
-            const newTeam = JSON.parse(data.data.programmer_rules)
-            if (newTeam?.length) {
-                const kireAkhar = newTeam.map((row: any) => {
-                    const [[id, value]] = Object.entries(row);
-                    return {
-                        name: "",
-                        id: Number(id),
-                        value: value
-                    };
-                })
-                setProjectTeam(kireAkhar)
+            if (data.data?.users.length) {
+                const newTeam = JSON.parse(data.data.programmer_rules)
+                const result = data.data.users.map(item => ({
+                    name: item.username,
+                    id: item.id,
+                    value: newTeam.find((obj: any) => obj[item.id])[item.id]
+                }));                
+                setProjectTeam(result)
             }
         }
     }
@@ -288,6 +285,7 @@ export default function Page() {
                                 selectedKeys={["5"]}
                             >
                                 <TableHeader>
+                                    <TableColumn>#</TableColumn>
                                     <TableColumn>NAME</TableColumn>
                                     <TableColumn>ROLE</TableColumn>
                                     <TableColumn>Created At</TableColumn>
@@ -296,7 +294,8 @@ export default function Page() {
                                 <TableBody>
                                     {dataAllUser?.pages[0]?.data.map((row) => (
                                         <TableRow key={row.id} className={projectTeam.some((item) => item.id === row.id) ? "bg-slate-300 shadow-md" : ""}>
-                                            < TableCell > {row.username}</TableCell>
+                                            < TableCell > {row.id}</TableCell>
+                                            < TableCell > {row?.username}</TableCell>
                                             <TableCell>{row.user_type}</TableCell>
                                             <TableCell>{new Date(row.created_at).toLocaleDateString("en")}</TableCell>
                                             <TableCell>

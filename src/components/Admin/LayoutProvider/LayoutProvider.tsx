@@ -21,8 +21,8 @@ export default function LayoutProvider({ children }: { children: React.ReactNode
                         console.log(err?.response?.status);
                         if (err?.response?.status === 403) {
                             toast.error("You are not allowed to do this");
-                            // localStorage.setItem("user", "");
-                            // route.replace("/admin/login")
+                            localStorage.setItem("user", "");
+                            route.replace("/admin/login")
                         } else {
                             toast.error("We encountered an error in connection with the database");
                         }

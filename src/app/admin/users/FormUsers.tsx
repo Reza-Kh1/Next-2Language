@@ -9,7 +9,7 @@ type FormUsersType = {
         name: string
         username: string
         password?: string
-        profile?: string
+        profile?: string|null
         user_type: string
     }
     isUpdate?: boolean

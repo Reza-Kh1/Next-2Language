@@ -39,6 +39,7 @@ type UserType = {
   user_type: "admin" | "normal";
   username: string;
   name: string;
+  profile: string | null;
 };
 type ProducrtType = {
   fa_name: string;
@@ -80,9 +81,11 @@ type BlogType = {
   categories: string;
   read_time: string;
   author_id: string;
-  fa_description: string
-  en_description: string
+  fa_description: string;
+  en_description: string;
   tags: string;
+  fa_list_content: string;
+  en_list_content: string;
   updated_at: Date;
 };
 type AllBlogType = {
@@ -105,6 +108,7 @@ type ProjectType = {
   start_date: string;
   end_date: string;
   id: number;
+  users: UserType[];
 };
 type AuthorType = {
   created_at: Date;
@@ -133,8 +137,8 @@ type TransactionType = {
   product_id: string;
   ref_code: string;
   status: string;
-  phone: string
-  shopping_details: string
+  phone: string;
+  shopping_details: string;
   updated_at: Date;
 };
 export type {

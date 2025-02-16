@@ -96,22 +96,6 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
         setLoading(false)
         setUrlFile(url)
     }
-    const handleDownload = async (url: string, filename: string) => {
-        try {
-            const response = await fetch(url);
-            const blob = await response.blob();
-            const blobUrl = URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.href = blobUrl;
-            link.setAttribute("download", filename);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(blobUrl);
-        } catch (error) {
-            console.error("Error in download:", error);
-        }
-    };
     const syncData = () => {
         if (data) {
             setDataForm({
@@ -144,7 +128,7 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
             .catch((err) => {
                 console.error("Error loading JSON", err);
             });
-    }, []);
+    }, []);    
     return (
         <form onSubmit={action} className='flex flex-col gap-2'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>

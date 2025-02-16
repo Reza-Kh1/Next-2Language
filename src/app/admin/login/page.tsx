@@ -3,9 +3,10 @@ import { Button } from '@heroui/button'
 import { Checkbox, Input, Spinner } from '@nextui-org/react'
 import Cookies from "js-cookie"
 import axios from "axios"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 export default function Page() {
+    const route = useRouter()
     const [isLogin, setIsLogin] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(false)
     const [isRemember, setIsRemember] = useState<boolean>(false)
@@ -31,6 +32,12 @@ export default function Page() {
             setLoading(false)
         })
     }
+    const token = Cookies.get('authToken')
+    useEffect(() => {
+        if (token) {
+            route.replace("/admin/blogs")
+        }
+    }, [])
     return (
         <div className='w-full items-start mb-80 flex justify-center h-[500px] bg-slate-400 bg-no-repeat bg-center bg-cover rounded-xl shadow-md before:bg-black/40 before:w-full before:h-full relative before:absolute before:top-0 before:left-0 before:rounded-xl' style={{ backgroundImage: "url(/admin-image/login-admin.jpg)" }}>
             <div className='w-2/3 md:w-1/2 z-10 text-center mt-16'>
