@@ -23,7 +23,7 @@ export default async function page({ params, searchParams }: any) {
     const { locale } = await params
     const { page = 1 } = await searchParams
     const { data, meta }: { data: ProducrtType[], meta: OptionsGetAllMeta } = await getData(page)
-    const t = await getTranslations("Scripts")    
+    const t = await getTranslations("Scripts")
     return (
         <>
             <ContainerHeader firstDark dark={t("header.nameDark")} light={t("header.nameLight")} text={t("header.text")} />
@@ -85,33 +85,35 @@ export default async function page({ params, searchParams }: any) {
                         </Link>
                     </div>
                 </div>
-                <div>
-                    <h2 className='text-w-100 text-2xl md:text-4xl font-semibold mb-12'>Code Snippet</h2>
-                    <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10'>
-                        {data.map((item, index) => (
-                            <Products key={index} row={item}>
-                                <div>
-                                    <span className='text-xl md:text-2xl text-w-100 font-semibold'>{locale === "fa" ? item.fa_name : item.en_name}</span>
-                                    <p className='text-w-50 text-sm md:text-base mt-4'>{locale === "fa" ? item.fa_description : item.en_description}</p>
-                                </div>
-                                <div className='flex items-center justify-between'>
-                                    <div className='flex gap-1 items-center'>
-                                        <span className='text-w-80'>
-                                            {locale === "fa" ? "قیمت" : "price"} : {Number(item.price).toLocaleString()} T
-                                        </span>
+                {data.length ?
+                    <div>
+                        <h2 className='text-w-100 text-2xl md:text-4xl font-semibold mb-12'>Code Snippet</h2>
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10'>
+                            {data.map((item, index) => (
+                                <Products key={index} row={item}>
+                                    <div>
+                                        <span className='text-xl md:text-2xl text-w-100 font-semibold'>{locale === "fa" ? item.fa_name : item.en_name}</span>
+                                        <p className='text-w-50 text-sm md:text-base mt-4'>{locale === "fa" ? item.fa_description : item.en_description}</p>
                                     </div>
-                                    <div className='flex gap-4'>
-                                        {JSON.parse(item.technologies).map((icon: any) => (
-                                            <i key={icon?.name} className={`p-2 rounded-full bg-d-80 border border-d-60 text-w-100 devicon-${icon.name}-${icon.icon}`}>
-                                            </i>
-                                        ))}
+                                    <div className='flex items-center justify-between'>
+                                        <div className='flex gap-1 items-center'>
+                                            <span className='text-w-80'>
+                                                {locale === "fa" ? "قیمت" : "price"} : {Number(item.price).toLocaleString()} T
+                                            </span>
+                                        </div>
+                                        <div className='flex gap-4'>
+                                            {JSON.parse(item.technologies).map((icon: any) => (
+                                                <i key={icon?.name} className={`p-2 rounded-full bg-d-80 border border-d-60 text-w-100 devicon-${icon.name}-${icon.icon}`}>
+                                                </i>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
-                            </Products>
-                        ))}
+                                </Products>
+                            ))}
+                        </div>
+                        <PaginationSeo meta={meta} />
                     </div>
-                    <PaginationSeo meta={meta} />
-                </div>
+                    : null}
                 <div className='my-12 md:my-24'>
                     <h2 className='text-w-100 text-2xl md:text-4xl font-semibold mb-6'>Mentorship</h2>
                     <div className='flex md:flex-row flex-col gap-7 items-start'>
