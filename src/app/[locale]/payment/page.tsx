@@ -66,7 +66,6 @@ export default function page() {
         axios.post(`${process.env.NEXT_PUBLIC_URL_API}transactions/getTransactionByRefCode`, {
             ref_code: valueCode
         }).then(async ({ data }) => {
-            console.log(data, data.data.product.download_url);
             window.open(data.data.product.download_url, '_blank', 'noopener,noreferrer');
             // const url = data.data.product.download_url;
             // const response = await fetch(url);
