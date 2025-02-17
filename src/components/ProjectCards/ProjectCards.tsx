@@ -68,16 +68,15 @@ export default function ProjectCards({ data }: { data: ProjectType }) {
                             <span className='block text-w-100 mb-5 md:mb-3 text-sm md:text-base'>{row.value}</span>
                             <div className='flex'>
                                 <div className='relative w-1/3'>
-                                    <figure className='absolute right-3 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
-                                        <Image src="/profile/prof.png" alt='profile' width={40} height={40} />
-                                    </figure>
-                                    <figure className='absolute -right-2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
-                                        <Image src="/profile/prof2.png" alt='profile' width={40} height={40} />
-                                    </figure>
+                                    {row.detail.map((item: any, idx: number) => (
+                                        <figure key={idx} className='absolute right-3 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                                            <Image src={item.profile || "/profile/prof2.png"} alt='profile' width={40} height={40} />
+                                        </figure>
+                                    ))}
                                 </div>
                                 <div className='text-w-90 md:text-sm text-xs'>
                                     {row.detail.map((item: any, idx: number) => (
-                                        <span key={idx}>{item.name},</span>
+                                        <span key={idx}>{item.name}{row.detail.length > idx + 1 ? " , " : null}</span>
                                     ))}
                                 </div>
                             </div>

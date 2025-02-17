@@ -26,7 +26,7 @@ export default function page() {
     links: OptionsGetAllLinks,
     meta: OptionsGetAllMeta
   }>({
-    queryKey: ["GetAllBlogs", searchQuery],
+    queryKey: ["getProducts", searchQuery],
     queryFn: () => getProducts(searchQuery),
     staleTime: 1000 * 60 * 60 * 24,
     gcTime: 1000 * 60 * 60 * 24,

@@ -71,6 +71,18 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
         }
         submitHandler(body)
     }
+    const downloadFile = async () => {
+        console.log("ok");
+        const response = await fetch(urlFile);
+        const blob = await response.blob();
+        const link = document.createElement('a');
+        
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'downloaded-file.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
     const uploadFilel = async (event: React.ChangeEvent<HTMLInputElement>) => {
         setLoading(true);
         const token = Cookies.get('authToken')
@@ -128,7 +140,7 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
             .catch((err) => {
                 console.error("Error loading JSON", err);
             });
-    }, []);    
+    }, []);
     return (
         <form onSubmit={action} className='flex flex-col gap-2'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
@@ -232,13 +244,12 @@ export default function FormProduct({ submitHandler, data }: submitHandlerType) 
                     onChange={({ target }) => setDataForm({ ...dataForm, fa_description: target.value })}
                     placeholder="Full description of the product"
                 />
-
                 <div className='w-1/2'>
                     <span>Upload File</span>
                     {
                         urlFile ?
                             <div className='flex gap-3 items-center'>
-                                <Link className='bg-d-btn p-3 rounded-md shadow-md text-white flex justify-center gap-2'>
+                                <Link target='_blank' href={urlFile} className='bg-d-btn p-3 rounded-md shadow-md text-white flex justify-center gap-2'>
                                     Download File
                                     <IoEye />
                                 </Link>

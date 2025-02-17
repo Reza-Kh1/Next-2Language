@@ -126,7 +126,7 @@ export default function page() {
     if (data?.data) {
       syncData()
     }
-  }, [data])
+  }, [data])  
   return (
     <div className='flex flex-col p-3 rounded-xl bg-white shadow-md'>
       <form onSubmit={action} className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-10'>

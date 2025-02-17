@@ -43,7 +43,6 @@ export default function page() {
       toast.error(response?.data?.message);
     },
   });
-
   return (
     <div className='flex flex-col gap-5'>
       <SearchAdmin name={["status", "ref_code"]} setSearch={setSearchQuery} />
@@ -53,7 +52,7 @@ export default function page() {
             <TableColumn>Id</TableColumn>
             <TableColumn>Product</TableColumn>
             <TableColumn>Phone Number</TableColumn>
-            <TableColumn>Detail Transaction</TableColumn>
+            {/* <TableColumn>Detail Transaction</TableColumn> */}
             <TableColumn>Status</TableColumn>
             <TableColumn>Ref Code</TableColumn>
             <TableColumn>Created</TableColumn>
@@ -71,14 +70,14 @@ export default function page() {
                 <TableCell>
                   {row.phone}
                 </TableCell>
-                <TableCell>
+                {/* <TableCell>
                   <Button onPress={() => {
                     onOpen(), setDataDetail(row)
                   }} className='p-3 rounded-md' variant='bordered'>
                     <span>Show</span>
                     <IoEye />
                   </Button>
-                </TableCell>
+                </TableCell> */}
                 <TableCell>
                   <span className={`p-3 shadow-md rounded-md ${row.status === "pending" ? "bg-blue-200" : "bg-green-200"}`}>
                     {row.status}

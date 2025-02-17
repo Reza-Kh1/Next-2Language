@@ -9,6 +9,7 @@ import { MdAddChart, MdDashboard, MdDoorBack, MdOutlineEmail } from 'react-icons
 import { FaCartPlus, FaFileInvoiceDollar, FaUsers } from 'react-icons/fa6'
 import Cookies from "js-cookie"
 import { usePathname, useRouter } from 'next/navigation'
+import { CgProfile } from 'react-icons/cg'
 
 export default function Navbar() {
     const path = usePathname()
@@ -44,12 +45,11 @@ export default function Navbar() {
                             </DrawerHeader>
                             <DrawerBody>
                                 <div className='pr-2 overflow-y-auto custom-scroll flex flex-col gap-1'>
-                                    <NavlinkAdmin href='/admin/dashboard' icon={<MdDashboard />} name='Dashboard' />
+                                    <NavlinkAdmin href='/admin/blogs' icon={<RiArticleLine />} name='Blogs' />
+                                    <NavlinkAdmin href='/admin/profile' icon={<CgProfile />} name='Profile' />
                                     <NavlinkAdmin href='/admin/projects' icon={<MdAddChart />} name='Projects' />
                                     <NavlinkAdmin href='/admin/products' icon={<FaCartPlus />} name='Products' />
-                                    <NavlinkAdmin href='/admin/blogs' icon={<RiArticleLine />} name='Blogs' />
                                     <NavlinkAdmin href='/admin/users' icon={<FaUsers />} name='Users' />
-                                    <NavlinkAdmin href='/admin/comments' icon={<MdOutlineEmail />} name='Comments' />
                                     <NavlinkAdmin href='/admin/payment' icon={<FaFileInvoiceDollar />} name='Payments' />
                                     <button type='button' onClick={logout} className={`flex items-center p-2 rounded-xl  justify-strat gap-2`}>
                                         <i className={`bg-white text-slate-800 text-lg p-2 shadow-md rounded-lg`}><MdDoorBack /></i>

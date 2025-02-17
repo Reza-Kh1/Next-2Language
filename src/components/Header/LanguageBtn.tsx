@@ -21,7 +21,7 @@ export default function LanguageBtn() {
       <DropdownMenu aria-label="Static Actions">
         <DropdownItem key="fa" className='text-white p-0 mb-1' textValue='fa'>
           <Button variant={local === "fa" ? "faded" : "light"} onPress={() => btnLanguage("fa")} className="text-white rounded-md flex items-center w-full justify-between" disabled={local === "fa"}>
-            Persian(fa)
+            Persian(Fa)
             <ImageCustom alt={"iran flag"} figureClass='w-auto' src={"/iran-flag.png"} width={30} height={20} />
           </Button>
         </DropdownItem>

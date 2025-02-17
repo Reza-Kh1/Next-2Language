@@ -23,7 +23,7 @@ export default async function page({ params, searchParams }: any) {
     const { locale } = await params
     const { page = 1 } = await searchParams
     const { data, meta }: { data: ProducrtType[], meta: OptionsGetAllMeta } = await getData(page)
-    const t = await getTranslations("Scripts")
+    const t = await getTranslations("Scripts")    
     return (
         <>
             <ContainerHeader firstDark dark={t("header.nameDark")} light={t("header.nameLight")} text={t("header.text")} />
@@ -111,12 +111,6 @@ export default async function page({ params, searchParams }: any) {
                         ))}
                     </div>
                     <PaginationSeo meta={meta} />
-                    {/* <div className='flex justify-start mt-4 md:mt-8'>
-                        <Link href={"#"} className='text-w-100 flex text-xs md:text-base items-center gap-4 p-2 md:p-3 px-4 md:px-6 border border-d-60 rounded-full '>
-                            <HiOutlineMenu />
-                            See More
-                        </Link>
-                    </div> */}
                 </div>
                 <div className='my-12 md:my-24'>
                     <h2 className='text-w-100 text-2xl md:text-4xl font-semibold mb-6'>Mentorship</h2>
