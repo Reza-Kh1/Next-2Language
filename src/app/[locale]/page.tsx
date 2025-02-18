@@ -1,26 +1,28 @@
+import { fetchApi } from "@/action/fetchApi";
 import AccordionBox from "@/components/AccordionBox/AccordionBox";
 import CircleBox from "@/components/CircleBox/CircleBox";
 import HeaderTitle from "@/components/HeaderTitle/HeaderTitle";
 import IconBgStar from "@/components/IconBgStar/IconBgStar";
 import LoadingPage from "@/components/LoadingPage/LoadingPage";
 import ShapeBox from "@/components/ShapeBox/ShapeBox";
+import pageCache from "@/data/cache";
 import { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { FaSearch } from "react-icons/fa";
+import { ProjectType } from "../type";
+import ProjectCards from "@/components/ProjectCards/ProjectCards";
 export const metadata: Metadata = {
   title: 'Home Page | Site',
   description: 'Services | Site'
 }
-export default function Home() {
-  const t = useTranslations('HomePage');
-  const local = useLocale()
-  // const user = await fetchUser();
-  // const t = await getTranslations('ProfilePage');
-  // return (
-  //   <PageLayout title={t('title', {username: user.name})}>
-  //     <UserDetails user={user} />
-  //   </PageLayout>
-  // );
+const getData = () => {
+  return fetchApi({ url: "projects", next: pageCache.projects.cache, tags: [pageCache.projects.tag] })
+}
+export default async function Home({ params }: any) {
+  const t = await getTranslations('HomePage');
+  const { locale } = await params
+  const { data }: { data: ProjectType[] } = await getData()
   return (
     <main className="main-class">
       <div className="w-full md:w-2/3 mx-auto text-center mt-16">
@@ -52,10 +54,21 @@ export default function Home() {
         </div>
       </div>
       <div>
+        <HeaderTitle light={locale === "fa" ? "پروژه های" : "Our"} dark={locale === "fa" ? "ما" : "Projects"} text={locale === "fa" ? "برخی از پروژه های موفق ما را بررسی کنید" : "Explore some of our successful projects"} />
+        {data?.length ?
+          <div className='my-8 md:my-12 flex flex-col gap-10'>
+            {data?.map((row, index: number) => {
+              if (Number(index + 1) > 4) return
+              return <ProjectCards data={row} key={index} />
+            })}
+          </div>
+          : null}
+      </div>
+      <div>
         <HeaderTitle dark={t("accordionBox.header.dark")} light={t("accordionBox.header.light")} text={t("accordionBox.header.text")} />
         <div className="my-10 md:my-14 flex justify-center">
           <label htmlFor="" className="relative rounded-full bg-d-80 border w-full md:w-1/4 mx-auto border-d-60">
-            <input type="text" placeholder={local === "fa" ? "جستجو" : "Search"} className="w-full pl-10 p-4 rounded-full h-full bg-d-80 text-w-90" />
+            <input type="text" placeholder={locale === "fa" ? "جستجو" : "Search"} className="w-full pl-10 p-4 rounded-full h-full bg-d-80 text-w-90" />
             <button title="search button" type="button" className="absolute left-3 text-w-90 top-1/2 transform -translate-y-1/2">
               <FaSearch />
             </button>

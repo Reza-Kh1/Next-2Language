@@ -30,6 +30,11 @@
         "image": "/icons/fast.png",
         "name": "Search Engine Optimization (SEO) Mastery",
         "text": "Boost your online presence and reach the right audience with our expert SEO techniques."
+      },
+      {
+        "image": "/icons/app.png",
+        "name": "Search Engine Optimization",
+        "text": "(SEO) Mastery Boost your online visibility with our expert SEO"
       }
     ],
     "serviceBox": {
