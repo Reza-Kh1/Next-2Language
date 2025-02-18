@@ -4,7 +4,7 @@ import { BlogType } from '@/app/type';
 import JoditForm from '@/components/Admin/JoditEditor/JoditEditor';
 import UploadImage from '@/components/UploadImage/UploadImage';
 import { Button } from '@heroui/button';
-import { Input } from '@nextui-org/react';
+import { Input, Textarea } from '@nextui-org/react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useParams, usePathname, useRouter } from 'next/navigation';
@@ -76,7 +76,7 @@ export default function page() {
       tags: JSON.stringify(tags),
       fa_list_content: JSON.stringify(listFa),
       en_list_content: JSON.stringify(listEn)
-    }    
+    }
     if (data?.data) {
       axios.patch(`blogs/${data?.data?.id}`, body).then(() => {
         toast.success("Blog is Updated")
@@ -126,7 +126,7 @@ export default function page() {
     if (data?.data) {
       syncData()
     }
-  }, [data])  
+  }, [data])
   return (
     <div className='flex flex-col p-3 rounded-xl bg-white shadow-md'>
       <form onSubmit={action} className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-10'>
@@ -170,23 +170,23 @@ export default function page() {
           placeholder='in minutes'
           variant="bordered"
         />
-        <Input
+        <Textarea
+          variant='bordered'
+          isRequired
           label="Description (fa)"
+          labelPlacement="outside"
           value={dataBlogs.fa_description}
           onChange={({ target }) => setDataBlogs({ ...dataBlogs, fa_description: target.value })}
-          labelPlacement='outside'
-          isRequired
-          placeholder='Description (fa)'
-          variant="bordered"
+          placeholder="Full description of the Blog"
         />
-        <Input
+        <Textarea
+          variant='bordered'
+          isRequired
           label="Description (en)"
+          labelPlacement="outside"
           value={dataBlogs.en_description}
           onChange={({ target }) => setDataBlogs({ ...dataBlogs, en_description: target.value })}
-          labelPlacement='outside'
-          isRequired
-          placeholder='Description (en)'
-          variant="bordered"
+          placeholder="Full description of the Blog"
         />
         <div className='md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-5 justify-evenly items-center'>
           <Input
@@ -279,7 +279,6 @@ export default function page() {
             </div>
           </div>
         </div>
-
         <div>
           <UploadImage imageUrl={image} setImageUrl={setImage} />
         </div>

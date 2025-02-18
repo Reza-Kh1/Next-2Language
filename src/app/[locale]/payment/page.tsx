@@ -77,9 +77,15 @@ export default function page() {
             // link.click();
             // document.body.removeChild(link);
         }).catch((err) => {
+            if (err.status === 404) {
+                toast.error(local === "fa" ? "کد صحیح وارد کنید" : "Enter the correct code")
+            }
             if (err.status === 403) {
                 toast.error(local === "fa" ? "شما مجاز به دانلود نیستید" : "You are not allowed to download")
+            } else {
+                toast.error(local === "fa" ? "دانلود با خطا مواجه شد" : "The download encountered an error")
             }
+
         })
     }
     useEffect(() => {
@@ -263,7 +269,7 @@ export default function page() {
                                         </div>
                                         <div className='p-3 flex flex-col gap-3 border rounded-xl border-d-60'>
                                             <span className='text-sm text-w-80'>{local === "fa" ? "زمان پرداخت" : "Payment Time"}</span>
-                                            <span className='text-w-100'>{new Date().toLocaleDateString()}</span>
+                                            <span className='text-w-100'>{new Date(local === "fa" ? "fa" : "en").toLocaleDateString()}</span>
                                         </div>
                                         <div className='p-3 flex flex-col gap-3 border rounded-xl border-d-60'>
                                             <span className='text-sm text-w-80'>{local === "fa" ? "درگاه پرداخت" : "Payment gateway"}</span>

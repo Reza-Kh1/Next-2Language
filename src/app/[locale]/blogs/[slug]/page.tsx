@@ -75,8 +75,6 @@ export default async function page({ params }: any) {
             `${process.env.NEXTAUTH_URL}/blog/${data.id}` ||
             "آدرس مقاله",
     };
-    console.log(data);
-
     return (
         <>
             <Script
@@ -93,7 +91,7 @@ export default async function page({ params }: any) {
                     <div className='w-full md:w-8/12 order-2 md:order-1 border rounded-xl md:rounded-none border-d-60'>
                         <div className='flex flex-col gap-5 p-12 border-b border-d-60'>
                             <h2 className='text-lg text-white'>{locale === "fa" ? "مقدمه" : "Introduction"} </h2>
-                            <p className='text-lg text-w-80'>Artificial Intelligence (AI) has emerged as a transformative force in the healthcare industry, reshaping patient care, diagnostics, and research. In this blog post, we explore the profound impact of AI in healthcare, from revolutionizing diagnostic accuracy to enhancing patient outcomes.</p>
+                            <p className='text-lg text-w-80'>{locale === "fa" ? data.fa_description : data.en_description}</p>
                         </div>
                         <div className='p-12 text-blog'>
                             {locale === "fa" ? parse(data.fa_content) : parse(data.en_content)}

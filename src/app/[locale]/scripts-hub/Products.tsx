@@ -30,6 +30,8 @@ export default function Products({ children, row }: { children: ReactNode, row: 
             }
             if (err.status === 403) {
                 toast.error(locale === "fa" ? "شما مجاز به دانلود نیستید" : "You are not allowed to download")
+            }else {
+                toast.error(locale === "fa" ? "دانلود با خطا مواجه شد" : "The download encountered an error")
             }
         })
     }

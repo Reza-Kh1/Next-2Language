@@ -26,8 +26,6 @@ export default function page() {
     getNextPageParam: (lastPage) => lastPage.links.next || undefined,
     initialPageParam: "",
   });
-  console.log(data?.pages[0]);
-
   return (
     <div className='flex flex-col gap-5'>
       <SearchAdmin name={["en_title", "categories"]} setSearch={setSearchQuery} />
