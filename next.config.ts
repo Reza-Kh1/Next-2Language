@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "shlabs.ir",
       },
+      {
+        protocol: "https",
+        hostname: "api.shlabs.ir",
+      },
     ],
   },
   crossOrigin: "anonymous",
@@ -20,7 +24,7 @@ const nextConfig: NextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://shlabs.vercel.app",
+            value: "https://shlabs.ir",
             // value: "https://admin.buildmasters.ir",
           },
           {

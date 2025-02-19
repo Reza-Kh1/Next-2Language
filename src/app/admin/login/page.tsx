@@ -23,7 +23,7 @@ export default function Page() {
             } else {
                 Cookies.set('authToken', data, { expires: 1, secure: true });
             }
-            axios.get("https://shlabs.ir/api/user").then(({ data }) => {
+            axios.get("https://api.shlabs.ir/api/user").then(({ data }) => {
                 localStorage.setItem("shlabs", JSON.stringify(data))
                 navigate.replace("/admin/blogs")
             }).catch((err) => console.log(err)).finally(() => setLoading(false))
