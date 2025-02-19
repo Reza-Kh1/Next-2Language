@@ -61,14 +61,14 @@ export default function page() {
           <TableBody>
             {data?.pages[0].data.map(((row, index) => (
               <TableRow key={index}>
-                <TableCell>{row.id}</TableCell>
+                <TableCell>{row?.id}</TableCell>
                 <TableCell>
-                  <Link className='hover:underline' href={`/admin/products/${row.product?.id}`}>
-                    {row.product.en_name}
+                  <Link className='hover:underline' href={`/admin/products/${row?.product?.id}`}>
+                    {row?.product?.en_name}
                   </Link>
                 </TableCell>
                 <TableCell>
-                  {row.phone}
+                  {row?.phone}
                 </TableCell>
                 {/* <TableCell>
                   <Button onPress={() => {
@@ -79,20 +79,20 @@ export default function page() {
                   </Button>
                 </TableCell> */}
                 <TableCell>
-                  <span className={`p-3 shadow-md rounded-md ${row.status === "pending" ? "bg-blue-200" : "bg-green-200"}`}>
-                    {row.status}
+                  <span className={`p-3 shadow-md rounded-md ${row?.status === "pending" ? "bg-blue-200" : "bg-green-200"}`}>
+                    {row?.status}
                   </span>
                 </TableCell>
-                <TableCell>{row.ref_code}</TableCell>
+                <TableCell>{row?.ref_code}</TableCell>
                 <TableCell>{new Date().toLocaleDateString("en")}</TableCell>
                 <TableCell className='flex gap-3 items-center'>
-                  <DeleteModal id={row.id} onSubmit={(id) => deleteTransaction(id)} />
+                  <DeleteModal id={row?.id} onSubmit={(id) => deleteTransaction(id)} />
                 </TableCell>
               </TableRow>
             )))}
           </TableBody>
         </Table>
-        <PaginationAdmin search={searchQuery} setSearch={setSearchQuery} meta={data.pages[0].meta} />
+        <PaginationAdmin search={searchQuery} setSearch={setSearchQuery} meta={data?.pages[0]?.meta} />
       </> :
         "No data available."
       }
