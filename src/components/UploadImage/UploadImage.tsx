@@ -36,6 +36,8 @@ export default function UploadImage({ imageUrl, setImageUrl, height, width }: Up
                 Authorization: `Bearer ${token}`,
             }
         });
+        console.log(data?.path, process.env.NEXT_PUBLIC_URL_FILE + data?.path);
+
         const url = data?.path ? process.env.NEXT_PUBLIC_URL_FILE + data.path : ""
         // const url = "https://shlabs.ir/storage/app/apiFiles/Tb4g8MoFK8ptf9YoyzpSiHkUgti6FXgHxQlLlVDl.jpg"
         setLoading(false)
